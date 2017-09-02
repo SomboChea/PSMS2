@@ -57,6 +57,7 @@ namespace PSMS.Class
         {
             object value;
             SqlCommand cmd = new SqlCommand(sql, con);
+          
             value = cmd.ExecuteScalar();
             cmd.Dispose();
             return value;
