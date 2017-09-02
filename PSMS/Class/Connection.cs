@@ -62,11 +62,6 @@ namespace PSMS.Class
             return value;
         }
 
-        public bool test()
-        {
-            return true;
-        }
-
         public DataTable GetData(SqlConnection con, string sql)
         {
             SqlCommand cmd = new SqlCommand();
