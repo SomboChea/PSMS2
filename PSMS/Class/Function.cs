@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PSMS
 {
@@ -127,14 +128,14 @@ namespace PSMS
 
         public object ExecScalar(string cmdText)
         {
-            SqlConnection cnn = new SqlConnection(conStr);
+            Connection.Open("localhost", "PSMS2");
+
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = cnn;
+            cmd.Connection = Connection.con;
             cmd.CommandText = cmdText;
             object result = null;
             try
             {
-                cnn.Open();
                 result = cmd.ExecuteScalar();
             }
             catch (Exception ex)
@@ -146,8 +147,7 @@ namespace PSMS
 
                 cmd.Dispose();
                 cmd = null;
-
-                cnn.Close();
+                
             }
             return result;
         }
@@ -178,6 +178,26 @@ namespace PSMS
                 cnn.Close();
             }
             return result;
+        }
+
+        public int GetLastId(string table_name)
+        {
+            Connection.Open("localhost", "PSMS2");
+            SqlCommand sqlcmd = new SqlCommand();
+            sqlcmd.Connection = Connection.con;
+            sqlcmd.CommandText = "SELECT IDENT_CURRENT('" + table_name + "') FROM " + table_name + ";";
+
+            try
+            {
+                object rex = sqlcmd.ExecuteScalar();
+
+                return Convert.ToInt32(rex);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            
         }
     }
 }

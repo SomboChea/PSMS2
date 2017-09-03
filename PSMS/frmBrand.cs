@@ -15,16 +15,26 @@ namespace PSMS
     public partial class frmBrand : MetroForm
     {
         frmModelFunction moFun;
+        int mId = 0;
         public frmBrand()
         {
             InitializeComponent();
             moFun = new frmModelFunction();
+            
         }
 
         private void frmModel_Load(object sender, EventArgs e)
         {
             moFun.FillDataGridView(ref dgMo);
+            reloadMId();
         }
+
+        public void reloadMId()
+        {
+            mId = moFun.GetLastId("model") + 1;
+            txtMCode.Text = "M" + ("00000" + mId).Substring(("00000" + mId).Length - 5);
+        }
+
         private frmM GetMo()
         {
             frmM Mo = new frmM();
@@ -36,24 +46,7 @@ namespace PSMS
 
         private void dgMo_Click(object sender, EventArgs e)
         {
-            int mid = 0;
-            foreach (DataGridViewRow row in dgMo.SelectedRows)
-            {
-                if (row.Cells != null && row.Cells[0].Value != null)
-                {
-                    mid = Convert.ToInt32(row.Cells[0].Value.ToString());
-                }
-            }
-
-            DataTable dt = moFun.GetData("SELECT * FROM Model WHERE MID = " + mid);
-
-            foreach (DataRow row in dt.Rows)
-            {
-                txtMID.Text = row["MID"].ToString();
-                txtMCode.Text = row["MCode"].ToString();
-                txtDe.Text = row["Description"].ToString();
-               
-            }
+            
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -66,6 +59,8 @@ namespace PSMS
                 txtMID.Text = result.ToString();
 
             }
+            txtDe.Clear();
+            reloadMId();
         }
 
         private void btnUp_Click(object sender, EventArgs e)
@@ -105,6 +100,26 @@ namespace PSMS
             
             txtMCode.Text = "";
             txtDe.Text = "";
+        }
+
+        private void dgMo_SelectionChanged(object sender, EventArgs e)
+        {
+            int mid = 0;
+            
+            if(dgMo.SelectedRows.Count>0)
+            {
+                mid = 0;
+            }
+
+            DataTable dt = moFun.GetData("SELECT * FROM Model WHERE MID = " + mid);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                txtMID.Text = row["MID"].ToString();
+                txtMCode.Text = row["MCode"].ToString();
+                txtDe.Text = row["Description"].ToString();
+
+            }
         }
     }
 }

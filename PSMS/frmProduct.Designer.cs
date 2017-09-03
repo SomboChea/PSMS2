@@ -33,8 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProduct));
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -50,8 +49,6 @@
             this.cbBMo = new System.Windows.Forms.ComboBox();
             this.cbBPT = new System.Windows.Forms.ComboBox();
             this.cbbType = new System.Windows.Forms.ComboBox();
-            this.txtPID = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.txtPSize = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.txtUnitprice = new MetroFramework.Controls.MetroTextBox();
@@ -70,18 +67,17 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.txtPCode = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.pro_img = new System.Windows.Forms.PictureBox();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.txtPID = new MetroFramework.Controls.MetroTextBox();
             this.metroPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pro_img)).BeginInit();
             this.SuspendLayout();
             // 
             // metroPanel1
             // 
-            this.metroPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.metroPanel1.Controls.Add(this.button5);
             this.metroPanel1.Controls.Add(this.button3);
             this.metroPanel1.Controls.Add(this.button2);
@@ -123,27 +119,18 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            // button4
+            // button5
             // 
-            this.button4.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(98, 425);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(99, 23);
-            this.button4.TabIndex = 59;
-            this.button4.Text = "Browse";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::PSMS.Properties.Resources._13898740_1126829754049156_1722755725_o;
-            this.pictureBox1.Location = new System.Drawing.Point(23, 63);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(256, 356);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 58;
-            this.pictureBox1.TabStop = false;
+            this.button5.BackColor = System.Drawing.Color.Red;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(850, 510);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(99, 35);
+            this.button5.TabIndex = 58;
+            this.button5.Text = "Close";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button3
             // 
@@ -199,6 +186,7 @@
             this.itemPanel1.Location = new System.Drawing.Point(844, 14);
             this.itemPanel1.Name = "itemPanel1";
             this.itemPanel1.Size = new System.Drawing.Size(105, 292);
+            this.itemPanel1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013;
             this.itemPanel1.TabIndex = 28;
             this.itemPanel1.Text = "itemPanel1";
             // 
@@ -378,52 +366,6 @@
             this.cbbType.Name = "cbbType";
             this.cbbType.Size = new System.Drawing.Size(226, 21);
             this.cbbType.TabIndex = 54;
-            // 
-            // txtPID
-            // 
-            // 
-            // 
-            // 
-            this.txtPID.CustomButton.Image = null;
-            this.txtPID.CustomButton.Location = new System.Drawing.Point(156, 1);
-            this.txtPID.CustomButton.Name = "";
-            this.txtPID.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtPID.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtPID.CustomButton.TabIndex = 1;
-            this.txtPID.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtPID.CustomButton.UseSelectable = true;
-            this.txtPID.CustomButton.Visible = false;
-            this.txtPID.Enabled = false;
-            this.txtPID.Lines = new string[] {
-        "1"};
-            this.txtPID.Location = new System.Drawing.Point(257, 20);
-            this.txtPID.MaxLength = 32767;
-            this.txtPID.Name = "txtPID";
-            this.txtPID.PasswordChar = '\0';
-            this.txtPID.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtPID.SelectedText = "";
-            this.txtPID.SelectionLength = 0;
-            this.txtPID.SelectionStart = 0;
-            this.txtPID.ShortcutsEnabled = true;
-            this.txtPID.Size = new System.Drawing.Size(178, 23);
-            this.txtPID.TabIndex = 53;
-            this.txtPID.Text = "1";
-            this.txtPID.UseSelectable = true;
-            this.txtPID.Visible = false;
-            this.txtPID.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtPID.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel12
-            // 
-            this.metroLabel12.AutoSize = true;
-            this.metroLabel12.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroLabel12.Location = new System.Drawing.Point(176, 24);
-            this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(75, 19);
-            this.metroLabel12.TabIndex = 52;
-            this.metroLabel12.Text = "Product ID";
-            this.metroLabel12.Visible = false;
             // 
             // txtPSize
             // 
@@ -759,26 +701,83 @@
             this.metroLabel3.Text = "Product Code";
             this.metroLabel3.UseCustomForeColor = true;
             // 
-            // button5
+            // btnBrowse
             // 
-            this.button5.BackColor = System.Drawing.Color.Red;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(850, 510);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(99, 35);
-            this.button5.TabIndex = 58;
-            this.button5.Text = "Close";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnBrowse.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrowse.ForeColor = System.Drawing.Color.White;
+            this.btnBrowse.Location = new System.Drawing.Point(98, 425);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(99, 23);
+            this.btnBrowse.TabIndex = 59;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = false;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // pro_img
+            // 
+            this.pro_img.Image = global::PSMS.Properties.Resources._13898740_1126829754049156_1722755725_o;
+            this.pro_img.Location = new System.Drawing.Point(23, 63);
+            this.pro_img.Name = "pro_img";
+            this.pro_img.Size = new System.Drawing.Size(256, 356);
+            this.pro_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pro_img.TabIndex = 58;
+            this.pro_img.TabStop = false;
+            // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.metroLabel12.Location = new System.Drawing.Point(176, 24);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(75, 19);
+            this.metroLabel12.TabIndex = 52;
+            this.metroLabel12.Text = "Product ID";
+            this.metroLabel12.Visible = false;
+            // 
+            // txtPID
+            // 
+            // 
+            // 
+            // 
+            this.txtPID.CustomButton.Image = null;
+            this.txtPID.CustomButton.Location = new System.Drawing.Point(156, 1);
+            this.txtPID.CustomButton.Name = "";
+            this.txtPID.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtPID.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPID.CustomButton.TabIndex = 1;
+            this.txtPID.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPID.CustomButton.UseSelectable = true;
+            this.txtPID.CustomButton.Visible = false;
+            this.txtPID.Enabled = false;
+            this.txtPID.Lines = new string[] {
+        "1"};
+            this.txtPID.Location = new System.Drawing.Point(257, 20);
+            this.txtPID.MaxLength = 32767;
+            this.txtPID.Name = "txtPID";
+            this.txtPID.PasswordChar = '\0';
+            this.txtPID.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPID.SelectedText = "";
+            this.txtPID.SelectionLength = 0;
+            this.txtPID.SelectionStart = 0;
+            this.txtPID.ShortcutsEnabled = true;
+            this.txtPID.Size = new System.Drawing.Size(178, 23);
+            this.txtPID.TabIndex = 53;
+            this.txtPID.Text = "1";
+            this.txtPID.UseSelectable = true;
+            this.txtPID.Visible = false;
+            this.txtPID.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPID.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1298, 666);
+            this.Controls.Add(this.pro_img);
+            this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.metroPanel1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button4);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmProduct";
             this.Text = "Products";
@@ -786,8 +785,8 @@
             this.Load += new System.EventHandler(this.frmProduct_Load);
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pro_img)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -828,10 +827,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pro_img;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.Button button5;
         private MetroFramework.Controls.MetroTextBox txtPID;
         private MetroFramework.Controls.MetroLabel metroLabel12;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
     }
 }
