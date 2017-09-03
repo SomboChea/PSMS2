@@ -1,5 +1,6 @@
 ﻿using MetroFramework;
 using MetroFramework.Forms;
+using PSMS.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,13 +22,17 @@ namespace PSMS
             InitializeComponent();
             empFun = new frmEmployeeFunction();
             posFun = new frmPosFunction();
+
+            Connection.Open("localhost", "PSMS2");
         }
 
         private void frmEmployees_Load(object sender, EventArgs e)
         {
             empFun.FillDataGridView(ref dgData);
             posFun.FillComboBox(ref cbBPos, "PosName", "PosID");
-            cbBPos.SelectedValue = 0;
+            cbBPos.SelectedIndex = 0;
+            cbBGender.SelectedIndex = 0;
+            Join_date.Value = DateTime.Now;
         }
         private frmEmp GetEmp()
         {
@@ -145,7 +150,8 @@ namespace PSMS
             rtxtAddress.Text = "";
             txtPhone.Text = "";
             txtEmail.Text = "";
-        
+            cbBGender.SelectedIndex = 0;
+            cbBPos.SelectedIndex = 0;
             txtSalary.Text = "";
             Join_date.Text = "";
         }
@@ -167,6 +173,10 @@ namespace PSMS
         {
             frmPostion pos = new frmPostion();
             pos.ShowDialog();
+            btnClr_Click(this,null);
+            
+          
+            frmEmployees_Load(this,null);
         }
     }
 }
