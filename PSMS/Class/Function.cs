@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PSMS.Class;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -15,15 +16,13 @@ namespace PSMS
 
         public DataTable GetData(string cmdText)
         {
-            SqlConnection cnn = new SqlConnection(conStr);
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = cnn;
+            cmd.Connection = Connection.con;
             cmd.CommandText = cmdText;
             DataTable dt = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             try
             {
-                cnn.Open();
                 adapter.Fill(dt);
             }
             catch (Exception ex)
@@ -37,8 +36,6 @@ namespace PSMS
 
                 cmd.Dispose();
                 cmd = null;
-
-                cnn.Close();
             }
             return dt;
         }
