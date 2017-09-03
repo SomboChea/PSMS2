@@ -75,6 +75,7 @@
             this.dgPos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgPos.Location = new System.Drawing.Point(324, 24);
             this.dgPos.Name = "dgPos";
+            this.dgPos.ReadOnly = true;
             this.dgPos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
@@ -189,6 +190,7 @@
             this.txtPosCode.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtPosCode.CustomButton.UseSelectable = true;
             this.txtPosCode.CustomButton.Visible = false;
+            this.txtPosCode.Enabled = false;
             this.txtPosCode.Lines = new string[0];
             this.txtPosCode.Location = new System.Drawing.Point(125, 79);
             this.txtPosCode.MaxLength = 32767;

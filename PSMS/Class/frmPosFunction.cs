@@ -49,10 +49,12 @@ namespace PSMS
 
         public object InsertScalar(frmPos Pos)
         {
+            SqlParameter[] paramtemp = new SqlParameter[1];
+            paramtemp[0] = GetParameter(Pos)[2];
             return base.ExecScalar("INSERT INTO " +
                "Position(PosName) " +
-                "OUTPUT INSERTED.PosID VALUES(@PosName)",
-                GetParameter(Pos));
+                "OUTPUT INSERTED.PosID VALUES('@PosName')",
+                paramtemp);
         }
 
         public int Update(frmPos Pos)

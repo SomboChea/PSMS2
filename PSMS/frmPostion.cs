@@ -1,5 +1,6 @@
 ﻿using MetroFramework;
 using MetroFramework.Forms;
+using PSMS.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,27 +20,51 @@ namespace PSMS
         {
             InitializeComponent();
             PosFun = new frmPosFunction();
+
+           
+
+            reload();
+            
+            
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
             int result = (int)PosFun.Insert(GetPos());
+            
             if (result > 0)
             {
                 MetroMessageBox.Show(this, "New Position Add", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 PosFun.FillDataGridView(ref dgPos);
                 txtPosID.Text = result.ToString();
             }
+
+            reload();
         }
 
         private frmPos GetPos() 
         {
             frmPos Pos = new frmPos();
-            Pos.PosID = Convert.ToInt32(txtPosID.Text);
+            Pos.PosID = int.Parse(txtPosID.Text);
             Pos.PosName = txtPosName.Text;
             Pos.PosCode = txtPosCode.Text;
             return Pos;
         }
+
+        public void reload()
+        {
+            btnClr_Click(this, null);
+
+            String Posid = "" + Connection.ExecuteScalar("Select Ident_current('Position')");
+            int t = Posid == "" ? 1 : int.Parse(Posid) + 1;
+            txtPosID.Text = t + "";
+            txtPosCode.Text = "POS" + ("00000" + t).Substring(2);
+
+            dgPos.DataSource = null;
+            frmPostion_Load(this, null);
+            btnUp.Enabled = false;
+        }
+
         private void frmPostion_Load(object sender, EventArgs e)
         {
             PosFun.FillDataGridView(ref dgPos);
@@ -47,11 +72,14 @@ namespace PSMS
 
         private void dgPos_Click(object sender, EventArgs e)
         {
+
+
             int PosID = 0;
             foreach (DataGridViewRow row in dgPos.SelectedRows)
             {
-                if (row.Cells != null && row.Cells[0].Value != null)
+                if (row.Cells != null && row.Cells[0].Value.ToString() != "")
                 {
+                    btnUp.Enabled = true;
                     PosID = Convert.ToInt32(row.Cells[0].Value.ToString());
                 }
             }
@@ -64,8 +92,9 @@ namespace PSMS
                 txtPosCode.Text = row["PosCode"].ToString();
                 txtPosName.Text = row["PosName"].ToString();
             }
-
         }
+            
+        
 
         private void btnUp_Click(object sender, EventArgs e)
         {
@@ -76,6 +105,7 @@ namespace PSMS
                 PosFun.FillDataGridView(ref dgPos);
 
             }
+            reload();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -92,11 +122,14 @@ namespace PSMS
                     txtPosName.Text = "";
                     
                 }
+
             }
             else if (dia == DialogResult.No)
             {
                 MetroMessageBox.Show(this, "Deleted record has been cancel", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+            reload();
         }
 
         private void btnClr_Click(object sender, EventArgs e)
