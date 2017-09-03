@@ -37,18 +37,25 @@ namespace PSMS
         private frmPro GetPro()
         {
             frmPro pro = new frmPro();
-            pro.pro_id = Convert.ToInt32(txtPID.Text);
-            pro.pro_code = txtPCode.Text;
-            pro.pro_name = txtPName.Text;
-            pro.pro_size = txtPSize.Text;
-            pro.color = txtColor.Text;
-            pro.quantity = Convert.ToInt32(txtQuantity.Text);
-            pro.model = Convert.ToInt32(cbBMo.SelectedValue);
-            pro.ph_type = Convert.ToInt32(cbBPT.SelectedValue);
-            pro.type = Convert.ToInt32(cbbType.SelectedValue);
-            pro.saleprice = (float.Parse)(txtSalePrice.Text);
-            pro.unitprice = float.Parse(txtUnitprice.Text);
-            return pro;
+            try
+            {
+                pro.pro_id = Convert.ToInt32(txtPID.Text);
+                pro.pro_code = txtPCode.Text;
+                pro.pro_name = txtPName.Text;
+                pro.pro_size = txtPSize.Text;
+                pro.color = txtColor.Text;
+                pro.quantity = Convert.ToInt32(txtQuantity.Text);
+                pro.model = Convert.ToInt32(cbBMo.SelectedValue);
+                pro.ph_type = Convert.ToInt32(cbBPT.SelectedValue);
+                pro.type = Convert.ToInt32(cbbType.SelectedValue);
+                pro.saleprice = (float.Parse)(txtSalePrice.Text);
+                pro.unitprice = float.Parse(txtUnitprice.Text);
+                return pro;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         private void dgProduct_Click(object sender, EventArgs e)

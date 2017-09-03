@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using System.Configuration;
+using PSMS.Class;
+
 namespace PSMS
 {
     class frmProductFunction : Function
     {
         public frmProductFunction() 
         {
-            base.conStr = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
+            
         }
         public DataTable GetCusData()
         {
@@ -37,18 +39,25 @@ namespace PSMS
         public SqlParameter[] GetParameter(frmPro Pro)
         {
             SqlParameter[] param = new SqlParameter[11];
-            param[0] = new SqlParameter("PID", Pro.pro_id);
-            param[1] = new SqlParameter("PCode", Pro.pro_code);
-            param[2] = new SqlParameter("PName", Pro.pro_name);
-            param[3] = new SqlParameter("PSize", Pro.pro_size);
-            param[4] = new SqlParameter("color", Pro.color);
-            param[5] = new SqlParameter("quantity", Pro.quantity);
-            param[6] = new SqlParameter("mid", Pro.model);
-            param[7] = new SqlParameter("PTypeID", Pro.ph_type);
-            param[8] = new SqlParameter("TID", Pro.type);
-            param[9] = new SqlParameter("Saleprice", Pro.saleprice);
-            param[10] = new SqlParameter("Unitprice", Pro.unitprice);
-            return param;
+            try
+            {
+                param[0] = new SqlParameter("PID", Pro.pro_id);
+                param[1] = new SqlParameter("PCode", Pro.pro_code);
+                param[2] = new SqlParameter("PName", Pro.pro_name);
+                param[3] = new SqlParameter("PSize", Pro.pro_size);
+                param[4] = new SqlParameter("color", Pro.color);
+                param[5] = new SqlParameter("quantity", Pro.quantity);
+                param[6] = new SqlParameter("mid", Pro.model);
+                param[7] = new SqlParameter("PTypeID", Pro.ph_type);
+                param[8] = new SqlParameter("TID", Pro.type);
+                param[9] = new SqlParameter("Saleprice", Pro.saleprice);
+                param[10] = new SqlParameter("Unitprice", Pro.unitprice);
+                return param;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
         public int Insert(frmPro Pro)
         {
