@@ -33,6 +33,22 @@ namespace PSMS
             cbBPos.SelectedIndex = 0;
             cbBGender.SelectedIndex = 0;
             Join_date.Value = DateTime.Now;
+
+
+
+            
+            txtKh1.Text = "សំ";
+            txtKh2.Text = "បូរ";
+            txtEn1.Text = "sun";
+            txtEn2.Text = "l";
+            txtIDCard.Text = "111111";
+            rtxtAddress.Text = "PP";
+            txtPhone.Text = "0123456789";
+            txtEmail.Text = "0987654321";
+            cbBGender.SelectedIndex = 0;
+            cbBPos.SelectedIndex = 0;
+            txtSalary.Text = "999999";
+            
         }
         private frmEmp GetEmp()
         {
