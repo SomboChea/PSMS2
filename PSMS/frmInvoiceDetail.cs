@@ -17,6 +17,7 @@ namespace PSMS
         frmInvoice2 frmInv;
         public frmInvoiceDetail()
         {
+            
             InitializeComponent();
             Invfun = new frmInvoiceFunction();
         }

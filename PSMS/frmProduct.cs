@@ -20,6 +20,7 @@ namespace PSMS
         frmPTypeCodeFunction ptFun;
         public frmProduct()
         {
+            this.ControlBox = false;
             InitializeComponent();
             proFun = new frmProductFunction();
             moFun = new frmModelFunction();

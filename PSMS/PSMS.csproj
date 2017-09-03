@@ -70,8 +70,6 @@
     <Reference Include="MetroFramework.Fonts">
       <HintPath>..\packages\MetroFramework.Fonts.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -308,7 +306,6 @@
     </Compile>
     <Compile Include="Product2DataSet.cs">
       <DependentUpon>Product2DataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Product2DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
