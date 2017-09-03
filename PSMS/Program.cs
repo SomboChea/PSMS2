@@ -16,7 +16,7 @@ namespace PSMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmSlashScreen());
+            Application.Run(new frmEmployees());
         }
     }
 }
