@@ -22,5 +22,6 @@ namespace PSMS
         public int pos_id { set; get; }
         public int salary { set; get; }
         public string join_date { set; get; }
+        public byte[] img { get; set; }
     }
 }

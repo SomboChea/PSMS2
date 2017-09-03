@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +20,12 @@ namespace PSMS
         frmPosFunction posFun;
         public frmEmployees()
         {
+            Connection.Open("localhost", "PSMS2");
             InitializeComponent();
             empFun = new frmEmployeeFunction();
             posFun = new frmPosFunction();
 
-            Connection.Open("localhost", "PSMS2");
+            
         }
 
         private void frmEmployees_Load(object sender, EventArgs e)
@@ -35,19 +37,21 @@ namespace PSMS
             Join_date.Value = DateTime.Now;
 
 
-
-            
-            txtKh1.Text = "សំ";
-            txtKh2.Text = "បូរ";
-            txtEn1.Text = "sun";
-            txtEn2.Text = "l";
-            txtIDCard.Text = "111111";
-            rtxtAddress.Text = "PP";
-            txtPhone.Text = "0123456789";
-            txtEmail.Text = "0987654321";
-            cbBGender.SelectedIndex = 0;
-            cbBPos.SelectedIndex = 0;
-            txtSalary.Text = "999999";
+            object empid = Connection.ExecuteScalar("Select ident_current('Employee') from Employee");
+            int Eid = empid == null ? 1 : int.Parse(empid + "") + 1;
+            txtEmpID.Text = Eid + "";
+            txtEmpCode.Text = "EMP" + ("00000" + Eid).Substring(("00000" + Eid).Length - 5);
+            //txtKh1.Text = "សំ";
+            //txtKh2.Text = "បូរ";
+            //txtEn1.Text = "sun";
+            //txtEn2.Text = "l";
+            //txtIDCard.Text = "111111";
+            //rtxtAddress.Text = "PP";
+            //txtPhone.Text = "0123456789";
+            //txtEmail.Text = "0987654321";
+            //cbBGender.SelectedIndex = 0;
+            //cbBPos.SelectedIndex = 0;
+            //txtSalary.Text = "999999";
             
         }
         private frmEmp GetEmp()
@@ -67,6 +71,14 @@ namespace PSMS
             emp.pos_id = Convert.ToInt32(cbBPos.SelectedValue);
             emp.salary = Convert.ToInt32(txtSalary.Text);
             emp.join_date = Join_date.Text;
+
+            MemoryStream mem=new MemoryStream();
+            if (extensionImg == "jpg")
+                pictureBox1.Image.Save(mem, System.Drawing.Imaging.ImageFormat.Jpeg);
+            else
+                pictureBox1.Image.Save(mem, System.Drawing.Imaging.ImageFormat.Png);
+
+            emp.img = mem.ToArray();
             return emp;
         }
 
@@ -75,7 +87,7 @@ namespace PSMS
             int emp_id = 0;
             foreach (DataGridViewRow row in dgData.SelectedRows)
             {
-                if (row.Cells != null && row.Cells[0].Value != null)
+                if (row.Cells != null && row.Cells[0].Value+"" != "")
                 {
                     emp_id = Convert.ToInt32(row.Cells[0].Value.ToString());
                 }
@@ -99,11 +111,13 @@ namespace PSMS
                 cbBPos.SelectedValue = Convert.ToInt32(row["PosID"].ToString());
                 txtSalary.Text = row["Salary"].ToString();
                 Join_date.Text = row["JoinDate"].ToString();
+                pictureBox1.Image = Image.FromStream(new MemoryStream((byte[])row["Image"]));
             }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            txtSalary.Text = txtSalary.Text.Trim() == "" ? "0" : txtSalary.Text;
             int result = (int)empFun.Insert(GetEmp());
             if (result > 0)
             {
@@ -112,10 +126,12 @@ namespace PSMS
                 txtEmpID.Text = result.ToString();
 
             }
+            btnClr_Click(this, null);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            txtSalary.Text = txtSalary.Text.Trim() == "" ? "0" : txtSalary.Text;
             int result = (int)empFun.Update(GetEmp());
             if (result > 0)
             {
@@ -123,6 +139,7 @@ namespace PSMS
                 empFun.FillDataGridView(ref dgData);
 
             }
+            btnClr_Click(this, null);
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -145,7 +162,7 @@ namespace PSMS
                     txtPhone.Text = "";
                     txtEmail.Text = "";
                     txtSalary.Text = "";
-                    Join_date.Text = "";
+                    Join_date.Value=DateTime.Now;
 
                 }
             }
@@ -170,6 +187,13 @@ namespace PSMS
             cbBPos.SelectedIndex = 0;
             txtSalary.Text = "";
             Join_date.Text = "";
+            pictureBox1.Image = Properties.Resources.employee;
+
+            object empid = Connection.ExecuteScalar("Select ident_current('Employee') from Employee");
+            int Eid = empid == null ? 1 : int.Parse(empid + "") + 1;
+            txtEmpID.Text = Eid + "";
+            txtEmpCode.Text = "EMP" + ("00000" + Eid).Substring(("00000" + Eid).Length - 5);
+            
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -193,6 +217,23 @@ namespace PSMS
             
           
             frmEmployees_Load(this,null);
+        }
+        string extensionImg="png";
+        private void btnbrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opf = new OpenFileDialog();
+            opf.Title = "Open Image ... ";
+            opf.Filter = "Image File (*.jpg) | *.jpg| PNG file (*.png) | *.png";
+            if (opf.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = Image.FromFile(opf.FileName);
+                extensionImg = opf.FileName.Substring(opf.FileName.Length - 3);
+            }
+        }
+
+        private void metroPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

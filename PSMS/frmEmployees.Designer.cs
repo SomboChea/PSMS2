@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmployees));
-            this.btnFind = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.btnNew = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.btnSave = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.btnDel = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.btnClr = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.txtEmpCode = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
@@ -71,91 +66,18 @@
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.rtxtAddress = new DevComponents.DotNetBar.Controls.RichTextBoxEx();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnbrowse = new MetroFramework.Controls.MetroTile();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnFind = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.btnNew = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.btnSave = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.btnDel = new DevComponents.DotNetBar.Metro.MetroTileItem();
+            this.btnClr = new DevComponents.DotNetBar.Metro.MetroTileItem();
             ((System.ComponentModel.ISupportInitialize)(this.Join_date)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).BeginInit();
             this.metroPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnFind
-            // 
-            this.btnFind.Image = global::PSMS.Properties.Resources.magnifying_glass_search_button;
-            this.btnFind.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnFind.Name = "btnFind";
-            this.btnFind.SymbolColor = System.Drawing.Color.Empty;
-            this.btnFind.Text = "Find";
-            this.btnFind.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
-            this.btnFind.TileSize = new System.Drawing.Size(100, 70);
-            // 
-            // 
-            // 
-            this.btnFind.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.btnFind.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
-            // 
-            // btnNew
-            // 
-            this.btnNew.Image = global::PSMS.Properties.Resources.add_documents_1_;
-            this.btnNew.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnNew.Name = "btnNew";
-            this.btnNew.SymbolColor = System.Drawing.Color.Empty;
-            this.btnNew.Text = "New";
-            this.btnNew.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
-            this.btnNew.TileSize = new System.Drawing.Size(100, 70);
-            // 
-            // 
-            // 
-            this.btnNew.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.btnNew.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = global::PSMS.Properties.Resources.save;
-            this.btnSave.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnSave.Name = "btnSave";
-            this.btnSave.SymbolColor = System.Drawing.Color.Empty;
-            this.btnSave.Text = "Save";
-            this.btnSave.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
-            this.btnSave.TileSize = new System.Drawing.Size(100, 70);
-            // 
-            // 
-            // 
-            this.btnSave.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.btnSave.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.Image = global::PSMS.Properties.Resources.rubbish_bin;
-            this.btnDel.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnDel.Name = "btnDel";
-            this.btnDel.SymbolColor = System.Drawing.Color.Empty;
-            this.btnDel.Text = "Delete";
-            this.btnDel.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
-            this.btnDel.TileSize = new System.Drawing.Size(100, 70);
-            // 
-            // 
-            // 
-            this.btnDel.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.btnDel.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // btnClr
-            // 
-            this.btnClr.Image = global::PSMS.Properties.Resources.sweep;
-            this.btnClr.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnClr.Name = "btnClr";
-            this.btnClr.SymbolColor = System.Drawing.Color.Empty;
-            this.btnClr.Text = "Clear";
-            this.btnClr.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
-            this.btnClr.TileSize = new System.Drawing.Size(100, 70);
-            // 
-            // 
-            // 
-            this.btnClr.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.btnClr.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnClr.Click += new System.EventHandler(this.btnClr_Click);
             // 
             // metroLabel3
             // 
@@ -652,9 +574,11 @@
             // 
             this.dgData.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgData.Location = new System.Drawing.Point(480, 358);
+            this.dgData.Location = new System.Drawing.Point(36, 358);
             this.dgData.Name = "dgData";
-            this.dgData.Size = new System.Drawing.Size(330, 95);
+            this.dgData.ReadOnly = true;
+            this.dgData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgData.Size = new System.Drawing.Size(774, 95);
             this.dgData.TabIndex = 72;
             this.dgData.Click += new System.EventHandler(this.dgData_Click);
             // 
@@ -768,7 +692,7 @@
             // 
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroLabel5.Location = new System.Drawing.Point(480, 323);
+            this.metroLabel5.Location = new System.Drawing.Point(34, 336);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(68, 19);
             this.metroLabel5.TabIndex = 84;
@@ -792,7 +716,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroPanel1.Controls.Add(this.textBox1);
             this.metroPanel1.Controls.Add(this.metroTile1);
             this.metroPanel1.Controls.Add(this.metroLabel5);
             this.metroPanel1.Controls.Add(this.itemPanel1);
@@ -826,13 +749,14 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(154, 78);
+            this.metroPanel1.Location = new System.Drawing.Point(180, 78);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(1007, 482);
+            this.metroPanel1.Size = new System.Drawing.Size(981, 482);
             this.metroPanel1.TabIndex = 31;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            this.metroPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.metroPanel1_Paint);
             // 
             // rtxtAddress
             // 
@@ -841,26 +765,124 @@
             // 
             this.rtxtAddress.BackgroundStyle.Class = "RichTextBoxBorder";
             this.rtxtAddress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.rtxtAddress.Location = new System.Drawing.Point(141, 283);
+            this.rtxtAddress.Location = new System.Drawing.Point(141, 237);
             this.rtxtAddress.Name = "rtxtAddress";
-            this.rtxtAddress.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1033{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
-    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs17\\par\r\n}\r\n";
+            this.rtxtAddress.Rtf = "{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft Sans Serif;}}\r\n\\viewkind4" +
+    "\\uc1\\pard\\lang1033\\f0\\fs17 ;jlsjdlsd\\par\r\n}\r\n";
             this.rtxtAddress.Size = new System.Drawing.Size(284, 98);
             this.rtxtAddress.TabIndex = 77;
+            this.rtxtAddress.Text = ";jlsjdlsd";
             // 
-            // textBox1
+            // btnbrowse
             // 
-            this.textBox1.Location = new System.Drawing.Point(141, 283);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(284, 121);
-            this.textBox1.TabIndex = 86;
+            this.btnbrowse.ActiveControl = null;
+            this.btnbrowse.Location = new System.Drawing.Point(34, 303);
+            this.btnbrowse.Name = "btnbrowse";
+            this.btnbrowse.Size = new System.Drawing.Size(131, 40);
+            this.btnbrowse.TabIndex = 86;
+            this.btnbrowse.Text = "Browse\r\n";
+            this.btnbrowse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnbrowse.UseSelectable = true;
+            this.btnbrowse.Click += new System.EventHandler(this.btnbrowse_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::PSMS.Properties.Resources.employee;
+            this.pictureBox1.InitialImage = global::PSMS.Properties.Resources._62650;
+            this.pictureBox1.Location = new System.Drawing.Point(23, 78);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(151, 208);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 32;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnFind
+            // 
+            this.btnFind.Image = global::PSMS.Properties.Resources.magnifying_glass_search_button;
+            this.btnFind.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnFind.Name = "btnFind";
+            this.btnFind.SymbolColor = System.Drawing.Color.Empty;
+            this.btnFind.Text = "Find";
+            this.btnFind.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
+            this.btnFind.TileSize = new System.Drawing.Size(100, 70);
+            // 
+            // 
+            // 
+            this.btnFind.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.btnFind.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // btnNew
+            // 
+            this.btnNew.Image = global::PSMS.Properties.Resources.add_documents_1_;
+            this.btnNew.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnNew.Name = "btnNew";
+            this.btnNew.SymbolColor = System.Drawing.Color.Empty;
+            this.btnNew.Text = "New";
+            this.btnNew.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
+            this.btnNew.TileSize = new System.Drawing.Size(100, 70);
+            // 
+            // 
+            // 
+            this.btnNew.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.btnNew.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::PSMS.Properties.Resources.save;
+            this.btnSave.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.SymbolColor = System.Drawing.Color.Empty;
+            this.btnSave.Text = "Save";
+            this.btnSave.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
+            this.btnSave.TileSize = new System.Drawing.Size(100, 70);
+            // 
+            // 
+            // 
+            this.btnSave.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.btnSave.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.Image = global::PSMS.Properties.Resources.rubbish_bin;
+            this.btnDel.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnDel.Name = "btnDel";
+            this.btnDel.SymbolColor = System.Drawing.Color.Empty;
+            this.btnDel.Text = "Delete";
+            this.btnDel.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
+            this.btnDel.TileSize = new System.Drawing.Size(100, 70);
+            // 
+            // 
+            // 
+            this.btnDel.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.btnDel.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
+            // btnClr
+            // 
+            this.btnClr.Image = global::PSMS.Properties.Resources.sweep;
+            this.btnClr.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnClr.Name = "btnClr";
+            this.btnClr.SymbolColor = System.Drawing.Color.Empty;
+            this.btnClr.Text = "Clear";
+            this.btnClr.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
+            this.btnClr.TileSize = new System.Drawing.Size(100, 70);
+            // 
+            // 
+            // 
+            this.btnClr.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.btnClr.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnClr.Click += new System.EventHandler(this.btnClr_Click);
             // 
             // frmEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 585);
+            this.Controls.Add(this.btnbrowse);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.metroPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Movable = false;
@@ -872,6 +894,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).EndInit();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -920,6 +943,7 @@
         private MetroFramework.Controls.MetroTile metroTile1;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private DevComponents.DotNetBar.Controls.RichTextBoxEx rtxtAddress;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private MetroFramework.Controls.MetroTile btnbrowse;
     }
 }
