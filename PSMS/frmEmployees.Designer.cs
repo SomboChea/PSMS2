@@ -73,8 +73,10 @@
             this.rtxtAddress = new DevComponents.DotNetBar.Controls.RichTextBoxEx();
             this.btnbrowse = new MetroFramework.Controls.MetroTile();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+
             this.btnnext = new System.Windows.Forms.Button();
             this.btnpre = new System.Windows.Forms.Button();
+
             ((System.ComponentModel.ISupportInitialize)(this.Join_date)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).BeginInit();
             this.metroPanel1.SuspendLayout();
@@ -880,6 +882,7 @@
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
             // 
+
             // btnnext
             // 
             this.btnnext.BackColor = System.Drawing.Color.CornflowerBlue;

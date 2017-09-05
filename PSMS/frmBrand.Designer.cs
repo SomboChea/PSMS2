@@ -86,8 +86,9 @@
             this.dgMo.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgMo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgMo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgMo.Size = new System.Drawing.Size(236, 193);
+            this.dgMo.Size = new System.Drawing.Size(346, 193);
             this.dgMo.TabIndex = 116;
+            this.dgMo.SelectionChanged += new System.EventHandler(this.dgMo_SelectionChanged);
             this.dgMo.Click += new System.EventHandler(this.dgMo_Click);
             // 
             // btnClr
@@ -141,7 +142,7 @@
             // 
             // 
             this.txtDe.CustomButton.Image = null;
-            this.txtDe.CustomButton.Location = new System.Drawing.Point(89, 1);
+            this.txtDe.CustomButton.Location = new System.Drawing.Point(111, 1);
             this.txtDe.CustomButton.Name = "";
             this.txtDe.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtDe.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -150,7 +151,7 @@
             this.txtDe.CustomButton.UseSelectable = true;
             this.txtDe.CustomButton.Visible = false;
             this.txtDe.Lines = new string[0];
-            this.txtDe.Location = new System.Drawing.Point(124, 121);
+            this.txtDe.Location = new System.Drawing.Point(124, 127);
             this.txtDe.MaxLength = 32767;
             this.txtDe.Name = "txtDe";
             this.txtDe.PasswordChar = '\0';
@@ -159,7 +160,7 @@
             this.txtDe.SelectionLength = 0;
             this.txtDe.SelectionStart = 0;
             this.txtDe.ShortcutsEnabled = true;
-            this.txtDe.Size = new System.Drawing.Size(111, 23);
+            this.txtDe.Size = new System.Drawing.Size(133, 23);
             this.txtDe.TabIndex = 1;
             this.txtDe.UseSelectable = true;
             this.txtDe.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -169,7 +170,7 @@
             // 
             this.metroLabel9.AutoSize = true;
             this.metroLabel9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroLabel9.Location = new System.Drawing.Point(27, 125);
+            this.metroLabel9.Location = new System.Drawing.Point(27, 131);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(74, 19);
             this.metroLabel9.TabIndex = 110;
@@ -181,7 +182,7 @@
             // 
             // 
             this.txtMCode.CustomButton.Image = null;
-            this.txtMCode.CustomButton.Location = new System.Drawing.Point(89, 1);
+            this.txtMCode.CustomButton.Location = new System.Drawing.Point(111, 1);
             this.txtMCode.CustomButton.Name = "";
             this.txtMCode.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtMCode.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -190,7 +191,7 @@
             this.txtMCode.CustomButton.UseSelectable = true;
             this.txtMCode.CustomButton.Visible = false;
             this.txtMCode.Lines = new string[0];
-            this.txtMCode.Location = new System.Drawing.Point(125, 79);
+            this.txtMCode.Location = new System.Drawing.Point(124, 92);
             this.txtMCode.MaxLength = 32767;
             this.txtMCode.Name = "txtMCode";
             this.txtMCode.PasswordChar = '\0';
@@ -199,7 +200,7 @@
             this.txtMCode.SelectionLength = 0;
             this.txtMCode.SelectionStart = 0;
             this.txtMCode.ShortcutsEnabled = true;
-            this.txtMCode.Size = new System.Drawing.Size(111, 23);
+            this.txtMCode.Size = new System.Drawing.Size(133, 23);
             this.txtMCode.TabIndex = 2;
             this.txtMCode.UseSelectable = true;
             this.txtMCode.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -209,7 +210,7 @@
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroLabel2.Location = new System.Drawing.Point(25, 83);
+            this.metroLabel2.Location = new System.Drawing.Point(27, 96);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(76, 19);
             this.metroLabel2.TabIndex = 108;
@@ -264,7 +265,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 240);
+            this.ClientSize = new System.Drawing.Size(693, 240);
             this.Controls.Add(this.dgMo);
             this.Controls.Add(this.btnClr);
             this.Controls.Add(this.btnDel);

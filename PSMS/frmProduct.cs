@@ -65,7 +65,7 @@ namespace PSMS
             {
                 if (row.Cells != null && row.Cells[0].Value != null)
                 {
-                    pro_id = Convert.ToInt32(row.Cells[0].Value.ToString());
+                    //pro_id = Convert.ToInt32(row.Cells[0].Value.ToString());
                 }
             }
 
@@ -156,5 +156,21 @@ namespace PSMS
 
         }
 
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog pd = new OpenFileDialog();
+            if (pd.ShowDialog() == DialogResult.OK)
+            {
+                Image img = Image.FromFile(pd.FileName);
+                MessageBox.Show(Class.Helper.ImageToBase64(img)+"A");
+
+                pro_img.Image = Class.Helper.Base64ToImage(Class.Helper.ImageToBase64(img));
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

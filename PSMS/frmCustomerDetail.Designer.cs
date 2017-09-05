@@ -816,8 +816,8 @@
             this.Controls.Add(this.txtEn1);
             this.Controls.Add(this.txtEn2);
             this.Controls.Add(this.txtKh2);
-            this.Controls.Add(this.Opendate);
             this.Controls.Add(this.cbBGender);
+            this.Controls.Add(this.Opendate);
             this.Controls.Add(this.txtPhone2);
             this.Controls.Add(this.metroLabel10);
             this.Controls.Add(this.metroLabel6);
