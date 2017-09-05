@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PSMS.Reports {
+namespace PSMS {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace PSMS.Reports {
         
         public override string FullResourceName {
             get {
-                return "PSMS.Reports.rptInvoice.rpt";
+                return "PSMS.rptInvoice.rpt";
             }
             set {
                 // Do nothing

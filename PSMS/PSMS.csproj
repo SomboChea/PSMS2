@@ -93,7 +93,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PurchaseDetail.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reports\rptInvoice.cs">
+    <Compile Include="rptInvoice.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptInvoice.rpt</DependentUpon>
@@ -372,7 +372,7 @@
     <EmbeddedResource Include="frmPostion.resx">
       <DependentUpon>frmPostion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptInvoice.rpt">
+    <EmbeddedResource Include="rptInvoice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptInvoice.cs</LastGenOutput>
     </EmbeddedResource>
