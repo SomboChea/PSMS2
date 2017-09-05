@@ -19,6 +19,12 @@ namespace PSMS
         {
             InitializeComponent();
             empFun = new frmEmployeeFunction();
+
+            DataTable ProCol = empFun.GetData("Select name from sys.columns where object_id='293576084'");
+            foreach (DataRow dr in ProCol.Rows)
+            {
+                comboBox1.Items.Add(dr[0]);
+            }
         }
 
         private void frmEmployeeDetail_Load(object sender, EventArgs e)
@@ -172,6 +178,14 @@ namespace PSMS
                 txtSalary.Text = row["Salary"].ToString();
                 Join_date.Text = row["JoinDate"].ToString();
             }
+        }
+
+        private void btnsearch_Click(object sender, EventArgs e)
+        {
+            string sql = txtsearch.Text.Trim() == "" ? "Select * from Employee" : "Select * from employee where " + comboBox1.Text + "='" + txtsearch.Text.Trim() + "'";
+            dataGridView1.DataSource = empFun.GetData(sql);
+
+           
         }
     }
 }

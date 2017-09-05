@@ -66,8 +66,10 @@
             this.txtEmpCode = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.txtsearch = new System.Windows.Forms.TextBox();
+            this.btnsearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Join_date)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -783,44 +785,67 @@
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
-            // metroLabel5
+            // comboBox1
             // 
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel5.Location = new System.Drawing.Point(493, 54);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(49, 19);
-            this.metroLabel5.TabIndex = 112;
-            this.metroLabel5.Text = "Search";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(398, 49);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(52, 21);
+            this.comboBox1.TabIndex = 119;
             // 
-            // textBox1
+            // metroLabel7
             // 
-            this.textBox1.Location = new System.Drawing.Point(548, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(141, 20);
-            this.textBox1.TabIndex = 111;
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel7.Location = new System.Drawing.Point(323, 50);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(68, 19);
+            this.metroLabel7.TabIndex = 118;
+            this.metroLabel7.Text = "Search by";
+            // 
+            // txtsearch
+            // 
+            this.txtsearch.Location = new System.Drawing.Point(456, 49);
+            this.txtsearch.Name = "txtsearch";
+            this.txtsearch.Size = new System.Drawing.Size(141, 20);
+            this.txtsearch.TabIndex = 117;
+            // 
+            // btnsearch
+            // 
+            this.btnsearch.BackColor = System.Drawing.Color.Aqua;
+            this.btnsearch.FlatAppearance.BorderSize = 0;
+            this.btnsearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnsearch.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnsearch.Location = new System.Drawing.Point(625, 47);
+            this.btnsearch.Name = "btnsearch";
+            this.btnsearch.Size = new System.Drawing.Size(64, 23);
+            this.btnsearch.TabIndex = 120;
+            this.btnsearch.Text = "Search";
+            this.btnsearch.UseVisualStyleBackColor = false;
+            this.btnsearch.Click += new System.EventHandler(this.btnsearch_Click);
             // 
             // frmEmployeeDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 480);
-            this.Controls.Add(this.metroLabel5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnsearch);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.metroLabel7);
+            this.Controls.Add(this.txtsearch);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cbBGender);
             this.Controls.Add(this.txtEmpID);
             this.Controls.Add(this.metroLabel14);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.metroLabel13);
-            this.Controls.Add(this.rtxtAddress);
             this.Controls.Add(this.metroLabel12);
             this.Controls.Add(this.metroLabel9);
             this.Controls.Add(this.txtEn1);
             this.Controls.Add(this.txtEn2);
             this.Controls.Add(this.txtKh2);
             this.Controls.Add(this.txtKh1);
-            this.Controls.Add(this.Join_date);
             this.Controls.Add(this.txtSalary);
             this.Controls.Add(this.txtPosID);
             this.Controls.Add(this.txtEmail);
@@ -836,6 +861,8 @@
             this.Controls.Add(this.txtEmpCode);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.itemPanel1);
+            this.Controls.Add(this.rtxtAddress);
+            this.Controls.Add(this.Join_date);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEmployeeDetail";
             this.Text = "EmployeeDetail";
@@ -886,7 +913,9 @@
         private MetroFramework.Controls.MetroTextBox txtEmpCode;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private System.Windows.Forms.TextBox txtsearch;
+        private System.Windows.Forms.Button btnsearch;
     }
 }
