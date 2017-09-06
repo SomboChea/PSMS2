@@ -331,7 +331,7 @@ namespace PSMS
             index--;
             if (index < 0)
             {
-                btnClr_Click(this, null);
+                
                 index = 0;
                 btnpre.Enabled = false;
             }

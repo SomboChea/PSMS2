@@ -17,7 +17,7 @@ namespace PSMS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new frmEmployees());
+            Application.Run(new frmStock());
         }
     }
 }

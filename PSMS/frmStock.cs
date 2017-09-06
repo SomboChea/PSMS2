@@ -18,10 +18,13 @@ namespace PSMS
         {
             InitializeComponent();
         }
-
+        
         private void frmStock_Load(object sender, EventArgs e)
         {
-            
+            foreach(ListViewItem item in Class.Helper.getListStock())
+            {
+                listStock.Items.Add(item);
+            }
         }
     }
 }
