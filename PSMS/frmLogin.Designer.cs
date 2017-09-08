@@ -39,7 +39,7 @@
             // 
             // txtUser
             // 
-            this.txtUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -54,7 +54,7 @@
             this.txtUser.CustomButton.Visible = false;
             this.txtUser.Lines = new string[] {
         "admin"};
-            this.txtUser.Location = new System.Drawing.Point(656, 127);
+            this.txtUser.Location = new System.Drawing.Point(689, 123);
             this.txtUser.MaxLength = 32767;
             this.txtUser.Name = "txtUser";
             this.txtUser.PasswordChar = '\0';
@@ -72,7 +72,7 @@
             // 
             // txtPass
             // 
-            this.txtPass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPass.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -87,7 +87,7 @@
             this.txtPass.CustomButton.Visible = false;
             this.txtPass.Lines = new string[] {
         "123"};
-            this.txtPass.Location = new System.Drawing.Point(656, 166);
+            this.txtPass.Location = new System.Drawing.Point(689, 162);
             this.txtPass.MaxLength = 32767;
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
@@ -105,8 +105,8 @@
             // 
             // btnlogin
             // 
-            this.btnlogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnlogin.Location = new System.Drawing.Point(792, 208);
+            this.btnlogin.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnlogin.Location = new System.Drawing.Point(825, 204);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(71, 29);
             this.btnlogin.TabIndex = 2;
@@ -116,9 +116,9 @@
             // 
             // metroLabel1
             // 
-            this.metroLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(550, 127);
+            this.metroLabel1.Location = new System.Drawing.Point(583, 123);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(68, 19);
             this.metroLabel1.TabIndex = 4;
@@ -126,9 +126,9 @@
             // 
             // metroLabel2
             // 
-            this.metroLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(550, 166);
+            this.metroLabel2.Location = new System.Drawing.Point(583, 162);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(63, 19);
             this.metroLabel2.TabIndex = 4;
@@ -136,6 +136,7 @@
             // 
             // reflectionImage1
             // 
+            this.reflectionImage1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -151,7 +152,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 585);
+            this.ClientSize = new System.Drawing.Size(1099, 657);
             this.Controls.Add(this.reflectionImage1);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
@@ -164,8 +165,8 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Login";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -10,14 +10,15 @@ namespace PSMS
 {
     public partial class frmLogin : MetroForm
     {
-        frmMain Main = new frmMain();
+        User user = new User();
+
         public frmLogin()
         {
             InitializeComponent();
 
             Connection.Open("localhost", "PSMS2");
 
-            btnlogin_Click(null,null);
+            FullMode.Fullscreen(this);
         }
 
         private void btnlogin_Click(object sender, EventArgs e)
@@ -49,14 +50,15 @@ namespace PSMS
                 if (count > 0)
                 {
 
-                    MetroMessageBox.Show(this, "Login Successful!", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    // MetroMessageBox.Show(this, "Login Successful!", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    user.Name = txtUser.Text;
+                    
                     adapter.Dispose();
                     cmd.Dispose();
                     ds.Dispose();
 
                     Hide();
-                    Main.ShowDialog();
+                    new frmMain().Show();
                 }
                 else
                 {
@@ -84,5 +86,9 @@ namespace PSMS
             }
         }
 
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            btnlogin_Click(sender, e);
+        }
     }
 }

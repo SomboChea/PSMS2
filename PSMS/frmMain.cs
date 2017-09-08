@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using PSMS.Class;
 namespace PSMS
 {
     public partial class frmMain : MetroForm
@@ -17,6 +17,13 @@ namespace PSMS
         public frmMain()
         {
             InitializeComponent();
+        }
+
+        public frmMain(User user)
+        {
+            InitializeComponent();
+            
+            Text = "Welcome - " + user.Name;
         }
 
         private void MetroCus_Click(object sender, EventArgs e)
@@ -114,7 +121,7 @@ namespace PSMS
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
+            
         }
 
     }
