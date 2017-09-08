@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevComponents.DotNetBar.Metro.MetroTileFrame metroTileFrame3;
-            DevComponents.DotNetBar.Metro.MetroTileFrame metroTileFrame5;
-            DevComponents.DotNetBar.Metro.MetroTileFrame metroTileFrame1;
-            DevComponents.DotNetBar.Metro.MetroTileFrame metroTileFrame2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            this.metroTileFrame3 = new DevComponents.DotNetBar.Metro.MetroTileFrame();
+            this.metroTileFrame5 = new DevComponents.DotNetBar.Metro.MetroTileFrame();
+            this.metroTileFrame1 = new DevComponents.DotNetBar.Metro.MetroTileFrame();
+            this.metroTileFrame2 = new DevComponents.DotNetBar.Metro.MetroTileFrame();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
             this.itemPanel1 = new DevComponents.DotNetBar.ItemPanel();
             this.itemContainer2 = new DevComponents.DotNetBar.ItemContainer();
@@ -50,57 +50,53 @@
             this.MetroUser = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.MetroDown = new MetroFramework.Controls.MetroLink();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
-            metroTileFrame3 = new DevComponents.DotNetBar.Metro.MetroTileFrame();
-            metroTileFrame5 = new DevComponents.DotNetBar.Metro.MetroTileFrame();
-            metroTileFrame1 = new DevComponents.DotNetBar.Metro.MetroTileFrame();
-            metroTileFrame2 = new DevComponents.DotNetBar.Metro.MetroTileFrame();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTileFrame3
             // 
-            metroTileFrame3.Image = global::PSMS.Properties.Resources.warehouse_4_;
-            metroTileFrame3.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            metroTileFrame3.Text = "Stock";
-            metroTileFrame3.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Default;
+            this.metroTileFrame3.Image = global::PSMS.Properties.Resources.warehouse_4_;
+            this.metroTileFrame3.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTileFrame3.Text = "Stock";
+            this.metroTileFrame3.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Default;
             // 
             // 
             // 
-            metroTileFrame3.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            metroTileFrame3.TileStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroTileFrame3.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.metroTileFrame3.TileStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // metroTileFrame5
             // 
-            metroTileFrame5.Image = global::PSMS.Properties.Resources.badge;
-            metroTileFrame5.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            metroTileFrame5.Text = "Stock";
-            metroTileFrame5.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Yellow;
+            this.metroTileFrame5.Image = global::PSMS.Properties.Resources.badge;
+            this.metroTileFrame5.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTileFrame5.Text = "Stock";
+            this.metroTileFrame5.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Yellow;
             // 
             // 
             // 
-            metroTileFrame5.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.metroTileFrame5.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
             // metroTileFrame1
             // 
-            metroTileFrame1.Image = global::PSMS.Properties.Resources.warehouse_4_;
-            metroTileFrame1.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            metroTileFrame1.Text = "Stock";
-            metroTileFrame1.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Orange;
+            this.metroTileFrame1.Image = global::PSMS.Properties.Resources.warehouse_4_;
+            this.metroTileFrame1.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTileFrame1.Text = "Stock";
+            this.metroTileFrame1.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Orange;
             // 
             // 
             // 
-            metroTileFrame1.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.metroTileFrame1.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
             // metroTileFrame2
             // 
-            metroTileFrame2.Image = global::PSMS.Properties.Resources.warehouse_4_;
-            metroTileFrame2.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            metroTileFrame2.Text = "Stock";
-            metroTileFrame2.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta;
+            this.metroTileFrame2.Image = global::PSMS.Properties.Resources.warehouse_4_;
+            this.metroTileFrame2.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTileFrame2.Text = "Stock";
+            this.metroTileFrame2.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta;
             // 
             // 
             // 
-            metroTileFrame2.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.metroTileFrame2.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
             // metroStyleManager1
             // 
@@ -165,8 +161,8 @@
             // MetroStock
             // 
             this.MetroStock.AnimationDuration = 8000;
-            this.MetroStock.Frames.Add(metroTileFrame3);
-            this.MetroStock.Frames.Add(metroTileFrame5);
+            this.MetroStock.Frames.Add(this.metroTileFrame3);
+            this.MetroStock.Frames.Add(this.metroTileFrame5);
             this.MetroStock.Image = global::PSMS.Properties.Resources.warehouse_4_;
             this.MetroStock.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.MetroStock.Name = "MetroStock";
@@ -368,6 +364,7 @@
             this.Text = "Start Form";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).EndInit();
             this.ResumeLayout(false);
 
@@ -391,6 +388,10 @@
         private DevComponents.DotNetBar.Metro.MetroTileItem MetroStock;
         private MetroFramework.Controls.MetroLink MetroDown;
         private MetroFramework.Controls.MetroLink metroLink1;
+        private DevComponents.DotNetBar.Metro.MetroTileFrame metroTileFrame3;
+        private DevComponents.DotNetBar.Metro.MetroTileFrame metroTileFrame5;
+        private DevComponents.DotNetBar.Metro.MetroTileFrame metroTileFrame1;
+        private DevComponents.DotNetBar.Metro.MetroTileFrame metroTileFrame2;
     }
 }
 

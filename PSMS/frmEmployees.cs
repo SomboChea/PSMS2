@@ -302,7 +302,7 @@ namespace PSMS
             btnnext.Enabled = true;
             int emp_id = int.Parse(dgData.Rows[index].Cells[0].Value + "");
             DataTable dt = empFun.GetData("SELECT * FROM Employee WHERE EmpID = " + emp_id);
-
+            metroLabel1.Text = index + "";
             foreach (DataRow row in dt.Rows)
             {
                 txtEmpID.Text = row["EmpID"].ToString();
@@ -331,7 +331,6 @@ namespace PSMS
             index--;
             if (index < 0)
             {
-                btnClr_Click(this, null);
                 index = 0;
                 btnpre.Enabled = false;
             }
