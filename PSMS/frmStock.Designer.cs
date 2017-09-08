@@ -41,6 +41,7 @@
             this.cbPriceOut = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cbPriceIn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listStock
@@ -61,8 +62,9 @@
             this.listStock.FullRowSelect = true;
             this.listStock.GridLines = true;
             this.listStock.Location = new System.Drawing.Point(23, 63);
+            this.listStock.MultiSelect = false;
             this.listStock.Name = "listStock";
-            this.listStock.Size = new System.Drawing.Size(1202, 605);
+            this.listStock.Size = new System.Drawing.Size(1090, 605);
             this.listStock.TabIndex = 0;
             this.listStock.UseCompatibleStateImageBehavior = false;
             this.listStock.View = System.Windows.Forms.View.Details;
@@ -124,17 +126,32 @@
             this.comboBox1.Items.AddRange(new object[] {
             "List Mode",
             "Image Mode"});
-            this.comboBox1.Location = new System.Drawing.Point(1104, 36);
+            this.comboBox1.Location = new System.Drawing.Point(992, 36);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 1;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.BackColor = System.Drawing.Color.Blue;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnRemove.Location = new System.Drawing.Point(1119, 63);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(117, 58);
+            this.btnRemove.TabIndex = 2;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // frmStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1248, 691);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.listStock);
             this.Controls.Add(this.comboBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -159,5 +176,6 @@
         private System.Windows.Forms.ColumnHeader cbPriceOut;
         private System.Windows.Forms.ColumnHeader cbPriceIn;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnRemove;
     }
 }

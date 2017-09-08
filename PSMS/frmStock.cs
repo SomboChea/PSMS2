@@ -17,6 +17,7 @@ namespace PSMS
         public frmStock()
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = 0;
         }
         
         private void frmStock_Load(object sender, EventArgs e)
@@ -28,7 +29,7 @@ namespace PSMS
                 listStock.LargeImageList = imglist;
                 listStock.Items[item.Index].ImageIndex = item.Index;
             }
-            comboBox1.SelectedIndex = 0;
+            comboBox1_SelectedIndexChanged(this, null);
             
             //for (int i = 0; i < listStock.Items.Count; i++)
             //{
@@ -41,6 +42,12 @@ namespace PSMS
             View view = comboBox1.SelectedIndex == 0 ? View.Details : View.LargeIcon;
             listStock.View = view;
             
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            PSMS.Class.Connection.ExecuteScalar("Delete from Product where PCode=" + listStock.SelectedItems[0].Text);
+            listStock.Items.RemoveAt(listStock.SelectedIndices[0]);
         }
     }
 }
