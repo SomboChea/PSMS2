@@ -20,16 +20,13 @@ namespace PSMS
             InitializeComponent();
             empFun = new frmEmployeeFunction();
 
-            DataTable ProCol = empFun.GetData("Select name from sys.columns where object_id='293576084'");
-            foreach (DataRow dr in ProCol.Rows)
-            {
-                comboBox1.Items.Add(dr[0]);
-            }
+            
         }
 
         private void frmEmployeeDetail_Load(object sender, EventArgs e)
         {
             empFun.FillDataGridView(ref dataGridView1);
+            comboBox1.SelectedIndex = 0;
         }
         private frmEmp GetEmp()
         {

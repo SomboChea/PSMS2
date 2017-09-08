@@ -790,6 +790,20 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "EmpID",
+            "EmpCode",
+            "EmpLNKH",
+            "EmpFNKH",
+            "EmpLNEN",
+            "EmpFNEN",
+            "Gender",
+            "IDCard",
+            "Address",
+            "Phone",
+            "Email",
+            "PosID",
+            "Salary"});
             this.comboBox1.Location = new System.Drawing.Point(398, 49);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(52, 21);

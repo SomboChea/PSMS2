@@ -19,6 +19,9 @@ namespace PSMS
         public frmLogin()
         {
             InitializeComponent();
+            this.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            this.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            
         }
 
         private void btnlogin_Click(object sender, EventArgs e)
@@ -77,6 +80,14 @@ namespace PSMS
             {
                 Application.ExitThread();
             }
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            //txtUser.Text = "admin";
+            //txtPass.Text = "123";
+            //btnlogin_Click(this, null);
+        
         }
     }
 }

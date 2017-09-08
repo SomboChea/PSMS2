@@ -49,5 +49,10 @@ namespace PSMS
             PSMS.Class.Connection.ExecuteScalar("Delete from Product where PCode=" + listStock.SelectedItems[0].Text);
             listStock.Items.RemoveAt(listStock.SelectedIndices[0]);
         }
+
+        private void listStock_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnRemove.Enabled = listStock.SelectedIndices.Count > 0 ? true : false;
+        }
     }
 }

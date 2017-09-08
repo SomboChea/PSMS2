@@ -68,6 +68,7 @@
             this.listStock.TabIndex = 0;
             this.listStock.UseCompatibleStateImageBehavior = false;
             this.listStock.View = System.Windows.Forms.View.Details;
+            this.listStock.SelectedIndexChanged += new System.EventHandler(this.listStock_SelectedIndexChanged);
             // 
             // cbCode
             // 
@@ -135,6 +136,7 @@
             // btnRemove
             // 
             this.btnRemove.BackColor = System.Drawing.Color.Blue;
+            this.btnRemove.Enabled = false;
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemove.ForeColor = System.Drawing.SystemColors.Control;
