@@ -89,6 +89,7 @@
     <Compile Include="Class\frmPos.cs" />
     <Compile Include="Class\Helper.cs" />
     <Compile Include="Class\Stock.cs" />
+    <Compile Include="Class\User.cs" />
     <Compile Include="PurchaseDetail.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -302,7 +303,6 @@
     </Compile>
     <Compile Include="Product2DataSet.cs">
       <DependentUpon>Product2DataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Product2DataSet.Designer.cs">
       <AutoGen>True</AutoGen>

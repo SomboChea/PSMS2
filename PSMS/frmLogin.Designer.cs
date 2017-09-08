@@ -52,7 +52,8 @@
             this.txtUser.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtUser.CustomButton.UseSelectable = true;
             this.txtUser.CustomButton.Visible = false;
-            this.txtUser.Lines = new string[0];
+            this.txtUser.Lines = new string[] {
+        "admin"};
             this.txtUser.Location = new System.Drawing.Point(656, 127);
             this.txtUser.MaxLength = 32767;
             this.txtUser.Name = "txtUser";
@@ -64,6 +65,7 @@
             this.txtUser.ShortcutsEnabled = true;
             this.txtUser.Size = new System.Drawing.Size(207, 23);
             this.txtUser.TabIndex = 0;
+            this.txtUser.Text = "admin";
             this.txtUser.UseSelectable = true;
             this.txtUser.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtUser.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -83,7 +85,8 @@
             this.txtPass.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtPass.CustomButton.UseSelectable = true;
             this.txtPass.CustomButton.Visible = false;
-            this.txtPass.Lines = new string[0];
+            this.txtPass.Lines = new string[] {
+        "123"};
             this.txtPass.Location = new System.Drawing.Point(656, 166);
             this.txtPass.MaxLength = 32767;
             this.txtPass.Name = "txtPass";
@@ -95,6 +98,7 @@
             this.txtPass.ShortcutsEnabled = true;
             this.txtPass.Size = new System.Drawing.Size(207, 23);
             this.txtPass.TabIndex = 1;
+            this.txtPass.Text = "123";
             this.txtPass.UseSelectable = true;
             this.txtPass.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtPass.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);

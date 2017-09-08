@@ -46,8 +46,13 @@ namespace PSMS
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            PSMS.Class.Connection.ExecuteScalar("Delete from Product where PCode=" + listStock.SelectedItems[0].Text);
+            PSMS.Class.Connection.ExecuteScalar("Delete from Product where [PCode]='" + listStock.SelectedItems[0].Text + "'");
             listStock.Items.RemoveAt(listStock.SelectedIndices[0]);
+        }
+
+        private void listStock_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBox1.Enabled = listStock.SelectedIndices.Count > 0 ? true : false;
         }
     }
 }

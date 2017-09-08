@@ -33,7 +33,8 @@ namespace PSMS.Class
         {
             List<ListViewItem> items = new List<ListViewItem>();
 
-            Connection.Open("localhost", "PSMS2");
+            //Connection.Open("localhost", "PSMS2");
+
             SqlCommand cmd = new SqlCommand("SELECT * FROM viewStock;",Connection.con);
             SqlDataReader reader = cmd.ExecuteReader();
             string[] item = new string[10];
@@ -55,7 +56,10 @@ namespace PSMS.Class
                 }
                 imglist.ImageSize = new Size(100, 100);
             }
-            
+
+            reader.Close();
+            cmd.Dispose();
+
             return items;
         }
             

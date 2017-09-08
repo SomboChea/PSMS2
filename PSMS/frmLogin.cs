@@ -1,14 +1,9 @@
 ﻿using MetroFramework;
 using MetroFramework.Forms;
+using PSMS.Class;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PSMS
@@ -19,38 +14,48 @@ namespace PSMS
         public frmLogin()
         {
             InitializeComponent();
+
+            Connection.Open("localhost", "PSMS2");
+
+            btnlogin_Click(null,null);
         }
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            //Connection String
-            string cs = @"Server=localhost; Initial Catalog=PSMS2; Integrated Security=true";
            //btn_Submit Click event
             if(txtUser.Text=="" || txtPass.Text=="")
             {
-                
-                MetroMessageBox.Show(this, "Please provide UserName and Password", "Warning!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MetroMessageBox.Show(this, "Please provide Username and Password", "Warning !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtUser.Focus();
                 return;
             }
+
             try
             {
-                //Create SqlConnection
-                SqlConnection con = new SqlConnection(cs);
-                SqlCommand cmd = new SqlCommand("Select * from Users where UName=@UName and Password=@Password",con);
+                //Get SqlConnection from Connection
+                
+                SqlCommand cmd = new SqlCommand("Select * from Users where UName=@UName and Password=@Password",Connection.con);
+
                 cmd.Parameters.AddWithValue("@UName",txtUser.Text);
                 cmd.Parameters.AddWithValue("@Password", txtPass.Text);
-                con.Open();
-                SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
-                adapt.Fill(ds);
-                con.Close();
+                adapter.Fill(ds);
+
                 int count = ds.Tables[0].Rows.Count;
+                
                 //If count is equal to 1, than show frmMain form
-                if (count == 1)
+                if (count > 0)
                 {
 
                     MetroMessageBox.Show(this, "Login Successful!", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
+
+                    adapter.Dispose();
+                    cmd.Dispose();
+                    ds.Dispose();
+
+                    Hide();
                     Main.ShowDialog();
                 }
                 else
@@ -78,5 +83,6 @@ namespace PSMS
                 Application.ExitThread();
             }
         }
+
     }
 }

@@ -18,7 +18,7 @@ namespace PSMS
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            Application.Run(new frmStock());
+            Application.Run(new frmLogin());
 
         }
     }

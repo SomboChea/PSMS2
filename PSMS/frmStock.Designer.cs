@@ -68,6 +68,7 @@
             this.listStock.TabIndex = 0;
             this.listStock.UseCompatibleStateImageBehavior = false;
             this.listStock.View = System.Windows.Forms.View.Details;
+            this.listStock.SelectedIndexChanged += new System.EventHandler(this.listStock_SelectedIndexChanged);
             // 
             // cbCode
             // 
