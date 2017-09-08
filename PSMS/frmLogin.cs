@@ -18,10 +18,7 @@ namespace PSMS
         frmMain Main = new frmMain();
         public frmLogin()
         {
-            InitializeComponent();
-            this.Width = Screen.PrimaryScreen.WorkingArea.Width;
-            this.Height = Screen.PrimaryScreen.WorkingArea.Height;
-            
+            InitializeComponent();        
         }
 
         private void btnlogin_Click(object sender, EventArgs e)

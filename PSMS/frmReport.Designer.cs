@@ -50,7 +50,7 @@
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(39, 73);
+            this.metroTile1.Location = new System.Drawing.Point(37, 109);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(132, 67);
             this.metroTile1.TabIndex = 0;
@@ -63,7 +63,7 @@
             // metroTile2
             // 
             this.metroTile2.ActiveControl = null;
-            this.metroTile2.Location = new System.Drawing.Point(39, 295);
+            this.metroTile2.Location = new System.Drawing.Point(37, 331);
             this.metroTile2.Name = "metroTile2";
             this.metroTile2.Size = new System.Drawing.Size(132, 67);
             this.metroTile2.TabIndex = 1;
@@ -73,7 +73,7 @@
             // metroTile3
             // 
             this.metroTile3.ActiveControl = null;
-            this.metroTile3.Location = new System.Drawing.Point(39, 368);
+            this.metroTile3.Location = new System.Drawing.Point(37, 404);
             this.metroTile3.Name = "metroTile3";
             this.metroTile3.Size = new System.Drawing.Size(132, 67);
             this.metroTile3.TabIndex = 2;
@@ -83,7 +83,7 @@
             // metroTile5
             // 
             this.metroTile5.ActiveControl = null;
-            this.metroTile5.Location = new System.Drawing.Point(39, 147);
+            this.metroTile5.Location = new System.Drawing.Point(37, 183);
             this.metroTile5.Name = "metroTile5";
             this.metroTile5.Size = new System.Drawing.Size(132, 67);
             this.metroTile5.TabIndex = 4;
@@ -94,7 +94,7 @@
             // metroTile4
             // 
             this.metroTile4.ActiveControl = null;
-            this.metroTile4.Location = new System.Drawing.Point(39, 222);
+            this.metroTile4.Location = new System.Drawing.Point(37, 258);
             this.metroTile4.Name = "metroTile4";
             this.metroTile4.Size = new System.Drawing.Size(132, 67);
             this.metroTile4.TabIndex = 3;
@@ -142,12 +142,12 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(637, 326);
+            this.metroGrid1.Size = new System.Drawing.Size(707, 362);
             this.metroGrid1.TabIndex = 5;
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(768, 450);
+            this.metroButton1.Location = new System.Drawing.Point(768, 488);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(63, 25);
             this.metroButton1.TabIndex = 6;
@@ -205,7 +205,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(863, 498);
+            this.ClientSize = new System.Drawing.Size(924, 536);
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroDateTime2);
             this.Controls.Add(this.metroLabel2);
