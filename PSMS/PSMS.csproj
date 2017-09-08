@@ -88,16 +88,11 @@
     <Compile Include="Class\Connection.cs" />
     <Compile Include="Class\frmPos.cs" />
     <Compile Include="Class\Helper.cs" />
+    <Compile Include="Class\Stock.cs" />
     <Compile Include="PurchaseDetail.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PurchaseDetail.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="rptInvoice.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptInvoice.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\CusReport.cs">
       <AutoGen>True</AutoGen>
@@ -372,10 +367,6 @@
     </Compile>
     <EmbeddedResource Include="frmPostion.resx">
       <DependentUpon>frmPostion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="rptInvoice.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptInvoice.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\CusReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
