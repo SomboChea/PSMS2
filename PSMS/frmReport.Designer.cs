@@ -44,15 +44,16 @@
             this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.viewStock = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.viewReport)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(37, 109);
+            this.metroTile1.Location = new System.Drawing.Point(23, 109);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(132, 67);
+            this.metroTile1.Size = new System.Drawing.Size(132, 52);
             this.metroTile1.TabIndex = 0;
             this.metroTile1.Text = "Customer";
             this.metroTile1.TileImage = global::PSMS.Properties.Resources.avatar;
@@ -63,9 +64,9 @@
             // metroTile2
             // 
             this.metroTile2.ActiveControl = null;
-            this.metroTile2.Location = new System.Drawing.Point(37, 331);
+            this.metroTile2.Location = new System.Drawing.Point(23, 283);
             this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(132, 67);
+            this.metroTile2.Size = new System.Drawing.Size(132, 52);
             this.metroTile2.TabIndex = 1;
             this.metroTile2.Text = "Puchase";
             this.metroTile2.UseSelectable = true;
@@ -74,9 +75,9 @@
             // metroTile3
             // 
             this.metroTile3.ActiveControl = null;
-            this.metroTile3.Location = new System.Drawing.Point(37, 404);
+            this.metroTile3.Location = new System.Drawing.Point(23, 341);
             this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(132, 67);
+            this.metroTile3.Size = new System.Drawing.Size(132, 52);
             this.metroTile3.TabIndex = 2;
             this.metroTile3.Text = "Invoice";
             this.metroTile3.UseSelectable = true;
@@ -85,9 +86,9 @@
             // metroTile5
             // 
             this.metroTile5.ActiveControl = null;
-            this.metroTile5.Location = new System.Drawing.Point(37, 183);
+            this.metroTile5.Location = new System.Drawing.Point(23, 167);
             this.metroTile5.Name = "metroTile5";
-            this.metroTile5.Size = new System.Drawing.Size(132, 67);
+            this.metroTile5.Size = new System.Drawing.Size(132, 52);
             this.metroTile5.TabIndex = 4;
             this.metroTile5.Text = "Supplier";
             this.metroTile5.UseSelectable = true;
@@ -96,9 +97,9 @@
             // metroTile4
             // 
             this.metroTile4.ActiveControl = null;
-            this.metroTile4.Location = new System.Drawing.Point(37, 258);
+            this.metroTile4.Location = new System.Drawing.Point(23, 225);
             this.metroTile4.Name = "metroTile4";
-            this.metroTile4.Size = new System.Drawing.Size(132, 67);
+            this.metroTile4.Size = new System.Drawing.Size(132, 52);
             this.metroTile4.TabIndex = 3;
             this.metroTile4.Text = "Employee";
             this.metroTile4.UseSelectable = true;
@@ -107,6 +108,8 @@
             // viewReport
             // 
             this.viewReport.AllowUserToResizeRows = false;
+            this.viewReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.viewReport.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.viewReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.viewReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.viewReport.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -133,6 +136,7 @@
             this.viewReport.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.viewReport.Location = new System.Drawing.Point(194, 109);
             this.viewReport.Name = "viewReport";
+            this.viewReport.ReadOnly = true;
             this.viewReport.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
@@ -203,11 +207,23 @@
             this.metroButton2.Text = "Filler";
             this.metroButton2.UseSelectable = true;
             // 
+            // viewStock
+            // 
+            this.viewStock.ActiveControl = null;
+            this.viewStock.Location = new System.Drawing.Point(24, 399);
+            this.viewStock.Name = "viewStock";
+            this.viewStock.Size = new System.Drawing.Size(131, 52);
+            this.viewStock.TabIndex = 12;
+            this.viewStock.Text = "Stock";
+            this.viewStock.UseSelectable = true;
+            this.viewStock.Click += new System.EventHandler(this.viewStock_Click);
+            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(924, 536);
+            this.Controls.Add(this.viewStock);
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroDateTime2);
             this.Controls.Add(this.metroLabel2);
@@ -245,5 +261,6 @@
         private MetroFramework.Controls.MetroDateTime metroDateTime2;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroTile viewStock;
     }
 }

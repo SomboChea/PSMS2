@@ -93,6 +93,10 @@ namespace PSMS.Class
             {
                 MessageBox.Show("Can't connect to database!");
             }
+            finally
+            {
+
+            }
 
         }
 

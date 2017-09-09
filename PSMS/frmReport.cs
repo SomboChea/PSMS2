@@ -81,5 +81,11 @@ namespace PSMS
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewInvoice;", binding, viewReport);
         }
+
+        private void viewStock_Click(object sender, EventArgs e)
+        {
+            viewReport.DataSource = binding;
+            Helper.BindGridView("SELECT * FROM viewStock;", binding, viewReport);
+        }
     }
 }
