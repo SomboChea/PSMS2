@@ -22,7 +22,8 @@ namespace PSMS
         public frmMain(User user)
         {
             InitializeComponent();
-            
+            FullMode.Fullscreen(this);
+
             Text = "Welcome - " + user.Name;
         }
 
@@ -101,8 +102,11 @@ namespace PSMS
 
         private void metroTileItem7_Click(object sender, EventArgs e)
         {
-            frmReport rt = new frmReport();
-            rt.ShowDialog();
+            try
+            {
+                new frmReport().ShowDialog();
+            }
+            catch (Exception) { }
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
