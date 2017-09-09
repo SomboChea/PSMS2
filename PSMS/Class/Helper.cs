@@ -55,11 +55,6 @@ namespace PSMS.Class
                 {
                     imglist.Images.Add(Properties.Resources.employee);
                 }
-                finally
-                {
-                    reader.Close();
-                    cmd.Dispose();   
-                }
 
                 imglist.ImageSize = new Size(100, 100);
             }

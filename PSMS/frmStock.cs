@@ -54,6 +54,17 @@ namespace PSMS
         {
             btnRemove.Enabled = listStock.SelectedIndices.Count > 0 ? true : false;
            
+            if(listStock.SelectedIndices.Count > 0)
+            {
+                int qty = Convert.ToInt32(listStock.SelectedItems[0].SubItems[4].Text);
+                double cost = Convert.ToDouble(listStock.SelectedItems[0].SubItems[9].Text);
+                double saleprice = Convert.ToDouble(listStock.SelectedItems[0].SubItems[8].Text);
+
+                txtQty.Text = qty + "";
+                txtCost.Text = "$" + (qty*cost);
+                txtSalePrice.Text = "$" + (qty *saleprice);
+            }
+
         }
     }
 }
