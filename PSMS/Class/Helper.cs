@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -54,6 +55,7 @@ namespace PSMS.Class
                 {
                     imglist.Images.Add(Properties.Resources.employee);
                 }
+
                 imglist.ImageSize = new Size(100, 100);
             }
 
@@ -62,7 +64,37 @@ namespace PSMS.Class
 
             return items;
         }
-            
+
+        public static void BindGridView(string cmdText,BindingSource bindinSource, DataGridView gridView)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmdText, Connection.con);
+                SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(adapter);
+
+                dt.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                adapter.Fill(dt);
+                bindinSource.DataSource = dt;
+
+                // Resize the DataGridView columns to fit the newly loaded content.
+                gridView.AutoResizeColumns(
+                    DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+
+                
+            }
+            catch(SqlException)
+            {
+                MessageBox.Show("Can't connect to database!");
+            }
+            finally
+            {
+
+            }
+
+        }
+
     }
     
 }

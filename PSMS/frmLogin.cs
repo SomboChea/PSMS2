@@ -1,5 +1,6 @@
 ﻿using MetroFramework;
 using MetroFramework.Forms;
+using PSMS.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,43 +16,43 @@ namespace PSMS
 {
     public partial class frmLogin : MetroForm
     {
-        frmMain Main = new frmMain();
+        User user = new User();
+
         public frmLogin()
         {
-            InitializeComponent();        
+            
+            InitializeComponent();
+            Connection.Open("localhost", "PSMS2");
+
         }
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            //Connection String
-            string cs = @"Server=localhost; Initial Catalog=PSMS2; Integrated Security=true";
            //btn_Submit Click event
             if(txtUser.Text=="" || txtPass.Text=="")
             {
-                
                 MetroMessageBox.Show(this, "Please provide UserName and Password", "Warning!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             try
             {
                 //Create SqlConnection
-                SqlConnection con = new SqlConnection(cs);
-                SqlCommand cmd = new SqlCommand("Select * from Users where UName=@UName and Password=@Password",con);
+                SqlCommand cmd = new SqlCommand("Select * from Users where UName=@UName and Password=@Password",Connection.con);
                 cmd.Parameters.AddWithValue("@UName",txtUser.Text);
                 cmd.Parameters.AddWithValue("@Password", txtPass.Text);
-                con.Open();
                 SqlDataAdapter adapt = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 adapt.Fill(ds);
-                con.Close();
                 int count = ds.Tables[0].Rows.Count;
+
                 //If count is equal to 1, than show frmMain form
                 if (count == 1)
                 {
 
                     MetroMessageBox.Show(this, "Login Successful!", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    user.Name = txtUser.Text;
                     this.Hide();
-                    Main.ShowDialog();
+                    new frmMain(user).Show();
                 }
                 else
                 {
