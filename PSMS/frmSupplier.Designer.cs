@@ -59,6 +59,8 @@
             this.txtFax2 = new MetroFramework.Controls.MetroTextBox();
             this.cbBGender = new MetroFramework.Controls.MetroComboBox();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.btnpre = new System.Windows.Forms.Button();
+            this.btnNexts = new System.Windows.Forms.Button();
             this.btnNext = new DevComponents.DotNetBar.ButtonX();
             this.btnPrevious = new DevComponents.DotNetBar.ButtonX();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
@@ -72,8 +74,6 @@
             this.txtEn2 = new MetroFramework.Controls.MetroTextBox();
             this.txtKh2 = new MetroFramework.Controls.MetroTextBox();
             this.txtKh1 = new MetroFramework.Controls.MetroTextBox();
-            this.btnpre = new System.Windows.Forms.Button();
-            this.btnNexts = new System.Windows.Forms.Button();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSu)).BeginInit();
             this.SuspendLayout();
@@ -537,9 +537,9 @@
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.metroPanel1.Controls.Add(this.btnpre);
             this.metroPanel1.Controls.Add(this.btnNexts);
+            this.metroPanel1.Controls.Add(this.metroLabel10);
             this.metroPanel1.Controls.Add(this.btnNext);
             this.metroPanel1.Controls.Add(this.btnPrevious);
-            this.metroPanel1.Controls.Add(this.metroLabel10);
             this.metroPanel1.Controls.Add(this.itemPanel1);
             this.metroPanel1.Controls.Add(this.dgSu);
             this.metroPanel1.Controls.Add(this.txtSuID);
@@ -578,6 +578,32 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // btnpre
+            // 
+            this.btnpre.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnpre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnpre.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnpre.Location = new System.Drawing.Point(635, 27);
+            this.btnpre.Name = "btnpre";
+            this.btnpre.Size = new System.Drawing.Size(75, 23);
+            this.btnpre.TabIndex = 89;
+            this.btnpre.Text = "Previous";
+            this.btnpre.UseVisualStyleBackColor = false;
+            this.btnpre.Click += new System.EventHandler(this.btnpre_Click);
+            // 
+            // btnNexts
+            // 
+            this.btnNexts.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnNexts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNexts.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnNexts.Location = new System.Drawing.Point(716, 27);
+            this.btnNexts.Name = "btnNexts";
+            this.btnNexts.Size = new System.Drawing.Size(75, 23);
+            this.btnNexts.TabIndex = 88;
+            this.btnNexts.Text = "Next";
+            this.btnNexts.UseVisualStyleBackColor = false;
+            this.btnNexts.Click += new System.EventHandler(this.btnNexts_Click);
+            // 
             // btnNext
             // 
             this.btnNext.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -611,6 +637,7 @@
             this.metroLabel10.Size = new System.Drawing.Size(70, 19);
             this.metroLabel10.TabIndex = 40;
             this.metroLabel10.Text = "Load data";
+            this.metroLabel10.Visible = false;
             // 
             // dgSu
             // 
@@ -657,6 +684,7 @@
             this.dgSu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgSu.Size = new System.Drawing.Size(35, 21);
             this.dgSu.TabIndex = 30;
+            this.dgSu.Visible = false;
             this.dgSu.Click += new System.EventHandler(this.dgSu_Click);
             // 
             // txtSuID
@@ -855,32 +883,6 @@
             this.txtKh1.UseSelectable = true;
             this.txtKh1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtKh1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // btnpre
-            // 
-            this.btnpre.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnpre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnpre.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnpre.Location = new System.Drawing.Point(635, 27);
-            this.btnpre.Name = "btnpre";
-            this.btnpre.Size = new System.Drawing.Size(75, 23);
-            this.btnpre.TabIndex = 89;
-            this.btnpre.Text = "Previous";
-            this.btnpre.UseVisualStyleBackColor = false;
-            this.btnpre.Click += new System.EventHandler(this.btnpre_Click);
-            // 
-            // btnNexts
-            // 
-            this.btnNexts.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnNexts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNexts.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnNexts.Location = new System.Drawing.Point(716, 27);
-            this.btnNexts.Name = "btnNexts";
-            this.btnNexts.Size = new System.Drawing.Size(75, 23);
-            this.btnNexts.TabIndex = 88;
-            this.btnNexts.Text = "Next";
-            this.btnNexts.UseVisualStyleBackColor = false;
-            this.btnNexts.Click += new System.EventHandler(this.btnNexts_Click);
             // 
             // frmSupplier
             // 
