@@ -52,11 +52,8 @@ namespace PSMS
 
         private void listStock_SelectedIndexChanged(object sender, EventArgs e)
         {
-<<<<<<< HEAD
+
             btnRemove.Enabled = listStock.SelectedIndices.Count > 0 ? true : false;
-=======
-            comboBox1.Enabled = listStock.SelectedIndices.Count > 0 ? true : false;
->>>>>>> 29c8d1571b7a0aa9f9f8635deea3e2e8effd10ac
         }
     }
 }
