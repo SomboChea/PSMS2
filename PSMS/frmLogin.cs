@@ -49,7 +49,7 @@ namespace PSMS
                 if (count == 1)
                 {
 
-                    MetroMessageBox.Show(this, "Login Successful!", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MetroMessageBox.Show(this, "Login Successful!", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     user.Name = txtUser.Text;
                     this.Hide();
                     new frmMain(user).Show();

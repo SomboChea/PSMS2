@@ -109,7 +109,7 @@ namespace PSMS
             if (int.TryParse(modelValue, out value))
             {
                 
-                SqlCommand cmd = new SqlCommand("Select * from Product where MID=@MID", Connection.con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Product WHERE MID=@MID AND Quantity > 0;", Connection.con);
                 cmd.Parameters.AddWithValue("@MID", this.modelComboBox.SelectedValue.ToString());
                 SqlDataAdapter adapt = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();

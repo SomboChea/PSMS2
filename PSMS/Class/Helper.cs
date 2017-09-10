@@ -132,7 +132,13 @@ namespace PSMS.Class
             {
                 return 0;
             }
+        }
 
+        public static int checkStock(string Pcode)
+        {
+            SqlCommand sqlcmd = new SqlCommand("SELECT * FROM Product WHERE PCode = '" + Pcode + "' AND Quantity > 0; ", Connection.con);
+
+            return sqlcmd.ExecuteNonQuery();
         }
     }
     
