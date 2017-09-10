@@ -97,6 +97,11 @@
     <Compile Include="DBSetting.Designer.cs">
       <DependentUpon>DBSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyInvoice.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyInvoice.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseDetail.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -329,6 +334,12 @@
     <Compile Include="frmDetail.Designer.cs">
       <DependentUpon>frmDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\InvoiceReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvoiceReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\ProReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -472,6 +483,10 @@
     <EmbeddedResource Include="frmDetail.resx">
       <DependentUpon>frmDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InvoiceReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InvoiceReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\ProReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ProReport.cs</LastGenOutput>
@@ -523,6 +538,17 @@
     </None>
     <None Include="InvoiceDetailDataSet.xss">
       <DependentUpon>InvoiceDetailDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MyInvoice.xsc">
+      <DependentUpon>MyInvoice.xsd</DependentUpon>
+    </None>
+    <None Include="MyInvoice.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyInvoice.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="MyInvoice.xss">
+      <DependentUpon>MyInvoice.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Product2DataSet.xsc">

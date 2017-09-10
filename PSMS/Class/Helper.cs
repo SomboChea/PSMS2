@@ -65,6 +65,14 @@ namespace PSMS.Class
             return items;
         }
 
+        public static DataSet getDataSet(string cmdText)
+        {
+            SqlDataAdapter adapter = new SqlDataAdapter(cmdText, Connection.con);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            return ds;
+        }
+
         public static void BindGridView(string cmdText,BindingSource bindinSource, DataGridView gridView)
         {
             try
@@ -87,10 +95,6 @@ namespace PSMS.Class
             catch(SqlException)
             {
                 MessageBox.Show("Can't connect to database!");
-            }
-            finally
-            {
-
             }
 
         }
