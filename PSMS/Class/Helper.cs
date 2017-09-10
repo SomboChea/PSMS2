@@ -115,6 +115,25 @@ namespace PSMS.Class
             else
                 return ifnull(value);
         }
+
+        public static int GetLastId(string table_name)
+        {
+            SqlCommand sqlcmd = new SqlCommand();
+            sqlcmd.Connection = Connection.con;
+            sqlcmd.CommandText = "SELECT IDENT_CURRENT('" + table_name + "') FROM " + table_name + ";";
+
+            try
+            {
+                object rex = sqlcmd.ExecuteScalar();
+
+                return Convert.ToInt32(rex);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+
+        }
     }
     
 }

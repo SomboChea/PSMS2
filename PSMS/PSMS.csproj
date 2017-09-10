@@ -91,6 +91,7 @@
     <Compile Include="Class\Helper.cs" />
     <Compile Include="Class\reportInvoice.cs" />
     <Compile Include="Class\Stock.cs" />
+    <Compile Include="Class\StructInvocieDetail.cs" />
     <Compile Include="Class\User.cs" />
     <Compile Include="DBSetting.cs">
       <SubType>Form</SubType>

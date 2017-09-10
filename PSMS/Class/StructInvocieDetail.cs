@@ -8,7 +8,16 @@ namespace PSMS.Class
 {
     class StructInvocieDetail
     {
-        public int InvoiceNo { get; set; }
+        public StructInvocieDetail()
+        {
+
+        }
+        public StructInvocieDetail(int pID, int qty, float salePrice)
+        {
+            PID = pID;
+            Qty = qty;
+            SalePrice = salePrice;
+        }
         public int PID { get; set; }
         public int Qty { get; set; }
         public float SalePrice { get; set; }

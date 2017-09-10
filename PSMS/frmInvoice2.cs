@@ -231,38 +231,28 @@ namespace PSMS
                 cmd.Parameters.AddWithValue("@Date", Convert.ToDateTime(dateDateTimePicker.Text));
                 cmd.Parameters.AddWithValue("@TotalPrice", totalPrice);
                 cmd.Parameters.AddWithValue("@Payment", payment);
+               
 
-                SqlCommand cmd3 = new SqlCommand("INSERT into InvoiceDetail ( PID, Quantity, Saleprice, Amount) VALUES ( @PID, @Quantity, @Saleprice,@Amount)", Connection.con);
+                List<StructInvocieDetail> invoiceDetails = new List<StructInvocieDetail>();
 
                 foreach (DataGridViewRow row in dtGvBuy.Rows)
-                   {
-                       
-                       //cmd3.Parameters.AddWithValue("@InvoiceNo", this.invoiceCodeTextBox.Text);
-                       cmd3.Parameters.AddWithValue("@PID",row.Cells[0].Value);
-                       cmd3.Parameters.AddWithValue("@Quantity", row.Cells[4].Value);
-                       cmd3.Parameters.AddWithValue("@Saleprice", row.Cells[5].Value);
-                       int total = Convert.ToInt32( row.Cells[4].Value) * Convert.ToInt32( row.Cells[5].Value);
-                       cmd3.Parameters.AddWithValue("@Amount",total);
-
-                       cmd3.ExecuteNonQuery();
-
-                       //Update Stock
-                       SqlCommand cmd5 = new SqlCommand("UPDATE Product SET Quantity = Quantity - @Quantity Where PID=@PID ", Connection.con);
-                       cmd5.Parameters.AddWithValue("@Quantity", row.Cells[4].Value);
-                       cmd5.Parameters.AddWithValue("@PID", row.Cells[0].Value);
-                       cmd5.ExecuteNonQuery();
+                {
+                    StructInvocieDetail data = new StructInvocieDetail(Convert.ToInt32(row.Cells[0].Value), Convert.ToInt32(row.Cells[4].Value), float.Parse(row.Cells[5].Value+""));
+                    invoiceDetails.Add(data);
                             
-                    }
-        
+                }
+                
                 if (payment >= totalPrice)
                 {
                     cmd.Parameters.AddWithValue("@PaymentVerify", "1");
                 }
                 else
                 {
-                    int balance;
+                    float balance;
                     cmd.Parameters.AddWithValue("@PaymentVerify", "0");
-                    balance = Convert.ToInt32(totalPriceLabel1.Text) - Convert.ToInt32(paymentLabel1.Text);
+
+                    balance = totalPrice - payment;
+
                     cmd.Parameters.AddWithValue("@Balance",balance);
                     balance = balance + balance;
                     SqlCommand cmd2 = new SqlCommand("UPDATE Customers SET Balance=@balance Where CusID=@CusID ", Connection.con);
@@ -282,6 +272,31 @@ namespace PSMS
                 //cmd.Parameters.AddWithValue("@Profits", "10");
 
                 cmd.ExecuteNonQuery();
+
+                int invID = Helper.GetLastId("Invoice");
+
+                foreach(StructInvocieDetail temp in invoiceDetails)
+                {
+                    SqlCommand cmd3 = new SqlCommand("INSERT into InvoiceDetail (InvoiceNo, PID, Quantity, Saleprice, Amount) VALUES ( @InvoiceNo, @PID, @Quantity, @Saleprice,@Amount)", Connection.con);
+
+                    cmd3.Parameters.AddWithValue("@InvoiceNo", invID);
+                    cmd3.Parameters.AddWithValue("@PID", temp.PID);
+                    cmd3.Parameters.AddWithValue("@Quantity", temp.Qty);
+                    cmd3.Parameters.AddWithValue("@Saleprice", temp.SalePrice);
+                    cmd3.Parameters.AddWithValue("@Amount", temp.Amount);
+
+                    cmd3.ExecuteNonQuery();
+
+                    //Update Stock
+                    SqlCommand cmd5 = new SqlCommand("UPDATE Product SET Quantity = Quantity - @Quantity Where PID=@PID ", Connection.con);
+                    cmd5.Parameters.AddWithValue("@Quantity", temp.Qty);
+                    cmd5.Parameters.AddWithValue("@PID", temp.PID);
+
+                    cmd5.ExecuteNonQuery();
+                }
+
+
+
                 MetroMessageBox.Show(this, "New Record Save", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
