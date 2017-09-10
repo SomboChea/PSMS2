@@ -136,9 +136,22 @@ namespace PSMS.Class
 
         public static int checkStock(string Pcode)
         {
-            SqlCommand sqlcmd = new SqlCommand("SELECT * FROM Product WHERE PCode = '" + Pcode + "' AND Quantity > 0; ", Connection.con);
+            try
+            {
+                SqlCommand sqlcmd = new SqlCommand("SELECT Quantity FROM Product WHERE PCode = '" + Pcode + "' AND Quantity > 0; ", Connection.con);
+                int qty = Convert.ToInt32(sqlcmd.ExecuteScalar());
 
-            return sqlcmd.ExecuteNonQuery();
+                sqlcmd.Dispose();
+
+                if (qty > 0)
+                    return qty;
+                else
+                    return 0;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
     }
     

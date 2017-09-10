@@ -49,7 +49,7 @@ namespace PSMS.Class
             }
         }
 
-        public static object ExecuteScalar(String sql)
+        public static object ExecuteScalar(string sql)
         {
             object value;
             SqlCommand cmd = new SqlCommand(sql, con);
