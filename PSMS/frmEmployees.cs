@@ -27,7 +27,7 @@ namespace PSMS
          
             
             btnnext.Enabled = false;
-            btnpre.Enabled = true;
+         
 
             
         }
@@ -40,10 +40,10 @@ namespace PSMS
             cbBGender.SelectedIndex = 0;
             Join_date.Value = DateTime.Now;
             index = dgData.Rows.Count-2;
-            
+            btnpre.Enabled = dgData.Rows.Count < 2 ? false : true;
            
 
-            object empid = Connection.ExecuteScalar("Select ident_current('Employee') from Employee");
+            object empid = Connection.ExecuteScalar("Select ident_current('Employee')");
             int Eid = empid == null ? 1 : int.Parse(empid + "") + 1;
             txtEmpID.Text = Eid + "";
             txtEmpCode.Text = "EMP" + ("00000" + Eid).Substring(("00000" + Eid).Length - 5);

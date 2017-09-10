@@ -52,6 +52,7 @@ namespace PSMS
 
         private void listStock_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             btnRemove.Enabled = listStock.SelectedIndices.Count > 0 ? true : false;
            
             if(listStock.SelectedIndices.Count > 0)

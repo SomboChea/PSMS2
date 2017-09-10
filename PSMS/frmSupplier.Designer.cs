@@ -72,6 +72,8 @@
             this.txtEn2 = new MetroFramework.Controls.MetroTextBox();
             this.txtKh2 = new MetroFramework.Controls.MetroTextBox();
             this.txtKh1 = new MetroFramework.Controls.MetroTextBox();
+            this.btnpre = new System.Windows.Forms.Button();
+            this.btnNexts = new System.Windows.Forms.Button();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSu)).BeginInit();
             this.SuspendLayout();
@@ -533,6 +535,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.metroPanel1.Controls.Add(this.btnpre);
+            this.metroPanel1.Controls.Add(this.btnNexts);
             this.metroPanel1.Controls.Add(this.btnNext);
             this.metroPanel1.Controls.Add(this.btnPrevious);
             this.metroPanel1.Controls.Add(this.metroLabel10);
@@ -709,8 +713,8 @@
             this.rtxtAddress.Location = new System.Drawing.Point(172, 227);
             this.rtxtAddress.Name = "rtxtAddress";
             this.rtxtAddress.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1033{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
-    "ans Serif;}}\r\n{\\colortbl ;\\red51\\green153\\blue255;}\r\n\\viewkind4\\uc1\\pard\\cf1\\f0\\" +
-    "fs17\\par\r\n}\r\n";
+    "ans Serif;}}\r\n{\\colortbl ;\\red0\\green120\\blue215;}\r\n\\viewkind4\\uc1\\pard\\cf1\\f0\\f" +
+    "s17\\par\r\n}\r\n";
             this.rtxtAddress.Size = new System.Drawing.Size(264, 158);
             this.rtxtAddress.TabIndex = 37;
             // 
@@ -852,6 +856,32 @@
             this.txtKh1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtKh1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // btnpre
+            // 
+            this.btnpre.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnpre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnpre.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnpre.Location = new System.Drawing.Point(635, 27);
+            this.btnpre.Name = "btnpre";
+            this.btnpre.Size = new System.Drawing.Size(75, 23);
+            this.btnpre.TabIndex = 89;
+            this.btnpre.Text = "Previous";
+            this.btnpre.UseVisualStyleBackColor = false;
+            this.btnpre.Click += new System.EventHandler(this.btnpre_Click);
+            // 
+            // btnNexts
+            // 
+            this.btnNexts.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnNexts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNexts.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnNexts.Location = new System.Drawing.Point(716, 27);
+            this.btnNexts.Name = "btnNexts";
+            this.btnNexts.Size = new System.Drawing.Size(75, 23);
+            this.btnNexts.TabIndex = 88;
+            this.btnNexts.Text = "Next";
+            this.btnNexts.UseVisualStyleBackColor = false;
+            this.btnNexts.Click += new System.EventHandler(this.btnNexts_Click);
+            // 
             // frmSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -911,5 +941,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private DevComponents.DotNetBar.ButtonX btnNext;
         private DevComponents.DotNetBar.ButtonX btnPrevious;
+        private System.Windows.Forms.Button btnpre;
+        private System.Windows.Forms.Button btnNexts;
     }
 }
