@@ -99,6 +99,22 @@ namespace PSMS.Class
 
         }
 
+
+        public static bool ifnull(object value)
+        {
+            if (value.Equals(null) || value.Equals(""))
+                return true;
+            else
+                return false;
+        }
+
+        public static bool ifnull(object value, bool checkSpace)
+        {
+            if (value.Equals(null) || value.Equals("") || value.Equals(" "))
+                return true;
+            else
+                return ifnull(value);
+        }
     }
     
 }
