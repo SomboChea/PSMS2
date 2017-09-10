@@ -1,17 +1,10 @@
 ﻿using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using MetroFramework;
-using Dapper;
-using System.Configuration;
 using PSMS.Class;
 
 namespace PSMS
@@ -20,6 +13,7 @@ namespace PSMS
     {
         frmPayment pay = new frmPayment();
         frmInvoiceFunction Invfun;
+
         public frmInvoice2()
         {
             InitializeComponent();
@@ -28,19 +22,16 @@ namespace PSMS
             Invfun = new frmInvoiceFunction();
         }
 
-
-        
-                    
         void initComboModel()
         {
-            SqlCommand cmd = new SqlCommand("Select * from Model", Connection.con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Model", Connection.con);
             SqlDataAdapter adapt = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             adapt.Fill(ds);
 
-            this.modelComboBox.DataSource = ds.Tables[0];
-            this.modelComboBox.DisplayMember = "Description";
-            this.modelComboBox.ValueMember = "MID";
+            modelComboBox.DataSource = ds.Tables[0];
+            modelComboBox.DisplayMember = "Description";
+            modelComboBox.ValueMember = "MID";
 
             adapt.Dispose();
             cmd.Dispose();
@@ -72,8 +63,6 @@ namespace PSMS
             tableAdapterManager.UpdateAll(invoiceDataSet);
 
         }
-
-
         
         private void btnPayment_Click(object sender, EventArgs e)
         {
@@ -103,7 +92,6 @@ namespace PSMS
             filterModel();
 
         }
-
 
         void filterModel()
         {
@@ -219,104 +207,113 @@ namespace PSMS
        
         private void btnPurchase_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-            float payment, totalPrice = 0;
-            payment = Helper.ifnull(paymentLabel1.Text)?0:float.Parse(paymentLabel1.Text);
-            totalPrice = float.Parse(totalPriceLabel1.Text);
-            
-            if (dtGvBuy.Rows.Count == 0)
-            {
-                MessageBox.Show("Please select and buy product before you purchase");
-            }
-            else
-            {
-                try
+                float payment, totalPrice = 0;
+                payment = Helper.ifnull(paymentLabel1.Text) ? 0 : float.Parse(paymentLabel1.Text);
+                totalPrice = float.Parse(totalPriceLabel1.Text);
+
+                if (dtGvBuy.Rows.Count == 0)
                 {
-                    SqlCommand cmd = new SqlCommand("INSERT INTO Invoice (CusID,EmpID,Date,TotalPrice,Payment,PaymentVerify,Balance) VALUES (@CusID,@EmpID,@Date,@TotalPrice,@Payment,@PaymentVerify,@Balance)", Connection.con);
-
-                    //cmd.Parameters.AddWithValue("@InvoiceCode", "U000002");
-                    cmd.Parameters.AddWithValue("@CusID", cusIDComboBox.SelectedValue.ToString());
-                    cmd.Parameters.AddWithValue("@EmpID", empIDComboBox.SelectedValue.ToString());
-                    cmd.Parameters.AddWithValue("@Date", Convert.ToDateTime(dateDateTimePicker.Text));
-                    cmd.Parameters.AddWithValue("@TotalPrice", totalPrice);
-                    cmd.Parameters.AddWithValue("@Payment", payment);
-
-
-                    List<StructInvocieDetail> invoiceDetails = new List<StructInvocieDetail>();
-
-                    foreach (DataGridViewRow row in dtGvBuy.Rows)
+                    MessageBox.Show("Please select and buy product before you purchase");
+                }
+                else
+                {
+                    try
                     {
-                        StructInvocieDetail data = new StructInvocieDetail(Convert.ToInt32(row.Cells[0].Value), Convert.ToInt32(row.Cells[4].Value), float.Parse(row.Cells[5].Value + ""));
-                        invoiceDetails.Add(data);
+                        SqlCommand cmd = new SqlCommand("INSERT INTO Invoice (CusID,EmpID,Date,TotalPrice,Payment,PaymentVerify,Balance) VALUES (@CusID,@EmpID,@Date,@TotalPrice,@Payment,@PaymentVerify,@Balance)", Connection.con);
 
-                    }
+                        //cmd.Parameters.AddWithValue("@InvoiceCode", "U000002");
+                        cmd.Parameters.AddWithValue("@CusID", cusIDComboBox.SelectedValue.ToString());
+                        cmd.Parameters.AddWithValue("@EmpID", empIDComboBox.SelectedValue.ToString());
+                        cmd.Parameters.AddWithValue("@Date", Convert.ToDateTime(dateDateTimePicker.Text));
+                        cmd.Parameters.AddWithValue("@TotalPrice", totalPrice);
+                        cmd.Parameters.AddWithValue("@Payment", payment);
 
-                    if (payment >= totalPrice)
-                    {
-                        cmd.Parameters.AddWithValue("@PaymentVerify", "1");
-                    }
-                    else
-                    {
-                        float balance;
-                        cmd.Parameters.AddWithValue("@PaymentVerify", "0");
 
-                        balance = totalPrice - payment;
+                        List<StructInvocieDetail> invoiceDetails = new List<StructInvocieDetail>();
 
-                        cmd.Parameters.AddWithValue("@Balance", balance);
-                        balance = balance + balance;
-                        SqlCommand cmd2 = new SqlCommand("UPDATE Customers SET Balance=@balance Where CusID=@CusID ", Connection.con);
-                        cmd2.Parameters.AddWithValue("@CusID", cusIDComboBox.SelectedValue.ToString());
-
-                        cmd2.Parameters.AddWithValue("@Balance", balance);
-
-                        //MessageBox.Show(balance.ToString());
-
-                        cmd2.ExecuteNonQuery();
-
-                        //MessageBox.Show("Record Update");
-
-                        cmd2.Dispose();
-                    }
-
-                    //cmd.Parameters.AddWithValue("@Profits", "10");
-
-                    cmd.ExecuteNonQuery();
-
-                    int invID = Helper.GetLastId("Invoice");
-
-                    foreach (StructInvocieDetail temp in invoiceDetails)
-                    {
-                        try
+                        foreach (DataGridViewRow row in dtGvBuy.Rows)
                         {
-                            SqlCommand cmd3 = new SqlCommand("INSERT into InvoiceDetail (InvoiceNo, PID, Quantity, Saleprice, Amount) VALUES ( @InvoiceNo, @PID, @Quantity, @Saleprice,@Amount)", Connection.con);
+                            StructInvocieDetail data = new StructInvocieDetail(Convert.ToInt32(row.Cells[0].Value), Convert.ToInt32(row.Cells[4].Value), float.Parse(row.Cells[5].Value + ""));
+                            invoiceDetails.Add(data);
 
-                            cmd3.Parameters.AddWithValue("@InvoiceNo", invID);
-                            cmd3.Parameters.AddWithValue("@PID", temp.PID);
-                            cmd3.Parameters.AddWithValue("@Quantity", temp.Qty);
-                            cmd3.Parameters.AddWithValue("@Saleprice", temp.SalePrice);
-                            cmd3.Parameters.AddWithValue("@Amount", temp.Amount);
-
-                            cmd3.ExecuteNonQuery();
-
-                            //Update Stock
-                            SqlCommand cmd5 = new SqlCommand("UPDATE Product SET Quantity = Quantity - @Quantity Where PID=@PID ", Connection.con);
-                            cmd5.Parameters.AddWithValue("@Quantity", temp.Qty);
-                            cmd5.Parameters.AddWithValue("@PID", temp.PID);
-
-                            cmd5.ExecuteNonQuery();
                         }
-                        catch (Exception) { }
+
+                        if (payment >= totalPrice)
+                        {
+                            cmd.Parameters.AddWithValue("@PaymentVerify", "1");
+                        }
+                        else
+                        {
+                            float balance;
+                            cmd.Parameters.AddWithValue("@PaymentVerify", "0");
+
+                            balance = totalPrice - payment;
+
+                            cmd.Parameters.AddWithValue("@Balance", balance);
+                            balance = balance + balance;
+                            SqlCommand cmd2 = new SqlCommand("UPDATE Customers SET Balance=@balance WHERE CusID=@CusID ", Connection.con);
+                            cmd2.Parameters.AddWithValue("@CusID", cusIDComboBox.SelectedValue.ToString());
+
+                            cmd2.Parameters.AddWithValue("@Balance", balance);
+
+                            //MessageBox.Show(balance.ToString());
+
+                            cmd2.ExecuteNonQuery();
+
+                            //MessageBox.Show("Record Update");
+
+                            cmd2.Dispose();
+                        }
+
+                        //cmd.Parameters.AddWithValue("@Profits", "10");
+
+                        cmd.ExecuteNonQuery();
+
+                        int invID = Helper.GetLastId("Invoice");
+
+                        foreach (StructInvocieDetail temp in invoiceDetails)
+                        {
+                            try
+                            {
+                                SqlCommand cmd3 = new SqlCommand("INSERT INTO InvoiceDetail (InvoiceNo, PID, Quantity, Saleprice, Amount) VALUES ( @InvoiceNo, @PID, @Quantity, @Saleprice,@Amount)", Connection.con);
+
+                                cmd3.Parameters.AddWithValue("@InvoiceNo", invID);
+                                cmd3.Parameters.AddWithValue("@PID", temp.PID);
+                                cmd3.Parameters.AddWithValue("@Quantity", temp.Qty);
+                                cmd3.Parameters.AddWithValue("@Saleprice", temp.SalePrice);
+                                cmd3.Parameters.AddWithValue("@Amount", temp.Amount);
+
+                                cmd3.ExecuteNonQuery();
+
+                                //Update Stock
+                                SqlCommand cmd5 = new SqlCommand("UPDATE Product SET Quantity = Quantity - @Quantity Where PID=@PID ", Connection.con);
+                                cmd5.Parameters.AddWithValue("@Quantity", temp.Qty);
+                                cmd5.Parameters.AddWithValue("@PID", temp.PID);
+
+                                cmd5.ExecuteNonQuery();
+                            }
+                            catch (Exception) { }
+                        }
                     }
+                    catch (Exception)
+                    {
+                        MetroMessageBox.Show(this, "Something wrong!", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        return;
+                    }
+
+
+                    MetroMessageBox.Show(this, "New Record Save", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch(Exception)
-                {
-                    MetroMessageBox.Show(this, "Something wrong!", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception)
+            {
+                MetroMessageBox.Show(this, "Something wrong!", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    return;
-                }
-
-
-                MetroMessageBox.Show(this, "New Record Save", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
             
         }
@@ -332,8 +329,37 @@ namespace PSMS
             invoiceCodeTextBox.Text = "";
         }
 
+        List<reportInvoice> listReport = new List<reportInvoice>();
 
+        private void addCurrentInvoiceToPrint(string code)
+        {
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewInvoice WHERE InvoiceCode = '" + code + "';");
+            DataTable dt = ds.Tables[0];
 
-  
+            for(int i=0;i<dt.Rows.Count;i++)
+            {
+                reportInvoice dataList = new reportInvoice();
+
+                dataList.InvoiceCode = dt.Rows[i]["InvoiceCode"].ToString();
+                dataList.ProCode = dt.Rows[i]["ProCode"].ToString();
+                dataList.ProName = dt.Rows[i]["ProName"].ToString();
+                dataList.Quantity = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
+                dataList.Price = Convert.ToDouble(dt.Rows[i]["Price"].ToString());
+                dataList.Amount = Convert.ToDouble(dt.Rows[i]["Amount"].ToString());
+                dataList.Sellby = dt.Rows[i]["Sellby"].ToString();
+                dataList.CustomerName = dt.Rows[i]["CustomerName"].ToString();
+                dataList.Phone = dt.Rows[i]["Phone"].ToString();
+                dataList.Address = dt.Rows[i]["Address"].ToString();
+                dataList.Date = dt.Rows[i]["Date"].ToString();
+
+                listReport.Add(dataList);
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            addCurrentInvoiceToPrint(Helper.GetLastIdCode("Invoice"));
+            new reportViewer(listReport,100).ShowDialog();
+        }
     }
 }

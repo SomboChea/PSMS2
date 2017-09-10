@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PSMS.Class
@@ -28,49 +25,58 @@ namespace PSMS.Class
 
             return Image.FromStream(ms);
         }
-
-        // //////////////// //
+        
         public static List<ListViewItem> getListStock(ref ImageList imglist)
         {
-            List<ListViewItem> items = new List<ListViewItem>();
-
-            //Connection.Open("localhost", "PSMS2");
-
-            SqlCommand cmd = new SqlCommand("SELECT * FROM viewStock;",Connection.con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            string[] item = new string[10];
-            
-            while (reader.Read())
+            try
             {
-                for (int i = 0; i < item.Length; i++)
+                List<ListViewItem> items = new List<ListViewItem>();
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM viewStock;", Connection.con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                string[] item = new string[10];
+
+                while (reader.Read())
                 {
-                    item[i] = reader.GetValue(i)+"";
-                }  
-                items.Add(new ListViewItem(item));
-                try
-                {
-                    imglist.Images.Add(Image.FromStream(new System.IO.MemoryStream((Byte[])reader.GetValue(10))));
-                }
-                catch (Exception)
-                {
-                    imglist.Images.Add(Properties.Resources.employee);
+                    for (int i = 0; i < item.Length; i++)
+                    {
+                        item[i] = reader.GetValue(i) + "";
+                    }
+                    items.Add(new ListViewItem(item));
+                    try
+                    {
+                        imglist.Images.Add(Image.FromStream(new System.IO.MemoryStream((Byte[])reader.GetValue(10))));
+                    }
+                    catch (Exception)
+                    {
+                        imglist.Images.Add(Properties.Resources.employee);
+                    }
+
+                    imglist.ImageSize = new Size(100, 100);
                 }
 
-                imglist.ImageSize = new Size(100, 100);
+                reader.Close();
+                cmd.Dispose();
+
+                return items;
             }
-
-            reader.Close();
-            cmd.Dispose();
-
-            return items;
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public static DataSet getDataSet(string cmdText)
         {
-            SqlDataAdapter adapter = new SqlDataAdapter(cmdText, Connection.con);
-            DataSet ds = new DataSet();
-            adapter.Fill(ds);
-            return ds;
+            try
+            {
+                DataSet ds = new DataSet();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmdText, Connection.con);
+                adapter.Fill(ds);
+
+                return ds;
+            }
+            catch (Exception) { return null; }
         }
 
         public static void BindGridView(string cmdText,BindingSource bindinSource, DataGridView gridView)
@@ -134,6 +140,24 @@ namespace PSMS.Class
             }
         }
 
+        public static string GetLastIdCode(string table_name)
+        {
+            SqlCommand sqlcmd = new SqlCommand();
+            sqlcmd.Connection = Connection.con;
+            sqlcmd.CommandText = "SELECT InvoiceCode FROM " + table_name + " WHERE InvoiceNo = IDENT_CURRENT('" + table_name + "');";
+
+            try
+            {
+                object rex = sqlcmd.ExecuteScalar();
+
+                return  Convert.ToString(rex);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public static int checkStock(string Pcode)
         {
             try
@@ -153,6 +177,7 @@ namespace PSMS.Class
                 return 0;
             }
         }
+        
     }
     
 }
