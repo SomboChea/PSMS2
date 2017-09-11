@@ -337,12 +337,19 @@
             // metroLink1
             // 
             this.metroLink1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroLink1.Location = new System.Drawing.Point(862, 29);
+            this.metroLink1.BackColor = System.Drawing.Color.Red;
+            this.metroLink1.FontSize = MetroFramework.MetroLinkSize.Tall;
+            this.metroLink1.ForeColor = System.Drawing.Color.White;
+            this.metroLink1.Location = new System.Drawing.Point(836, 24);
             this.metroLink1.Name = "metroLink1";
-            this.metroLink1.Size = new System.Drawing.Size(139, 32);
+            this.metroLink1.Size = new System.Drawing.Size(139, 36);
+            this.metroLink1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLink1.TabIndex = 2;
             this.metroLink1.Text = "Log Out";
+            this.metroLink1.UseCustomBackColor = true;
+            this.metroLink1.UseCustomForeColor = true;
             this.metroLink1.UseSelectable = true;
+            this.metroLink1.UseStyleColors = true;
             this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
             // 
             // frmMain

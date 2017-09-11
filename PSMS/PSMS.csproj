@@ -803,6 +803,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon%281%29.ico" />
+    <None Include="Resources\Settings-icon.png" />
     <None Include="Resources\employee.png" />
     <None Include="Resources\62650.png" />
   </ItemGroup>

@@ -30,22 +30,29 @@ namespace PSMS
         }
         private frmCus GetCus()
         {
-            frmCus cus = new frmCus();
-            cus.cus_id = Convert.ToInt32(txtCusID.Text);
-            cus.cus_code = txtCusCode.Text;
-            cus.cus_lnkh = txtKh1.Text;
-            cus.cus_fnkh = txtKh2.Text;
-            cus.cus_lnen = txtEn1.Text;
-            cus.cus_fnen = txtEn2.Text;
-            cus.gender = cbBGender.SelectedItem.ToString();
-            cus.address = rtxtAddress.Text;
-            cus.phone = txtphone.Text;
-            cus.phone2 = txtPhone2.Text;
-            cus.email = txtEmail.Text;
-            cus.status = cbBStatus.SelectedItem.ToString();
-            
-            cus.acc_opendate = Opendate.Text;
-            return cus;
+            try
+            {
+                frmCus cus = new frmCus();
+                cus.cus_id = Convert.ToInt32(txtCusID.Text);
+                cus.cus_code = txtCusCode.Text;
+                cus.cus_lnkh = txtKh1.Text;
+                cus.cus_fnkh = txtKh2.Text;
+                cus.cus_lnen = txtEn1.Text;
+                cus.cus_fnen = txtEn2.Text;
+                cus.gender = cbBGender.SelectedItem.ToString();
+                cus.address = rtxtAddress.Text;
+                cus.phone = txtphone.Text;
+                cus.phone2 = txtPhone2.Text;
+                cus.email = txtEmail.Text;
+                cus.status = cbBStatus.SelectedItem.ToString();
+
+                cus.acc_opendate = Opendate.Text;
+                return cus;
+            }
+            catch(Exception)
+            {
+                return null;
+            }
         }
 
 

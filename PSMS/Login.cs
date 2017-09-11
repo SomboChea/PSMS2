@@ -166,8 +166,8 @@ namespace PSMS
             // btnSetting
             // 
             this.btnSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSetting.BackColor = System.Drawing.Color.Silver;
-            this.btnSetting.BackgroundImage = global::PSMS.Properties.Resources.settings;
+            this.btnSetting.BackColor = System.Drawing.Color.Transparent;
+            this.btnSetting.BackgroundImage = global::PSMS.Properties.Resources.Settings_icon;
             this.btnSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSetting.FlatAppearance.BorderSize = 0;
             this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -218,16 +218,17 @@ namespace PSMS
         Class.User user = new Class.User();
         public Login()
         {
-            
             InitializeComponent();
+            this.ControlBox = false;
             FullMode.Fullscreen(this);
-            Connection.Open("localhost", "PSMS2");
+            Connection.Open(Properties.Settings.Default.Hostname, "PSMS2");
            
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            txtUsername.Text = "admin";
+            txtPassword.Text = "123";
 
         }
 

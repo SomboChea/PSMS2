@@ -17,12 +17,14 @@ namespace PSMS
         public frmMain()
         {
             InitializeComponent();
+            this.ControlBox = false;
         }
 
         public frmMain(User user)
         {
             InitializeComponent();
             FullMode.Fullscreen(this);
+            this.ControlBox = false;
 
             Text = "Welcome - " + user.Name;
         }
@@ -73,13 +75,8 @@ namespace PSMS
              DialogResult dia = MetroMessageBox.Show(this, "Are you sure you want sign out", "Warning!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dia == DialogResult.Yes)
             {
-                this.Hide();
-                frmLogin login = new frmLogin();
-                login.Show();
-            }
-            else if (dia == DialogResult.No)
-            {
-                
+                this.Dispose();
+                new Login().Show();
             }
                
         }

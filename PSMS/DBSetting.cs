@@ -294,7 +294,14 @@ namespace PSMS
             this.MaximizeBox = false;
             this.Resizable = false;
             this.BorderStyle = MetroFormBorderStyle.FixedSingle;
+            this.ControlBox = false;
 
+            reloadCheck();
+
+        }
+
+        private void reloadCheck()
+        {
             txtHost.Text = setting.Hostname;
             if (setting.Authentication == 0)
             {
@@ -308,8 +315,6 @@ namespace PSMS
                 txtPassword.Text = setting.Password;
                 UserPassEnable(true);
             }
-
-
         }
 
         private void UserPassEnable(bool enable)
@@ -350,8 +355,11 @@ namespace PSMS
                 Hostname = txtHost.Text;
                 Username = txtUsername.Text;
                 Password = txtPassword.Text;
-
+                Authentication = (byte)cbAuthentication.SelectedIndex;
                 MessageBox.Show("Saved!", "DB Setting");
+
+                reloadCheck();
+
             }
             catch(Exception)
             {
@@ -374,6 +382,12 @@ namespace PSMS
         {
             get { return Properties.Settings.Default.Password; }
             set { Properties.Settings.Default.Password = value; Properties.Settings.Default.Save(); }
+        }
+
+        private byte Authentication
+        {
+            get { return Properties.Settings.Default.Authentication; }
+            set { Properties.Settings.Default.Authentication = value; Properties.Settings.Default.Save(); }
         }
 
         private void btnSave_Click(object sender, EventArgs e)

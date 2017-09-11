@@ -19,13 +19,13 @@
       <Value Profile="(Default)">Data Source=localhost;Initial Catalog=PSMS2;Integrated Security=True</Value>
     </Setting>
     <Setting Name="Hostname" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">localhost</Value>
     </Setting>
     <Setting Name="Username" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">sa</Value>
     </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">sa</Value>
     </Setting>
     <Setting Name="Authentication" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">1</Value>
