@@ -1,5 +1,6 @@
 ﻿using MetroFramework;
 using MetroFramework.Forms;
+using PSMS.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,129 +25,129 @@ namespace PSMS
         }
         void initComboModel()
         {
-            //string conString = @"Server=ARAFAT-JUNIOR; Initial Catalog=PSMS2; Integrated Security=true";
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Model", Connection.con);
+                SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString);
-            SqlCommand cmd = new SqlCommand("Select * from Model", con);
-            con.Open();
-            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            adapt.Fill(ds);
-            con.Close();
+                modelComboBox.DataSource = ds.Tables[0];
+                modelComboBox.DisplayMember = "Description";
+                modelComboBox.ValueMember = "MID";
 
-            this.modelComboBox.DataSource = ds.Tables[0];
-            this.modelComboBox.DisplayMember = "Description";
-            this.modelComboBox.ValueMember = "MID";
+                adapt.Dispose();
+                cmd.Dispose();
+            }
+            catch (Exception ) { }
         }
         private void supplierBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-          
+            Validate();
 
         }
         void filterModel()
         {
-            string modelValue = this.modelComboBox.SelectedValue.ToString();
-            int value;
-            if (int.TryParse(modelValue, out value))
+            try
             {
+                string modelValue = this.modelComboBox.SelectedValue.ToString();
+                int value;
+                if (int.TryParse(modelValue, out value))
+                {
 
-                //string conString = @"Server=ARAFAT-JUNIOR; Initial Catalog=PSMS2; Integrated Security=true";
-                //SqlConnection con = new SqlConnection(conString);
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString);
-                SqlCommand cmd = new SqlCommand("Select * from Product where MID=@MID", con);
-                cmd.Parameters.AddWithValue("@MID", this.modelComboBox.SelectedValue.ToString());
-                con.Open();
-                SqlDataAdapter adapt = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                adapt.Fill(ds);
-                con.Close();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Product WHERE MID=@MID", Connection.con);
+                    cmd.Parameters.AddWithValue("@MID", this.modelComboBox.SelectedValue.ToString());
+                    SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    adapt.Fill(ds);
 
-                this.PurchaseDetailDataGridView.DataSource = ds.Tables[0];
+                    PurchaseDetailDataGridView.DataSource = ds.Tables[0];
 
+                    adapt.Dispose();
+                    cmd.Dispose();
+                }
             }
+            catch (Exception) { }
         }
         private void binddatagridview()
         {
-
-            int qty;
-            if (int.TryParse(this.txtQty.Text, out qty))
+            try
             {
-                if (this.PurchaseDetailDataGridView.SelectedCells.Count > 0)
+                int qty;
+                if (int.TryParse(this.txtQty.Text, out qty))
                 {
-
-                    int selectedrowindex = PurchaseDetailDataGridView.SelectedCells[0].RowIndex;
-                    DataGridViewRow selectedRow = PurchaseDetailDataGridView.Rows[selectedrowindex];
-
-
-                    DataTable dt = new DataTable();
-
-                    if (dt.Columns.Count == 0)
-                    {
-                        dt.Columns.Add("PID", typeof(string));
-                        dt.Columns.Add("PName", typeof(string));
-                        dt.Columns.Add("PSize", typeof(string));
-                        dt.Columns.Add("Color", typeof(string));
-                        dt.Columns.Add("Quantity", typeof(int));
-                        dt.Columns.Add("Unitprice", typeof(string));
-                        dt.Columns.Add("Saleprice", typeof(string));
-                    }
-
-                    Boolean isUpdateRow = false;
-                    Double totalPrice = 0.0;
-                    foreach (DataGridViewRow row in dtGvBuy.Rows)
+                    if (this.PurchaseDetailDataGridView.SelectedCells.Count > 0)
                     {
 
-                        DataRow NewRow1 = dt.NewRow();
-                        NewRow1[0] = row.Cells[0].Value;
-                        NewRow1[1] = row.Cells[1].Value;
-                        NewRow1[2] = row.Cells[2].Value;
-                        NewRow1[3] = row.Cells[3].Value;
-                        NewRow1[4] = row.Cells[4].Value;
-                        NewRow1[5] = row.Cells[5].Value;
-                        NewRow1[6] = row.Cells[6].Value;
+                        int selectedrowindex = PurchaseDetailDataGridView.SelectedCells[0].RowIndex;
+                        DataGridViewRow selectedRow = PurchaseDetailDataGridView.Rows[selectedrowindex];
 
 
+                        DataTable dt = new DataTable();
 
-                        if (Convert.ToString(row.Cells[0].Value) == Convert.ToString(selectedRow.Cells[0].Value))
+                        if (dt.Columns.Count == 0)
                         {
-                            NewRow1[4] = Convert.ToInt32(row.Cells[4].Value) + qty;
-                            isUpdateRow = true;
+                            dt.Columns.Add("PID", typeof(string));
+                            dt.Columns.Add("PName", typeof(string));
+                            dt.Columns.Add("PSize", typeof(string));
+                            dt.Columns.Add("Color", typeof(string));
+                            dt.Columns.Add("Quantity", typeof(int));
+                            dt.Columns.Add("Unitprice", typeof(string));
+                            dt.Columns.Add("Saleprice", typeof(string));
                         }
-                        totalPrice += Convert.ToDouble(row.Cells[5].Value) * Convert.ToDouble(NewRow1[4]);
 
-                        dt.Rows.Add(NewRow1);
+                        Boolean isUpdateRow = false;
+                        Double totalPrice = 0.0;
+                        foreach (DataGridViewRow row in dtGvBuy.Rows)
+                        {
+
+                            DataRow NewRow1 = dt.NewRow();
+                            NewRow1[0] = row.Cells[0].Value;
+                            NewRow1[1] = row.Cells[1].Value;
+                            NewRow1[2] = row.Cells[2].Value;
+                            NewRow1[3] = row.Cells[3].Value;
+                            NewRow1[4] = row.Cells[4].Value;
+                            NewRow1[5] = row.Cells[5].Value;
+                            NewRow1[6] = row.Cells[6].Value;
+                            
+                            if (Convert.ToString(row.Cells[0].Value) == Convert.ToString(selectedRow.Cells[0].Value))
+                            {
+                                NewRow1[4] = Convert.ToInt32(row.Cells[4].Value) + qty;
+                                isUpdateRow = true;
+                            }
+                            totalPrice += Convert.ToDouble(row.Cells[5].Value) * Convert.ToDouble(NewRow1[4]);
+
+                            dt.Rows.Add(NewRow1);
+                        }
+
+                        if (!isUpdateRow)
+                        {
+                            DataRow NewRow = dt.NewRow();
+                            NewRow[0] = Convert.ToString(selectedRow.Cells[0].Value);
+                            NewRow[1] = Convert.ToString(selectedRow.Cells[1].Value);
+                            NewRow[2] = Convert.ToString(selectedRow.Cells[2].Value);
+                            NewRow[3] = Convert.ToString(selectedRow.Cells[3].Value);
+                            NewRow[5] = Convert.ToString(selectedRow.Cells[5].Value);
+                            NewRow[6] = Convert.ToString(selectedRow.Cells[6].Value);
+                            NewRow[4] = qty;
+                            dt.Rows.Add(NewRow);
+                            totalPrice += Convert.ToDouble(selectedRow.Cells[5].Value) * Convert.ToDouble(qty);
+                        }
+
+                        this.totalPriceLabel1.Text = totalPrice.ToString();
+                        dtGvBuy.DataSource = dt;
+
                     }
-
-                    if (!isUpdateRow)
+                    else
                     {
-                        DataRow NewRow = dt.NewRow();
-                        NewRow[0] = Convert.ToString(selectedRow.Cells[0].Value);
-                        NewRow[1] = Convert.ToString(selectedRow.Cells[1].Value);
-                        NewRow[2] = Convert.ToString(selectedRow.Cells[2].Value);
-                        NewRow[3] = Convert.ToString(selectedRow.Cells[3].Value);
-                        NewRow[5] = Convert.ToString(selectedRow.Cells[5].Value);
-                        NewRow[6] = Convert.ToString(selectedRow.Cells[6].Value);
-                        NewRow[4] = qty;
-                        dt.Rows.Add(NewRow);
-                        totalPrice += Convert.ToDouble(selectedRow.Cells[5].Value) * Convert.ToDouble(qty);
+                        MessageBox.Show("Please select product!");
                     }
-
-                    this.totalPriceLabel1.Text = totalPrice.ToString();
-                    dtGvBuy.DataSource = dt;
-
-
                 }
                 else
                 {
-                    MessageBox.Show("Please select product");
+                    MessageBox.Show("Please input number!");
                 }
             }
-            else
-            {
-                MessageBox.Show("Please input number");
-            }
-
+            catch (Exception) { }
 
         }
 
@@ -155,28 +156,30 @@ namespace PSMS
             // TODO: This line of code loads data into the 'purchaseDetail._PurchaseDetail' table. You can move, or remove it, as needed.
             //this.purchaseDetailTableAdapter.Fill(this.purchaseDetail._PurchaseDetail);
             // TODO: This line of code loads data into the 'empDataSet.Employee' table. You can move, or remove it, as needed.
-            this.employeeTableAdapter.Fill(this.empDataSet.Employee);
+            employeeTableAdapter.Fill(empDataSet.Employee);
+
             // TODO: This line of code loads data into the 'supplierDataSet.Supplier' table. You can move, or remove it, as needed.
-            this.supplierTableAdapter.Fill(this.supplierDataSet.Supplier);
+            supplierTableAdapter.Fill(supplierDataSet.Supplier);
+
             // TODO: This line of code loads data into the 'supplierDataSet.Supplier' table. You can move, or remove it, as needed.
-            this.supplierTableAdapter.Fill(this.supplierDataSet.Supplier);
+            supplierTableAdapter.Fill(supplierDataSet.Supplier);
                       
 
         }
 
         private void supplierBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
         {
-            this.Validate();
-            this.supplierBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.supplierDataSet);
+            Validate();
+            supplierBindingSource.EndEdit();
+            tableAdapterManager.UpdateAll(supplierDataSet);
 
         }
 
         private void supplierBindingNavigatorSaveItem_Click_2(object sender, EventArgs e)
         {
-            this.Validate();
-            this.supplierBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.supplierDataSet);
+            Validate();
+            supplierBindingSource.EndEdit();
+            tableAdapterManager.UpdateAll(supplierDataSet);
 
         }
 
@@ -189,12 +192,12 @@ namespace PSMS
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            this.binddatagridview();
+            binddatagridview();
         }
 
         private void modelComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.filterModel();
+            filterModel();
         }
 
         private void btnPayment_Click(object sender, EventArgs e)
@@ -212,59 +215,62 @@ namespace PSMS
 
         private void btnPurchase_Click(object sender, EventArgs e)
         {
-            int balance;
-            Convert.ToInt32(paymentLabel1.Text);
-            Convert.ToInt32(totalPriceLabel1.Text);
-            if (dtGvBuy.Rows.Count == 0)
+            try
             {
-                MessageBox.Show("Please select and buy product before you purchase");
-            }
-            else
-            {
-                //string conString = @"Server=ARAFAT-JUNIOR; Initial Catalog=PSMS2; Integrated Security=true";
-                //SqlConnection con = new SqlConnection(conString);
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Test"].ConnectionString);
-                SqlCommand cmd = new SqlCommand("INSERT into Purchase (Date,Payment,Balance,SuID,EmpID,Total) VALUES (@Date,@Payment,@Balance,@SuID,@EmpID,@Total)", con);
-                //cmd.Parameters.AddWithValue("@InvoiceCode", "U000002");
-                cmd.Parameters.AddWithValue("@Date", Convert.ToDateTime(dateDateTimePicker.Text));
-                cmd.Parameters.AddWithValue("@Payment", this.paymentLabel1.Text);
-                
-                cmd.Parameters.AddWithValue("@SuID", this.suIDComboBox.SelectedValue.ToString());
-                cmd.Parameters.AddWithValue("@EmpID", this.empIDComboBox.SelectedValue.ToString());
-                cmd.Parameters.AddWithValue("@Total", this.totalPriceLabel1.Text);
-                
-                foreach (DataGridViewRow row in dtGvBuy.Rows)
+                int balance;
+                Convert.ToInt32(paymentLabel1.Text);
+                Convert.ToInt32(totalPriceLabel1.Text);
+                if (dtGvBuy.Rows.Count == 0)
+                {
+                    MessageBox.Show("Please select and buy product before you purchase!");
+                }
+                else
                 {
 
-                    SqlCommand cmd3 = new SqlCommand("INSERT into PurchaseDetail ( PID, Quantity, Unitprice, Saleprice, Amount) VALUES ( @PID, @Quantity, @Unitprice, @Saleprice,@Amount)", con);
-                    cmd3.Parameters.AddWithValue("@PID", row.Cells[0].Value);
-                    cmd3.Parameters.AddWithValue("@Quantity", row.Cells[4].Value);
-                    cmd3.Parameters.AddWithValue("@Unitprice", row.Cells[5].Value);
-                    cmd3.Parameters.AddWithValue("@Saleprice", row.Cells[6].Value);
-                    //Get total amount
-                    
-                    int total = Convert.ToInt32(row.Cells[4].Value) * Convert.ToInt32(row.Cells[5].Value);
-                    cmd3.Parameters.AddWithValue("@Amount", total);
-                    balance = Convert.ToInt32(totalPriceLabel1.Text) - Convert.ToInt32(paymentLabel1.Text);
-                    cmd.Parameters.AddWithValue("@Balance", balance);
-                    
-                    con.Open();
-                    cmd3.ExecuteNonQuery();
-                    //Update Stock
-                    SqlCommand cmd5 = new SqlCommand("UPDATE Product SET Quantity = Quantity + @Quantity Where PID=@PID ", con);
-                    cmd5.Parameters.AddWithValue("@Quantity", row.Cells[4].Value);
-                    cmd5.Parameters.AddWithValue("@PID", row.Cells[0].Value);
-                    cmd5.ExecuteNonQuery();
-                    con.Close();
-                    BalanceLabel.Text = balance.ToString();
-                }
-                con.Open();
-                cmd.ExecuteNonQuery();
-                
-                MetroMessageBox.Show(this, "New Purchase Save", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                con.Close();
-            }
+                    SqlCommand cmd = new SqlCommand("INSERT into Purchase (Date,Payment,Balance,SuID,EmpID,Total) VALUES (@Date,@Payment,@Balance,@SuID,@EmpID,@Total)", Connection.con);
 
+                    //cmd.Parameters.AddWithValue("@InvoiceCode", "U000002");
+                    cmd.Parameters.AddWithValue("@Date", Convert.ToDateTime(dateDateTimePicker.Text));
+                    cmd.Parameters.AddWithValue("@Payment", paymentLabel1.Text);
+
+                    cmd.Parameters.AddWithValue("@SuID", suIDComboBox.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@EmpID", empIDComboBox.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@Total", totalPriceLabel1.Text);
+
+                    foreach (DataGridViewRow row in dtGvBuy.Rows)
+                    {
+
+                        SqlCommand cmd3 = new SqlCommand("INSERT into PurchaseDetail ( PID, Quantity, Unitprice, Saleprice, Amount) VALUES ( @PID, @Quantity, @Unitprice, @Saleprice,@Amount)", Connection.con);
+
+                        cmd3.Parameters.AddWithValue("@PID", row.Cells[0].Value);
+                        cmd3.Parameters.AddWithValue("@Quantity", row.Cells[4].Value);
+                        cmd3.Parameters.AddWithValue("@Unitprice", row.Cells[5].Value);
+                        cmd3.Parameters.AddWithValue("@Saleprice", row.Cells[6].Value);
+
+                        //Get total amount
+                        int total = Convert.ToInt32(row.Cells[4].Value) * Convert.ToInt32(row.Cells[5].Value);
+                        cmd3.Parameters.AddWithValue("@Amount", total);
+                        balance = Convert.ToInt32(totalPriceLabel1.Text) - Convert.ToInt32(paymentLabel1.Text);
+                        cmd.Parameters.AddWithValue("@Balance", balance);
+                        
+                        cmd3.ExecuteNonQuery();
+
+                        //Update Stock
+                        SqlCommand cmd5 = new SqlCommand("UPDATE Product SET Quantity = Quantity + @Quantity Where PID=@PID ", Connection.con);
+                        cmd5.Parameters.AddWithValue("@Quantity", row.Cells[4].Value);
+                        cmd5.Parameters.AddWithValue("@PID", row.Cells[0].Value);
+                        cmd5.ExecuteNonQuery();
+
+                        BalanceLabel.Text = balance.ToString();
+                    }
+
+                    cmd.ExecuteNonQuery();
+
+                    MetroMessageBox.Show(this, "New Purchase Save", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   
+                }
+            }
+            catch(Exception) { }
 
         }
 

@@ -14,7 +14,6 @@ namespace PSMS
     public partial class frmInvoiceDetail : MetroForm
     {
         frmInvoiceFunction Invfun;
-        frmInvoice2 frmInv;
         public frmInvoiceDetail()
         {
             

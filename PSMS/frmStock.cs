@@ -25,16 +25,31 @@ namespace PSMS
             ImageList imglist = new ImageList();
             foreach (ListViewItem item in Class.Helper.getListStock(ref imglist))
             {
+                
+                if(Class.Helper.checkStock(item.Text) <=0)
+                {
+                    /*
+                    DialogResult confirm = MessageBox.Show("Do you want to add this item?","Confirm Action",MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+
+                    if (confirm == DialogResult.Yes)
+                        new frmProduct().ShowDialog();
+                    */
+
+                    MetroFramework.MetroMessageBox.Show(this, "This item is of out stock?", "Warning : Item Code " + item.Text);
+
+                }
+                
+               
                 listStock.Items.Add(item);
+
                 listStock.LargeImageList = imglist;
                 listStock.Items[item.Index].ImageIndex = item.Index;
+
+                
             }
             comboBox1_SelectedIndexChanged(this, null);
-            
-            //for (int i = 0; i < listStock.Items.Count; i++)
-            //{
-            //    listStock.Items[i].ImageIndex = i;
-            //}
+
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,6 +79,7 @@ namespace PSMS
                 txtQty.Text = qty + "";
                 txtCost.Text = "$" + (qty*cost);
                 txtSalePrice.Text = "$" + (qty *saleprice);
+                
             }
 
         }
