@@ -81,22 +81,9 @@ namespace PSMS
              DialogResult dia = MetroMessageBox.Show(this, "Are you sure you want sign out", "Warning!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dia == DialogResult.Yes)
             {
-<<<<<<< HEAD
                 this.Dispose();
                 new Login().Show();
-=======
-                this.Hide();
-                frmLogin login = new frmLogin();
-              
-                Connection.Close(Connection.con);
-                login.Show();
             }
-            else if (dia == DialogResult.No)
-            {
-                
->>>>>>> a1a2cc9575836d5dd8e65c9fcf6280ca04f24990
-            }
-               
         }
 
    

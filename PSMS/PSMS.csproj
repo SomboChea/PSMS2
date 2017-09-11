@@ -89,6 +89,7 @@
     <Compile Include="Class\frmPos.cs" />
     <Compile Include="Class\FullMode.cs" />
     <Compile Include="Class\Helper.cs" />
+    <Compile Include="Class\reportCustomer.cs" />
     <Compile Include="Class\reportInvoice.cs" />
     <Compile Include="Class\Stock.cs" />
     <Compile Include="Class\StructInvocieDetail.cs" />
@@ -124,6 +125,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EmpDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CustomerReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\EmpReport.cs">
       <AutoGen>True</AutoGen>
@@ -403,6 +410,10 @@
     <EmbeddedResource Include="Reports\CusReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CusReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CustomerReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CustomerReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\EmpReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
