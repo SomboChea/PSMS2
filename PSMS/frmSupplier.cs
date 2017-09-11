@@ -22,6 +22,10 @@ namespace PSMS
             InitializeComponent();
             suFun = new frmSupplierFunction();
 
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Movable = false;
+            this.Resizable = false;
           
             btnNexts.Enabled = false;
         }

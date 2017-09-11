@@ -22,6 +22,7 @@ namespace PSMS
             cusFun = new frmCustomerFunction();
             empFun = new frmEmployeeFunction();
 
+
         }
         private void frmCustomer_Load(object sender, EventArgs e)
         {

@@ -889,6 +889,8 @@
             this.ClientSize = new System.Drawing.Size(1024, 585);
             this.Controls.Add(this.metroPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmSupplier";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSupplier_FormClosing);
             this.Load += new System.EventHandler(this.frmSupplier_Load);

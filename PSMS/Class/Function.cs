@@ -17,6 +17,8 @@ namespace PSMS
 
         public DataTable GetData(string cmdText)
         {
+         
+
             Connection.Open("localhost", "PSMS2");
 
             SqlCommand cmd = new SqlCommand();

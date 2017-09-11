@@ -65,6 +65,14 @@ namespace PSMS.Class
             return items;
         }
 
+        public static void Defaultform( MetroFramework.Forms.MetroForm frm)
+        {
+            frm.MaximizeBox = false;
+            frm.MinimizeBox = false;
+            frm.Resizable = false;
+            frm.Movable = false;
+        }
+
         public static void BindGridView(string cmdText,BindingSource bindinSource, DataGridView gridView)
         {
             try

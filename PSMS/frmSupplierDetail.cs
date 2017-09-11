@@ -19,11 +19,16 @@ namespace PSMS
         {
             InitializeComponent();
             suFun = new frmSupplierFunction();
+
+            btnClr.Visible = false;
         }
 
         private void frmSupplierDetail_Load(object sender, EventArgs e)
         {
-            suFun.FillDataGridView(ref dgData);
+            
+            // TODO: This line of code loads data into the 'pSMS2DataSet2.Supplier' table. You can move, or remove it, as needed.
+            this.supplierTableAdapter.Fill(this.pSMS2DataSet2.Supplier);
+            //suFun.FillDataGridView(ref dgData);
         }
         private frmSu GetSu()
         {
@@ -46,54 +51,57 @@ namespace PSMS
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            int result = (int)suFun.Insert(GetSu());
-            if (result > 0)
-            {
-                MetroMessageBox.Show(this, "New Record Insert", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                suFun.FillDataGridView(ref dgData);
-                txtSuID.Text = result.ToString();
-            }
+            //int result = (int)suFun.Insert(GetSu());
+            //if (result > 0)
+            //{
+            //    MetroMessageBox.Show(this, "New Record Insert", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    suFun.FillDataGridView(ref dgData);
+            //    txtSuID.Text = result.ToString();
+            //}
+            supplierBindingNavigator.AddNewItem.PerformClick();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int result = (int)suFun.Update(GetSu());
-            if (result > 0)
-            {
-                MetroMessageBox.Show(this, "Record Update", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                suFun.FillDataGridView(ref dgData);
+            //int result = (int)suFun.Update(GetSu());
+            //if (result > 0)
+            //{
+            //    MetroMessageBox.Show(this, "Record Update", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    suFun.FillDataGridView(ref dgData);
 
-            }
+            //}
+            supplierBindingNavigatorSaveItem_Click(this, null);
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            int result = (int)suFun.Delete(Convert.ToInt32(txtSuID.Text));
-            DialogResult dia = MetroMessageBox.Show(this, "Are you sure you want permanently delete this record?", "MetroMessagebox", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dia == DialogResult.Yes)
-            {
-                if (result > 0)
-                {
-                    MetroMessageBox.Show(this, "Record Deleted", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    suFun.FillDataGridView(ref dgData);
-                    txtSuCode.Text = "";
-                    txtKh1.Text = "";
-                    txtKh2.Text = "";
-                    txtEn1.Text = "";
-                    txtEn2.Text = "";
-                    rtxtAddress.Text = "";
-                    txtPhone.Text = "";
-                    txtPhone2.Text = "";
-                    txtEmail.Text = "";
-                    txtFax.Text = "";
-                    txtFax2.Text = "";
-                    lblBalance.Text = "";
-                }
-            }
-            else if (dia == DialogResult.No)
-            {
-                MetroMessageBox.Show(this, "Deleted record has been cancel", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            supplierBindingNavigator.DeleteItem.PerformClick();
+            //int result = (int)suFun.Delete(Convert.ToInt32(txtSuID.Text));
+            //DialogResult dia = MetroMessageBox.Show(this, "Are you sure you want permanently delete this record?", "MetroMessagebox", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (dia == DialogResult.Yes)
+            //{
+            //    if (result > 0)
+            //    {
+            //        MetroMessageBox.Show(this, "Record Deleted", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        suFun.FillDataGridView(ref dgData);
+            //        txtSuCode.Text = "";
+            //        txtKh1.Text = "";
+            //        txtKh2.Text = "";
+            //        txtEn1.Text = "";
+            //        txtEn2.Text = "";
+            //        rtxtAddress.Text = "";
+            //        txtPhone.Text = "";
+            //        txtPhone2.Text = "";
+            //        txtEmail.Text = "";
+            //        txtFax.Text = "";
+            //        txtFax2.Text = "";
+            //        lblBalance.Text = "";
+            //    }
+            //}
+            //else if (dia == DialogResult.No)
+            //{
+            //    MetroMessageBox.Show(this, "Deleted record has been cancel", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
         private void btnClr_Click(object sender, EventArgs e)
@@ -110,6 +118,31 @@ namespace PSMS
             txtFax.Text = "";
             txtFax2.Text = "";
             lblBalance.Text = "";
+        }
+
+        private void supplierBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.supplierBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.pSMS2DataSet2);
+
+        }
+
+        private void frmSupplierDetail_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult diag = MetroMessageBox.Show(this, "Do you Want to Save Change ? ", "MetroMessage", MessageBoxButtons.YesNo);
+            if (diag == DialogResult.Yes)
+            {
+                try
+                {
+                    btnSave_Click(this, null);
+                }
+                catch (Exception ex)
+                {
+                    MetroMessageBox.Show(this, ex.Message);
+                    e.Cancel = true;
+                }
+            }
         }
     }
 }
