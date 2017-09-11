@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace PSMS.Class
 {
-    class reportCustomer
+    public class reportCustomer
     {
-        public reportCustomer(string cCode, string nameEN, string nameKH, string gender, string address, string phone, double balance, string empName, string openDate)
+        public reportCustomer()
+        {
+
+        }
+        public reportCustomer(string cCode, string nameEN, string nameKH, string gender, string address, string phone, double balance, string status, string empName, string openDate)
         {
             CCode = cCode;
             NameEN = nameEN;
@@ -17,6 +21,7 @@ namespace PSMS.Class
             Address = address;
             Phone = phone;
             Balance = balance;
+            Status = status;
             EmpName = empName;
             OpenDate = openDate;
         }
@@ -28,6 +33,7 @@ namespace PSMS.Class
         public string Address { get; set; }
         public string Phone { get; set; }
         public double Balance { get; set; }
+        public string Status { get; set; }
         public string EmpName { get; set; }
         public string OpenDate { get; set; }
     }

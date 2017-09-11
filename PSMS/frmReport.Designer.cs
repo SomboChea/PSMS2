@@ -38,7 +38,7 @@
             this.metroTile5 = new MetroFramework.Controls.MetroTile();
             this.metroTile4 = new MetroFramework.Controls.MetroTile();
             this.viewReport = new MetroFramework.Controls.MetroGrid();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.btnPreview = new MetroFramework.Controls.MetroButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
@@ -151,14 +151,15 @@
             this.viewReport.Size = new System.Drawing.Size(707, 362);
             this.viewReport.TabIndex = 5;
             // 
-            // metroButton1
+            // btnPreview
             // 
-            this.metroButton1.Location = new System.Drawing.Point(768, 488);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(63, 25);
-            this.metroButton1.TabIndex = 6;
-            this.metroButton1.Text = "Preview";
-            this.metroButton1.UseSelectable = true;
+            this.btnPreview.Location = new System.Drawing.Point(768, 488);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(63, 25);
+            this.btnPreview.TabIndex = 6;
+            this.btnPreview.Text = "Preview";
+            this.btnPreview.UseSelectable = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // metroLabel1
             // 
@@ -229,7 +230,7 @@
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroDateTime1);
             this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.viewReport);
             this.Controls.Add(this.metroTile5);
             this.Controls.Add(this.metroTile4);
@@ -255,7 +256,7 @@
         private MetroFramework.Controls.MetroTile metroTile5;
         private MetroFramework.Controls.MetroTile metroTile4;
         private MetroFramework.Controls.MetroGrid viewReport;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton btnPreview;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroDateTime metroDateTime1;
         private MetroFramework.Controls.MetroDateTime metroDateTime2;

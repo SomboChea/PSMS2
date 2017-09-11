@@ -87,5 +87,33 @@ namespace PSMS
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewStock;", binding, viewReport);
         }
+
+        List<reportCustomer> dataCustomers = new List<reportCustomer>();
+        private void addCurrentCustomerToPrint()
+        {
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewCustomer;");
+            DataTable dt = ds.Tables[0];
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                reportCustomer dataList = new reportCustomer();
+
+                dataList.CCode = dt.Rows[i]["CCode"].ToString();
+                dataList.NameEN = dt.Rows[i]["FullNameEN"].ToString();
+                dataList.Gender = dt.Rows[i]["Gender"].ToString();
+                dataList.Address = dt.Rows[i]["Address"].ToString();
+                dataList.Phone = dt.Rows[i]["Phone"].ToString();
+                dataList.Balance = Convert.ToDouble(dt.Rows[i]["Balance"].ToString());
+                dataList.Status = dt.Rows[i]["Status"].ToString();
+                dataList.EmpName = dt.Rows[i]["EmployeeName"].ToString();
+                dataList.OpenDate = dt.Rows[i]["OpenDate"].ToString();
+
+                dataCustomers.Add(dataList);
+            }
+        }
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

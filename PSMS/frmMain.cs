@@ -46,7 +46,6 @@ namespace PSMS
 
         private void MetroPro_Click(object sender, EventArgs e)
         {
-            //this.Hide();
             frmProduct pro = new frmProduct();
             Helper.Defaultform(pro);
             pro.ShowDialog();
@@ -54,7 +53,6 @@ namespace PSMS
 
         private void MetroSup_Click(object sender, EventArgs e)
         {
-            //this.Hide();
             frmSupplier su = new frmSupplier();
             Helper.Defaultform(su);
             su.ShowDialog();
@@ -62,7 +60,6 @@ namespace PSMS
 
         private void MetroEmps_Click(object sender, EventArgs e)
         {
-            //this.Hide();
             frmEmployees emp = new frmEmployees();
             Helper.Defaultform(emp);
             emp.ShowDialog();
@@ -70,7 +67,6 @@ namespace PSMS
 
         private void MetroUser_Click(object sender, EventArgs e)
         {
-            //this.Hide();
             frmUser user = new frmUser();
             Helper.Defaultform(user);
             user.ShowDialog();
@@ -85,8 +81,6 @@ namespace PSMS
                 new Login().Show();
             }
         }
-
-   
 
         private void MetroSale_Click(object sender, EventArgs e)
         {
