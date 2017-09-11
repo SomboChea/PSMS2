@@ -113,7 +113,8 @@ namespace PSMS
         }
         private void btnPreview_Click(object sender, EventArgs e)
         {
-
+            addCurrentCustomerToPrint();
+            new reportViewer(dataCustomers).ShowDialog();
         }
     }
 }
