@@ -9,6 +9,12 @@ namespace PSMS.Class
 {
     class Helper
     {
+        public static Properties.Settings setting
+        {
+            get;
+            set;
+        }
+
         public static string ImageToBase64(Image image)
         {
             System.IO.MemoryStream ms = new System.IO.MemoryStream();

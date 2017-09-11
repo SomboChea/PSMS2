@@ -96,8 +96,8 @@
     <Compile Include="DBSetting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DBSetting.Designer.cs">
-      <DependentUpon>DBSetting.cs</DependentUpon>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="MyInvoice.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -396,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPostion.resx">
       <DependentUpon>frmPostion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\CusReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
