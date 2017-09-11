@@ -18,7 +18,11 @@ namespace PSMS
             Application.SetCompatibleTextRenderingDefault(false);
             
 
+<<<<<<< HEAD
+            Application.Run(new frmSupplierDetail());
+=======
             Application.Run(new Login());
+>>>>>>> af3f8cdba4620cc4382b6d35ac5653260a9615fa
 
         }
     }

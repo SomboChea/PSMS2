@@ -21,11 +21,16 @@ namespace PSMS
             InitializeComponent();
             cusFun = new frmCustomerFunction();
             empFun = new frmEmployeeFunction();
+
+            btnClr.Visible = false;
         }
 
         private void frmCustomerDetail_Load(object sender, EventArgs e)
         {
-            cusFun.FillDataGridView(ref dgData);
+           
+            // TODO: This line of code loads data into the 'pSMS2DataSet2.Customers' table. You can move, or remove it, as needed.
+            this.customersTableAdapter.Fill(this.pSMS2DataSet2.Customers);
+            //cusFun.FillDataGridView(ref dgData);
             //empFun.FillComboBox(ref cbBEmp, "EmpName", "EmpID");
         }
         private frmCus GetCus()
@@ -58,13 +63,14 @@ namespace PSMS
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            int result = (int)cusFun.Insert(GetCus());
-            if (result > 0)
-            {
-                MetroMessageBox.Show(this, "New Record Insert", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cusFun.FillDataGridView(ref dgData);
-                txtCusID.Text = result.ToString();
-            }
+            //int result = (int)cusFun.Insert(GetCus());
+            //if (result > 0)
+            //{
+            //    MetroMessageBox.Show(this, "New Record Insert", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    cusFun.FillDataGridView(ref dgData);
+            //    txtCusID.Text = result.ToString();
+            //}
+            customersBindingNavigator.AddNewItem.PerformClick();
         }
 
         private void dgData_Click(object sender, EventArgs e)
@@ -110,38 +116,40 @@ namespace PSMS
                 cusFun.FillDataGridView(ref dgData);
 
             }
+            customersBindingNavigatorSaveItem_Click(this, null);
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            int result = (int)cusFun.Delete(Convert.ToInt32(txtCusID.Text));
-            DialogResult dia = MetroMessageBox.Show(this, "Are you sure you want permanently delete this record?", "MetroMessagebox", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dia == DialogResult.Yes)
-            {
-                if (result > 0)
-                {
-                    MetroMessageBox.Show(this, "Record Deleted", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cusFun.FillDataGridView(ref dgData);
-                    txtCusCode.Text = "";
-                    txtKh1.Text = "";
-                    txtKh2.Text = "";
-                    txtEn1.Text = "";
-                    txtEn2.Text = "";
-                    cbBGender.SelectedItem = "";
-                    rtxtAddress.Text = "";
-                    txtphone.Text = "";
-                    txtPhone2.Text = "";
-                    txtEmail.Text = "";
-                    lblBalance.Text = "";
-                    cbBStatus.SelectedItem = "";
-                    txtEmpID.Text = "";
-                    Opendate.Text = "";
-                }
-            }
-            else if (dia == DialogResult.No)
-            {
-                MetroMessageBox.Show(this, "Deleted record has been cancel", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //int result = (int)cusFun.Delete(Convert.ToInt32(txtCusID.Text));
+            //DialogResult dia = MetroMessageBox.Show(this, "Are you sure you want permanently delete this record?", "MetroMessagebox", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (dia == DialogResult.Yes)
+            //{
+            //    if (result > 0)
+            //    {
+            //        MetroMessageBox.Show(this, "Record Deleted", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        cusFun.FillDataGridView(ref dgData);
+            //        txtCusCode.Text = "";
+            //        txtKh1.Text = "";
+            //        txtKh2.Text = "";
+            //        txtEn1.Text = "";
+            //        txtEn2.Text = "";
+            //        cbBGender.SelectedItem = "";
+            //        rtxtAddress.Text = "";
+            //        txtphone.Text = "";
+            //        txtPhone2.Text = "";
+            //        txtEmail.Text = "";
+            //        lblBalance.Text = "";
+            //        cbBStatus.SelectedItem = "";
+            //        txtEmpID.Text = "";
+            //        Opendate.Text = "";
+            //    }
+            //}
+            //else if (dia == DialogResult.No)
+            //{
+            //    MetroMessageBox.Show(this, "Deleted record has been cancel", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            customersBindingNavigator.DeleteItem.PerformClick();
         }
 
         private void dgData_Click_1(object sender, EventArgs e)
@@ -193,6 +201,31 @@ namespace PSMS
             cbBStatus.SelectedItem = "";
             txtEmpID.Text = "";
             Opendate.Text = "";
+        }
+
+        private void frmCustomerDetail_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult diag = MetroMessageBox.Show(this, "Do you Want to Save Change ? ", "MetroMessage", MessageBoxButtons.YesNo);
+            if (diag == DialogResult.Yes)
+            {
+                try
+                {
+                    btnSave_Click(this, null);
+                }
+                catch (Exception ex)
+                {
+                    MetroMessageBox.Show(this, ex.Message);
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void customersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.customersBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.pSMS2DataSet2);
+
         }
     }
 }

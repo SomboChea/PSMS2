@@ -20,13 +20,15 @@ namespace PSMS
             InitializeComponent();
             empFun = new frmEmployeeFunction();
 
-            
+            btnClr.Visible = false;
         }
 
         private void frmEmployeeDetail_Load(object sender, EventArgs e)
         {
-            empFun.FillDataGridView(ref dataGridView1);
-            comboBox1.SelectedIndex = 0;
+            // TODO: This line of code loads data into the 'pSMS2DataSet2.Employee' table. You can move, or remove it, as needed.
+            this.employeeTableAdapter.Fill(this.pSMS2DataSet2.Employee);
+            //empFun.FillDataGridView(ref dataGridView1);
+         
         }
         private frmEmp GetEmp()
         {
@@ -49,52 +51,55 @@ namespace PSMS
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            int result = (int)empFun.Insert(GetEmp());
-            if (result > 0)
-            {
-                MetroMessageBox.Show(this, "New Record Insert", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                empFun.FillDataGridView(ref dataGridView1);
-                txtEmpID.Text = result.ToString();
+            //int result = (int)empFun.Insert(GetEmp());
+            //if (result > 0)
+            //{
+            //    MetroMessageBox.Show(this, "New Record Insert", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    empFun.FillDataGridView(ref dataGridView1);
+            //    txtEmpID.Text = result.ToString();
 
-            }
+            //}
+            employeeBindingNavigator.AddNewItem.PerformClick();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int result = (int)empFun.Update(GetEmp());
-            if (result > 0)
-            {
-                MetroMessageBox.Show(this, "Record Update", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                empFun.FillDataGridView(ref dataGridView1);
+            //int result = (int)empFun.Update(GetEmp());
+            //if (result > 0)
+            //{
+            //    MetroMessageBox.Show(this, "Record Update", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    empFun.FillDataGridView(ref dataGridView1);
 
-            }
+            //}
+            employeeBindingNavigatorSaveItem_Click(this, null);
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            int result = (int)empFun.Delete(Convert.ToInt32(txtEmpID.Text));
-            DialogResult dia = MetroMessageBox.Show(this, "Are you sure you want permanently delete this record?", "MetroMessagebox", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dia == DialogResult.Yes)
-            {
-                if (result > 0)
-                {
-                    MetroMessageBox.Show(this, "Record Deleted", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    empFun.FillDataGridView(ref dataGridView1);
-                    txtEmpCode.Text = "";
-                    txtKh1.Text = "";
-                    txtKh2.Text = "";
-                    txtEn1.Text = "";
-                    txtEn2.Text = "";
-                    txtIDCard.Text = "";
-                    rtxtAddress.Text = "";
-                    txtPhone.Text = "";
-                    txtEmail.Text = "";
-                    txtPosID.Text = "";
-                    txtSalary.Text = "";
-                    Join_date.Text = "";
+            //int result = (int)empFun.Delete(Convert.ToInt32(txtEmpID.Text));
+            //DialogResult dia = MetroMessageBox.Show(this, "Are you sure you want permanently delete this record?", "MetroMessagebox", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (dia == DialogResult.Yes)
+            //{
+            //    if (result > 0)
+            //    {
+            //        MetroMessageBox.Show(this, "Record Deleted", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        empFun.FillDataGridView(ref dataGridView1);
+            //        txtEmpCode.Text = "";
+            //        txtKh1.Text = "";
+            //        txtKh2.Text = "";
+            //        txtEn1.Text = "";
+            //        txtEn2.Text = "";
+            //        txtIDCard.Text = "";
+            //        rtxtAddress.Text = "";
+            //        txtPhone.Text = "";
+            //        txtEmail.Text = "";
+            //        txtPosID.Text = "";
+            //        txtSalary.Text = "";
+            //        Join_date.Text = "";
 
-                }
-            }
+            //    }
+            //}
+            employeeBindingNavigator.DeleteItem.PerformClick();
         }
 
         private void btnClr_Click(object sender, EventArgs e)
@@ -177,12 +182,51 @@ namespace PSMS
             }
         }
 
-        private void btnsearch_Click(object sender, EventArgs e)
+     
+        private void employeeBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            string sql = txtsearch.Text.Trim() == "" ? "Select * from Employee" : "Select * from employee where " + comboBox1.Text + "='" + txtsearch.Text.Trim() + "'";
-            dataGridView1.DataSource = empFun.GetData(sql);
+            try
+            {
+                this.Validate();
+                this.employeeBindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.pSMS2DataSet2);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
-           
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmEmployeeDetail_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult diag = MetroMessageBox.Show(this, "Do you Want to Save Change ? ", "MetroMessage", MessageBoxButtons.YesNo);
+            if (diag == DialogResult.Yes)
+            {
+                try
+                {
+                    btnSave_Click(this, null);
+                }
+                catch(Exception ex)
+                {
+                    MetroMessageBox.Show(this, ex.Message);
+                    e.Cancel=true;
+                }
+            }
         }
     }
 }

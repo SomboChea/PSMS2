@@ -21,6 +21,7 @@ namespace PSMS
             InitializeComponent();
             invFun = new frmInvoiceFunction();
             proFun = new frmProductFunction();
+
             
         }
 

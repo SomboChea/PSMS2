@@ -50,7 +50,13 @@
             this.MetroUser = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.MetroDown = new MetroFramework.Controls.MetroLink();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
+            this.empDataSet = new PSMS.EmpDataSet();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeTableAdapter = new PSMS.EmpDataSetTableAdapters.EmployeeTableAdapter();
+            this.tableAdapterManager = new PSMS.EmpDataSetTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTileFrame3
@@ -119,7 +125,7 @@
             this.itemContainer1});
             this.itemPanel1.KeyTipsFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemPanel1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemPanel1.Location = new System.Drawing.Point(41, 67);
+            this.itemPanel1.Location = new System.Drawing.Point(41, 73);
             this.itemPanel1.Name = "itemPanel1";
             this.itemPanel1.Size = new System.Drawing.Size(935, 458);
             this.itemPanel1.TabIndex = 3;
@@ -326,7 +332,7 @@
             // MetroDown
             // 
             this.MetroDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.MetroDown.Location = new System.Drawing.Point(23, 539);
+            this.MetroDown.Location = new System.Drawing.Point(23, 550);
             this.MetroDown.Name = "MetroDown";
             this.MetroDown.Size = new System.Drawing.Size(58, 37);
             this.MetroDown.TabIndex = 4;
@@ -352,13 +358,33 @@
             this.metroLink1.UseStyleColors = true;
             this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
             // 
+            // empDataSet
+            // 
+            this.empDataSet.DataSetName = "EmpDataSet";
+            this.empDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataMember = "Employee";
+            this.employeeBindingSource.DataSource = this.empDataSet;
+            // 
+            // employeeTableAdapter
+            // 
+            this.employeeTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.EmployeeTableAdapter = this.employeeTableAdapter;
+            this.tableAdapterManager.UpdateOrder = PSMS.EmpDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // frmMain
             // 
             this.ApplyImageInvert = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1024, 585);
+            this.ClientSize = new System.Drawing.Size(1024, 596);
             this.Controls.Add(this.MetroDown);
             this.Controls.Add(this.itemPanel1);
             this.Controls.Add(this.metroLink1);
@@ -373,6 +399,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -399,6 +427,10 @@
         private DevComponents.DotNetBar.Metro.MetroTileFrame metroTileFrame5;
         private DevComponents.DotNetBar.Metro.MetroTileFrame metroTileFrame1;
         private DevComponents.DotNetBar.Metro.MetroTileFrame metroTileFrame2;
+        private EmpDataSet empDataSet;
+        private System.Windows.Forms.BindingSource employeeBindingSource;
+        private EmpDataSetTableAdapters.EmployeeTableAdapter employeeTableAdapter;
+        private EmpDataSetTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }
 

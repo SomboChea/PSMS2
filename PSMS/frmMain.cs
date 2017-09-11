@@ -33,12 +33,14 @@ namespace PSMS
         {
             //this.Hide();
             frmCustomer cus = new frmCustomer();
+            Helper.Defaultform(cus);
             cus.ShowDialog();
         }
 
         private void MetroStock_Click(object sender, EventArgs e)
         {
             frmStock stock = new frmStock();
+            Helper.Defaultform(stock);
             stock.ShowDialog();
         }
 
@@ -46,6 +48,7 @@ namespace PSMS
         {
             //this.Hide();
             frmProduct pro = new frmProduct();
+            Helper.Defaultform(pro);
             pro.ShowDialog();
         }
 
@@ -53,6 +56,7 @@ namespace PSMS
         {
             //this.Hide();
             frmSupplier su = new frmSupplier();
+            Helper.Defaultform(su);
             su.ShowDialog();
         }
 
@@ -60,6 +64,7 @@ namespace PSMS
         {
             //this.Hide();
             frmEmployees emp = new frmEmployees();
+            Helper.Defaultform(emp);
             emp.ShowDialog();
         }
 
@@ -67,6 +72,7 @@ namespace PSMS
         {
             //this.Hide();
             frmUser user = new frmUser();
+            Helper.Defaultform(user);
             user.ShowDialog();
         }
 
@@ -75,8 +81,20 @@ namespace PSMS
              DialogResult dia = MetroMessageBox.Show(this, "Are you sure you want sign out", "Warning!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dia == DialogResult.Yes)
             {
+<<<<<<< HEAD
                 this.Dispose();
                 new Login().Show();
+=======
+                this.Hide();
+                frmLogin login = new frmLogin();
+              
+                Connection.Close(Connection.con);
+                login.Show();
+            }
+            else if (dia == DialogResult.No)
+            {
+                
+>>>>>>> a1a2cc9575836d5dd8e65c9fcf6280ca04f24990
             }
                
         }
@@ -85,8 +103,8 @@ namespace PSMS
 
         private void MetroSale_Click(object sender, EventArgs e)
         {
-
             frmInvoice2 inv = new frmInvoice2();
+            Helper.Defaultform(inv);
             inv.ShowDialog();
         }
 
@@ -94,6 +112,7 @@ namespace PSMS
         {
             
             frmPurchase pur1 = new frmPurchase();
+            Helper.Defaultform(pur1);
             pur1.ShowDialog();
         }
 
@@ -101,7 +120,10 @@ namespace PSMS
         {
             try
             {
-                new frmReport().ShowDialog();
+               frmReport frm= new frmReport();
+               Helper.Defaultform(frm);
+               frm.ShowDialog();
+
             }
             catch (Exception) { }
         }
@@ -122,9 +144,12 @@ namespace PSMS
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'empDataSet.Employee' table. You can move, or remove it, as needed.
+            this.employeeTableAdapter.Fill(this.empDataSet.Employee);
             
         }
 
+       
     }
   }
 
