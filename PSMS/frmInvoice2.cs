@@ -55,7 +55,7 @@ namespace PSMS
             //this.invoiceTableAdapter.Fill(this.invoiceDataSet.Invoice);
 
             btnPrint.Enabled = false;
-            btnPurchase.Enabled = false;
+            
 
             try
             {
@@ -90,28 +90,7 @@ namespace PSMS
             pay.Show();
             paymentLabel1.Text = pay.txtAmount.Text;
             // Do whatever you want here
-            try{
-            double payamount = double.Parse(pay.txtAmount.Text);
-            double totalprice=double.Parse(totalPriceLabel1.Text)
-            if(payamount>totalprice)
-            {
-                MetroMessageBox.Show(this, "Successful Change Back " + (payamount-totalprice)+ "$");
-                btnPrint.Enabled = true;
-                btnPurchase.Enabled = true;
-            }
-            else if(payamount==totalprice){
-                MetroMessageBox.Show(this, "Successful Purchase");
-                btnPrint.Enabled = true;
-                btnPurchase.Enabled = true;
-            }
-            else{
-                MetroMessageBox.Show(this, "Please Insert again");
-            }
-            }
-            catch(Exception ex)
-            {
-                MetroMessageBox.Show(this, ex.Message);
-            }
+          
         }
         
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
@@ -237,7 +216,7 @@ namespace PSMS
 
             binddatagridview();
         }
-       
+
         private void btnPurchase_Click(object sender, EventArgs e)
         {
             try
@@ -273,33 +252,39 @@ namespace PSMS
                             invoiceDetails.Add(data);
 
                         }
-
+                        float balance;
                         if (payment >= totalPrice)
                         {
                             cmd.Parameters.AddWithValue("@PaymentVerify", "1");
+                        
+
+                            if (payment > totalPrice)
+                            {
+                                MetroMessageBox.Show(this, "Purchase Successful Change Back " + (payment - totalPrice), "Purchase!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                         else
                         {
-                            float balance;
                             cmd.Parameters.AddWithValue("@PaymentVerify", "0");
+                           
+                        } 
+                        balance = totalPrice - payment;
+                        cmd.Parameters.AddWithValue("@Balance", balance);
+                        float oldbalance = float.Parse(Connection.ExecuteScalar("Select Balance from Customers where CusID=" + cusIDComboBox.SelectedValue) + "");
+                        balance = balance + oldbalance;
+                        SqlCommand cmd2 = new SqlCommand("UPDATE Customers SET Balance=@balance WHERE CusID=@CusID ", Connection.con);
+                        cmd2.Parameters.AddWithValue("@CusID", cusIDComboBox.SelectedValue.ToString());
 
-                            balance = totalPrice - payment;
+                        cmd2.Parameters.AddWithValue("@Balance", balance);
 
-                            cmd.Parameters.AddWithValue("@Balance", balance);
-                            balance = balance + balance;
-                            SqlCommand cmd2 = new SqlCommand("UPDATE Customers SET Balance=@balance WHERE CusID=@CusID ", Connection.con);
-                            cmd2.Parameters.AddWithValue("@CusID", cusIDComboBox.SelectedValue.ToString());
+                        //MessageBox.Show(balance.ToString());
 
-                            cmd2.Parameters.AddWithValue("@Balance", balance);
+                        cmd2.ExecuteNonQuery();
 
-                            //MessageBox.Show(balance.ToString());
+                        //MessageBox.Show("Record Update");
 
-                            cmd2.ExecuteNonQuery();
+                        cmd2.Dispose();
 
-                            //MessageBox.Show("Record Update");
-
-                            cmd2.Dispose();
-                        }
 
                         //cmd.Parameters.AddWithValue("@Profits", "10");
 
@@ -330,25 +315,28 @@ namespace PSMS
                             }
                             catch (Exception) { }
                         }
+
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        MetroMessageBox.Show(this, "Something wrong!", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MetroMessageBox.Show(this, "Something wrong!" + Environment.NewLine + ex.Message, "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         return;
                     }
 
-
+                    btnPrint.Enabled = true;
                     MetroMessageBox.Show(this, "New Record Save", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnClear_Click(this, null);
+                    invoiceDetailDataGridView.Refresh();
                 }
             }
-            catch(Exception)
+            catch (Exception ex)
             {
-                MetroMessageBox.Show(this, "Something wrong!", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MetroMessageBox.Show(this, "Something wrong!" + Environment.NewLine + ex.Message, "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 return;
             }
-            
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -360,6 +348,8 @@ namespace PSMS
         private void btnClear_Click(object sender, EventArgs e)
         {
             invoiceCodeTextBox.Text = "";
+            foreach (DataGridViewRow row in dtGvBuy.Rows)
+                dtGvBuy.Rows.Remove(row);
         }
 
         List<reportInvoice> listReport = new List<reportInvoice>();
@@ -393,6 +383,7 @@ namespace PSMS
         {
             addCurrentInvoiceToPrint(Helper.GetLastIdCode("Invoice"));
             new reportViewer(listReport,100).ShowDialog();
+            btnPrint.Enabled = false;
         }
     }
 }
