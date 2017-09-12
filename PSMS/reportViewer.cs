@@ -36,15 +36,37 @@ namespace PSMS
             InitializeComponent();
             Class.FullMode.Fullscreen(this);
 
-            CustomerReportDoc.SetDataSource(reportCustomer);
-            crystalReportViewer1.ReportSource = CustomerReportDoc;
+            customerReportDoc.SetDataSource(reportCustomer);
+            crystalReportViewer1.ReportSource = customerReportDoc;
         }
 
-        private void loadReport()
+        public reportViewer(List<Class.reportProduct> reportProduct)
         {
-            //invoiceReportDoc.SetDataSource(reportCustomer);
+            InitializeComponent();
+            Class.FullMode.Fullscreen(this);
+
+            productReportDoc.SetDataSource(reportProduct);
+            crystalReportViewer1.ReportSource = productReportDoc;
         }
 
+        public reportViewer(List<Class.reportPurchase> reportPurchase)
+        {
+            InitializeComponent();
+            Class.FullMode.Fullscreen(this);
+
+            productReportDoc.SetDataSource(reportPurchase);
+            crystalReportViewer1.ReportSource = productReportDoc;
+        }
+
+        public reportViewer(List<Class.reportSupplier> reportSupplier)
+        {
+            InitializeComponent();
+            Class.FullMode.Fullscreen(this);
+
+            supplierReportDoc.SetDataSource(reportSupplier);
+            crystalReportViewer1.ReportSource = supplierReportDoc;
+        }
+       
         private void reportViewer_FormClosing(object sender, FormClosingEventArgs e)
         {
             

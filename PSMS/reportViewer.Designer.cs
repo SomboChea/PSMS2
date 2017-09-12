@@ -31,8 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(reportViewer));
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.invoiceReportDoc = new PSMS.Reports.InvoiceReport();
-            this.CustomerReportDoc = new PSMS.Reports.CustomerReport();
+            this.customerReportDoc = new PSMS.Reports.CustomerReport();
             this.employeeReportDoc = new PSMS.Reports.EmployeeReport();
+            this.productReportDoc = new PSMS.Reports.ProductReport();
+            this.purchaseReportDoc = new PSMS.Reports.ProductReport();
+            this.supplierReportDoc = new PSMS.Reports.ProductReport();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -66,7 +69,10 @@
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private Reports.InvoiceReport invoiceReportDoc;
-        private Reports.CustomerReport CustomerReportDoc;
+        private Reports.CustomerReport customerReportDoc;
         private Reports.EmployeeReport employeeReportDoc;
+        private Reports.ProductReport productReportDoc;
+        private Reports.ProductReport purchaseReportDoc;
+        private Reports.ProductReport supplierReportDoc;
     }
 }
