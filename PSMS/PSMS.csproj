@@ -94,7 +94,7 @@
     <Compile Include="Class\reportInvoice.cs" />
     <Compile Include="Class\reportProduct.cs" />
     <Compile Include="Class\reportPurchase.cs" />
-    <Compile Include="Class\reportSupplier.cs" />
+    <Compile Include="Class\reportSupplierRenew.cs" />
     <Compile Include="Class\Stock.cs" />
     <Compile Include="Class\StructInvocieDetail.cs" />
     <Compile Include="Class\User.cs" />

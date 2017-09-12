@@ -58,7 +58,7 @@ namespace PSMS
             crystalReportViewer1.ReportSource = productReportDoc;
         }
 
-        public reportViewer(List<Class.reportSupplier> reportSupplier)
+        public reportViewer(List<Class.reportSupplierRenew> reportSupplier)
         {
             InitializeComponent();
             Class.FullMode.Fullscreen(this);

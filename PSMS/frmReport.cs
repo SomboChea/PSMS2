@@ -16,14 +16,18 @@ namespace PSMS
 {
     public partial class frmReport : MetroForm
     {
+
+        string currentSelected = "";
+
         public frmReport()
         {
             InitializeComponent();
+            ControlBox = false;
         }
 
         private void frmReport_Load(object sender, EventArgs e)
         {
-
+            metroTile1_Click(sender, e);
         }
 
         BindingSource binding = new BindingSource();
@@ -38,6 +42,7 @@ namespace PSMS
             
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM Customers;",binding, viewReport);
+            currentSelected = "customer";
         }
 
         private void frmReport_FormClosing(object sender, FormClosingEventArgs e)
@@ -56,6 +61,7 @@ namespace PSMS
 
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewSupplier;", binding, viewReport);
+            currentSelected = "supplier";
 
         }
 
@@ -68,24 +74,28 @@ namespace PSMS
 
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewEmployees;", binding, viewReport);
+            currentSelected = "employee";
         }
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewPurchase;", binding, viewReport);
+            currentSelected = "purchase";
         }
 
         private void metroTile3_Click(object sender, EventArgs e)
         {
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewInvoice;", binding, viewReport);
+            currentSelected = "invoice";
         }
 
         private void viewStock_Click(object sender, EventArgs e)
         {
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewStock;", binding, viewReport);
+            currentSelected = "stock";
         }
 
         List<reportCustomer> dataCustomers;
@@ -93,7 +103,7 @@ namespace PSMS
         List<reportInvoice> dataInvoices;
         List<reportProduct> dataProducts;
         List<reportPurchase> dataPurchases;
-        List<reportSupplier> dataSuppliers;
+        List<reportSupplierRenew> dataSuppliers;
         
         private void addCurrentCustomerToPrint()
         {
@@ -189,12 +199,72 @@ namespace PSMS
             }
         }
 
+        private void addCurrentSupplierToPrint()
+        {
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewSupplier;");
+            DataTable dt = ds.Tables[0];
 
+            dataSuppliers = new List<reportSupplierRenew>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                reportSupplierRenew dataList = new reportSupplierRenew();
+
+                dataList.SupCode = dt.Rows[i]["SupCode"].ToString();
+                dataList.NameEN = dt.Rows[i]["FullNameEN"].ToString();
+                dataList.Gender = dt.Rows[i]["Gender"].ToString();
+                dataList.Address = dt.Rows[i]["Address"].ToString();
+                dataList.Phone = dt.Rows[i]["Phone"].ToString();
+                dataList.Email = dt.Rows[i]["Email"].ToString();
+                dataList.Balance = Convert.ToDouble(dt.Rows[i]["Balance"].ToString());
+
+                dataSuppliers.Add(dataList);
+            }
+        }
+        
         private void btnPreview_Click(object sender, EventArgs e)
         {
-            //addCurrentCustomerToPrint();
-            addCurrentEmployeeToPrint();
-            new reportViewer(dataEmployees).ShowDialog();
+            try
+            {
+                if (currentSelected.Equals("customer"))
+                {
+                    addCurrentCustomerToPrint();
+                    new reportViewer(dataCustomers).ShowDialog();
+                }
+                else if (currentSelected.Equals("supplier"))
+                {
+                    addCurrentSupplierToPrint();
+                    new reportViewer(dataSuppliers).ShowDialog();
+                }
+                else if (currentSelected.Equals("employee"))
+                {
+                    addCurrentEmployeeToPrint();
+                    new reportViewer(dataEmployees).ShowDialog();
+                }
+                else if (currentSelected.Equals("purchase"))
+                {
+                    addCurrentPurchaseToPrint();
+                    new reportViewer(dataPurchases).ShowDialog();
+                }
+                else if (currentSelected.Equals("invoice"))
+                {
+
+                }
+                else if (currentSelected.Equals("stock"))
+                {
+                    addCurrentProductToPrint();
+                    new reportViewer(dataProducts).ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Something error!!!", "Warning!");
+                }
+            }
+            catch (Exception) { return; }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Dispose();
         }
     }
 }
