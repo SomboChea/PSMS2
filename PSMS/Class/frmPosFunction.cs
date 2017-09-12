@@ -14,7 +14,7 @@ namespace PSMS
     {
         public frmPosFunction() 
         {
-            base.conStr = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
+           
         }
         public DataTable GetCusData()
         {

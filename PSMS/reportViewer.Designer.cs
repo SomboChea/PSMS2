@@ -34,8 +34,8 @@
             this.customerReportDoc = new PSMS.Reports.CustomerReport();
             this.employeeReportDoc = new PSMS.Reports.EmployeeReport();
             this.productReportDoc = new PSMS.Reports.ProductReport();
-            this.purchaseReportDoc = new PSMS.Reports.ProductReport();
-            this.supplierReportDoc = new PSMS.Reports.ProductReport();
+            this.supplierReportDoc = new PSMS.Reports.SupplierReport();
+            this.purchaseReportD = new PSMS.Reports.PurchaseReport();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -72,7 +72,7 @@
         private Reports.CustomerReport customerReportDoc;
         private Reports.EmployeeReport employeeReportDoc;
         private Reports.ProductReport productReportDoc;
-        private Reports.ProductReport purchaseReportDoc;
-        private Reports.ProductReport supplierReportDoc;
+        private Reports.SupplierReport supplierReportDoc;
+        private Reports.PurchaseReport purchaseReportD;
     }
 }

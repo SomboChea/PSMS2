@@ -1,4 +1,5 @@
 ﻿using MetroFramework.Forms;
+using PSMS.Reports;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -60,13 +61,13 @@ namespace PSMS
             crystalReportViewer1.ReportSource = productReportDoc;
         }
 
-        public reportViewer(List<Class.reportPurchase> reportPurchase)
+        public reportViewer(List<Class.reportPurchaseRenew> reportPurchase)
         {
             InitializeComponent();
             Class.FullMode.Fullscreen(this);
 
-            productReportDoc.SetDataSource(reportPurchase);
-            crystalReportViewer1.ReportSource = productReportDoc;
+            purchaseReportD.SetDataSource(reportPurchase);
+            crystalReportViewer1.ReportSource = purchaseReportD;
         }
 
         public reportViewer(List<Class.reportSupplierRenew> reportSupplier)

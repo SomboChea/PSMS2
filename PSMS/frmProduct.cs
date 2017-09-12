@@ -60,74 +60,102 @@ namespace PSMS
 
         private void dgProduct_Click(object sender, EventArgs e)
         {
-            int pro_id = 1;
-            foreach (DataGridViewRow row in dgProduct.SelectedRows)
+            try
             {
-                if (row.Cells != null && row.Cells[0].Value != null)
+                int pro_id = 1;
+                foreach (DataGridViewRow row in dgProduct.SelectedRows)
                 {
-                    //pro_id = Convert.ToInt32(row.Cells[0].Value.ToString());
+                    if (row.Cells != null && row.Cells[0].Value != null)
+                    {
+                        //pro_id = Convert.ToInt32(row.Cells[0].Value.ToString());
+                    }
+                }
+
+                DataTable dt = proFun.GetData("SELECT * FROM Product WHERE PID = " + pro_id);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    txtPID.Text = row["PID"].ToString();
+                    txtPCode.Text = row["PCode"].ToString();
+                    txtPName.Text = row["PName"].ToString();
+                    txtPSize.Text = row["PSize"].ToString();
+                    txtColor.Text = row["Color"].ToString();
+                    txtQuantity.Text = row["Quantity"].ToString();
+                    cbBMo.SelectedValue = Convert.ToInt32(row["MID"].ToString());
+                    cbBPT.SelectedValue = Convert.ToInt32(row["PTypeID"].ToString());
+                    cbbType.SelectedValue = Convert.ToInt32(row["TID"].ToString());
+                    txtSalePrice.Text = row["Saleprice"].ToString();
+                    txtUnitprice.Text = row["Unitprice"].ToString();
                 }
             }
-
-            DataTable dt = proFun.GetData("SELECT * FROM Product WHERE PID = " + pro_id);
-
-            foreach (DataRow row in dt.Rows)
+            catch (Exception ex)
             {
-                txtPID.Text = row["PID"].ToString();
-                txtPCode.Text = row["PCode"].ToString();
-                txtPName.Text = row["PName"].ToString();
-                txtPSize.Text = row["PSize"].ToString();
-                txtColor.Text= row["Color"].ToString();
-                txtQuantity.Text = row["Quantity"].ToString();
-                cbBMo.SelectedValue =Convert.ToInt32( row["MID"].ToString());
-                cbBPT.SelectedValue = Convert.ToInt32( row["PTypeID"].ToString());
-                cbbType.SelectedValue = Convert.ToInt32( row["TID"].ToString());
-                txtSalePrice.Text = row["Saleprice"].ToString();
-                txtUnitprice.Text = row["Unitprice"].ToString();
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            int result = (int)proFun.Insert(GetPro());
-            if (result > 0)
+            try
             {
-                MetroMessageBox.Show(this, "New Record Insert", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                proFun.FillDataGridView(ref dgProduct);
-                txtPID.Text = result.ToString();
+                int result = (int)proFun.Insert(GetPro());
+                if (result > 0)
+                {
+                    MetroMessageBox.Show(this, "New Record Insert", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    proFun.FillDataGridView(ref dgProduct);
+                    txtPID.Text = result.ToString();
 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int result = (int)proFun.Update(GetPro());
-            if (result > 0)
+            try
             {
-                MetroMessageBox.Show(this, "Record Update", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                proFun.FillDataGridView(ref dgProduct);
+                int result = (int)proFun.Update(GetPro());
+                if (result > 0)
+                {
+                    MetroMessageBox.Show(this, "Record Update", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    proFun.FillDataGridView(ref dgProduct);
 
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            int result = (int)proFun.Delete(Convert.ToInt32(txtPID.Text));
-            DialogResult dia = MetroMessageBox.Show(this, "Are you sure you want permanently delete this record?", "MetroMessagebox", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dia == DialogResult.Yes) 
+            try
             {
-                if (result > 0)
+                int result = (int)proFun.Delete(Convert.ToInt32(txtPID.Text));
+                DialogResult dia = MetroMessageBox.Show(this, "Are you sure you want permanently delete this record?", "MetroMessagebox", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dia == DialogResult.Yes)
                 {
-                    MetroMessageBox.Show(this, "Record Deleted", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    proFun.FillDataGridView(ref dgProduct);
+                    if (result > 0)
+                    {
+                        MetroMessageBox.Show(this, "Record Deleted", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        proFun.FillDataGridView(ref dgProduct);
 
+                    }
+                }
+                else if (dia == DialogResult.No)
+                {
+                    MetroMessageBox.Show(this, "Deleted record has been cancel", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            else if (dia == DialogResult.No)
+            catch (Exception ex)
             {
-                MetroMessageBox.Show(this, "Deleted record has been cancel", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message);
             }
-               
+
         }
 
         private void btnClr_Click(object sender, EventArgs e)
@@ -162,7 +190,6 @@ namespace PSMS
             if (pd.ShowDialog() == DialogResult.OK)
             {
                 Image img = Image.FromFile(pd.FileName);
-                MessageBox.Show(Class.Helper.ImageToBase64(img)+"A");
 
                 pro_img.Image = Class.Helper.Base64ToImage(Class.Helper.ImageToBase64(img));
             }
@@ -171,6 +198,11 @@ namespace PSMS
         private void button5_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void metroPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

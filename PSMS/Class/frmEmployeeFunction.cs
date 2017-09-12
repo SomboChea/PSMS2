@@ -14,7 +14,7 @@ namespace PSMS
         
         public frmEmployeeFunction() 
         {
-            base.conStr = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
+            
         }
         public DataTable GetEmpData()
         {

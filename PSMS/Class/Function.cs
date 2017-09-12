@@ -12,15 +12,8 @@ namespace PSMS
 {
     public class Function
     {
-
-        public string conStr { set; get; }
-
         public DataTable GetData(string cmdText)
         {
-         
-
-            Connection.Open("localhost", "PSMS2");
-
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = Connection.con;
             cmd.CommandText = cmdText;
@@ -32,7 +25,8 @@ namespace PSMS
             }
             catch (Exception ex)
             {
-                throw ex;
+                //throw ex;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -47,19 +41,18 @@ namespace PSMS
 
         public SqlDataReader GetDataReader(string cmdText)
         {
-            SqlConnection cnn = new SqlConnection(conStr);
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = cnn;
+            cmd.Connection = Connection.con;
             cmd.CommandText = cmdText;
             SqlDataReader reader = null;
             try
             {
-                cnn.Open();
                 reader = cmd.ExecuteReader();
             }
             catch (Exception ex)
             {
-                throw ex;
+                //throw ex;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -68,70 +61,60 @@ namespace PSMS
 
                 cmd.Dispose();
                 cmd = null;
-
-                cnn.Close();
             }
             return reader;
         }
         public int ExecNonQuery(string cmdText)
         {
-            SqlConnection cnn = new SqlConnection(conStr);
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = cnn;
+            cmd.Connection = Connection.con;
             cmd.CommandText = cmdText;
             int result = 0;
             try
             {
-                cnn.Open();
                 result = cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                throw ex;
+                //throw ex;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
 
                 cmd.Dispose();
                 cmd = null;
-
-                cnn.Close();
             }
             return result;
         }
 
         public int ExecNonQuery(string cmdText, SqlParameter[] param)
         {
-            SqlConnection cnn = new SqlConnection(conStr);
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = cnn;
+            cmd.Connection = Connection.con;
             cmd.CommandText = cmdText;
             cmd.Parameters.AddRange(param);
             int result = 0;
             try
             {
-                cnn.Open();
                 result = cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                throw ex;
+                //throw ex;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
 
                 cmd.Dispose();
                 cmd = null;
-
-                cnn.Close();
             }
             return result;
         }
 
         public object ExecScalar(string cmdText)
         {
-            Connection.Open("localhost", "PSMS2");
-
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = Connection.con;
             cmd.CommandText = cmdText;
@@ -142,7 +125,8 @@ namespace PSMS
             }
             catch (Exception ex)
             {
-                throw ex;
+                //throw ex;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -156,35 +140,31 @@ namespace PSMS
 
         public object ExecScalar(string cmdText, SqlParameter[] param)
         {
-            SqlConnection cnn = new SqlConnection(conStr);
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = cnn;
+            cmd.Connection = Connection.con;
             cmd.CommandText = cmdText;
             cmd.Parameters.AddRange(param);
             object result = null;
             try
             {
-                cnn.Open();
                 result = cmd.ExecuteScalar();
             }
             catch (Exception ex)
             {
-                throw ex;
+                //throw ex;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
 
                 cmd.Dispose();
                 cmd = null;
-
-                cnn.Close();
             }
             return result;
         }
 
         public int GetLastId(string table_name)
         {
-            Connection.Open("localhost", "PSMS2");
             SqlCommand sqlcmd = new SqlCommand();
             sqlcmd.Connection = Connection.con;
             sqlcmd.CommandText = "SELECT IDENT_CURRENT('" + table_name + "') FROM " + table_name + ";";

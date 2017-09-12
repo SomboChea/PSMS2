@@ -353,14 +353,16 @@ namespace PSMS
                 dtGvBuy.Rows.Remove(row);
         }
 
-        List<reportInvoice> listReport = new List<reportInvoice>();
+        List<reportInvoice> listReport;
 
         private void addCurrentInvoiceToPrint(string code)
         {
             DataSet ds = Helper.getDataSet("SELECT * FROM viewInvoice WHERE InvoiceCode = '" + code + "';");
             DataTable dt = ds.Tables[0];
 
-            for(int i=0;i<dt.Rows.Count;i++)
+            listReport = new List<reportInvoice>();
+
+            for (int i=0;i<dt.Rows.Count;i++)
             {
                 reportInvoice dataList = new reportInvoice();
 

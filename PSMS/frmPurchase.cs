@@ -259,8 +259,6 @@ namespace PSMS
 
                     List<StructPurchaseDetail> purchaseDetail = new List<StructPurchaseDetail>(); 
 
-                    SqlCommand cmd3 = new SqlCommand("INSERT INTO PurchaseDetail ( PurID, PID, Quantity, Unitprice, Saleprice, Amount) VALUES ( @PurID, @PID, @Quantity, @Unitprice, @Saleprice,@Amount)", Connection.con);
-
                     int purID = Helper.GetLastId("Purchase");
 
                     foreach (DataGridViewRow row in dtGvBuy.Rows)
@@ -274,6 +272,8 @@ namespace PSMS
                     {
                        try
                         {
+                            SqlCommand cmd3 = new SqlCommand("INSERT INTO PurchaseDetail ( PurID, PID, Quantity, Unitprice, Saleprice, Amount) VALUES ( @PurID, @PID, @Quantity, @Unitprice, @Saleprice,@Amount)", Connection.con);
+
                             cmd3.Parameters.AddWithValue("@PurID", row.PurID);
                             cmd3.Parameters.AddWithValue("@PID", row.PID);
                             cmd3.Parameters.AddWithValue("@Quantity", row.Quantity);

@@ -81,14 +81,14 @@ namespace PSMS
         private void metroTile2_Click(object sender, EventArgs e)
         {
             viewReport.DataSource = binding;
-            Helper.BindGridView("SELECT * FROM viewPurchase;", binding, viewReport);
+            Helper.BindGridView("SELECT PurCode,Date,Payment,Balance,Total FROM Purchase;", binding, viewReport);
             currentSelected = "purchase";
         }
 
         private void metroTile3_Click(object sender, EventArgs e)
         {
             viewReport.DataSource = binding;
-            Helper.BindGridView("SELECT * FROM viewInvoice;", binding, viewReport);
+            Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,Date FROM Invoice;", binding, viewReport);
             currentSelected = "invoice";
         }
 
@@ -103,13 +103,14 @@ namespace PSMS
         List<reportEmployee> dataEmployees;
         List<reportInvoice> dataInvoices;
         List<reportProduct> dataProducts;
-        List<reportPurchase> dataPurchases;
+        List<reportPurchaseRenew> dataPurchases;
         List<reportSupplierRenew> dataSuppliers;
         
         private void addCurrentCustomerToPrint()
         {
             DataSet ds = Helper.getDataSet("SELECT * FROM viewCustomer;");
             DataTable dt = ds.Tables[0];
+
             dataCustomers = new List<reportCustomer>();
 
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -136,6 +137,7 @@ namespace PSMS
             DataTable dt = ds.Tables[0];
 
             dataEmployees = new List<reportEmployee>();
+
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 reportEmployee dataList = new reportEmployee();
@@ -153,10 +155,12 @@ namespace PSMS
             }
         }
 
-        private void addCurrentInvoiceToPrint()
+        private void addCurrentInvoiceToPrint(string code)
         {
-            DataSet ds = Helper.getDataSet("SELECT * FROM viewInvoice;");
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewInvoice WHERE InvoiceCode = '" + code + "';");
             DataTable dt = ds.Tables[0];
+
+            dataInvoices = new List<reportInvoice>();
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -184,6 +188,7 @@ namespace PSMS
             DataTable dt = ds.Tables[0];
 
             dataProducts = new List<reportProduct>();
+
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 reportProduct dataList = new reportProduct();
@@ -203,18 +208,22 @@ namespace PSMS
             }
         }
 
-        private void addCurrentPurchaseToPrint()
+        private void addCurrentPurchaseToPrint(string code)
         {
-            DataSet ds = Helper.getDataSet("SELECT * FROM viewPurchase;");
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewPurchase WHERE PurCode = '" + code + "';");
             DataTable dt = ds.Tables[0];
 
-            dataPurchases = new List<reportPurchase>();
+            dataPurchases = new List<reportPurchaseRenew>();
+
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                reportPurchase dataList = new reportPurchase();
+                reportPurchaseRenew dataList = new reportPurchaseRenew();
 
                 dataList.PurCode = dt.Rows[i]["PurCode"].ToString();
                 dataList.PurDate = dt.Rows[i]["PurDate"].ToString();
+                dataList.ProName = dt.Rows[i]["ProName"].ToString();
+                dataList.Quantity = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
+                dataList.UnitPrice = Convert.ToDouble(dt.Rows[i]["Unitprice"].ToString());
                 dataList.Payment = Convert.ToDouble(dt.Rows[i]["Payment"].ToString());
                 dataList.Balance = Convert.ToDouble(dt.Rows[i]["Balance"].ToString());
                 dataList.SupName = dt.Rows[i]["SupplierName"].ToString();
@@ -231,11 +240,12 @@ namespace PSMS
             DataTable dt = ds.Tables[0];
 
             dataSuppliers = new List<reportSupplierRenew>();
+
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 reportSupplierRenew dataList = new reportSupplierRenew();
 
-                dataList.SupCode = dt.Rows[i]["SupCode"].ToString();
+                dataList.SupCode = dt.Rows[i]["SuCode"].ToString();
                 dataList.NameEN = dt.Rows[i]["FullNameEN"].ToString();
                 dataList.Gender = dt.Rows[i]["Gender"].ToString();
                 dataList.Address = dt.Rows[i]["Address"].ToString();
@@ -268,13 +278,23 @@ namespace PSMS
                 }
                 else if (currentSelected.Equals("purchase"))
                 {
-                    addCurrentPurchaseToPrint();
-                    new reportViewer(dataPurchases).ShowDialog();
+                    if (viewReport.SelectedCells.Count > 0)
+                    {
+                        string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
+                        addCurrentPurchaseToPrint(code);
+                        new reportViewer(dataPurchases).ShowDialog();
+                    }
                 }
                 else if (currentSelected.Equals("invoice"))
                 {
-                    addCurrentInvoiceToPrint();
-                    new reportViewer(dataInvoices).ShowDialog();
+                    if(viewReport.SelectedCells.Count > 0)
+                    {
+                        string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
+
+                        addCurrentInvoiceToPrint(code);
+                        new reportViewer(dataInvoices).ShowDialog();
+                    }
+                    
                 }
                 else if (currentSelected.Equals("stock"))
                 {
@@ -292,6 +312,18 @@ namespace PSMS
         private void btnBack_Click(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(currentSelected.Equals("invoice"))
+                {
+                    
+                }
+            }
+            catch (Exception) { return; }
         }
     }
 }

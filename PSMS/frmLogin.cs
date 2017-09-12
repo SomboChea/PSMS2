@@ -22,7 +22,8 @@ namespace PSMS
         {
             
             InitializeComponent();
-            Connection.Open("localhost", "PSMS2");
+            FullMode.Fullscreen(this);
+            Connection.Open(Properties.Settings.Default.Hostname, "PSMS2");
 
         }
 
@@ -86,6 +87,11 @@ namespace PSMS
             //txtPass.Text = "123";
             //btnlogin_Click(this, null);
         
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            new DBSetting().ShowDialog();
         }
     }
 }

@@ -240,6 +240,7 @@
             this.btnFilter.UseCustomBackColor = true;
             this.btnFilter.UseCustomForeColor = true;
             this.btnFilter.UseSelectable = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // viewStock
             // 

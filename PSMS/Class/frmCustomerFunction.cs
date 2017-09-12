@@ -16,7 +16,7 @@ namespace PSMS
     
         public frmCustomerFunction() 
         {
-            base.conStr = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
+          
         }
         public DataTable GetCusData()
         {

@@ -12,7 +12,7 @@ namespace PSMS
     {
           public frmPurchaseFunction() 
         {
-            base.conStr = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
+            
         }
         public DataTable GetCusData()
         {

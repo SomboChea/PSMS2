@@ -35,11 +35,12 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.reflectionImage1 = new DevComponents.DotNetBar.Controls.ReflectionImage();
+            this.btnSetting = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtUser
             // 
-            this.txtUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -72,7 +73,7 @@
             // 
             // txtPass
             // 
-            this.txtPass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPass.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -105,7 +106,7 @@
             // 
             // btnlogin
             // 
-            this.btnlogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnlogin.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnlogin.Location = new System.Drawing.Point(792, 208);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(71, 29);
@@ -116,7 +117,7 @@
             // 
             // metroLabel1
             // 
-            this.metroLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.Location = new System.Drawing.Point(550, 127);
             this.metroLabel1.Name = "metroLabel1";
@@ -126,7 +127,7 @@
             // 
             // metroLabel2
             // 
-            this.metroLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.Location = new System.Drawing.Point(550, 166);
             this.metroLabel2.Name = "metroLabel2";
@@ -147,11 +148,27 @@
             this.reflectionImage1.Size = new System.Drawing.Size(239, 338);
             this.reflectionImage1.TabIndex = 5;
             // 
+            // btnSetting
+            // 
+            this.btnSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSetting.BackColor = System.Drawing.Color.Transparent;
+            this.btnSetting.BackgroundImage = global::PSMS.Properties.Resources.Settings_icon;
+            this.btnSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSetting.FlatAppearance.BorderSize = 0;
+            this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetting.Location = new System.Drawing.Point(23, 533);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(28, 29);
+            this.btnSetting.TabIndex = 10;
+            this.btnSetting.UseVisualStyleBackColor = false;
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 585);
+            this.Controls.Add(this.btnSetting);
             this.Controls.Add(this.reflectionImage1);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
@@ -179,6 +196,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private DevComponents.DotNetBar.Controls.ReflectionImage reflectionImage1;
-
+        private System.Windows.Forms.Button btnSetting;
     }
 }

@@ -13,7 +13,7 @@ namespace PSMS
     {
         public frmTypeFunction() 
         {
-            base.conStr = ConfigurationManager.ConnectionStrings["Test"].ConnectionString;
+            
         }
         public DataTable GetCusData()
         {
