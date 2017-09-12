@@ -41,7 +41,7 @@ namespace PSMS
             // crystalReportViewer1.Refresh();
             
             viewReport.DataSource = binding;
-            Helper.BindGridView("SELECT * FROM Customers;",binding, viewReport);
+            Helper.BindGridView("SELECT * FROM viewCustomer;",binding, viewReport);
             currentSelected = "customer";
         }
 
@@ -73,7 +73,7 @@ namespace PSMS
             //crystalReportViewer1.Refresh();
 
             viewReport.DataSource = binding;
-            Helper.BindGridView("SELECT * FROM viewEmployees;", binding, viewReport);
+            Helper.BindGridView("SELECT * FROM viewEmployee;", binding, viewReport);
             currentSelected = "employee";
         }
 
@@ -149,6 +149,31 @@ namespace PSMS
                 dataList.JoinDate = dt.Rows[i]["JoinDate"].ToString();
 
                 dataEmployees.Add(dataList);
+            }
+        }
+
+        private void addCurrentInvoiceToPrint()
+        {
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewInvoice;");
+            DataTable dt = ds.Tables[0];
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                reportInvoice dataList = new reportInvoice();
+
+                dataList.InvoiceCode = dt.Rows[i]["InvoiceCode"].ToString();
+                dataList.ProCode = dt.Rows[i]["ProCode"].ToString();
+                dataList.ProName = dt.Rows[i]["ProName"].ToString();
+                dataList.Quantity = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
+                dataList.Price = Convert.ToDouble(dt.Rows[i]["Price"].ToString());
+                dataList.Amount = Convert.ToDouble(dt.Rows[i]["Amount"].ToString());
+                dataList.Sellby = dt.Rows[i]["Sellby"].ToString();
+                dataList.CustomerName = dt.Rows[i]["CustomerName"].ToString();
+                dataList.Phone = dt.Rows[i]["Phone"].ToString();
+                dataList.Address = dt.Rows[i]["Address"].ToString();
+                dataList.Date = dt.Rows[i]["Date"].ToString();
+
+                dataInvoices.Add(dataList);
             }
         }
 
@@ -247,7 +272,8 @@ namespace PSMS
                 }
                 else if (currentSelected.Equals("invoice"))
                 {
-
+                    addCurrentInvoiceToPrint();
+                    new reportViewer(dataInvoices).ShowDialog();
                 }
                 else if (currentSelected.Equals("stock"))
                 {

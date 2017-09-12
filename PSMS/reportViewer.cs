@@ -22,6 +22,17 @@ namespace PSMS
             crystalReportViewer1.ReportSource = invoiceReportDoc;
         }
 
+        public reportViewer(List<Class.reportInvoice> reportInvoice)
+        {
+            InitializeComponent();
+            Class.FullMode.Fullscreen(this);
+
+            invoiceReportDoc.SetDataSource(reportInvoice);
+            invoiceReportDoc.SetParameterValue(0, 0);
+
+            crystalReportViewer1.ReportSource = invoiceReportDoc;
+        }
+
         public reportViewer(List<Class.reportEmployee> reportEmployee)
         {
             InitializeComponent();
