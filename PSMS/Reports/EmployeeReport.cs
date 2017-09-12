@@ -16,14 +16,14 @@ namespace PSMS.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CusReport : ReportClass {
+    public class EmployeeReport : ReportClass {
         
-        public CusReport() {
+        public EmployeeReport() {
         }
         
         public override string ResourceName {
             get {
-                return "CusReport.rpt";
+                return "EmployeeReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace PSMS.Reports {
         
         public override string FullResourceName {
             get {
-                return "PSMS.Reports.CusReport.rpt";
+                return "PSMS.Reports.EmployeeReport.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace PSMS.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section PageHeaderSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace PSMS.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,25 +82,17 @@ namespace PSMS.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[5];
+                return this.ReportDefinition.Sections[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCusReport : Component, ICachedReport {
+    public class CachedEmployeeReport : Component, ICachedReport {
         
-        public CachedCusReport() {
+        public CachedEmployeeReport() {
         }
         
         [Browsable(false)]
@@ -137,7 +129,7 @@ namespace PSMS.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CusReport rpt = new CusReport();
+            EmployeeReport rpt = new EmployeeReport();
             rpt.Site = this.Site;
             return rpt;
         }

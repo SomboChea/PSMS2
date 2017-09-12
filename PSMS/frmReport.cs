@@ -89,6 +89,8 @@ namespace PSMS
         }
 
         List<reportCustomer> dataCustomers = new List<reportCustomer>();
+        List<reportEmployee> dataEmployees = new List<reportEmployee>();
+
         private void addCurrentCustomerToPrint()
         {
             DataSet ds = Helper.getDataSet("SELECT * FROM viewCustomer;");
@@ -111,10 +113,35 @@ namespace PSMS
                 dataCustomers.Add(dataList);
             }
         }
+
+        private void addCurrentEmployeeToPrint()
+        {
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewEmployee;");
+            DataTable dt = ds.Tables[0];
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                reportEmployee dataList = new reportEmployee();
+
+                dataList.EmpCode = dt.Rows[i]["EmpCode"].ToString();
+                dataList.NameEN = dt.Rows[i]["FullNameEN"].ToString();
+                dataList.Gender = dt.Rows[i]["Gender"].ToString();
+                dataList.Address = dt.Rows[i]["Address"].ToString();
+                dataList.Email = dt.Rows[i]["Email"].ToString();
+                dataList.Position = dt.Rows[i]["PositionName"].ToString();
+                dataList.Salary = Convert.ToDouble(dt.Rows[i]["Salary"].ToString());
+                dataList.JoinDate = dt.Rows[i]["JoinDate"].ToString();
+
+                dataEmployees.Add(dataList);
+            }
+        }
+
+
         private void btnPreview_Click(object sender, EventArgs e)
         {
-            addCurrentCustomerToPrint();
-            new reportViewer(dataCustomers).ShowDialog();
+            //addCurrentCustomerToPrint();
+            addCurrentEmployeeToPrint();
+            new reportViewer(dataEmployees).ShowDialog();
         }
     }
 }

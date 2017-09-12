@@ -90,7 +90,11 @@
     <Compile Include="Class\FullMode.cs" />
     <Compile Include="Class\Helper.cs" />
     <Compile Include="Class\reportCustomer.cs" />
+    <Compile Include="Class\reportEmployee.cs" />
     <Compile Include="Class\reportInvoice.cs" />
+    <Compile Include="Class\reportProduct.cs" />
+    <Compile Include="Class\reportPurchase.cs" />
+    <Compile Include="Class\reportSupplier.cs" />
     <Compile Include="Class\Stock.cs" />
     <Compile Include="Class\StructInvocieDetail.cs" />
     <Compile Include="Class\User.cs" />
@@ -110,12 +114,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PurchaseDetail.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reports\CusReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CusReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="CustomerDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -132,10 +130,10 @@
       <DependentUpon>CustomerReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\EmpReport.cs">
+    <Compile Include="Reports\EmployeeReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EmpReport.rpt</DependentUpon>
+      <DependentUpon>EmployeeReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="frmInvoice2.cs">
@@ -349,10 +347,10 @@
       <DependentUpon>InvoiceReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\ProReport.cs">
+    <Compile Include="Reports\ProductReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ProReport.rpt</DependentUpon>
+      <DependentUpon>ProductReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PSMS2DataSet.Designer.cs">
@@ -380,10 +378,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PurchaseDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reports\SuReport.cs">
+    <Compile Include="Reports\PurchaseReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SuReport.rpt</DependentUpon>
+      <DependentUpon>PurchaseReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SupplierReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SupplierReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportViewer.cs">
@@ -407,17 +411,13 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\CusReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CusReport.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\CustomerReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CustomerReport.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\EmpReport.rpt">
+    <EmbeddedResource Include="Reports\EmployeeReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>EmpReport.cs</LastGenOutput>
+      <LastGenOutput>EmployeeReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustomerDetail.resx">
       <DependentUpon>frmCustomerDetail.cs</DependentUpon>
@@ -509,13 +509,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>InvoiceReport.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\ProReport.rpt">
+    <EmbeddedResource Include="Reports\ProductReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ProReport.cs</LastGenOutput>
+      <LastGenOutput>ProductReport.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\SuReport.rpt">
+    <EmbeddedResource Include="Reports\PurchaseReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>SuReport.cs</LastGenOutput>
+      <LastGenOutput>PurchaseReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SupplierReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SupplierReport1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reportViewer.resx">
       <DependentUpon>reportViewer.cs</DependentUpon>
