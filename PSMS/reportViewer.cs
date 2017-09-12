@@ -15,11 +15,31 @@ namespace PSMS
         {
             InitializeComponent();
             Class.FullMode.Fullscreen(this);
-
+           
             invoiceReportDoc.SetDataSource(reportInvoice);
             invoiceReportDoc.SetParameterValue(0, discount);
 
             crystalReportViewer1.ReportSource = invoiceReportDoc;
+        }
+
+        public reportViewer(List<Class.reportInvoice> reportInvoice)
+        {
+            InitializeComponent();
+            Class.FullMode.Fullscreen(this);
+
+            invoiceReportDoc.SetDataSource(reportInvoice);
+            invoiceReportDoc.SetParameterValue(0, 0);
+
+            crystalReportViewer1.ReportSource = invoiceReportDoc;
+        }
+
+        public reportViewer(List<Class.reportEmployee> reportEmployee)
+        {
+            InitializeComponent();
+            Class.FullMode.Fullscreen(this);
+
+            employeeReportDoc.SetDataSource(reportEmployee);
+            crystalReportViewer1.ReportSource = employeeReportDoc;
         }
 
         public reportViewer(List<Class.reportCustomer> reportCustomer)
@@ -27,15 +47,37 @@ namespace PSMS
             InitializeComponent();
             Class.FullMode.Fullscreen(this);
 
-            CustomerReport1.SetDataSource(reportCustomer);
-            crystalReportViewer1.ReportSource = CustomerReport1;
+            customerReportDoc.SetDataSource(reportCustomer);
+            crystalReportViewer1.ReportSource = customerReportDoc;
         }
 
-        private void loadReport()
+        public reportViewer(List<Class.reportProduct> reportProduct)
         {
-            //invoiceReportDoc.SetDataSource(reportCustomer);
+            InitializeComponent();
+            Class.FullMode.Fullscreen(this);
+
+            productReportDoc.SetDataSource(reportProduct);
+            crystalReportViewer1.ReportSource = productReportDoc;
         }
 
+        public reportViewer(List<Class.reportPurchase> reportPurchase)
+        {
+            InitializeComponent();
+            Class.FullMode.Fullscreen(this);
+
+            productReportDoc.SetDataSource(reportPurchase);
+            crystalReportViewer1.ReportSource = productReportDoc;
+        }
+
+        public reportViewer(List<Class.reportSupplierRenew> reportSupplier)
+        {
+            InitializeComponent();
+            Class.FullMode.Fullscreen(this);
+
+            supplierReportDoc.SetDataSource(reportSupplier);
+            crystalReportViewer1.ReportSource = supplierReportDoc;
+        }
+       
         private void reportViewer_FormClosing(object sender, FormClosingEventArgs e)
         {
             

@@ -26,7 +26,14 @@ namespace PSMS
         private void frmEmployeeDetail_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'pSMS2DataSet2.Employee' table. You can move, or remove it, as needed.
-            this.employeeTableAdapter.Fill(this.pSMS2DataSet2.Employee);
+            try
+            {
+                this.employeeTableAdapter.Fill(this.pSMS2DataSet2.Employee);
+            }
+            catch(Exception)
+            {
+
+            }
             //empFun.FillDataGridView(ref dataGridView1);
          
         }
