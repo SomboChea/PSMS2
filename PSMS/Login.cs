@@ -235,7 +235,7 @@ namespace PSMS
         private void btnExit_Click(object sender, EventArgs e)
         {
             Connection.con.Close();
-            Application.Exit();
+            this.Dispose();
         }
 
         private void btnSetting_Click(object sender, EventArgs e)
