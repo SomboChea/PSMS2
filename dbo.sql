@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MSSQLSERVER
+ Source Server         : MS SQL Server
  Source Server Type    : SQL Server
  Source Server Version : 13004206
  Source Host           : localhost:1433
@@ -12,7 +12,7 @@
  Target Server Version : 13004206
  File Encoding         : 65001
 
- Date: 05/09/2017 14:11:56
+ Date: 12/09/2017 17:45:06
 */
 
 
@@ -26,10 +26,10 @@ GO
 CREATE TABLE [dbo].[Customers] (
   [CusID] int IDENTITY(1,1) NOT NULL,
   [CusCode] AS ('CUS'+right('0000'+CONVERT([nvarchar](5),[CusID]),(5))) PERSISTED NULL,
-  [CusLNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-  [CusFNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-  [CusLNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-  [CusFNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  [CusLNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [CusFNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [CusLNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [CusFNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Gender] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Address] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Phone] nvarchar(13) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -52,13 +52,19 @@ GO
 SET IDENTITY_INSERT [dbo].[Customers] ON
 GO
 
-INSERT INTO [dbo].[Customers] ([CusID], [CusLNKH], [CusFNKH], [CusLNEN], [CusFNEN], [Gender], [Address], [Phone], [Phone2], [Email], [Balance], [Status], [Emp_ID], [Acc_Opendate]) VALUES (N'1', N'លី', N'ហុង', N'Ly', N'Hong', N'Male', N'Takhmao', N'012656754', N'', N'', N'200.000000000000000', N'Active', N'0', N'7/1/2016')
+INSERT INTO [dbo].[Customers] ([CusID], [CusLNKH], [CusFNKH], [CusLNEN], [CusFNEN], [Gender], [Address], [Phone], [Phone2], [Email], [Balance], [Status], [Emp_ID], [Acc_Opendate]) VALUES (N'1', N'លី', N'ហុង', N'Ly', N'Hong', N'Male', N'Takhmao', N'012656754', N'', N'', N'43800.000000000000000', N'Active', N'2', N'11-Sep-17')
 GO
 
-INSERT INTO [dbo].[Customers] ([CusID], [CusLNKH], [CusFNKH], [CusLNEN], [CusFNEN], [Gender], [Address], [Phone], [Phone2], [Email], [Balance], [Status], [Emp_ID], [Acc_Opendate]) VALUES (N'2', N'ថា', N'វី', N'Tha', N'Vy', N'Female', N'Takmao', N'098463354', N'', N'', N'0.000000000000000', N'Active', N'0', N'7/1/2016')
+INSERT INTO [dbo].[Customers] ([CusID], [CusLNKH], [CusFNKH], [CusLNEN], [CusFNEN], [Gender], [Address], [Phone], [Phone2], [Email], [Balance], [Status], [Emp_ID], [Acc_Opendate]) VALUES (N'2', N'ថា', N'វី', N'Tha', N'Vy', N'Female', N'Takmao', N'098463354', N'', N'', N'6360.000000000000000', N'Active', N'2', N'7/1/2016')
 GO
 
-INSERT INTO [dbo].[Customers] ([CusID], [CusLNKH], [CusFNKH], [CusLNEN], [CusFNEN], [Gender], [Address], [Phone], [Phone2], [Email], [Balance], [Status], [Emp_ID], [Acc_Opendate]) VALUES (N'5', N'លី', N'ហុង', N'Ly', N'Hong', N'Male', N'Takhmao', N'012656754', N'', N'', N'0.000000000000000', N'Active', N'0', N'7/1/2016')
+INSERT INTO [dbo].[Customers] ([CusID], [CusLNKH], [CusFNKH], [CusLNEN], [CusFNEN], [Gender], [Address], [Phone], [Phone2], [Email], [Balance], [Status], [Emp_ID], [Acc_Opendate]) VALUES (N'5', N'លី', N'ហុង', N'Ly', N'Hong', N'Male', N'Takhmao', N'012656754', N'', N'', N'0.000000000000000', N'Active', N'1', N'7/1/2016')
+GO
+
+INSERT INTO [dbo].[Customers] ([CusID], [CusLNKH], [CusFNKH], [CusLNEN], [CusFNEN], [Gender], [Address], [Phone], [Phone2], [Email], [Balance], [Status], [Emp_ID], [Acc_Opendate]) VALUES (N'6', N'លី', N'ហុង', N'Ly', N'Hong', N'Male', N'Takhmao', N'012656754', N'', N'', N'0.000000000000000', N'Active', N'1', N'11-Sep-17')
+GO
+
+INSERT INTO [dbo].[Customers] ([CusID], [CusLNKH], [CusFNKH], [CusLNEN], [CusFNEN], [Gender], [Address], [Phone], [Phone2], [Email], [Balance], [Status], [Emp_ID], [Acc_Opendate]) VALUES (N'7', N'លី', N'ហុង', N'Ly', N'Hong', N'Male', N'Takhmao', N'012656754', N'', N'', N'0.000000000000000', N'Active', N'0', N'11-Sep-17')
 GO
 
 SET IDENTITY_INSERT [dbo].[Customers] OFF
@@ -75,10 +81,10 @@ GO
 CREATE TABLE [dbo].[Employee] (
   [EmpID] int IDENTITY(1,1) NOT NULL,
   [EmpCode] AS ('EMP'+right('0000'+CONVERT([nvarchar](5),[EmpID]),(5))) PERSISTED NULL,
-  [EmpLNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-  [EmpFNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-  [EmpLNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-  [EmpFNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  [EmpLNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [EmpFNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [EmpLNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [EmpFNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Gender] nvarchar(6) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [IDCard] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Address] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -120,9 +126,9 @@ CREATE TABLE [dbo].[Invoice] (
   [InvoiceCode] AS ('INV'+right('0000'+CONVERT([nvarchar](5),[InvoiceNo]),(5))) PERSISTED NULL,
   [CusID] int NULL,
   [EmpID] int NULL,
-  [Date] datetime NULL,
+  [Date] datetime2(7) NULL,
   [TotalPrice] float(53) NULL,
-  [Payment] float(53) NULL,
+  [Payment] float(53) DEFAULT ((0)) NOT NULL,
   [PaymentVerify] int NULL,
   [Profits] float(53) NULL,
   [Balance] float(53) NULL
@@ -139,196 +145,64 @@ GO
 SET IDENTITY_INSERT [dbo].[Invoice] ON
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1', N'1', N'1', N'2010-01-01 12:00:00.000', N'28.000000000000000', N'10.000000000000000', N'10', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1078', N'1', N'1', N'2017-09-11 02:02:00.0000000', N'2970.000000000000000', N'100.000000000000000', N'0', NULL, N'2870.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'2', N'2', N'1', N'2010-01-01 12:00:00.000', N'764.000000000000000', N'10.000000000000000', N'10', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1079', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'1700.000000000000000', N'0.000000000000000', N'0', NULL, N'1700.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'5', N'2', N'1', N'2017-07-23 00:00:00.000', N'28.000000000000000', N'10.000000000000000', N'10', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1080', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'850.000000000000000', N'0.000000000000000', N'0', NULL, N'850.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'6', N'1', N'1', N'2017-07-23 00:00:00.000', N'750.000000000000000', N'10.000000000000000', N'10', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1081', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'850.000000000000000', N'0.000000000000000', N'0', NULL, N'850.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'7', N'1', N'1', N'2017-07-23 00:00:00.000', N'2250.000000000000000', N'2250.000000000000000', N'10', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1082', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'850.000000000000000', N'0.000000000000000', N'0', NULL, N'850.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'8', N'1', N'1', N'2017-07-23 00:00:00.000', N'750.000000000000000', N'700.000000000000000', N'0', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1083', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'850.000000000000000', N'0.000000000000000', N'0', NULL, N'850.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'9', N'1', N'1', N'2017-07-23 00:00:00.000', N'14.000000000000000', N'14.000000000000000', N'1', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1084', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'850.000000000000000', N'0.000000000000000', N'0', NULL, N'850.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'10', N'1', N'1', N'2017-07-23 00:00:00.000', N'210.000000000000000', N'0.000000000000000', N'0', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1085', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'49150.000000000000000', N'0.000000000000000', N'0', NULL, N'49150.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'11', N'2', N'1', N'2017-07-23 00:00:00.000', N'210.000000000000000', N'200.000000000000000', N'0', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1086', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'2660.000000000000000', N'0.000000000000000', N'0', NULL, N'2660.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'12', N'2', N'1', N'2017-07-23 00:00:00.000', N'210.000000000000000', N'200.000000000000000', N'0', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1087', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'1810.000000000000000', N'0.000000000000000', N'0', NULL, N'1810.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'13', N'1', N'1', N'2017-07-23 00:00:00.000', N'210.000000000000000', N'200.000000000000000', N'0', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1088', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'1600.000000000000000', N'0.000000000000000', N'0', NULL, N'1600.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'14', N'2', N'1', N'2017-07-23 00:00:00.000', N'210.000000000000000', N'180.000000000000000', N'0', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1089', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'1600.000000000000000', N'0.000000000000000', N'0', NULL, N'1600.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'15', N'2', N'1', N'2017-07-23 00:00:00.000', N'750.000000000000000', N'600.000000000000000', N'0', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1090', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'1600.000000000000000', N'0.000000000000000', N'0', NULL, N'1600.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'16', N'1', N'1', N'2017-07-23 00:00:00.000', N'1500.000000000000000', N'1000.000000000000000', N'0', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1091', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'8200.000000000000000', N'0.000000000000000', N'0', NULL, N'8200.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'17', N'2', N'1', N'2017-07-23 00:00:00.000', N'210.000000000000000', N'180.000000000000000', N'0', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1092', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'4890.000000000000000', N'0.000000000000000', N'0', NULL, N'4890.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'18', N'1', N'1', N'2017-07-23 00:00:00.000', N'210.000000000000000', N'100.000000000000000', N'0', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1093', N'1', N'1', N'2017-09-13 00:00:00.0000000', N'4890.000000000000000', N'0.000000000000000', N'0', NULL, N'4890.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'19', N'1', N'1', N'2017-07-23 00:00:00.000', N'14.000000000000000', N'10.000000000000000', N'0', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1094', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'4890.000000000000000', N'0.000000000000000', N'0', NULL, N'4890.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'20', N'1', N'1', N'2017-07-23 00:00:00.000', N'750.000000000000000', N'600.000000000000000', N'0', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1095', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'1500.000000000000000', N'0.000000000000000', N'0', NULL, N'1500.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'21', N'1', N'1', N'2017-07-23 00:00:00.000', N'210.000000000000000', N'200.000000000000000', N'0', N'10.000000000000000', NULL)
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1096', N'1', N'1', N'2017-09-11 00:00:00.0000000', N'750.000000000000000', N'0.000000000000000', N'0', NULL, N'750.000000000000000')
 GO
 
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'22', N'1', N'1', N'2017-07-23 00:00:00.000', N'210.000000000000000', N'200.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'23', N'1', N'1', N'2017-07-23 00:00:00.000', N'14.000000000000000', N'4.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'24', N'1', N'1', N'2017-07-23 00:00:00.000', N'14.000000000000000', N'4.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'25', N'1', N'1', N'2017-07-23 00:00:00.000', N'14.000000000000000', N'4.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'26', N'1', N'1', N'2017-07-23 00:00:00.000', N'14.000000000000000', N'4.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'27', N'1', N'1', N'2017-07-24 00:00:00.000', N'14.000000000000000', N'10.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'28', N'1', N'1', N'2017-07-24 00:00:00.000', N'750.000000000000000', N'700.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'29', N'1', N'1', N'2017-07-24 00:00:00.000', N'750.000000000000000', N'700.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'30', N'1', N'1', N'2017-07-24 00:00:00.000', N'210.000000000000000', N'10.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'31', N'1', N'1', N'2017-07-25 00:00:00.000', N'750.000000000000000', N'650.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'32', N'1', N'1', N'2017-07-25 00:00:00.000', N'210.000000000000000', N'10.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'33', N'1', N'1', N'2017-07-25 00:00:00.000', N'750.000000000000000', N'350.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'34', N'1', N'1', N'2017-07-25 00:00:00.000', N'850.000000000000000', N'850.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'35', N'2', N'1', N'2017-07-25 00:00:00.000', N'960.000000000000000', N'900.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'36', N'1', N'1', N'2017-07-25 00:00:00.000', N'210.000000000000000', N'210.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'37', N'2', N'1', NULL, N'210.000000000000000', N'210.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1037', N'1', N'1', N'2017-07-27 00:00:00.000', N'14.000000000000000', N'14.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1038', N'2', N'1', N'2017-07-27 00:00:00.000', N'14.000000000000000', N'10.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1039', N'1', N'1', N'2017-07-27 00:00:00.000', N'14.000000000000000', N'10.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1040', N'2', N'1', N'2017-07-28 00:00:00.000', N'1088.000000000000000', N'1000.000000000000000', N'0', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1041', N'2', N'1', N'2017-07-28 00:00:00.000', N'764.000000000000000', N'764.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1042', N'1', N'1', N'2017-07-28 00:00:00.000', N'448.000000000000000', N'448.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1043', N'1', N'1', N'2017-07-29 00:00:00.000', N'28.000000000000000', N'28.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1044', N'1', N'1', N'2017-07-29 00:00:00.000', N'1728.000000000000000', N'1728.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1045', N'1', N'1', N'2017-07-29 00:00:00.000', N'448.000000000000000', N'448.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1046', N'1', N'1', N'2017-07-29 00:00:00.000', N'448.000000000000000', N'448.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1047', N'1', N'1', N'2017-08-03 00:00:00.000', N'238.000000000000000', N'238.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1048', N'1', N'1', N'2017-08-03 00:00:00.000', N'960.000000000000000', N'960.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1049', N'1', N'1', N'2017-08-08 00:00:00.000', N'24.000000000000000', N'24.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1050', N'1', N'1', N'2017-08-11 00:00:00.000', N'28.000000000000000', N'28.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1051', N'1', N'1', N'2017-08-11 00:00:00.000', N'448.000000000000000', N'448.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1052', N'1', N'1', N'2017-08-11 00:00:00.000', N'84.000000000000000', N'84.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1053', N'1', N'1', N'2017-08-11 00:00:00.000', N'28.000000000000000', N'28.000000000000000', N'1', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1054', N'1', N'1', N'2017-08-26 00:00:00.000', N'3200.000000000000000', N'3200.000000000000000', N'1', NULL, NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1055', N'1', N'1', N'2017-08-26 00:00:00.000', N'750.000000000000000', N'650.000000000000000', N'0', NULL, NULL)
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1056', N'1', N'1', N'2017-08-26 00:00:00.000', N'850.000000000000000', N'750.000000000000000', N'0', NULL, N'100.000000000000000')
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1057', N'1', N'1', N'2017-08-26 00:00:00.000', N'210.000000000000000', N'110.000000000000000', N'0', NULL, N'100.000000000000000')
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1058', N'1', N'1', N'2017-08-26 00:00:00.000', N'210.000000000000000', N'110.000000000000000', N'0', NULL, N'100.000000000000000')
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1059', N'1', N'1', N'2017-08-26 00:00:00.000', N'750.000000000000000', N'650.000000000000000', N'0', NULL, N'200.000000000000000')
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1060', N'2', N'1', N'2017-08-26 00:00:00.000', N'850.000000000000000', N'750.000000000000000', N'0', NULL, N'100.000000000000000')
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1061', N'2', N'1', N'2017-08-26 00:00:00.000', N'750.000000000000000', N'650.000000000000000', N'0', NULL, N'100.000000000000000')
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1062', N'2', N'1', N'2017-08-26 00:00:00.000', N'850.000000000000000', N'750.000000000000000', N'0', NULL, N'100.000000000000000')
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1063', N'2', N'1', N'2017-08-26 00:00:00.000', N'750.000000000000000', N'650.000000000000000', N'0', NULL, N'100.000000000000000')
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1064', N'2', N'1', N'2017-08-26 00:00:00.000', N'750.000000000000000', N'650.000000000000000', N'0', NULL, N'100.000000000000000')
-GO
-
-INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1065', N'2', N'1', N'2017-08-26 00:00:00.000', N'850.000000000000000', N'750.000000000000000', N'0', NULL, N'100.000000000000000')
+INSERT INTO [dbo].[Invoice] ([InvoiceNo], [CusID], [EmpID], [Date], [TotalPrice], [Payment], [PaymentVerify], [Profits], [Balance]) VALUES (N'1097', N'1', N'1', N'2017-09-12 00:00:00.0000000', N'21900.000000000000000', N'0.000000000000000', N'0', NULL, N'21900.000000000000000')
 GO
 
 SET IDENTITY_INSERT [dbo].[Invoice] OFF
@@ -343,8 +217,8 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[In
 GO
 
 CREATE TABLE [dbo].[InvoiceDetail] (
-  [InvoiceNo] int NULL,
-  [PID] int NULL,
+  [InvoiceNo] int NOT NULL,
+  [PID] int NOT NULL,
   [Quantity] int NULL,
   [Saleprice] float(53) NULL,
   [Amount] int NULL
@@ -358,112 +232,121 @@ GO
 -- ----------------------------
 -- Records of [InvoiceDetail]
 -- ----------------------------
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'1', N'2', N'14.000000000000000', NULL)
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1078', N'3', N'2', N'210.000000000000000', N'420')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'1', N'1', N'14.000000000000000', NULL)
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1078', N'4', N'3', N'850.000000000000000', N'2550')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'1', N'2', N'14.000000000000000', NULL)
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1079', N'4', N'2', N'850.000000000000000', N'1700')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'4', N'2', N'850.000000000000000', NULL)
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1080', N'4', N'1', N'850.000000000000000', N'850')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'1', N'2', N'14.000000000000000', N'28')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1081', N'4', N'1', N'850.000000000000000', N'850')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'1', N'1', N'14.000000000000000', NULL)
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1082', N'4', N'1', N'850.000000000000000', N'850')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'2', N'1', N'750.000000000000000', NULL)
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1083', N'4', N'1', N'850.000000000000000', N'850')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'1', N'2', N'14.000000000000000', NULL)
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1084', N'4', N'1', N'850.000000000000000', N'850')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'3', N'2', N'210.000000000000000', NULL)
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1085', N'2', N'50', N'750.000000000000000', N'37500')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'3', N'2', N'210.000000000000000', N'420')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1085', N'3', N'15', N'210.000000000000000', N'3150')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'3', N'2', N'210.000000000000000', N'420')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1085', N'4', N'10', N'850.000000000000000', N'8500')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'1', N'2', N'14.000000000000000', N'28')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1086', N'2', N'1', N'750.000000000000000', N'750')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'1', N'2', N'14.000000000000000', N'28')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1086', N'3', N'1', N'210.000000000000000', N'210')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'3', N'1', N'210.000000000000000', N'210')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1086', N'4', N'2', N'850.000000000000000', N'1700')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'3', N'1', N'210.000000000000000', N'210')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1087', N'2', N'1', N'750.000000000000000', N'750')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'2', N'1', N'750.000000000000000', N'750')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1087', N'3', N'1', N'210.000000000000000', N'210')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'1', N'2', N'12.000000000000000', N'24')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1087', N'4', N'1', N'850.000000000000000', N'850')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'1', N'2', N'14.000000000000000', N'28')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1088', N'2', N'1', N'750.000000000000000', N'750')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'1', N'2', N'14.000000000000000', N'28')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1088', N'4', N'1', N'850.000000000000000', N'850')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'3', N'2', N'210.000000000000000', N'420')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1089', N'2', N'1', N'750.000000000000000', N'750')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'1', N'6', N'14.000000000000000', N'84')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1089', N'4', N'1', N'850.000000000000000', N'850')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'1', N'2', N'14.000000000000000', N'28')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1090', N'2', N'1', N'750.000000000000000', N'750')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'2', N'2', N'750.000000000000000', N'1500')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1090', N'4', N'1', N'850.000000000000000', N'850')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'4', N'2', N'850.000000000000000', N'1700')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1091', N'2', N'5', N'750.000000000000000', N'3750')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'2', N'1', N'750.000000000000000', N'750')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1091', N'3', N'5', N'210.000000000000000', N'1050')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'4', N'1', N'850.000000000000000', N'850')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1091', N'4', N'4', N'850.000000000000000', N'3400')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'3', N'1', N'210.000000000000000', N'210')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1092', N'2', N'2', N'750.000000000000000', N'1500')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'3', N'1', N'210.000000000000000', N'210')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1092', N'3', N'4', N'210.000000000000000', N'840')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'2', N'1', N'750.000000000000000', N'750')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1092', N'4', N'3', N'850.000000000000000', N'2550')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'4', N'1', N'850.000000000000000', N'850')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1093', N'2', N'2', N'750.000000000000000', N'1500')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'4', N'1', N'850.000000000000000', N'850')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1093', N'3', N'4', N'210.000000000000000', N'840')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'2', N'1', N'750.000000000000000', N'750')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1093', N'4', N'3', N'850.000000000000000', N'2550')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'4', N'1', N'850.000000000000000', N'850')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1094', N'2', N'2', N'750.000000000000000', N'1500')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'2', N'1', N'750.000000000000000', N'750')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1094', N'3', N'4', N'210.000000000000000', N'840')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'2', N'1', N'750.000000000000000', N'750')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1094', N'4', N'3', N'850.000000000000000', N'2550')
 GO
 
-INSERT INTO [dbo].[InvoiceDetail]  VALUES (NULL, N'4', N'1', N'850.000000000000000', N'850')
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1095', N'2', N'2', N'750.000000000000000', N'1500')
+GO
+
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1096', N'2', N'1', N'750.000000000000000', N'750')
+GO
+
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1097', N'2', N'2', N'750.000000000000000', N'1500')
+GO
+
+INSERT INTO [dbo].[InvoiceDetail]  VALUES (N'1097', N'4', N'24', N'850.000000000000000', N'20400')
 GO
 
 
@@ -603,7 +486,7 @@ CREATE TABLE [dbo].[Product] (
   [PName] nvarchar(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [PSize] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Color] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-  [Quantity] int NULL,
+  [Quantity] int DEFAULT ((0)) NOT NULL,
   [MID] int NULL,
   [PTypeID] int NULL,
   [TID] int NULL,
@@ -623,16 +506,13 @@ GO
 SET IDENTITY_INSERT [dbo].[Product] ON
 GO
 
-INSERT INTO [dbo].[Product] ([PID], [PName], [PSize], [Color], [Quantity], [MID], [PTypeID], [TID], [Saleprice], [Unitprice], [Image]) VALUES (N'1', N'1280', N'', N'Blue', N'25', N'1', N'2', N'1', N'14.000000000000000', N'10.000000000000000', NULL)
-GO
-
-INSERT INTO [dbo].[Product] ([PID], [PName], [PSize], [Color], [Quantity], [MID], [PTypeID], [TID], [Saleprice], [Unitprice], [Image]) VALUES (N'2', N'Galaxy S7', N'32GB', N'Sliver', N'10', N'4', N'1', N'1', N'750.000000000000000', N'600.000000000000000', NULL)
+INSERT INTO [dbo].[Product] ([PID], [PName], [PSize], [Color], [Quantity], [MID], [PTypeID], [TID], [Saleprice], [Unitprice], [Image]) VALUES (N'2', N'Galaxy S7', N'32GB', N'Sliver', N'29', N'4', N'1', N'1', N'750.000000000000000', N'600.000000000000000', NULL)
 GO
 
 INSERT INTO [dbo].[Product] ([PID], [PName], [PSize], [Color], [Quantity], [MID], [PTypeID], [TID], [Saleprice], [Unitprice], [Image]) VALUES (N'3', N'One M8', N'16GB', N'Gold', N'6', N'6', N'1', N'1', N'210.000000000000000', N'190.000000000000000', NULL)
 GO
 
-INSERT INTO [dbo].[Product] ([PID], [PName], [PSize], [Color], [Quantity], [MID], [PTypeID], [TID], [Saleprice], [Unitprice], [Image]) VALUES (N'4', N'Galaxy S8 ', N'32GB', N'Gold', N'3', N'4', N'1', N'1', N'850.000000000000000', N'800.000000000000000', NULL)
+INSERT INTO [dbo].[Product] ([PID], [PName], [PSize], [Color], [Quantity], [MID], [PTypeID], [TID], [Saleprice], [Unitprice], [Image]) VALUES (N'4', N'Galaxy S8 ', N'32GB', N'Gold', N'0', N'4', N'1', N'1', N'850.000000000000000', N'800.000000000000000', NULL)
 GO
 
 SET IDENTITY_INSERT [dbo].[Product] OFF
@@ -651,7 +531,7 @@ CREATE TABLE [dbo].[Purchase] (
   [PurCode] AS ('PUR'+right('0000'+CONVERT([nvarchar](5),[PurID]),(5))) PERSISTED NULL,
   [Date] datetime NULL,
   [Payment] float(53) NULL,
-  [Balance] float(53) NULL,
+  [Balance] float(53) DEFAULT ((0)) NULL,
   [SuID] int NULL,
   [EmpID] int NULL,
   [Total] float(53) NULL
@@ -668,16 +548,7 @@ GO
 SET IDENTITY_INSERT [dbo].[Purchase] ON
 GO
 
-INSERT INTO [dbo].[Purchase] ([PurID], [Date], [Payment], [Balance], [SuID], [EmpID], [Total]) VALUES (N'1', N'2017-08-27 00:00:00.000', N'0.000000000000000', N'18.000000000000000', N'1', N'1', N'18.000000000000000')
-GO
-
-INSERT INTO [dbo].[Purchase] ([PurID], [Date], [Payment], [Balance], [SuID], [EmpID], [Total]) VALUES (N'2', N'2017-08-28 00:00:00.000', N'90.000000000000000', N'0.000000000000000', N'1', N'1', N'90.000000000000000')
-GO
-
-INSERT INTO [dbo].[Purchase] ([PurID], [Date], [Payment], [Balance], [SuID], [EmpID], [Total]) VALUES (N'3', N'2017-08-28 00:00:00.000', N'1200.000000000000000', N'0.000000000000000', N'1', N'1', N'1200.000000000000000')
-GO
-
-INSERT INTO [dbo].[Purchase] ([PurID], [Date], [Payment], [Balance], [SuID], [EmpID], [Total]) VALUES (N'4', N'2017-08-28 00:00:00.000', N'90.000000000000000', N'10.000000000000000', N'1', N'1', N'100.000000000000000')
+INSERT INTO [dbo].[Purchase] ([PurID], [Date], [Payment], [Balance], [SuID], [EmpID], [Total]) VALUES (N'5', N'2017-09-12 00:00:00.000', N'0.000000000000000', N'2400.000000000000000', N'1', N'1', N'2400.000000000000000')
 GO
 
 SET IDENTITY_INSERT [dbo].[Purchase] OFF
@@ -692,8 +563,8 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[Pu
 GO
 
 CREATE TABLE [dbo].[PurchaseDetail] (
-  [PurID] int NULL,
-  [PID] int NULL,
+  [PurID] int NOT NULL,
+  [PID] int NOT NULL,
   [Quantity] int NULL,
   [Unitprice] float(53) NULL,
   [Saleprice] float(53) NULL,
@@ -708,22 +579,7 @@ GO
 -- ----------------------------
 -- Records of [PurchaseDetail]
 -- ----------------------------
-INSERT INTO [dbo].[PurchaseDetail]  VALUES (NULL, N'1', N'2', N'14.000000000000000', N'9.000000000000000', N'18')
-GO
-
-INSERT INTO [dbo].[PurchaseDetail]  VALUES (NULL, N'1', N'10', N'14.000000000000000', N'9.000000000000000', N'90')
-GO
-
-INSERT INTO [dbo].[PurchaseDetail]  VALUES (NULL, N'1', N'5', N'9.000000000000000', N'14.000000000000000', N'45')
-GO
-
-INSERT INTO [dbo].[PurchaseDetail]  VALUES (NULL, N'2', N'5', N'550.000000000000000', N'750.000000000000000', N'2750')
-GO
-
-INSERT INTO [dbo].[PurchaseDetail]  VALUES (NULL, N'2', N'2', N'600.000000000000000', N'750.000000000000000', N'1200')
-GO
-
-INSERT INTO [dbo].[PurchaseDetail]  VALUES (NULL, N'1', N'10', N'10.000000000000000', N'14.000000000000000', N'100')
+INSERT INTO [dbo].[PurchaseDetail]  VALUES (N'5', N'4', N'3', N'800.000000000000000', N'850.000000000000000', N'640000')
 GO
 
 
@@ -737,10 +593,10 @@ GO
 CREATE TABLE [dbo].[Supplier] (
   [SuID] int IDENTITY(1,1) NOT NULL,
   [SuCode] AS ('SU'+right('0000'+CONVERT([nvarchar](5),[SuID]),(5))) PERSISTED NULL,
-  [SuLNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-  [SuFNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-  [SuLNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-  [SuFNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  [SuLNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [SuFNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [SuLNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [SuFNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Gender] nvarchar(7) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Address] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Phone] nvarchar(14) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -763,6 +619,9 @@ SET IDENTITY_INSERT [dbo].[Supplier] ON
 GO
 
 INSERT INTO [dbo].[Supplier] ([SuID], [SuLNKH], [SuFNKH], [SuLNEN], [SuFNEN], [Gender], [Address], [Phone], [Phone2], [Email], [Fax], [Fax2], [Balance]) VALUES (N'1', N'ខេម', N'ហ្វូន', N'Camfone', N'Camfone', N'Male', N'Phnom Penh', N'', N'', NULL, N'', N'', N'0.000000000000000')
+GO
+
+INSERT INTO [dbo].[Supplier] ([SuID], [SuLNKH], [SuFNKH], [SuLNEN], [SuFNEN], [Gender], [Address], [Phone], [Phone2], [Email], [Fax], [Fax2], [Balance]) VALUES (N'2', N'Chea', N'Sambo', N'', N'', N'Male', N'PP', N'', N'', NULL, N'', N'', N'0.000000000000000')
 GO
 
 SET IDENTITY_INSERT [dbo].[Supplier] OFF
@@ -868,6 +727,110 @@ INSERT INTO [dbo].[Users] ([UID], [UName], [Password]) VALUES (N'1', N'admin', N
 GO
 
 SET IDENTITY_INSERT [dbo].[Users] OFF
+GO
+
+
+-- ----------------------------
+-- View structure for viewCustomer
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewCustomer]') AND type IN ('V'))
+	DROP VIEW [dbo].[viewCustomer]
+GO
+
+CREATE VIEW [dbo].[viewCustomer] AS SELECT c.CusCode CCode,CONCAT(c.CusLNKH,' ',c.CusFNKH) FullNameKH, CONCAT(c.CusLNEN,' ',c.CusFNEN) FullNameEN,c.Gender,c.Address,c.Phone,c.Balance,c.Status,CONCAT(e.EmpLNEN,' ',e.EmpFNEN) EmployeeName,c.Acc_Opendate OpenDate
+FROM Customers c
+LEFT JOIN Employee e
+ON c.Emp_ID = e.EmpID;
+GO
+
+
+-- ----------------------------
+-- View structure for viewEmployee
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewEmployee]') AND type IN ('V'))
+	DROP VIEW [dbo].[viewEmployee]
+GO
+
+CREATE VIEW [dbo].[viewEmployee] AS SELECT e.EmpCode EmpCode,CONCAT(e.EmpLNKH,' ',e.EmpFNKH) FullNameKH,CONCAT(e.EmpLNEN,' ',e.EmpFNEN) FullNameEN,e.Gender Gender,e.IDCard IDCard,e.Address Address,e.Phone Phone,e.Email Email,p.PosName PositionName,e.Salary Salary,e.JoinDate JoinDate,e.Image Image
+FROM Employee e
+INNER JOIN Position p
+ON e.PosID = p.PosID
+GO
+
+
+-- ----------------------------
+-- View structure for viewInvoice
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewInvoice]') AND type IN ('V'))
+	DROP VIEW [dbo].[viewInvoice]
+GO
+
+CREATE VIEW [dbo].[viewInvoice] AS SELECT i.InvoiceCode InvoiceCode,p.PName ProName,p.PCode ProCode,id.Quantity Quantity,id.Saleprice Price,id.Amount Amount,CONCAT(e.EmpLNEN,' ',e.EmpFNEN) Sellby,CONCAT(c.CusLNEN,' ',c.CusFNEN) CustomerName,c.Phone Phone,c.Address Address,i.Date Date
+FROM InvoiceDetail id
+INNER JOIN Product p
+ON id.PID = p.PID
+INNER JOIN Invoice i
+ON id.InvoiceNo = i.InvoiceNo
+INNER JOIN Customers c
+ON i.CusID = c.CusID
+INNER JOIN Employee e
+ON i.EmpID = e.EmpID
+GO
+
+
+-- ----------------------------
+-- View structure for viewPurchase
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewPurchase]') AND type IN ('V'))
+	DROP VIEW [dbo].[viewPurchase]
+GO
+
+CREATE VIEW [dbo].[viewPurchase] AS SELECT p.PurCode PurCode,p.Date PurDate,p.Payment Payment,p.Balance Balance,CONCAT(s.SuLNEN,' ',s.SuFNEN) SupplierName,CONCAT(e.EmpLNEN,' ',e.EmpFNEN) EmployeeName,p.Total
+FROM Purchase p
+INNER JOIN Supplier s
+ON p.SuID = s.SuID
+INNER JOIN Employee e
+ON p.EmpID = e.EmpID
+GO
+
+
+-- ----------------------------
+-- View structure for viewStock
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewStock]') AND type IN ('V'))
+	DROP VIEW [dbo].[viewStock]
+GO
+
+CREATE VIEW [dbo].[viewStock] AS SELECT p.PCode AS PCode,
+					p.PName AS PName,
+					p.PSize AS PSize,
+					p.Color AS Color,
+					p.Quantity AS Quantity,
+					m.Description AS Brand,
+					pt.Description AS PhoneType,
+					t.Description AS Type,
+					p.Saleprice AS SalePrice,
+					p.Unitprice AS UnitPrice,
+					p.Image AS Image
+FROM Product AS p
+INNER JOIN Model AS m
+ON p.MID = m.MID
+INNER JOIN Phone_Type AS pt
+ON p.PTypeID = pt.PTypeID
+INNER JOIN Type AS t
+ON p.TID = t.TID
+GO
+
+
+-- ----------------------------
+-- View structure for viewSupplier
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewSupplier]') AND type IN ('V'))
+	DROP VIEW [dbo].[viewSupplier]
+GO
+
+CREATE VIEW [dbo].[viewSupplier] AS SELECT SuCode,CONCAT(SuLNKH,' ',SuFNKH) FullNameKH,CONCAT(SuLNEN,' ',SuFNEN) FullNameEN,Gender,Address,Phone,Phone2,Email,Fax,Fax2,Balance
+FROM Supplier
 GO
 
 
@@ -1367,6 +1330,15 @@ GO
 
 
 -- ----------------------------
+-- Primary Key structure for table InvoiceDetail
+-- ----------------------------
+ALTER TABLE [dbo].[InvoiceDetail] ADD CONSTRAINT [PK__InvoiceD__CBC1C7740D09FD3B] PRIMARY KEY CLUSTERED ([InvoiceNo], [PID])
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = OFF, ALLOW_PAGE_LOCKS = OFF)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Primary Key structure for table Model
 -- ----------------------------
 ALTER TABLE [dbo].[Model] ADD CONSTRAINT [PK__Model__C797348A85EE01B6] PRIMARY KEY CLUSTERED ([MID])
@@ -1407,6 +1379,15 @@ GO
 -- ----------------------------
 ALTER TABLE [dbo].[Purchase] ADD CONSTRAINT [PK__Purchase__DA08B2314CB4A4EA] PRIMARY KEY CLUSTERED ([PurID])
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
+-- Primary Key structure for table PurchaseDetail
+-- ----------------------------
+ALTER TABLE [dbo].[PurchaseDetail] ADD CONSTRAINT [PK__Purchase__C65FC76377BB0FC6] PRIMARY KEY CLUSTERED ([PurID], [PID])
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = OFF, ALLOW_PAGE_LOCKS = OFF)  
 ON [PRIMARY]
 GO
 
@@ -1476,10 +1457,10 @@ GO
 -- ----------------------------
 -- Foreign Keys structure for table InvoiceDetail
 -- ----------------------------
-ALTER TABLE [dbo].[InvoiceDetail] ADD CONSTRAINT [FK_InvoiceDetail_Product] FOREIGN KEY ([PID]) REFERENCES [Product] ([PID]) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE [dbo].[InvoiceDetail] ADD CONSTRAINT [FK_InvoiceDetail_Product] FOREIGN KEY ([PID]) REFERENCES [Product] ([PID]) ON DELETE CASCADE ON UPDATE CASCADE
 GO
 
-ALTER TABLE [dbo].[InvoiceDetail] ADD CONSTRAINT [FK_InvoiceDetail_Invoice] FOREIGN KEY ([InvoiceNo]) REFERENCES [Invoice] ([InvoiceNo]) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE [dbo].[InvoiceDetail] ADD CONSTRAINT [FK_InvoiceDetail_Invoice] FOREIGN KEY ([InvoiceNo]) REFERENCES [Invoice] ([InvoiceNo]) ON DELETE CASCADE ON UPDATE CASCADE
 GO
 
 
@@ -1509,9 +1490,9 @@ GO
 -- ----------------------------
 -- Foreign Keys structure for table PurchaseDetail
 -- ----------------------------
-ALTER TABLE [dbo].[PurchaseDetail] ADD CONSTRAINT [FK_PurchaseDetail_Product] FOREIGN KEY ([PID]) REFERENCES [Product] ([PID]) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE [dbo].[PurchaseDetail] ADD CONSTRAINT [FK_PurchaseDetail_Product] FOREIGN KEY ([PID]) REFERENCES [Product] ([PID]) ON DELETE CASCADE ON UPDATE CASCADE
 GO
 
-ALTER TABLE [dbo].[PurchaseDetail] ADD CONSTRAINT [FK_PurchaseDetail_Purchase] FOREIGN KEY ([PurID]) REFERENCES [Purchase] ([PurID]) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE [dbo].[PurchaseDetail] ADD CONSTRAINT [FK_PurchaseDetail_Purchase] FOREIGN KEY ([PurID]) REFERENCES [Purchase] ([PurID]) ON DELETE CASCADE ON UPDATE CASCADE
 GO
 
