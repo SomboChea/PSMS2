@@ -88,13 +88,18 @@ namespace PSMS
             Helper.BindGridView("SELECT * FROM viewStock;", binding, viewReport);
         }
 
-        List<reportCustomer> dataCustomers = new List<reportCustomer>();
-        List<reportEmployee> dataEmployees = new List<reportEmployee>();
-
+        List<reportCustomer> dataCustomers;
+        List<reportEmployee> dataEmployees;
+        List<reportInvoice> dataInvoices;
+        List<reportProduct> dataProducts;
+        List<reportPurchase> dataPurchases;
+        List<reportSupplier> dataSuppliers;
+        
         private void addCurrentCustomerToPrint()
         {
             DataSet ds = Helper.getDataSet("SELECT * FROM viewCustomer;");
             DataTable dt = ds.Tables[0];
+            dataCustomers = new List<reportCustomer>();
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -119,6 +124,7 @@ namespace PSMS
             DataSet ds = Helper.getDataSet("SELECT * FROM viewEmployee;");
             DataTable dt = ds.Tables[0];
 
+            dataEmployees = new List<reportEmployee>();
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 reportEmployee dataList = new reportEmployee();
@@ -133,6 +139,53 @@ namespace PSMS
                 dataList.JoinDate = dt.Rows[i]["JoinDate"].ToString();
 
                 dataEmployees.Add(dataList);
+            }
+        }
+
+        private void addCurrentProductToPrint()
+        {
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewStock;");
+            DataTable dt = ds.Tables[0];
+
+            dataProducts = new List<reportProduct>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                reportProduct dataList = new reportProduct();
+
+                dataList.Code = dt.Rows[i]["PCode"].ToString();
+                dataList.Name = dt.Rows[i]["PName"].ToString();
+                dataList.Size = dt.Rows[i]["PSize"].ToString();
+                dataList.Color = dt.Rows[i]["Color"].ToString();
+                dataList.Quantity = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
+                dataList.Brand = dt.Rows[i]["Brand"].ToString();
+                dataList.PType = dt.Rows[i]["PhoneType"].ToString();
+                dataList.Type = dt.Rows[i]["Type"].ToString();
+                dataList.SalePrice = Convert.ToDouble(dt.Rows[i]["SalePrice"].ToString());
+                dataList.UnitPrice = Convert.ToDouble(dt.Rows[i]["UnitPrice"].ToString());
+
+                dataProducts.Add(dataList);
+            }
+        }
+
+        private void addCurrentPurchaseToPrint()
+        {
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewPurchase;");
+            DataTable dt = ds.Tables[0];
+
+            dataPurchases = new List<reportPurchase>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                reportPurchase dataList = new reportPurchase();
+
+                dataList.PurCode = dt.Rows[i]["PurCode"].ToString();
+                dataList.PurDate = dt.Rows[i]["PurDate"].ToString();
+                dataList.Payment = Convert.ToDouble(dt.Rows[i]["Payment"].ToString());
+                dataList.Balance = Convert.ToDouble(dt.Rows[i]["Balance"].ToString());
+                dataList.SupName = dt.Rows[i]["SupplierName"].ToString();
+                dataList.EmpName = dt.Rows[i]["EmployeeName"].ToString();
+                dataList.Total = Convert.ToDouble(dt.Rows[i]["Total"].ToString());
+
+                dataPurchases.Add(dataList);
             }
         }
 

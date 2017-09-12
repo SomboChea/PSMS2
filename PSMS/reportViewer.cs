@@ -15,7 +15,7 @@ namespace PSMS
         {
             InitializeComponent();
             Class.FullMode.Fullscreen(this);
-
+           
             invoiceReportDoc.SetDataSource(reportInvoice);
             invoiceReportDoc.SetParameterValue(0, discount);
 

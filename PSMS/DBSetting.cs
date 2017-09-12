@@ -356,6 +356,7 @@ namespace PSMS
                 Username = txtUsername.Text;
                 Password = txtPassword.Text;
                 Authentication = (byte)cbAuthentication.SelectedIndex;
+                
                 MessageBox.Show("Saved!", "DB Setting");
 
                 reloadCheck();
@@ -388,6 +389,11 @@ namespace PSMS
         {
             get { return Properties.Settings.Default.Authentication; }
             set { Properties.Settings.Default.Authentication = value; Properties.Settings.Default.Save(); }
+        }
+
+        private string PSMS2Connection
+        {
+            get { return Properties.Settings.Default.PSMS2ConnectionString; }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
