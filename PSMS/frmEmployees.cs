@@ -118,7 +118,9 @@ namespace PSMS
                 cbBPos.SelectedValue = Convert.ToInt32(row["PosID"].ToString());
                 txtSalary.Text = row["Salary"].ToString();
                 Join_date.Text = row["JoinDate"].ToString();
-                pictureBox1.Image = Image.FromStream(new MemoryStream((byte[])row["Image"]));
+
+
+                // pictureBox1.Image = Image.FromStream(new MemoryStream((byte[])row["Image"]));
             }
         }
 

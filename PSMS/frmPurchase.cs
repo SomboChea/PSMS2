@@ -23,6 +23,7 @@ namespace PSMS
             InitializeComponent();
             initComboModel();
         }
+
         void initComboModel()
         {
             try
@@ -30,6 +31,7 @@ namespace PSMS
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Model", Connection.con);
                 SqlDataAdapter adapt = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
+                adapt.Fill(ds);
 
                 modelComboBox.DataSource = ds.Tables[0];
                 modelComboBox.DisplayMember = "Description";
@@ -38,8 +40,10 @@ namespace PSMS
                 adapt.Dispose();
                 cmd.Dispose();
             }
-            catch (Exception ) { }
+            catch (Exception) { }
         }
+
+
         private void supplierBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             Validate();
@@ -54,7 +58,7 @@ namespace PSMS
                 if (int.TryParse(modelValue, out value))
                 {
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM Product WHERE MID=@MID", Connection.con);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Product WHERE MID=@MID;", Connection.con);
                     cmd.Parameters.AddWithValue("@MID", this.modelComboBox.SelectedValue.ToString());
                     SqlDataAdapter adapt = new SqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
@@ -80,8 +84,7 @@ namespace PSMS
 
                         int selectedrowindex = PurchaseDetailDataGridView.SelectedCells[0].RowIndex;
                         DataGridViewRow selectedRow = PurchaseDetailDataGridView.Rows[selectedrowindex];
-
-
+                        
                         DataTable dt = new DataTable();
 
                         if (dt.Columns.Count == 0)
@@ -217,17 +220,18 @@ namespace PSMS
         {
             try
             {
-                int balance;
-                Convert.ToInt32(paymentLabel1.Text);
-                Convert.ToInt32(totalPriceLabel1.Text);
+                float balance = 0;
+
+                float payment = Helper.ifnull(paymentLabel1.Text) ? 0 :float.Parse(paymentLabel1.Text);
+                float totalPirce = Helper.ifnull(totalPriceLabel1.Text) ? 0 : float.Parse(totalPriceLabel1.Text);
+
                 if (dtGvBuy.Rows.Count == 0)
                 {
                     MessageBox.Show("Please select and buy product before you purchase!");
                 }
                 else
                 {
-
-                    SqlCommand cmd = new SqlCommand("INSERT into Purchase (Date,Payment,Balance,SuID,EmpID,Total) VALUES (@Date,@Payment,@Balance,@SuID,@EmpID,@Total)", Connection.con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO Purchase (Date,Payment,Balance,SuID,EmpID,Total) VALUES (@Date,@Payment,@Balance,@SuID,@EmpID,@Total);", Connection.con);
 
                     //cmd.Parameters.AddWithValue("@InvoiceCode", "U000002");
                     cmd.Parameters.AddWithValue("@Date", Convert.ToDateTime(dateDateTimePicker.Text));
@@ -237,20 +241,22 @@ namespace PSMS
                     cmd.Parameters.AddWithValue("@EmpID", empIDComboBox.SelectedValue.ToString());
                     cmd.Parameters.AddWithValue("@Total", totalPriceLabel1.Text);
 
+                    List<StructPurchaseDetail> purchaseDetail = new List<StructPurchaseDetail>(); 
+
+                    SqlCommand cmd3 = new SqlCommand("INSERT INTO PurchaseDetail ( PID, Quantity, Unitprice, Saleprice, Amount) VALUES ( @PID, @Quantity, @Unitprice, @Saleprice,@Amount)", Connection.con);
+
                     foreach (DataGridViewRow row in dtGvBuy.Rows)
                     {
-
-                        SqlCommand cmd3 = new SqlCommand("INSERT into PurchaseDetail ( PID, Quantity, Unitprice, Saleprice, Amount) VALUES ( @PID, @Quantity, @Unitprice, @Saleprice,@Amount)", Connection.con);
-
+                        StructPurchaseDetail data = new StructPurchaseDetail();
                         cmd3.Parameters.AddWithValue("@PID", row.Cells[0].Value);
                         cmd3.Parameters.AddWithValue("@Quantity", row.Cells[4].Value);
                         cmd3.Parameters.AddWithValue("@Unitprice", row.Cells[5].Value);
                         cmd3.Parameters.AddWithValue("@Saleprice", row.Cells[6].Value);
 
                         //Get total amount
-                        int total = Convert.ToInt32(row.Cells[4].Value) * Convert.ToInt32(row.Cells[5].Value);
+                        float total = Convert.ToInt32(row.Cells[4].Value) * Convert.ToInt32(row.Cells[5].Value);
                         cmd3.Parameters.AddWithValue("@Amount", total);
-                        balance = Convert.ToInt32(totalPriceLabel1.Text) - Convert.ToInt32(paymentLabel1.Text);
+                        balance = totalPirce - payment;
                         cmd.Parameters.AddWithValue("@Balance", balance);
                         
                         cmd3.ExecuteNonQuery();

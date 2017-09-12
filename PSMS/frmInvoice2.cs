@@ -236,6 +236,7 @@ namespace PSMS
                         foreach (DataGridViewRow row in dtGvBuy.Rows)
                         {
                             StructInvocieDetail data = new StructInvocieDetail(Convert.ToInt32(row.Cells[0].Value), Convert.ToInt32(row.Cells[4].Value), float.Parse(row.Cells[5].Value + ""));
+
                             invoiceDetails.Add(data);
 
                         }
