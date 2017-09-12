@@ -43,6 +43,7 @@ namespace PSMS
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewCustomer;",binding, viewReport);
             currentSelected = "customer";
+            
         }
 
         private void frmReport_FormClosing(object sender, FormClosingEventArgs e)

@@ -168,7 +168,7 @@ namespace PSMS
             supplierTableAdapter.Fill(supplierDataSet.Supplier);
 
             btnPrint.Enabled = false;
-            btnPurchase.Enabled = false;
+            btnPurchase.Enabled = true;
             try
             {
                 modelComboBox.SelectedIndex = 1;
@@ -252,36 +252,49 @@ namespace PSMS
                     cmd.Parameters.AddWithValue("@EmpID", empIDComboBox.SelectedValue.ToString());
                     cmd.Parameters.AddWithValue("@Total", totalPriceLabel1.Text);
 
+                    balance = totalPirce - payment;
+                    cmd.Parameters.AddWithValue("@Balance", balance);
+
+                    cmd.ExecuteNonQuery();
+
                     List<StructPurchaseDetail> purchaseDetail = new List<StructPurchaseDetail>(); 
 
-                    SqlCommand cmd3 = new SqlCommand("INSERT INTO PurchaseDetail ( PID, Quantity, Unitprice, Saleprice, Amount) VALUES ( @PID, @Quantity, @Unitprice, @Saleprice,@Amount)", Connection.con);
+                    SqlCommand cmd3 = new SqlCommand("INSERT INTO PurchaseDetail ( PurID, PID, Quantity, Unitprice, Saleprice, Amount) VALUES ( @PurID, @PID, @Quantity, @Unitprice, @Saleprice,@Amount)", Connection.con);
+
+                    int purID = Helper.GetLastId("Purchase");
 
                     foreach (DataGridViewRow row in dtGvBuy.Rows)
                     {
-                        StructPurchaseDetail data = new StructPurchaseDetail();
-                        cmd3.Parameters.AddWithValue("@PID", row.Cells[0].Value);
-                        cmd3.Parameters.AddWithValue("@Quantity", row.Cells[4].Value);
-                        cmd3.Parameters.AddWithValue("@Unitprice", row.Cells[5].Value);
-                        cmd3.Parameters.AddWithValue("@Saleprice", row.Cells[6].Value);
+                        StructPurchaseDetail data = new StructPurchaseDetail(purID,Convert.ToInt32(row.Cells[0].Value),Convert.ToInt32(row.Cells[4].Value), Convert.ToDouble(row.Cells[5].Value),Convert.ToDouble(row.Cells[6].Value));
 
-                        //Get total amount
-                        float total = Convert.ToInt32(row.Cells[4].Value) * Convert.ToInt32(row.Cells[5].Value);
-                        cmd3.Parameters.AddWithValue("@Amount", total);
-                        balance = totalPirce - payment;
-                        cmd.Parameters.AddWithValue("@Balance", balance);
-                        
-                        cmd3.ExecuteNonQuery();
-
-                        //Update Stock
-                        SqlCommand cmd5 = new SqlCommand("UPDATE Product SET Quantity = Quantity + @Quantity Where PID=@PID ", Connection.con);
-                        cmd5.Parameters.AddWithValue("@Quantity", row.Cells[4].Value);
-                        cmd5.Parameters.AddWithValue("@PID", row.Cells[0].Value);
-                        cmd5.ExecuteNonQuery();
-
-                        BalanceLabel.Text = balance.ToString();
+                        purchaseDetail.Add(data);
                     }
 
-                    cmd.ExecuteNonQuery();
+                    foreach (StructPurchaseDetail row in purchaseDetail)
+                    {
+                       try
+                        {
+                            cmd3.Parameters.AddWithValue("@PurID", row.PurID);
+                            cmd3.Parameters.AddWithValue("@PID", row.PID);
+                            cmd3.Parameters.AddWithValue("@Quantity", row.Quantity);
+                            cmd3.Parameters.AddWithValue("@Unitprice", row.UnitPrice);
+                            cmd3.Parameters.AddWithValue("@Saleprice", row.SalePrice);
+
+                            //Get total amount
+                            cmd3.Parameters.AddWithValue("@Amount", row.Amount);
+
+                            cmd3.ExecuteNonQuery();
+
+                            //Update Stock
+                            SqlCommand cmd5 = new SqlCommand("UPDATE Product SET Quantity = Quantity + @Quantity Where PID=@PID ", Connection.con);
+                            cmd5.Parameters.AddWithValue("@Quantity", row.Quantity);
+                            cmd5.Parameters.AddWithValue("@PID", row.PID);
+                            cmd5.ExecuteNonQuery();
+
+                            BalanceLabel.Text = balance.ToString();
+                        }
+                        catch (Exception) { }
+                    }
 
                     MetroMessageBox.Show(this, "New Purchase Save", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                    
