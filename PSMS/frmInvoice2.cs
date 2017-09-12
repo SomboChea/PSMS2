@@ -53,7 +53,19 @@ namespace PSMS
             //this.invoiceDetailTableAdapter.Fill(this.invoiceDetailDataSet.InvoiceDetail);
             //// TODO: This line of code loads data into the 'invoiceDataSet.Invoice' table. You can move, or remove it, as needed.
             //this.invoiceTableAdapter.Fill(this.invoiceDataSet.Invoice);
-           
+
+            btnPrint.Enabled = false;
+            btnPurchase.Enabled = false;
+
+            try
+            {
+                modelComboBox.SelectedIndex = 1;
+                modelComboBox.SelectedIndex = 0;
+            }
+            catch (Exception)
+            {
+             
+            }
         }
 
         private void invoiceBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -78,6 +90,28 @@ namespace PSMS
             pay.Show();
             paymentLabel1.Text = pay.txtAmount.Text;
             // Do whatever you want here
+            try{
+            double payamount = double.Parse(pay.txtAmount.Text);
+            double totalprice=double.Parse(totalPriceLabel1.Text)
+            if(payamount>totalprice)
+            {
+                MetroMessageBox.Show(this, "Successful Change Back " + (payamount-totalprice)+ "$");
+                btnPrint.Enabled = true;
+                btnPurchase.Enabled = true;
+            }
+            else if(payamount==totalprice){
+                MetroMessageBox.Show(this, "Successful Purchase");
+                btnPrint.Enabled = true;
+                btnPurchase.Enabled = true;
+            }
+            else{
+                MetroMessageBox.Show(this, "Please Insert again");
+            }
+            }
+            catch(Exception ex)
+            {
+                MetroMessageBox.Show(this, ex.Message);
+            }
         }
         
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)

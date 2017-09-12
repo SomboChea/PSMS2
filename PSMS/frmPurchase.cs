@@ -163,8 +163,15 @@ namespace PSMS
 
             // TODO: This line of code loads data into the 'supplierDataSet.Supplier' table. You can move, or remove it, as needed.
             supplierTableAdapter.Fill(supplierDataSet.Supplier);
-                      
 
+            btnPrint.Enabled = false;
+            btnPurchase.Enabled = false;
+            try
+            {
+                modelComboBox.SelectedIndex = 1;
+                modelComboBox.SelectedIndex = 0;
+            }
+            catch (Exception) { }
         }
 
         private void supplierBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
@@ -172,7 +179,7 @@ namespace PSMS
             Validate();
             supplierBindingSource.EndEdit();
             tableAdapterManager.UpdateAll(supplierDataSet);
-
+          
         }
 
         private void supplierBindingNavigatorSaveItem_Click_2(object sender, EventArgs e)
@@ -205,6 +212,10 @@ namespace PSMS
             pay = new frmPayment();
             pay.FormClosed += new FormClosedEventHandler(form2_FormClosed);
             pay.ShowDialog();
+            if (double.Parse(pay.txtAmount.Text) > double.Parse(totalPriceLabel1.Text))
+            {
+
+            }
         }
         void form2_FormClosed(object sender, FormClosedEventArgs e)
         {
