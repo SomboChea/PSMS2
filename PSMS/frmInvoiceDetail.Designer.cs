@@ -66,6 +66,8 @@
             // 
             // dgInv
             // 
+            this.dgInv.AllowUserToAddRows = false;
+            this.dgInv.AllowUserToDeleteRows = false;
             this.dgInv.AllowUserToResizeRows = false;
             this.dgInv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgInv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -92,7 +94,9 @@
             this.dgInv.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgInv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgInv.Location = new System.Drawing.Point(14, 88);
+            this.dgInv.MultiSelect = false;
             this.dgInv.Name = "dgInv";
+            this.dgInv.ReadOnly = true;
             this.dgInv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
@@ -106,6 +110,8 @@
             this.dgInv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgInv.Size = new System.Drawing.Size(671, 338);
             this.dgInv.TabIndex = 0;
+            this.dgInv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgInv_CellContentClick);
+            this.dgInv.Click += new System.EventHandler(this.dgInv_Click);
             // 
             // metroLabel19
             // 

@@ -14,6 +14,7 @@ namespace PSMS
     public partial class frmPayment : MetroForm
     {
         public static string passtxt;
+        public String pay;
         public frmPayment()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace PSMS
         private void btnPay_Click(object sender, EventArgs e)
         {
             passtxt = txtAmount.Text;
+            pay = txtAmount.Text;
             Close();
         }
 
