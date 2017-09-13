@@ -75,6 +75,15 @@ namespace PSMS
                     frmInvoiceDetail_Load(this, null);
                 }
             }
+            else
+            {
+                double newpayment, newbalance;
+                newbalance = balance - newpay;
+                newpayment = newpay + oldpay;
+                Connection.ExecuteScalar("Update Invoice set Balance='" + newbalance + "',Payment='" + newpayment + "' where InvoiceCode='" + selectrow_cell[0].Value + "'");
+
+                frmInvoiceDetail_Load(this, null);
+            }
         }
 
         private void dgInv_CellContentClick(object sender, DataGridViewCellEventArgs e)
