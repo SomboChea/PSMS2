@@ -93,7 +93,7 @@ namespace PSMS
         {
             
             frmPurchase pur1 = new frmPurchase();
-            Helper.Defaultform(pur1);
+            //Helper.Defaultform(pur1);
             pur1.ShowDialog();
         }
 

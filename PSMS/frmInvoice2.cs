@@ -384,9 +384,10 @@ namespace PSMS
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            addCurrentInvoiceToPrint(Helper.GetLastIdCode("Invoice"));
-            new reportViewer(listReport,100).ShowDialog();
+            addCurrentInvoiceToPrint(Helper.GetLastIdCode("Invoice","InvoiceNo","InvoiceCode"));
+
             btnPrint.Enabled = false;
+            new reportViewer(listReport,100).ShowDialog();
         }
     }
 }
