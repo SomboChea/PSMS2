@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using MetroFramework.Forms;
+using PSMS.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -67,7 +68,7 @@ namespace PSMS
 
         private void listStock_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            btnupdate.Enabled = listStock.SelectedIndices.Count > 0 ? true : false;
             btnRemove.Enabled = listStock.SelectedIndices.Count > 0 ? true : false;
            
             if(listStock.SelectedIndices.Count > 0)
@@ -82,6 +83,57 @@ namespace PSMS
                 
             }
 
+        }
+        
+
+        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmProduct frmpro = new frmProduct();
+            frmpro.itemPanel1.Items.Remove(frmpro.itemContainer4);
+            frmpro.closed = true;
+            frmpro.dgProduct.Visible = false;
+            ListViewItem.ListViewSubItemCollection selectitem = listStock.SelectedItems[0].SubItems;
+            
+            frmpro.txtPID.Text = int.Parse(PSMS.Class.Connection.ExecuteScalar("Select PID from Product where PCode='" + selectitem[0].Text + "'") + "")+"";
+            frmpro.txtPCode.Text = selectitem[0].Text;
+            frmpro.txtPName.Text = selectitem[1].Text;
+            frmpro.txtPSize.Text = selectitem[2].Text;
+            frmpro.txtColor.Text = selectitem[3].Text;
+            frmpro.txtQuantity.Text = selectitem[4].Text;
+            frmpro.model = int.Parse(Connection.ExecuteScalar("Select MID from Model where Description='" + selectitem[5].Text + "'") + "");
+            frmpro.phonetype = int.Parse(Connection.ExecuteScalar("Select TID from Type where Description='" + selectitem[7].Text + "'") + "");
+            frmpro.type = int.Parse(Connection.ExecuteScalar("Select PTypeID from Phone_Type where Description='" + selectitem[6].Text + "'") + "");      
+            frmpro.txtSalePrice.Text = selectitem[8].Text;
+            frmpro.txtUnitprice.Text = selectitem[9].Text;
+            frmpro.pro_img.Image = listStock.LargeImageList.Images[listStock.SelectedIndices[0]];
+            
+            frmpro.ShowDialog();
+
+            if (frmpro.updated)
+            {
+               foreach(ListViewItem temp in listStock.Items)
+               {
+                   listStock.Items.Remove(temp);
+               }
+               frmStock_Load(this, null);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmProduct frmpro = new frmProduct();
+            frmpro.dgProduct.Visible = false;
+            frmpro.itemPanel1.Items.Remove(frmpro.itemContainer2);
+            frmpro.itemPanel1.Items.Remove(frmpro.itemContainer3);
+
+            frmpro.closed = true;
+            frmpro.ShowDialog();
+            foreach (ListViewItem temp in listStock.Items)
+            {
+                listStock.Items.Remove(temp);
+            }
+            frmStock_Load(this, null);
         }
     }
 }

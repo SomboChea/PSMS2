@@ -42,7 +42,7 @@
             this.cbPriceIn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnRemove = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnupdate = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.txtQty = new MetroFramework.Controls.MetroTextBox();
@@ -156,24 +156,24 @@
             this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // button1
+            // btnupdate
             // 
-            this.button1.BackColor = System.Drawing.Color.SaddleBrown;
-            this.button1.Enabled = false;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(1115, 111);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 32);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Update";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnupdate.BackColor = System.Drawing.Color.SaddleBrown;
+            this.btnupdate.Enabled = false;
+            this.btnupdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnupdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnupdate.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnupdate.Location = new System.Drawing.Point(1115, 111);
+            this.btnupdate.Name = "btnupdate";
+            this.btnupdate.Size = new System.Drawing.Size(117, 32);
+            this.btnupdate.TabIndex = 3;
+            this.btnupdate.Text = "Update";
+            this.btnupdate.UseVisualStyleBackColor = false;
+            this.btnupdate.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Green;
-            this.button2.Enabled = false;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
@@ -183,6 +183,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "Add New";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // metroLabel1
             // 
@@ -316,7 +317,7 @@
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnupdate);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.listStock);
             this.Controls.Add(this.comboBox1);
@@ -344,7 +345,7 @@
         private System.Windows.Forms.ColumnHeader cbPriceIn;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnupdate;
         private System.Windows.Forms.Button button2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTextBox txtQty;

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,9 @@ namespace PSMS
         frmModelFunction moFun;
         frmTypeFunction tFun;
         frmPTypeCodeFunction ptFun;
+
+        public bool updated = false;
+        public bool closed = false;
         public frmProduct()
         {
             this.ControlBox = false;
@@ -27,12 +31,24 @@ namespace PSMS
             ptFun = new frmPTypeCodeFunction();
             tFun = new frmTypeFunction();
         }
+
+        public int phonetype = 0,model=0,type=0;
+
         private void frmProduct_Load(object sender, EventArgs e)
         {
+           
             proFun.FillDataGridView(ref dgProduct);
-            moFun.FillComboBox(ref cbBMo, "Description","MID");
+            moFun.FillComboBox(ref cbBMo, "Description", "MID");
             ptFun.FillComboBox(ref cbBPT, "Description", "PTypeID");
             tFun.FillComboBox(ref cbbType, "Description", "TID");
+
+            cbBMo.SelectedValue = 2;
+            if (closed)
+            {
+                cbBMo.SelectedValue = model;
+                cbBPT.SelectedValue = phonetype;
+                cbbType.SelectedValue = type;
+            }
         }
         private frmPro GetPro()
         {
@@ -50,6 +66,9 @@ namespace PSMS
                 pro.type = Convert.ToInt32(cbbType.SelectedValue);
                 pro.saleprice = (float.Parse)(txtSalePrice.Text);
                 pro.unitprice = float.Parse(txtUnitprice.Text);
+                MemoryStream mem=new MemoryStream();
+                pro_img.Image.Save(mem,System.Drawing.Imaging.ImageFormat.Jpeg);
+                pro.img = mem.ToArray();
                 return pro;
             }
             catch (Exception)
@@ -113,7 +132,7 @@ namespace PSMS
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        public void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
@@ -122,8 +141,13 @@ namespace PSMS
                 {
                     MetroMessageBox.Show(this, "Record Update", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     proFun.FillDataGridView(ref dgProduct);
-
+                    updated = true;
                 }
+                if (closed)
+                {
+                    this.Dispose();
+                }
+               
             }
             catch(Exception ex)
             {
@@ -143,7 +167,8 @@ namespace PSMS
                     {
                         MetroMessageBox.Show(this, "Record Deleted", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         proFun.FillDataGridView(ref dgProduct);
-
+                        if (closed)
+                            this.Dispose();
                     }
                 }
                 else if (dia == DialogResult.No)
@@ -187,6 +212,7 @@ namespace PSMS
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             OpenFileDialog pd = new OpenFileDialog();
+            pd.Filter = "Image JPG (*.jpg)|*.jpg";
             if (pd.ShowDialog() == DialogResult.OK)
             {
                 Image img = Image.FromFile(pd.FileName);

@@ -49,7 +49,7 @@ namespace PSMS.Class
                     }
                     catch (Exception)
                     {
-                        imglist.Images.Add(Properties.Resources.employee);
+                        imglist.Images.Add(Properties.Resources.Product);
                     }
 
                     imglist.ImageSize = new Size(100, 100);

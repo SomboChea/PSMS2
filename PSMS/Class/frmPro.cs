@@ -19,5 +19,6 @@ namespace PSMS
         public int type { set; get; }
         public float saleprice { set; get; }
         public float unitprice { set; get; }
+        public byte[] img { get; set; }
     }
 }

@@ -38,7 +38,7 @@ namespace PSMS
         }
         public SqlParameter[] GetParameter(frmPro Pro)
         {
-            SqlParameter[] param = new SqlParameter[11];
+            SqlParameter[] param = new SqlParameter[12];
             try
             {
                 param[0] = new SqlParameter("PID", Pro.pro_id);
@@ -52,6 +52,7 @@ namespace PSMS
                 param[8] = new SqlParameter("TID", Pro.type);
                 param[9] = new SqlParameter("Saleprice", Pro.saleprice);
                 param[10] = new SqlParameter("Unitprice", Pro.unitprice);
+                param[11] = new SqlParameter("img", Pro.img);
                 return param;
             }
             catch (Exception)
@@ -62,8 +63,8 @@ namespace PSMS
         public int Insert(frmPro Pro)
         {
             return base.ExecNonQuery("INSERT INTO " +
-                "Product(PName, PSize, Color, Quantity, MID, PTypeID,TID,Saleprice,Unitprice) " +
-                "VALUES(@pname, @Psize, @Color, @Quantity, @MID, @PTypeID, @TID, @Saleprice, @Unitprice)",
+                "Product(PName, PSize, Color, Quantity, MID, PTypeID,TID,Saleprice,Unitprice,Image) " +
+                "VALUES(@pname, @Psize, @Color, @Quantity, @MID, @PTypeID, @TID, @Saleprice, @Unitprice,Convert(varbinary(max),@img))",
                 GetParameter(Pro));
         }
 
@@ -78,7 +79,7 @@ namespace PSMS
         public int Update(frmPro Pro)
         {
             return base.ExecNonQuery("UPDATE Product " +
-                "SET PName=@PName, PSize=@PSize, Color=@Color, Quantity=@Quantity, MID=@MID, PTypeID=@PTypeID, TID=@TID, Saleprice=@Saleprice, Unitprice=@Unitprice WHERE PID=@PID", GetParameter(Pro));
+                "SET PName=@PName, PSize=@PSize, Color=@Color, Quantity=@Quantity, MID=@MID, PTypeID=@PTypeID, TID=@TID, Saleprice=@Saleprice, Unitprice=@Unitprice,Image=convert(varbinary(max),@img) WHERE PID=@PID", GetParameter(Pro));
                 
         }
 

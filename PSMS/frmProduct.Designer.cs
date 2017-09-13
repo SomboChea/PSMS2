@@ -133,7 +133,7 @@
             // 
             // pro_img
             // 
-            this.pro_img.Image = global::PSMS.Properties.Resources._13898740_1126829754049156_1722755725_o;
+            this.pro_img.Image = global::PSMS.Properties.Resources.Product;
             this.pro_img.Location = new System.Drawing.Point(664, 80);
             this.pro_img.Name = "pro_img";
             this.pro_img.Size = new System.Drawing.Size(99, 110);
@@ -766,42 +766,42 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroTextBox txtPCode;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroLabel metroLabel10;
-        private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroTextBox txtQuantity;
-        private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroTextBox txtColor;
-        private MetroFramework.Controls.MetroLabel metroLabel6;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroTextBox txtPName;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroGrid dgProduct;
-        private DevComponents.DotNetBar.ItemPanel itemPanel1;
-        private DevComponents.DotNetBar.ItemContainer itemContainer4;
-        private DevComponents.DotNetBar.Metro.MetroTileItem btnAdd;
-        private DevComponents.DotNetBar.ItemContainer itemContainer2;
-        private DevComponents.DotNetBar.Metro.MetroTileItem btnSave;
-        private DevComponents.DotNetBar.ItemContainer itemContainer3;
-        private DevComponents.DotNetBar.Metro.MetroTileItem btnDel;
-        private DevComponents.DotNetBar.Metro.MetroTileItem btnClr;
-        private MetroFramework.Controls.MetroLabel metroLabel11;
-        private MetroFramework.Controls.MetroTextBox txtUnitprice;
-        private MetroFramework.Controls.MetroTextBox txtSalePrice;
-        private MetroFramework.Controls.MetroTextBox txtPSize;
-        private MetroFramework.Controls.MetroLabel metroLabel9;
-        private System.Windows.Forms.ComboBox cbBMo;
-        private System.Windows.Forms.ComboBox cbBPT;
-        private System.Windows.Forms.ComboBox cbbType;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pro_img;
-        private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.Button button5;
-        private MetroFramework.Controls.MetroTextBox txtPID;
-        private MetroFramework.Controls.MetroLabel metroLabel12;
+        public MetroFramework.Controls.MetroPanel metroPanel1;
+        public MetroFramework.Controls.MetroLabel metroLabel4;
+        public MetroFramework.Controls.MetroLabel metroLabel3;
+        public MetroFramework.Controls.MetroLabel metroLabel10;
+        public MetroFramework.Controls.MetroLabel metroLabel7;
+        public MetroFramework.Controls.MetroLabel metroLabel8;
+        public MetroFramework.Controls.MetroLabel metroLabel5;
+        public MetroFramework.Controls.MetroLabel metroLabel6;
+        public MetroFramework.Controls.MetroLabel metroLabel1;
+        public MetroFramework.Controls.MetroLabel metroLabel2;
+        public MetroFramework.Controls.MetroGrid dgProduct;
+        public MetroFramework.Controls.MetroLabel metroLabel11;
+        public MetroFramework.Controls.MetroLabel metroLabel9;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.PictureBox pro_img;
+        public System.Windows.Forms.Button btnBrowse;
+        public System.Windows.Forms.Button button5;
+        public MetroFramework.Controls.MetroLabel metroLabel12;
+        public MetroFramework.Controls.MetroTextBox txtPCode;
+        public MetroFramework.Controls.MetroTextBox txtQuantity;
+        public MetroFramework.Controls.MetroTextBox txtColor;
+        public MetroFramework.Controls.MetroTextBox txtPName;
+        public MetroFramework.Controls.MetroTextBox txtUnitprice;
+        public MetroFramework.Controls.MetroTextBox txtSalePrice;
+        public MetroFramework.Controls.MetroTextBox txtPSize;
+        public System.Windows.Forms.ComboBox cbBMo;
+        public System.Windows.Forms.ComboBox cbBPT;
+        public System.Windows.Forms.ComboBox cbbType;
+        public MetroFramework.Controls.MetroTextBox txtPID;
+        public DevComponents.DotNetBar.ItemContainer itemContainer4;
+        public DevComponents.DotNetBar.Metro.MetroTileItem btnAdd;
+        public DevComponents.DotNetBar.ItemContainer itemContainer2;
+        public DevComponents.DotNetBar.Metro.MetroTileItem btnSave;
+        public DevComponents.DotNetBar.ItemContainer itemContainer3;
+        public DevComponents.DotNetBar.Metro.MetroTileItem btnDel;
+        public DevComponents.DotNetBar.Metro.MetroTileItem btnClr;
+        public DevComponents.DotNetBar.ItemPanel itemPanel1;
     }
 }
