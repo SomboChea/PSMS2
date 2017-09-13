@@ -148,11 +148,11 @@ namespace PSMS.Class
             }
         }
 
-        public static string GetLastIdCode(string table_name)
+        public static string GetLastIdCode(string table_name, string col_id,string col_code)
         {
             SqlCommand sqlcmd = new SqlCommand();
             sqlcmd.Connection = Connection.con;
-            sqlcmd.CommandText = "SELECT InvoiceCode FROM " + table_name + " WHERE InvoiceNo = IDENT_CURRENT('" + table_name + "');";
+            sqlcmd.CommandText = "SELECT " + col_code + " FROM " + table_name + " WHERE " + col_id + " = IDENT_CURRENT('" + table_name + "');";
 
             try
             {

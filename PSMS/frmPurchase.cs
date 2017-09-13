@@ -297,7 +297,8 @@ namespace PSMS
                     }
 
                     MetroMessageBox.Show(this, "New Purchase Save", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                   
+
+                    btnPrint.Enabled = true;
                 }
             }
             catch(Exception) { }
@@ -308,6 +309,39 @@ namespace PSMS
         {
             frmPurchaseDetail frmPude = new frmPurchaseDetail();
             frmPude.ShowDialog();
+        }
+
+        List<reportPurchaseRenew> dataPurchases;
+        private void addCurrentPurchaseToPrint(string code)
+        {
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewPurchase WHERE PurCode = '" + code + "';");
+            DataTable dt = ds.Tables[0];
+
+            dataPurchases = new List<reportPurchaseRenew>();
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                reportPurchaseRenew dataList = new reportPurchaseRenew();
+
+                dataList.PurCode = dt.Rows[i]["PurCode"].ToString();
+                dataList.PurDate = dt.Rows[i]["PurDate"].ToString();
+                dataList.ProName = dt.Rows[i]["ProName"].ToString();
+                dataList.Quantity = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
+                dataList.UnitPrice = Convert.ToDouble(dt.Rows[i]["Unitprice"].ToString());
+                dataList.Payment = Convert.ToDouble(dt.Rows[i]["Payment"].ToString());
+                dataList.Balance = Convert.ToDouble(dt.Rows[i]["Balance"].ToString());
+                dataList.SupName = dt.Rows[i]["SupplierName"].ToString();
+                dataList.EmpName = dt.Rows[i]["EmployeeName"].ToString();
+                dataList.Total = Convert.ToDouble(dt.Rows[i]["Total"].ToString());
+
+                dataPurchases.Add(dataList);
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            addCurrentPurchaseToPrint(Helper.GetLastIdCode("Purchase","PurID","PurCode"));
+            new reportViewer(dataPurchases).ShowDialog();
         }
     }
 }
