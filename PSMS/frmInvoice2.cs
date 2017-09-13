@@ -387,7 +387,7 @@ namespace PSMS
             addCurrentInvoiceToPrint(Helper.GetLastIdCode("Invoice","InvoiceNo","InvoiceCode"));
 
             btnPrint.Enabled = false;
-            new reportViewer(listReport,0).ShowDialog();
+            new reportViewer(listReport).ShowDialog();
         }
     }
 }

@@ -42,6 +42,7 @@
             this.dgData = new MetroFramework.Controls.MetroGrid();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -213,11 +214,23 @@
             this.metroLabel1.TabIndex = 33;
             this.metroLabel1.Text = "Search";
             // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.Location = new System.Drawing.Point(719, 383);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(98, 52);
+            this.metroTile1.TabIndex = 34;
+            this.metroTile1.Text = "Pay";
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
+            // 
             // frmPurchaseDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 480);
+            this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.itemPanel1);
@@ -244,5 +257,6 @@
         private MetroFramework.Controls.MetroGrid dgData;
         private System.Windows.Forms.TextBox textBox1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroTile metroTile1;
     }
 }

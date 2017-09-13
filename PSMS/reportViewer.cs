@@ -11,17 +11,6 @@ namespace PSMS
         {
             InitializeComponent();
         }
-        
-        public reportViewer(List<Class.reportInvoice> reportInvoice,float discount)
-        {
-            InitializeComponent();
-            Class.FullMode.Fullscreen(this);
-           
-            invoiceReportDoc.SetDataSource(reportInvoice);
-            invoiceReportDoc.SetParameterValue(0, discount);
-
-            crystalReportViewer1.ReportSource = invoiceReportDoc;
-        }
 
         public reportViewer(List<Class.reportInvoice> reportInvoice)
         {
@@ -29,7 +18,6 @@ namespace PSMS
             Class.FullMode.Fullscreen(this);
 
             invoiceReportDoc.SetDataSource(reportInvoice);
-            invoiceReportDoc.SetParameterValue(0, 0);
 
             crystalReportViewer1.ReportSource = invoiceReportDoc;
         }
