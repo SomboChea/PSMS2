@@ -42,74 +42,42 @@ namespace PSMS
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             ////this.Hide();
             ////frmInv = new frmInvoice2();
             ////frmInv.Show();
             frmPayment frmpay = new frmPayment();
             frmpay.ShowDialog();
-           
 
-            DataGridViewCellCollection selectrow_cell= dgInv.SelectedRows[0].Cells;
+
+            DataGridViewCellCollection selectrow_cell = dgInv.SelectedRows[0].Cells;
             double newpay;
+
             try
             {
-                newpay =  double.Parse(frmpay.pay);
+                newpay = double.Parse(frmpay.pay);
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 newpay = 0;
             }
-            double oldpay = double.Parse(dgInv.SelectedRows[0].Cells[5].Value+"");
+
+            double oldpay = double.Parse(dgInv.SelectedRows[0].Cells[5].Value + "");
             double balance = double.Parse(selectrow_cell[7].Value + "");
-            if(newpay>=balance)
+            if (newpay >= balance)
             {
                 Connection.ExecuteScalar("Update Invoice set PaymentVerify=1, Balance=0,Payment=TotalPrice where InvoiceCode='" + selectrow_cell[0].Value + "'");
-                if(newpay>balance){
-                   MessageBox.Show("U must Change Back : "+Environment.NewLine+(newpay-balance)+" $");
-=======
-            try
-            {
-                ////this.Hide();
-                ////frmInv = new frmInvoice2();
-                ////frmInv.Show();
-                frmPayment frmpay = new frmPayment();
-                frmpay.ShowDialog();
-
-
-                DataGridViewCellCollection selectrow_cell = dgInv.SelectedRows[0].Cells;
-                double newpay = frmpay.pay.Trim() == "" ? 0 : double.Parse(frmpay.pay);
-                double oldpay = double.Parse(dgInv.SelectedRows[0].Cells[5].Value + "");
-                double balance = double.Parse(selectrow_cell[7].Value + "");
-                if (newpay >= balance)
+                if (newpay > balance)
                 {
-                    Connection.ExecuteScalar("Update Invoice set PaymentVerify=1, Balance=0,Payment=TotalPrice where InvoiceCode='" + selectrow_cell[0] + "'");
-                    if (newpay > balance)
-                    {
-                        MessageBox.Show("U must Change Back : " + Environment.NewLine + (newpay - balance) + " $");
-                    }
+                    MessageBox.Show("U must Change Back : " + Environment.NewLine + (newpay - balance) + " $");
                 }
                 else
                 {
                     double newpayment, newbalance;
                     newbalance = balance - newpay;
                     newpayment = newpay + oldpay;
-                    Connection.ExecuteScalar("Update Invoice set Balance='" + newbalance + "',Payment='" + newpayment + "' where InvoiceCode='" + selectrow_cell[0] + "'");
->>>>>>> 494a14cd4b87bd6d1a70a71de9af5fce0dae2da8
+                    Connection.ExecuteScalar("Update Invoice set Balance='" + newbalance + "',Payment='" + newpayment + "' where InvoiceCode='" + selectrow_cell[0].Value + "'");
+                    frmInvoiceDetail_Load(this, null);
                 }
-
-                frmInvoiceDetail_Load(this, null);
-            }
-<<<<<<< HEAD
-            else{
-                double newpayment, newbalance;
-                newbalance = balance-newpay;
-                newpayment = newpay + oldpay;
-                Connection.ExecuteScalar("Update Invoice set Balance='"+newbalance+"',Payment='"+newpayment+"' where InvoiceCode='" + selectrow_cell[0].Value + "'");
-=======
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
->>>>>>> 494a14cd4b87bd6d1a70a71de9af5fce0dae2da8
             }
         }
 
