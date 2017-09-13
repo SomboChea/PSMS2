@@ -50,12 +50,19 @@ namespace PSMS
            
 
             DataGridViewCellCollection selectrow_cell= dgInv.SelectedRows[0].Cells;
-            double newpay = frmpay.pay.Trim() == "" ? 0 : double.Parse(frmpay.pay);
+            double newpay;
+            try
+            {
+                newpay =  double.Parse(frmpay.pay);
+            }
+            catch (Exception) {
+                newpay = 0;
+            }
             double oldpay = double.Parse(dgInv.SelectedRows[0].Cells[5].Value+"");
             double balance = double.Parse(selectrow_cell[7].Value + "");
             if(newpay>=balance)
             {
-                Connection.ExecuteScalar("Update Invoice set PaymentVerify=1, Balance=0,Payment=TotalPrice where InvoiceCode='" + selectrow_cell[0] + "'");
+                Connection.ExecuteScalar("Update Invoice set PaymentVerify=1, Balance=0,Payment=TotalPrice where InvoiceCode='" + selectrow_cell[0].Value + "'");
                 if(newpay>balance){
                    MessageBox.Show("U must Change Back : "+Environment.NewLine+(newpay-balance)+" $");
                 }
@@ -64,7 +71,7 @@ namespace PSMS
                 double newpayment, newbalance;
                 newbalance = balance-newpay;
                 newpayment = newpay + oldpay;
-                Connection.ExecuteScalar("Update Invoice set Balance='"+newbalance+"',Payment='"+newpayment+"' where InvoiceCode='" + selectrow_cell[0] + "'");
+                Connection.ExecuteScalar("Update Invoice set Balance='"+newbalance+"',Payment='"+newpayment+"' where InvoiceCode='" + selectrow_cell[0].Value + "'");
             }
 
             frmInvoiceDetail_Load(this, null);
