@@ -21,6 +21,7 @@ namespace PSMS
             btnNew.Visible = false;
             btnDel.Visible = false;
             btnSave.Visible = false;
+            itemPanel1.Visible = false;
 
             purFun = new frmPurchaseFunction();
         }
@@ -53,7 +54,7 @@ namespace PSMS
                 double balance = double.Parse(selectrow_cell[3].Value + "");
                 if (newpay >= balance)
                 {
-                    Connection.ExecuteScalar("Update Purchase set Balance=0,Payment=TotalPrice where PurCode='" + selectrow_cell[0].Value + "'");
+                    Connection.ExecuteScalar("Update Purchase set Balance=0,Payment=Total where PurCode='" + selectrow_cell[0].Value + "'");
                     if (newpay > balance)
                     {
                         MessageBox.Show("U must Change Back : " + Environment.NewLine + (newpay - balance) + " $");
