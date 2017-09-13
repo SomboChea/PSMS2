@@ -50,7 +50,7 @@ namespace PSMS
                     newpay = 0;
                 }
 
-                double oldpay = double.Parse(dgData.SelectedRows[0].Cells[5].Value + "");
+                double oldpay = double.Parse(dgData.SelectedRows[0].Cells[3].Value + "");
                 double balance = double.Parse(selectrow_cell[3].Value + "");
                 if (newpay >= balance)
                 {
@@ -68,6 +68,12 @@ namespace PSMS
 
                         frmPurchaseDetail_Load(this, null);
                     }
+                }
+                else
+                {
+                    double stackPay = balance - newpay;
+                    Connection.ExecuteScalar("Update Purchase set Balance="+stackPay+",Payment=" + newpay + " where PurCode='" + selectrow_cell[0].Value + "'");
+                    frmPurchaseDetail_Load(this, null);
                 }
             }
             catch(Exception ex)
