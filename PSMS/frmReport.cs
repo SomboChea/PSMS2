@@ -27,54 +27,59 @@ namespace PSMS
 
         private void frmReport_Load(object sender, EventArgs e)
         {
-            metroTile1_Click(sender, e);
+                metroTile1_Click(sender, e);
+        }
+
+        private void dateEnable(bool enble)
+        {
+            if (enble)
+            {
+                dateStart.Enabled = true;
+                dateEnd.Enabled = true;
+                btnFilter.Enabled = true;
+            }
+            else
+            {
+                dateStart.Enabled = false;
+                dateEnd.Enabled = false;
+                btnFilter.Enabled = false;
+            }
         }
 
         BindingSource binding = new BindingSource();
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
-
-            //ReportDocument cryRpt = new ReportDocument();
-            // cryRpt.Load(@"Z:\Develop Tool\Backup project\Beta\PSMS\PSMS\Reports\CusReport.rpt");
-            // crystalReportViewer1.ReportSource = cryRpt;
-            // crystalReportViewer1.Refresh();
             
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewCustomer;",binding, viewReport);
+
+            dateEnable(false);
             currentSelected = "customer";
             
         }
 
         private void frmReport_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //this.Hide();
-            //frmMain main = new frmMain();
-            //main.Show();
+            
         }
 
         private void metroTile5_Click(object sender, EventArgs e)
         {
-            //ReportDocument cryRpt = new ReportDocument();
-            //cryRpt.Load(@"Z:\Develop Tool\Backup project\Beta\PSMS\PSMS\Reports\SuReport.rpt");
-            //crystalReportViewer1.ReportSource = cryRpt;
-            //crystalReportViewer1.Refresh();
-
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewSupplier;", binding, viewReport);
+
+            dateEnable(false);
             currentSelected = "supplier";
 
         }
 
         private void metroTile4_Click(object sender, EventArgs e)
         {
-            //ReportDocument cryRpt = new ReportDocument();
-            //cryRpt.Load(@"Z:\Develop Tool\Backup project\Beta\PSMS\PSMS\Reports\ProReport.rpt");
-            //crystalReportViewer1.ReportSource = cryRpt;
-            //crystalReportViewer1.Refresh();
-
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT EmpCode,FullNameEN,Gender,IDCard,Address,Phone,Email,PositionName,Salary,JoinDate FROM viewEmployee;", binding, viewReport);
+
+            dateEnable(false);
             currentSelected = "employee";
         }
 
@@ -82,6 +87,8 @@ namespace PSMS
         {
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT PurCode,Date,Payment,Balance,Total FROM Purchase;", binding, viewReport);
+
+            dateEnable(true);
             currentSelected = "purchase";
         }
 
@@ -89,6 +96,8 @@ namespace PSMS
         {
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,Date FROM Invoice;", binding, viewReport);
+
+            dateEnable(true);
             currentSelected = "invoice";
         }
 
@@ -96,6 +105,8 @@ namespace PSMS
         {
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT PCode,PName,PSize,Color,Quantity,Brand,PhoneType,Type,SalePrice,UnitPrice FROM viewStock;", binding, viewReport);
+
+            dateEnable(false);
             currentSelected = "stock";
         }
 
@@ -316,11 +327,22 @@ namespace PSMS
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
+            string dStart = dateStart.Value.ToString("yyyy-MM-dd");
+            string dEnd = dateEnd.Value.ToString("yyyy-MM-dd");
+            
             try
             {
                 if(currentSelected.Equals("invoice"))
                 {
-                    
+                    viewReport.DataSource = binding;
+                    Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,Date FROM Invoice WHERE Date BETWEEN '"+dStart+"' AND '"+dEnd+"' ;", binding, viewReport);
+                    currentSelected = "invoice";
+                }
+                else if(currentSelected.Equals("purchase"))
+                {
+                    viewReport.DataSource = binding;
+                    Helper.BindGridView("SELECT PurCode,Date,Payment,Balance,Total FROM Purchase WHERE Date BETWEEN '" + dStart + "' AND '" + dEnd + "';", binding, viewReport);
+                    currentSelected = "purchase";
                 }
             }
             catch (Exception) { return; }

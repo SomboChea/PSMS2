@@ -90,7 +90,7 @@ namespace PSMS.Class
         public static void BindGridView(string cmdText,BindingSource bindinSource, DataGridView gridView)
         {
             try
-            {
+                {
                 DataTable dt = new DataTable();
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmdText, Connection.con);
@@ -106,9 +106,9 @@ namespace PSMS.Class
 
                 
             }
-            catch(SqlException)
+            catch(SqlException ex)
             {
-                MessageBox.Show("Can't connect to database!");
+                MessageBox.Show("Can't connect to database!"+Environment.NewLine + ex.Message);
             }
 
         }

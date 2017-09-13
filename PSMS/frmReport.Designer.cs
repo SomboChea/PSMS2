@@ -199,7 +199,6 @@
             // 
             // dateStart
             // 
-            this.dateStart.Enabled = false;
             this.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateStart.Location = new System.Drawing.Point(344, 62);
             this.dateStart.MinimumSize = new System.Drawing.Size(0, 29);
@@ -209,7 +208,6 @@
             // 
             // dateEnd
             // 
-            this.dateEnd.Enabled = false;
             this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateEnd.Location = new System.Drawing.Point(524, 62);
             this.dateEnd.MinimumSize = new System.Drawing.Size(0, 29);
@@ -230,7 +228,6 @@
             // btnFilter
             // 
             this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnFilter.Enabled = false;
             this.btnFilter.ForeColor = System.Drawing.Color.White;
             this.btnFilter.Location = new System.Drawing.Point(650, 62);
             this.btnFilter.Name = "btnFilter";
