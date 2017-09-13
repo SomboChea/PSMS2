@@ -74,7 +74,7 @@ namespace PSMS
             //crystalReportViewer1.Refresh();
 
             viewReport.DataSource = binding;
-            Helper.BindGridView("SELECT * FROM viewEmployee;", binding, viewReport);
+            Helper.BindGridView("SELECT EmpCode,FullNameEN,Gender,IDCard,Address,Phone,Email,PositionName,Salary,JoinDate FROM viewEmployee;", binding, viewReport);
             currentSelected = "employee";
         }
 
@@ -95,7 +95,7 @@ namespace PSMS
         private void viewStock_Click(object sender, EventArgs e)
         {
             viewReport.DataSource = binding;
-            Helper.BindGridView("SELECT * FROM viewStock;", binding, viewReport);
+            Helper.BindGridView("SELECT PCode,PName,PSize,Color,Quantity,Brand,PhoneType,Type,SalePrice,UnitPrice FROM viewStock;", binding, viewReport);
             currentSelected = "stock";
         }
 

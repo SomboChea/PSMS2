@@ -236,7 +236,11 @@
             this.Controls.Add(this.itemPanel1);
             this.Controls.Add(this.dgData);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Movable = false;
             this.Name = "frmPurchaseDetail";
+            this.Resizable = false;
             this.Text = "PurchaseDetail";
             this.Load += new System.EventHandler(this.frmPurchaseDetail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).EndInit();
