@@ -26,6 +26,9 @@ namespace PSMS
         private void frmInvoiceDetail_Load(object sender, EventArgs e)
         {
             Invfun.FillDataGridView(ref dgInv);
+            btnDel.Visible = false;
+            btnSave.Visible = false;
+            btnNew.Visible = true;
         }
         private frmIn GetInv() 
         {
