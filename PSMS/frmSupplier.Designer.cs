@@ -61,9 +61,9 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.btnpre = new System.Windows.Forms.Button();
             this.btnNexts = new System.Windows.Forms.Button();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.btnNext = new DevComponents.DotNetBar.ButtonX();
             this.btnPrevious = new DevComponents.DotNetBar.ButtonX();
-            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.dgSu = new MetroFramework.Controls.MetroGrid();
             this.txtSuID = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
@@ -151,7 +151,7 @@
             this.btnNew.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnNew.Name = "btnNew";
             this.btnNew.SymbolColor = System.Drawing.Color.Empty;
-            this.btnNew.Text = "New";
+            this.btnNew.Text = "Save";
             this.btnNew.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
             this.btnNew.TileSize = new System.Drawing.Size(100, 70);
             // 
@@ -182,7 +182,7 @@
             this.btnSave.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSave.Name = "btnSave";
             this.btnSave.SymbolColor = System.Drawing.Color.Empty;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Update";
             this.btnSave.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
             this.btnSave.TileSize = new System.Drawing.Size(100, 70);
             // 
@@ -604,6 +604,17 @@
             this.btnNexts.UseVisualStyleBackColor = false;
             this.btnNexts.Click += new System.EventHandler(this.btnNexts_Click);
             // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel10.Location = new System.Drawing.Point(486, 302);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(70, 19);
+            this.metroLabel10.TabIndex = 40;
+            this.metroLabel10.Text = "Load data";
+            this.metroLabel10.Visible = false;
+            // 
             // btnNext
             // 
             this.btnNext.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -627,17 +638,6 @@
             this.btnPrevious.TabIndex = 41;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.Visible = false;
-            // 
-            // metroLabel10
-            // 
-            this.metroLabel10.AutoSize = true;
-            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel10.Location = new System.Drawing.Point(486, 302);
-            this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(70, 19);
-            this.metroLabel10.TabIndex = 40;
-            this.metroLabel10.Text = "Load data";
-            this.metroLabel10.Visible = false;
             // 
             // dgSu
             // 

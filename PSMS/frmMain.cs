@@ -119,7 +119,7 @@ namespace PSMS
             }
             else if (dia == DialogResult.Yes)
             {
-                Application.ExitThread();
+                this.Dispose();
             }
         }
 
@@ -130,7 +130,21 @@ namespace PSMS
             
         }
 
-       
+        private void MetroDown_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Connection.con.Close();
+                Application.ExitThread();
+            } catch(Exception) {
+                return;
+            }
+        }
     }
   }
 

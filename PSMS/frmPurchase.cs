@@ -298,10 +298,12 @@ namespace PSMS
 
                     MetroMessageBox.Show(this, "New Purchase Save", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    btnPrint.Enabled = true;
+                    //btnPrint.Enabled = true;
                 }
             }
-            catch(Exception) { }
+            catch(Exception ex) {
+                MetroMessageBox.Show(this, ex.Message+"", "ERROR",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
         }
 

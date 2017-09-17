@@ -208,7 +208,7 @@
             this.btnAdd.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.SymbolColor = System.Drawing.Color.Empty;
-            this.btnAdd.Text = "New";
+            this.btnAdd.Text = "Save";
             this.btnAdd.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
             this.btnAdd.TileSize = new System.Drawing.Size(100, 70);
             // 
@@ -239,7 +239,7 @@
             this.btnSave.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSave.Name = "btnSave";
             this.btnSave.SymbolColor = System.Drawing.Color.Empty;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Update";
             this.btnSave.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
             this.btnSave.TileSize = new System.Drawing.Size(100, 70);
             // 

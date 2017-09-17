@@ -73,7 +73,7 @@
             this.btnNew.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnNew.Name = "btnNew";
             this.btnNew.SymbolColor = System.Drawing.Color.Empty;
-            this.btnNew.Text = "New";
+            this.btnNew.Text = "Save";
             this.btnNew.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
             this.btnNew.TileSize = new System.Drawing.Size(100, 70);
             // 
@@ -102,7 +102,7 @@
             this.btnSave.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSave.Name = "btnSave";
             this.btnSave.SymbolColor = System.Drawing.Color.Empty;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Update";
             this.btnSave.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
             this.btnSave.TileSize = new System.Drawing.Size(100, 70);
             // 
@@ -217,9 +217,9 @@
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(719, 383);
+            this.metroTile1.Location = new System.Drawing.Point(712, 383);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(98, 52);
+            this.metroTile1.Size = new System.Drawing.Size(105, 52);
             this.metroTile1.TabIndex = 34;
             this.metroTile1.Text = "Pay";
             this.metroTile1.UseSelectable = true;

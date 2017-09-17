@@ -147,7 +147,7 @@
             this.btnNew.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnNew.Name = "btnNew";
             this.btnNew.SymbolColor = System.Drawing.Color.Empty;
-            this.btnNew.Text = "New";
+            this.btnNew.Text = "Save";
             this.btnNew.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
             this.btnNew.TileSize = new System.Drawing.Size(100, 60);
             // 
@@ -178,7 +178,7 @@
             this.btnSave.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSave.Name = "btnSave";
             this.btnSave.SymbolColor = System.Drawing.Color.Empty;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Update";
             this.btnSave.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
             this.btnSave.TileSize = new System.Drawing.Size(100, 60);
             // 
@@ -1084,8 +1084,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 480);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.employeeBindingNavigator);
             this.Controls.Add(this.cbBGender);
+            this.Controls.Add(this.employeeBindingNavigator);
             this.Controls.Add(this.txtEmpID);
             this.Controls.Add(this.metroLabel14);
             this.Controls.Add(this.txtPhone);

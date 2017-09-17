@@ -222,13 +222,16 @@ namespace PSMS
             this.ControlBox = false;
             FullMode.Fullscreen(this);
             Connection.Open(Properties.Settings.Default.Hostname, "PSMS2");
-           
+
+            txtUsername.Text = "admin";
+            txtPassword.Text = "123";
+            
+
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
-            txtUsername.Text = "admin";
-            txtPassword.Text = "123";
+            
 
         }
 

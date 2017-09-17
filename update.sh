@@ -1,4 +1,4 @@
 git add .
-git commit -m "sI change 9/3/17 9:43"
-git push -u origin develop
+git commit -m "Change text"
+git push -u origin master
 read -p "Press enter to continue"

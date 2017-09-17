@@ -107,7 +107,7 @@
             this.btnNew.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnNew.Name = "btnNew";
             this.btnNew.SymbolColor = System.Drawing.Color.Empty;
-            this.btnNew.Text = "New";
+            this.btnNew.Text = "Save";
             this.btnNew.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
             this.btnNew.TileSize = new System.Drawing.Size(100, 70);
             // 
@@ -123,7 +123,7 @@
             this.btnSave.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSave.Name = "btnSave";
             this.btnSave.SymbolColor = System.Drawing.Color.Empty;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Update";
             this.btnSave.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
             this.btnSave.TileSize = new System.Drawing.Size(100, 70);
             // 
@@ -475,8 +475,8 @@
             this.rtxtAddress.Location = new System.Drawing.Point(133, 247);
             this.rtxtAddress.Name = "rtxtAddress";
             this.rtxtAddress.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1033{\\fonttbl{\\f0\\fnil\\fcharset0 Segoe UI;}}" +
-    "\r\n{\\colortbl ;\\red51\\green153\\blue255;}\r\n\\viewkind4\\uc1\\pard\\cf1\\f0\\fs17\\par\r\n}\r" +
-    "\n";
+    "\r\n{\\colortbl ;\\red0\\green120\\blue215;}\r\n\\viewkind4\\uc1\\pard\\cf1\\f0\\fs17\\par\r\n}\r\n" +
+    "";
             this.rtxtAddress.Size = new System.Drawing.Size(265, 169);
             this.rtxtAddress.TabIndex = 32;
             // 

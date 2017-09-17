@@ -54,6 +54,7 @@
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeTableAdapter = new PSMS.EmpDataSetTableAdapters.EmployeeTableAdapter();
             this.tableAdapterManager = new PSMS.EmpDataSetTableAdapters.TableAdapterManager();
+            this.btnQuit = new MetroFramework.Controls.MetroLink();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.empDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
@@ -125,7 +126,7 @@
             this.itemContainer1});
             this.itemPanel1.KeyTipsFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemPanel1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemPanel1.Location = new System.Drawing.Point(41, 73);
+            this.itemPanel1.Location = new System.Drawing.Point(47, 80);
             this.itemPanel1.Name = "itemPanel1";
             this.itemPanel1.Size = new System.Drawing.Size(935, 458);
             this.itemPanel1.TabIndex = 3;
@@ -332,13 +333,14 @@
             // MetroDown
             // 
             this.MetroDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.MetroDown.Location = new System.Drawing.Point(23, 550);
+            this.MetroDown.Location = new System.Drawing.Point(22, 608);
             this.MetroDown.Name = "MetroDown";
             this.MetroDown.Size = new System.Drawing.Size(58, 37);
             this.MetroDown.TabIndex = 4;
             this.MetroDown.Text = "Down";
             this.MetroDown.UseSelectable = true;
             this.MetroDown.Visible = false;
+            this.MetroDown.Click += new System.EventHandler(this.MetroDown_Click);
             // 
             // metroLink1
             // 
@@ -346,7 +348,7 @@
             this.metroLink1.BackColor = System.Drawing.Color.Red;
             this.metroLink1.FontSize = MetroFramework.MetroLinkSize.Tall;
             this.metroLink1.ForeColor = System.Drawing.Color.White;
-            this.metroLink1.Location = new System.Drawing.Point(836, 24);
+            this.metroLink1.Location = new System.Drawing.Point(843, 38);
             this.metroLink1.Name = "metroLink1";
             this.metroLink1.Size = new System.Drawing.Size(139, 36);
             this.metroLink1.Style = MetroFramework.MetroColorStyle.Blue;
@@ -378,13 +380,32 @@
             this.tableAdapterManager.EmployeeTableAdapter = this.employeeTableAdapter;
             this.tableAdapterManager.UpdateOrder = PSMS.EmpDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // btnQuit
+            // 
+            this.btnQuit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnQuit.BackColor = System.Drawing.Color.DarkRed;
+            this.btnQuit.FontSize = MetroFramework.MetroLinkSize.Tall;
+            this.btnQuit.ForeColor = System.Drawing.Color.White;
+            this.btnQuit.Location = new System.Drawing.Point(883, 544);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(99, 36);
+            this.btnQuit.Style = MetroFramework.MetroColorStyle.Blue;
+            this.btnQuit.TabIndex = 5;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseCustomBackColor = true;
+            this.btnQuit.UseCustomForeColor = true;
+            this.btnQuit.UseSelectable = true;
+            this.btnQuit.UseStyleColors = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
             // frmMain
             // 
             this.ApplyImageInvert = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1024, 596);
+            this.ClientSize = new System.Drawing.Size(1031, 612);
+            this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.MetroDown);
             this.Controls.Add(this.itemPanel1);
             this.Controls.Add(this.metroLink1);
@@ -392,6 +413,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.Movable = false;
             this.Name = "frmMain";
             this.Resizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -431,6 +453,7 @@
         private System.Windows.Forms.BindingSource employeeBindingSource;
         private EmpDataSetTableAdapters.EmployeeTableAdapter employeeTableAdapter;
         private EmpDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private MetroFramework.Controls.MetroLink btnQuit;
     }
 }
 

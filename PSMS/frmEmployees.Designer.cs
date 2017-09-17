@@ -70,13 +70,11 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.btnpre = new System.Windows.Forms.Button();
+            this.btnnext = new System.Windows.Forms.Button();
             this.rtxtAddress = new DevComponents.DotNetBar.Controls.RichTextBoxEx();
             this.btnbrowse = new MetroFramework.Controls.MetroTile();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-
-            this.btnnext = new System.Windows.Forms.Button();
-            this.btnpre = new System.Windows.Forms.Button();
-
             ((System.ComponentModel.ISupportInitialize)(this.Join_date)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).BeginInit();
             this.metroPanel1.SuspendLayout();
@@ -669,7 +667,7 @@
             this.btnNew.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnNew.Name = "btnNew";
             this.btnNew.SymbolColor = System.Drawing.Color.Empty;
-            this.btnNew.Text = "New";
+            this.btnNew.Text = "Save";
             this.btnNew.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
             this.btnNew.TileSize = new System.Drawing.Size(100, 70);
             // 
@@ -700,7 +698,7 @@
             this.btnSave.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSave.Name = "btnSave";
             this.btnSave.SymbolColor = System.Drawing.Color.Empty;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Update";
             this.btnSave.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
             this.btnSave.TileSize = new System.Drawing.Size(100, 70);
             // 
@@ -844,6 +842,32 @@
             this.metroPanel1.VerticalScrollbarSize = 10;
             this.metroPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.metroPanel1_Paint);
             // 
+            // btnpre
+            // 
+            this.btnpre.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnpre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnpre.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnpre.Location = new System.Drawing.Point(691, 63);
+            this.btnpre.Name = "btnpre";
+            this.btnpre.Size = new System.Drawing.Size(75, 23);
+            this.btnpre.TabIndex = 87;
+            this.btnpre.Text = "Previous";
+            this.btnpre.UseVisualStyleBackColor = false;
+            this.btnpre.Click += new System.EventHandler(this.btnpre_Click);
+            // 
+            // btnnext
+            // 
+            this.btnnext.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnnext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnnext.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnnext.Location = new System.Drawing.Point(772, 63);
+            this.btnnext.Name = "btnnext";
+            this.btnnext.Size = new System.Drawing.Size(75, 23);
+            this.btnnext.TabIndex = 86;
+            this.btnnext.Text = "Next";
+            this.btnnext.UseVisualStyleBackColor = false;
+            this.btnnext.Click += new System.EventHandler(this.btnnext_Click);
+            // 
             // rtxtAddress
             // 
             // 
@@ -881,33 +905,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
-            // 
-
-            // btnnext
-            // 
-            this.btnnext.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnnext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnnext.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnnext.Location = new System.Drawing.Point(772, 63);
-            this.btnnext.Name = "btnnext";
-            this.btnnext.Size = new System.Drawing.Size(75, 23);
-            this.btnnext.TabIndex = 86;
-            this.btnnext.Text = "Next";
-            this.btnnext.UseVisualStyleBackColor = false;
-            this.btnnext.Click += new System.EventHandler(this.btnnext_Click);
-            // 
-            // btnpre
-            // 
-            this.btnpre.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnpre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnpre.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnpre.Location = new System.Drawing.Point(691, 63);
-            this.btnpre.Name = "btnpre";
-            this.btnpre.Size = new System.Drawing.Size(75, 23);
-            this.btnpre.TabIndex = 87;
-            this.btnpre.Text = "Previous";
-            this.btnpre.UseVisualStyleBackColor = false;
-            this.btnpre.Click += new System.EventHandler(this.btnpre_Click);
             // 
             // frmEmployees
             // 

@@ -257,11 +257,11 @@
             // btnNew
             // 
             this.btnNew.ActiveControl = null;
-            this.btnNew.Location = new System.Drawing.Point(36, 235);
+            this.btnNew.Location = new System.Drawing.Point(27, 235);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(65, 40);
+            this.btnNew.Size = new System.Drawing.Size(74, 40);
             this.btnNew.TabIndex = 97;
-            this.btnNew.Text = "New";
+            this.btnNew.Text = "Save";
             this.btnNew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNew.UseSelectable = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);

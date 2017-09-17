@@ -131,7 +131,7 @@
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(63, 38);
             this.btnNew.TabIndex = 112;
-            this.btnNew.Text = "New";
+            this.btnNew.Text = "Save";
             this.btnNew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNew.UseSelectable = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
