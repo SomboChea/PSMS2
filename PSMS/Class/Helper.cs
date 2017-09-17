@@ -113,6 +113,14 @@ namespace PSMS.Class
 
         }
 
+        public static void AutoFitColumns(DataGridView dg)
+        {
+            try
+            {
+                dg.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
+            catch(Exception) { }
+        }
 
         public static bool ifnull(object value)
         {

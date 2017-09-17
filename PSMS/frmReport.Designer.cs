@@ -169,7 +169,7 @@
             this.viewReport.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.viewReport.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.viewReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.viewReport.Size = new System.Drawing.Size(723, 342);
+            this.viewReport.Size = new System.Drawing.Size(1102, 575);
             this.viewReport.TabIndex = 5;
             // 
             // btnPreview
@@ -177,7 +177,7 @@
             this.btnPreview.BackColor = System.Drawing.Color.Green;
             this.btnPreview.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnPreview.ForeColor = System.Drawing.Color.White;
-            this.btnPreview.Location = new System.Drawing.Point(770, 477);
+            this.btnPreview.Location = new System.Drawing.Point(1149, 690);
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(131, 36);
             this.btnPreview.TabIndex = 6;
@@ -191,7 +191,7 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(247, 67);
+            this.metroLabel1.Location = new System.Drawing.Point(807, 68);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(78, 19);
             this.metroLabel1.TabIndex = 7;
@@ -200,7 +200,7 @@
             // dateStart
             // 
             this.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateStart.Location = new System.Drawing.Point(344, 62);
+            this.dateStart.Location = new System.Drawing.Point(891, 63);
             this.dateStart.MinimumSize = new System.Drawing.Size(0, 29);
             this.dateStart.Name = "dateStart";
             this.dateStart.Size = new System.Drawing.Size(107, 29);
@@ -209,7 +209,7 @@
             // dateEnd
             // 
             this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateEnd.Location = new System.Drawing.Point(524, 62);
+            this.dateEnd.Location = new System.Drawing.Point(1071, 63);
             this.dateEnd.MinimumSize = new System.Drawing.Size(0, 29);
             this.dateEnd.Name = "dateEnd";
             this.dateEnd.Size = new System.Drawing.Size(107, 29);
@@ -219,7 +219,7 @@
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel2.Location = new System.Drawing.Point(459, 67);
+            this.metroLabel2.Location = new System.Drawing.Point(1006, 68);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(57, 19);
             this.metroLabel2.TabIndex = 9;
@@ -229,7 +229,7 @@
             // 
             this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnFilter.ForeColor = System.Drawing.Color.White;
-            this.btnFilter.Location = new System.Drawing.Point(650, 62);
+            this.btnFilter.Location = new System.Drawing.Point(1206, 63);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(74, 29);
             this.btnFilter.TabIndex = 11;
@@ -259,7 +259,7 @@
             this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnBack.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(24, 477);
+            this.btnBack.Location = new System.Drawing.Point(24, 690);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(131, 36);
             this.btnBack.TabIndex = 13;
@@ -273,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(924, 536);
+            this.ClientSize = new System.Drawing.Size(1303, 749);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.viewStock);
             this.Controls.Add(this.btnFilter);

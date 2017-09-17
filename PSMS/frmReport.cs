@@ -53,7 +53,7 @@ namespace PSMS
             
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewCustomer;",binding, viewReport);
-
+            Helper.AutoFitColumns(viewReport);
             dateEnable(false);
             currentSelected = "customer";
             
@@ -68,7 +68,7 @@ namespace PSMS
         {
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewSupplier;", binding, viewReport);
-
+            Helper.AutoFitColumns(viewReport);
             dateEnable(false);
             currentSelected = "supplier";
 
@@ -78,7 +78,7 @@ namespace PSMS
         {
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT EmpCode,FullNameEN,Gender,IDCard,Address,Phone,Email,PositionName,Salary,JoinDate FROM viewEmployee;", binding, viewReport);
-
+            Helper.AutoFitColumns(viewReport);
             dateEnable(false);
             currentSelected = "employee";
         }
@@ -87,7 +87,7 @@ namespace PSMS
         {
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT PurCode,Date,Payment,Balance,Total FROM Purchase;", binding, viewReport);
-
+            Helper.AutoFitColumns(viewReport);
             dateEnable(true);
             currentSelected = "purchase";
         }
@@ -96,7 +96,7 @@ namespace PSMS
         {
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,Date FROM Invoice;", binding, viewReport);
-
+            Helper.AutoFitColumns(viewReport);
             dateEnable(true);
             currentSelected = "invoice";
         }
@@ -105,7 +105,7 @@ namespace PSMS
         {
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT PCode,PName,PSize,Color,Quantity,Brand,PhoneType,Type,SalePrice,UnitPrice FROM viewStock;", binding, viewReport);
-
+            Helper.AutoFitColumns(viewReport);
             dateEnable(false);
             currentSelected = "stock";
         }
@@ -327,7 +327,6 @@ namespace PSMS
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            //panel1.Visible = true;
             string dStart = dateStart.Value.ToString("yyyy-MM-dd");
             string dEnd = dateEnd.Value.ToString("yyyy-MM-dd");
 
@@ -337,25 +336,18 @@ namespace PSMS
                 {
                     viewReport.DataSource = binding;
                     Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,CONVERT(date,Date) Date FROM Invoice WHERE CONVERT(date,Date) BETWEEN '" + dStart + "' AND '" + dEnd + "' ;", binding, viewReport);
-
-                    MessageBox.Show(dStart + "\n" + dEnd);
-
+                    Helper.AutoFitColumns(viewReport);
                     currentSelected = "invoice";
                 }
                 else if (currentSelected.Equals("purchase"))
                 {
                     viewReport.DataSource = binding;
-                    Helper.BindGridView("SELECT PurCode,Date,Payment,Balance,Total FROM Purchase WHERE Date BETWEEN '" + dStart + "' AND '" + dEnd + "';", binding, viewReport);
+                    Helper.BindGridView("SELECT PurCode,CONVERT(date,Date) Date,Payment,Balance,Total FROM Purchase WHERE CONVERT(date,Date) BETWEEN '" + dStart + "' AND '" + dEnd + "';", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
                     currentSelected = "purchase";
                 }
             }
             catch (Exception) { return; }
-        }
-
-        
-        private void panel1_MouseLeave(object sender, EventArgs e)
-        {
-            //panel1.Visible = false;
         }
     }
 }
