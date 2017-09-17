@@ -69,10 +69,10 @@
             this.cbPriceIn});
             this.listStock.FullRowSelect = true;
             this.listStock.GridLines = true;
-            this.listStock.Location = new System.Drawing.Point(23, 63);
+            this.listStock.Location = new System.Drawing.Point(23, 160);
             this.listStock.MultiSelect = false;
             this.listStock.Name = "listStock";
-            this.listStock.Size = new System.Drawing.Size(1079, 605);
+            this.listStock.Size = new System.Drawing.Size(1079, 508);
             this.listStock.TabIndex = 0;
             this.listStock.UseCompatibleStateImageBehavior = false;
             this.listStock.View = System.Windows.Forms.View.Details;

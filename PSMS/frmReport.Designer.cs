@@ -46,7 +46,6 @@
             this.btnFilter = new MetroFramework.Controls.MetroButton();
             this.viewStock = new MetroFramework.Controls.MetroTile();
             this.btnBack = new MetroFramework.Controls.MetroButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.viewReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -270,22 +269,11 @@
             this.btnBack.UseSelectable = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Red;
-            this.panel1.Location = new System.Drawing.Point(161, 62);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
-            this.panel1.TabIndex = 14;
-            this.panel1.Visible = false;
-            this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
-            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(924, 536);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.viewStock);
             this.Controls.Add(this.btnFilter);
@@ -327,6 +315,5 @@
         private MetroFramework.Controls.MetroButton btnFilter;
         private MetroFramework.Controls.MetroTile viewStock;
         private MetroFramework.Controls.MetroButton btnBack;
-        private System.Windows.Forms.Panel panel1;
     }
 }

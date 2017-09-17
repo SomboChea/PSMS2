@@ -327,32 +327,35 @@ namespace PSMS
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            panel1.Visible = true;
-            //string dStart = dateStart.Value.ToString("yyyy-MM-dd");
-            //string dEnd = dateEnd.Value.ToString("yyyy-MM-dd");
-            
-            //try
-            //{
-            //    if(currentSelected.Equals("invoice"))
-            //    {
-            //        viewReport.DataSource = binding;
-            //        Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,Date FROM Invoice WHERE Date BETWEEN '"+dStart+"' AND '"+dEnd+"' ;", binding, viewReport);
-            //        currentSelected = "invoice";
-            //    }
-            //    else if(currentSelected.Equals("purchase"))
-            //    {
-            //        viewReport.DataSource = binding;
-            //        Helper.BindGridView("SELECT PurCode,Date,Payment,Balance,Total FROM Purchase WHERE Date BETWEEN '" + dStart + "' AND '" + dEnd + "';", binding, viewReport);
-            //        currentSelected = "purchase";
-            //    }
-            //}
-            //catch (Exception) { return; }
+            //panel1.Visible = true;
+            string dStart = dateStart.Value.ToString("yyyy-MM-dd");
+            string dEnd = dateEnd.Value.ToString("yyyy-MM-dd");
+
+            try
+            {
+                if (currentSelected.Equals("invoice"))
+                {
+                    viewReport.DataSource = binding;
+                    Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,CONVERT(date,Date) Date FROM Invoice WHERE CONVERT(date,Date) BETWEEN '" + dStart + "' AND '" + dEnd + "' ;", binding, viewReport);
+
+                    MessageBox.Show(dStart + "\n" + dEnd);
+
+                    currentSelected = "invoice";
+                }
+                else if (currentSelected.Equals("purchase"))
+                {
+                    viewReport.DataSource = binding;
+                    Helper.BindGridView("SELECT PurCode,Date,Payment,Balance,Total FROM Purchase WHERE Date BETWEEN '" + dStart + "' AND '" + dEnd + "';", binding, viewReport);
+                    currentSelected = "purchase";
+                }
+            }
+            catch (Exception) { return; }
         }
 
         
         private void panel1_MouseLeave(object sender, EventArgs e)
         {
-panel1.Visible = false;
+            //panel1.Visible = false;
         }
     }
 }
