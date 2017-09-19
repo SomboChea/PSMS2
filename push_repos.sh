@@ -6,7 +6,7 @@ read -p "Enter message to commit: " msg
 
 message=$msg" on "$current_date_time
 
-git commit -m message
+git commit -m $message
 
 git push -u origin master
 
