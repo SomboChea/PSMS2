@@ -18,18 +18,24 @@ namespace PSMS
     {
 
         string currentSelected = "";
+        BindingSource binding = new BindingSource();
 
         public frmReport()
         {
             InitializeComponent();
             ControlBox = false;
+
+            //Binding data to DataGridiew
+            viewReport.DataSource = binding;
         }
 
         private void frmReport_Load(object sender, EventArgs e)
         {
+                //Select the Customers first
                 metroTile1_Click(sender, e);
         }
 
+        //For filter selection
         private void dateEnable(bool enble)
         {
             if (enble)
@@ -45,71 +51,78 @@ namespace PSMS
                 btnFilter.Enabled = false;
             }
         }
-
-        BindingSource binding = new BindingSource();
-
+        
+        //View Customers
         private void metroTile1_Click(object sender, EventArgs e)
         {
             
-            viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewCustomer;",binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(false);
+
+            loadNumRecord();
             currentSelected = "customer";
             
         }
 
-        private void frmReport_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-        }
-
+        //View Suppliers
         private void metroTile5_Click(object sender, EventArgs e)
         {
-            viewReport.DataSource = binding;
             Helper.BindGridView("SELECT * FROM viewSupplier;", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(false);
+
+            loadNumRecord();
             currentSelected = "supplier";
 
         }
 
+        //View Employees
         private void metroTile4_Click(object sender, EventArgs e)
         {
-            viewReport.DataSource = binding;
             Helper.BindGridView("SELECT EmpCode,FullNameEN,Gender,IDCard,Address,Phone,Email,PositionName,Salary,JoinDate FROM viewEmployee;", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(false);
+
+            loadNumRecord();
             currentSelected = "employee";
         }
 
+        //View Purchases
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            viewReport.DataSource = binding;
             Helper.BindGridView("SELECT PurCode,Date,Payment,Balance,Total FROM Purchase;", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(true);
+
+            loadNumRecord();
             currentSelected = "purchase";
         }
 
+        //View Invoices
         private void metroTile3_Click(object sender, EventArgs e)
         {
-            viewReport.DataSource = binding;
-            Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,Date FROM Invoice;", binding, viewReport);
+            Helper.BindGridView("SELECT i.InvoiceCode, i.TotalPrice, i.Balance, i.Date, CONCAT(c.CusLNEN,c.CusFNEN) CustomerName FROM Invoice i INNER JOIN Customers c ON i.CusID = c.CusID; ", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(true);
+
+            loadNumRecord();
             currentSelected = "invoice";
         }
 
+        //View Stocks
         private void viewStock_Click(object sender, EventArgs e)
         {
             viewReport.DataSource = binding;
             Helper.BindGridView("SELECT PCode,PName,PSize,Color,Quantity,Brand,PhoneType,Type,SalePrice,UnitPrice FROM viewStock;", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(false);
+
+            loadNumRecord();
             currentSelected = "stock";
         }
 
+        //Defines for Reports DATA
         List<reportCustomer> dataCustomers;
         List<reportEmployee> dataEmployees;
         List<reportInvoice> dataInvoices;
@@ -334,20 +347,125 @@ namespace PSMS
             {
                 if (currentSelected.Equals("invoice"))
                 {
-                    viewReport.DataSource = binding;
                     Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,CONVERT(date,Date) Date FROM Invoice WHERE CONVERT(date,Date) BETWEEN '" + dStart + "' AND '" + dEnd + "' ;", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
+
+                    loadNumRecord();
                     currentSelected = "invoice";
                 }
                 else if (currentSelected.Equals("purchase"))
                 {
-                    viewReport.DataSource = binding;
                     Helper.BindGridView("SELECT PurCode,CONVERT(date,Date) Date,Payment,Balance,Total FROM Purchase WHERE CONVERT(date,Date) BETWEEN '" + dStart + "' AND '" + dEnd + "';", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
+
+                    loadNumRecord();
                     currentSelected = "purchase";
                 }
             }
             catch (Exception) { return; }
         }
+
+        private void loadNumRecord()
+        {
+            lbNumRecord.Text = (viewReport.RowCount-1) + "";
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            switch(currentSelected)
+            {
+                case "customer":
+                    if (txtSearch.Text.Trim() != "")
+                    {
+                        Helper.BindGridView("SELECT * FROM viewCustomer WHERE FullNameEN LIKE '%" + txtSearch.Text + "%';", binding, viewReport);
+
+                        loadNumRecord();
+                    }
+                    else
+                    {
+                        Helper.BindGridView("SELECT * FROM viewCustomer;", binding, viewReport);
+
+                        loadNumRecord();
+                    }
+                    break;
+                case "supplier":
+                    if (txtSearch.Text.Trim() != "")
+                    {
+                        Helper.BindGridView("SELECT * FROM viewSupplier WHERE FullNameEN LIKE '%" + txtSearch.Text + "%';", binding, viewReport);
+
+                        loadNumRecord();
+
+                    }
+                    else
+                    {
+                        Helper.BindGridView("SELECT * FROM viewSupplier;", binding, viewReport);
+
+                        loadNumRecord();
+                    }
+                    break;
+                case "employee":
+                    if (txtSearch.Text.Trim() != "")
+                    {
+                        Helper.BindGridView("SELECT * FROM viewEmployee WHERE FullNameEN LIKE '%" + txtSearch.Text + "%';", binding, viewReport);
+
+                        loadNumRecord();
+                    }
+                    else
+                    {
+                        Helper.BindGridView("SELECT * FROM viewEmployee;", binding, viewReport);
+
+                        loadNumRecord();
+                    }
+                    break;
+                case "purchase":
+                    if (txtSearch.Text.Trim() != "")
+                    {
+                        Helper.BindGridView("SELECT * FROM viewPurchase WHERE FullNameEN LIKE '%" + txtSearch.Text + "%';", binding, viewReport);
+
+                        loadNumRecord();
+                    }
+                    else
+                    {
+                        Helper.BindGridView("SELECT * FROM viewPurchase;", binding, viewReport);
+
+                        loadNumRecord();
+                    }
+                    break;
+                case "invoice":
+                    if (txtSearch.Text.Trim() != "")
+                    {
+                        Helper.BindGridView("SELECT * FROM viewInvoice WHERE CustomerName LIKE '%" + txtSearch.Text + "%';", binding, viewReport);
+
+                        loadNumRecord();
+                    }
+                    else
+                    {
+                        Helper.BindGridView("SELECT * FROM viewInvoice;", binding, viewReport);
+
+                        loadNumRecord();
+                    }
+                    break;
+                case "stock":
+                    if (txtSearch.Text.Trim() != "")
+                    {
+                        Helper.BindGridView("SELECT * FROM viewStock WHERE PName LIKE '%" + txtSearch.Text + "%';", binding, viewReport);
+
+                        loadNumRecord();
+                    }
+                    else
+                    {
+                        Helper.BindGridView("SELECT * FROM viewStock;", binding, viewReport);
+
+                        loadNumRecord();
+                    }
+                    break;
+                default:
+                    MessageBox.Show("Please select one to search!");
+                    break;
+            }
+
+            Helper.AutoFitColumns(viewReport);
+        }
+        
     }
 }

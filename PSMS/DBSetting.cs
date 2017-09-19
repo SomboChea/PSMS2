@@ -302,17 +302,32 @@ namespace PSMS
 
         private void reloadCheck()
         {
-            txtHost.Text = setting.Hostname;
-            if (setting.Authentication == 0)
+            INIParser setting = new INIParser("Settings.ini");
+            string section = "SQL Server Authentication";
+            string section2 = "Windows Authentication";
+            int type = 0;
+
+            try
             {
+                type = int.Parse(setting.Read("AuthType"));
+            }
+            catch (Exception)
+            {
+                type = 0;
+            }
+            
+            if (type == 0)
+            {
+                txtHost.Text = setting.Read("hostname", section2);
                 cbAuthentication.SelectedIndex = 0;
                 UserPassEnable(false);
             }
             else
             {
                 cbAuthentication.SelectedIndex = 1;
-                txtUsername.Text = setting.Username;
-                txtPassword.Text = setting.Password;
+                txtHost.Text = setting.Read("hostname", section);
+                txtUsername.Text = setting.Read("username",section);
+                txtPassword.Text = setting.Read("password",section);
                 UserPassEnable(true);
             }
         }
@@ -359,6 +374,8 @@ namespace PSMS
                 
                 MessageBox.Show("Saved!", "DB Setting");
 
+                saveSetting(Authentication);
+
                 reloadCheck();
 
             }
@@ -400,6 +417,30 @@ namespace PSMS
         {
             btnApply_Click(sender, e);
             this.Close();
+        }
+
+        private void saveSetting(byte auth)
+        {
+            var mySetting = new INIParser("Settings.ini");
+
+            if(auth.Equals(1))
+            {
+                string section = "SQL Server Authentication";
+                mySetting.Write("AuthType",1+"");
+                mySetting.Write("hostname", txtHost.Text, section);
+                mySetting.Write("dbname", "PSMS2", section);
+                mySetting.Write("username", txtUsername.Text, section);
+                mySetting.Write("password", txtPassword.Text, section);
+            }
+            else
+            {
+                string section2 = "Windows Authentication";
+                mySetting.Write("AuthType", 0 + "");
+                mySetting.Write("hostname", txtHost.Text, section2);
+                mySetting.Write("dbname", "PSMS2", section2);
+            }
+            
+
         }
     }
 }

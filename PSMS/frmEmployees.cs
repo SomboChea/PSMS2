@@ -33,10 +33,6 @@ namespace PSMS
             requirement = tempRequire;
             
             btnnext.Enabled = false;
-            
-
-
-            
         }
 
         void requirementnull(Control ctr,ref bool end)
@@ -87,6 +83,7 @@ namespace PSMS
             int Eid = empid == null ? 1 : int.Parse(empid + "") + 1;
             txtEmpID.Text = Eid + "";
             txtEmpCode.Text = "EMP" + ("00000" + Eid).Substring(("00000" + Eid).Length - 5);
+
             //txtKh1.Text = "សំ";
             //txtKh2.Text = "បូរ";
             //txtEn1.Text = "sun";
@@ -99,7 +96,7 @@ namespace PSMS
             //cbBPos.SelectedIndex = 0;
             //txtSalary.Text = "999999";
             btnNew.Enabled = true;
-            
+   
         }
         private frmEmp GetEmp()
         {

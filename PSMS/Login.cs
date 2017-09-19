@@ -217,18 +217,54 @@ namespace PSMS
 
         }
 
-        Class.User user = new Class.User();
+        User user = new User();
+        private INIParser setting = new INIParser("Settings.ini");
+
         public Login()
         {
             InitializeComponent();
             this.ControlBox = false;
             FullMode.Fullscreen(this);
-            Connection.Open(Properties.Settings.Default.Hostname, "PSMS2");
+            //Connection.Open(Properties.Settings.Default.Hostname, "PSMS2");
+
+            OpenCon();
 
             txtUsername.Text = "admin";
             txtPassword.Text = "123";
             
 
+        }
+
+        private void OpenCon()
+        {
+            string section = "SQL Server Authentication";
+            string section2 = "Windows Authentication";
+            int type = 0;
+            try
+            {
+                type = int.Parse(setting.Read("AuthType"));
+
+                if (type.Equals(1))
+                {
+                    Connection.Open(setting.Read("hostname", section), setting.Read("username", section), setting.Read("password", section), setting.Read("dbname", section));
+                }
+                else
+                {
+                    Connection.Open(setting.Read("hostname", section2), setting.Read("dbname", section2));
+                }
+            }
+            catch (Exception)
+            {
+                // I dont know What meaning to go setting first
+                // But when I press cancel , the application not exit
+                // and it continue loop to DBSetting , so i ask first to exit or Continue
+                // if no need just Change it back    
+                if (MessageBox.Show(this, "Your first open Please config first ?", "Warning ", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.Cancel)
+                    Environment.Exit(0);  
+                new DBSetting().ShowDialog();
+                OpenCon();
+                return;
+            }
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -237,7 +273,7 @@ namespace PSMS
         }
 
         private void btnExit_Click(object sender, EventArgs e)
-        {
+        { 
             Connection.con.Close();
             this.Dispose();
         }

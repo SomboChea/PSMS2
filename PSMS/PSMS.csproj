@@ -89,6 +89,7 @@
     <Compile Include="Class\frmPos.cs" />
     <Compile Include="Class\FullMode.cs" />
     <Compile Include="Class\Helper.cs" />
+    <Compile Include="Class\INIParser.cs" />
     <Compile Include="Class\reportCustomer.cs" />
     <Compile Include="Class\reportEmployee.cs" />
     <Compile Include="Class\reportInvoice.cs" />
