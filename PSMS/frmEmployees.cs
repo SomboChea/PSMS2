@@ -9,7 +9,9 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,15 +21,15 @@ namespace PSMS
     {
         frmEmployeeFunction empFun;
         frmPosFunction posFun;
-        MetroTextBox[] requirement;
+        Control[] requirement;
         public frmEmployees()
         {
             
             InitializeComponent();
             empFun = new frmEmployeeFunction();
             posFun = new frmPosFunction();
-            MetroTextBox[] tempRequire={txtEn1,txtEn2,txtEmail,txtPhone};
-           
+
+            Control[] tempRequire={txtEn1,txtEn2,txtEmail,txtPhone,txtKh1,txtKh2};           
             requirement = tempRequire;
             
             btnnext.Enabled = false;
@@ -50,9 +52,23 @@ namespace PSMS
             }
             else
             {
-                redline.BackColor = Color.White;
+                if (ctr.Tag == "email")
+                {
+                    try
+                    {
+                        MailAddress test = new MailAddress(ctr.Text);
+                        redline.BackColor = Color.White;
+                    }
+                    catch (Exception)
+                    {
+                        redline.BackColor=Color.Red;
+                        end=true;
+                    }
+                }
             }
-           
+
+            
+
             metroPanel1.Controls.Add(redline);
         }
 
@@ -156,7 +172,7 @@ namespace PSMS
                     if (temp.Tag == "remove")
                         temp.Visible = false;
                 bool end = false;
-                foreach(MetroTextBox temp in requirement)
+                foreach(Control temp in requirement)
                 {
                     requirementnull(temp,ref end);
                 }
@@ -184,10 +200,22 @@ namespace PSMS
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            foreach (Label temp in metroPanel1.Controls.OfType<Label>())
+                if (temp.Tag == "remove")
+                    temp.Visible = false;
+            bool end = false;
+            foreach (MetroTextBox temp in requirement)
+            {
+                requirementnull(temp, ref end);
+            }
+            if (end)
+                return;
+
             txtSalary.Text = txtSalary.Text.Trim() == "" ? "0" : txtSalary.Text;
             int result = (int)empFun.Update(GetEmp());
             if (result > 0)
             {
+
                 MetroMessageBox.Show(this, "Record Update", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 empFun.FillDataGridView(ref dgData);
 

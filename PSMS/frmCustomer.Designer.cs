@@ -61,25 +61,27 @@
             this.txtKh2 = new MetroFramework.Controls.MetroTextBox();
             this.Opendate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.cbBGender = new MetroFramework.Controls.MetroComboBox();
-            this.txtPhone2 = new MetroFramework.Controls.MetroTextBox();
+            this.txtPhone2xx = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.txtEmail = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.txtphone = new MetroFramework.Controls.MetroTextBox();
+            this.txtphonexx = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.txtCusCode = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.txtKh1 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.txtPhone2 = new System.Windows.Forms.MaskedTextBox();
+            this.txtphone = new System.Windows.Forms.MaskedTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.lblBalance = new MetroFramework.Controls.MetroLabel();
             this.itemPanel2 = new DevComponents.DotNetBar.ItemPanel();
             this.controlContainerItem3 = new DevComponents.DotNetBar.ControlContainerItem();
             this.btnpre = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnne = new System.Windows.Forms.Button();
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -187,19 +189,21 @@
             this.metroPanel1.Controls.Add(this.txtKh2);
             this.metroPanel1.Controls.Add(this.Opendate);
             this.metroPanel1.Controls.Add(this.cbBGender);
-            this.metroPanel1.Controls.Add(this.txtPhone2);
+            this.metroPanel1.Controls.Add(this.txtPhone2xx);
             this.metroPanel1.Controls.Add(this.metroLabel10);
             this.metroPanel1.Controls.Add(this.metroLabel6);
             this.metroPanel1.Controls.Add(this.txtEmail);
             this.metroPanel1.Controls.Add(this.metroLabel9);
             this.metroPanel1.Controls.Add(this.metroLabel8);
-            this.metroPanel1.Controls.Add(this.txtphone);
+            this.metroPanel1.Controls.Add(this.txtphonexx);
             this.metroPanel1.Controls.Add(this.metroLabel5);
             this.metroPanel1.Controls.Add(this.metroLabel4);
             this.metroPanel1.Controls.Add(this.txtCusCode);
             this.metroPanel1.Controls.Add(this.metroLabel3);
             this.metroPanel1.Controls.Add(this.txtKh1);
             this.metroPanel1.Controls.Add(this.metroLabel2);
+            this.metroPanel1.Controls.Add(this.txtPhone2);
+            this.metroPanel1.Controls.Add(this.txtphone);
             this.metroPanel1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
@@ -363,6 +367,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.RoyalBlue;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -371,6 +376,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(29, 22);
             this.dataGridView1.TabIndex = 29;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // txtCusID
@@ -648,35 +654,36 @@
             this.cbBGender.TabIndex = 24;
             this.cbBGender.UseSelectable = true;
             // 
-            // txtPhone2
+            // txtPhone2xx
             // 
             // 
             // 
             // 
-            this.txtPhone2.CustomButton.Image = null;
-            this.txtPhone2.CustomButton.Location = new System.Drawing.Point(242, 1);
-            this.txtPhone2.CustomButton.Name = "";
-            this.txtPhone2.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtPhone2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtPhone2.CustomButton.TabIndex = 1;
-            this.txtPhone2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtPhone2.CustomButton.UseSelectable = true;
-            this.txtPhone2.CustomButton.Visible = false;
-            this.txtPhone2.Lines = new string[0];
-            this.txtPhone2.Location = new System.Drawing.Point(526, 156);
-            this.txtPhone2.MaxLength = 32767;
-            this.txtPhone2.Name = "txtPhone2";
-            this.txtPhone2.PasswordChar = '\0';
-            this.txtPhone2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtPhone2.SelectedText = "";
-            this.txtPhone2.SelectionLength = 0;
-            this.txtPhone2.SelectionStart = 0;
-            this.txtPhone2.ShortcutsEnabled = true;
-            this.txtPhone2.Size = new System.Drawing.Size(264, 23);
-            this.txtPhone2.TabIndex = 19;
-            this.txtPhone2.UseSelectable = true;
-            this.txtPhone2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtPhone2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPhone2xx.CustomButton.Image = null;
+            this.txtPhone2xx.CustomButton.Location = new System.Drawing.Point(242, 1);
+            this.txtPhone2xx.CustomButton.Name = "";
+            this.txtPhone2xx.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtPhone2xx.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPhone2xx.CustomButton.TabIndex = 1;
+            this.txtPhone2xx.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPhone2xx.CustomButton.UseSelectable = true;
+            this.txtPhone2xx.CustomButton.Visible = false;
+            this.txtPhone2xx.Lines = new string[0];
+            this.txtPhone2xx.Location = new System.Drawing.Point(526, 156);
+            this.txtPhone2xx.MaxLength = 32767;
+            this.txtPhone2xx.Name = "txtPhone2xx";
+            this.txtPhone2xx.PasswordChar = '\0';
+            this.txtPhone2xx.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPhone2xx.SelectedText = "";
+            this.txtPhone2xx.SelectionLength = 0;
+            this.txtPhone2xx.SelectionStart = 0;
+            this.txtPhone2xx.ShortcutsEnabled = true;
+            this.txtPhone2xx.Size = new System.Drawing.Size(264, 23);
+            this.txtPhone2xx.TabIndex = 19;
+            this.txtPhone2xx.UseSelectable = true;
+            this.txtPhone2xx.Visible = false;
+            this.txtPhone2xx.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPhone2xx.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel10
             // 
@@ -724,6 +731,7 @@
             this.txtEmail.ShortcutsEnabled = true;
             this.txtEmail.Size = new System.Drawing.Size(263, 23);
             this.txtEmail.TabIndex = 15;
+            this.txtEmail.Tag = "email";
             this.txtEmail.UseSelectable = true;
             this.txtEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEmail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -748,35 +756,36 @@
             this.metroLabel8.TabIndex = 12;
             this.metroLabel8.Text = "Status";
             // 
-            // txtphone
+            // txtphonexx
             // 
             // 
             // 
             // 
-            this.txtphone.CustomButton.Image = null;
-            this.txtphone.CustomButton.Location = new System.Drawing.Point(242, 1);
-            this.txtphone.CustomButton.Name = "";
-            this.txtphone.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtphone.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtphone.CustomButton.TabIndex = 1;
-            this.txtphone.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtphone.CustomButton.UseSelectable = true;
-            this.txtphone.CustomButton.Visible = false;
-            this.txtphone.Lines = new string[0];
-            this.txtphone.Location = new System.Drawing.Point(526, 128);
-            this.txtphone.MaxLength = 32767;
-            this.txtphone.Name = "txtphone";
-            this.txtphone.PasswordChar = '\0';
-            this.txtphone.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtphone.SelectedText = "";
-            this.txtphone.SelectionLength = 0;
-            this.txtphone.SelectionStart = 0;
-            this.txtphone.ShortcutsEnabled = true;
-            this.txtphone.Size = new System.Drawing.Size(264, 23);
-            this.txtphone.TabIndex = 11;
-            this.txtphone.UseSelectable = true;
-            this.txtphone.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtphone.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtphonexx.CustomButton.Image = null;
+            this.txtphonexx.CustomButton.Location = new System.Drawing.Point(242, 1);
+            this.txtphonexx.CustomButton.Name = "";
+            this.txtphonexx.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtphonexx.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtphonexx.CustomButton.TabIndex = 1;
+            this.txtphonexx.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtphonexx.CustomButton.UseSelectable = true;
+            this.txtphonexx.CustomButton.Visible = false;
+            this.txtphonexx.Lines = new string[0];
+            this.txtphonexx.Location = new System.Drawing.Point(526, 128);
+            this.txtphonexx.MaxLength = 32767;
+            this.txtphonexx.Name = "txtphonexx";
+            this.txtphonexx.PasswordChar = '\0';
+            this.txtphonexx.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtphonexx.SelectedText = "";
+            this.txtphonexx.SelectionLength = 0;
+            this.txtphonexx.SelectionStart = 0;
+            this.txtphonexx.ShortcutsEnabled = true;
+            this.txtphonexx.Size = new System.Drawing.Size(264, 23);
+            this.txtphonexx.TabIndex = 11;
+            this.txtphonexx.UseSelectable = true;
+            this.txtphonexx.Visible = false;
+            this.txtphonexx.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtphonexx.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel5
             // 
@@ -880,6 +889,22 @@
             this.metroLabel2.TabIndex = 3;
             this.metroLabel2.Text = "CustomerName";
             // 
+            // txtPhone2
+            // 
+            this.txtPhone2.Location = new System.Drawing.Point(526, 156);
+            this.txtPhone2.Mask = "(999) 000-0000";
+            this.txtPhone2.Name = "txtPhone2";
+            this.txtPhone2.Size = new System.Drawing.Size(264, 23);
+            this.txtPhone2.TabIndex = 90;
+            // 
+            // txtphone
+            // 
+            this.txtphone.Location = new System.Drawing.Point(526, 128);
+            this.txtphone.Mask = "(999) 000-0000";
+            this.txtphone.Name = "txtphone";
+            this.txtphone.Size = new System.Drawing.Size(264, 23);
+            this.txtphone.TabIndex = 90;
+            // 
             // metroLabel7
             // 
             this.metroLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -938,19 +963,21 @@
             this.btnpre.TabIndex = 89;
             this.btnpre.Text = "Previous";
             this.btnpre.UseVisualStyleBackColor = false;
+            this.btnpre.Click += new System.EventHandler(this.btnpre_Click);
             // 
-            // button1
+            // btnne
             // 
-            this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button1.Enabled = false;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(768, 86);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 88;
-            this.button1.Text = "Next";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnne.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnne.Enabled = false;
+            this.btnne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnne.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnne.Location = new System.Drawing.Point(768, 86);
+            this.btnne.Name = "btnne";
+            this.btnne.Size = new System.Drawing.Size(75, 23);
+            this.btnne.TabIndex = 88;
+            this.btnne.Text = "Next";
+            this.btnne.UseVisualStyleBackColor = false;
+            this.btnne.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmCustomer
             // 
@@ -958,7 +985,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 585);
             this.Controls.Add(this.btnpre);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnne);
             this.Controls.Add(this.lblBalance);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.itemPanel2);
@@ -1015,13 +1042,13 @@
         private MetroFramework.Controls.MetroTextBox txtKh2;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput Opendate;
         private MetroFramework.Controls.MetroComboBox cbBGender;
-        private MetroFramework.Controls.MetroTextBox txtPhone2;
+        private MetroFramework.Controls.MetroTextBox txtPhone2xx;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTextBox txtEmail;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroTextBox txtphone;
+        private MetroFramework.Controls.MetroTextBox txtphonexx;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroTextBox txtCusCode;
@@ -1033,7 +1060,9 @@
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.Button btnpre;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnne;
+        private System.Windows.Forms.MaskedTextBox txtphone;
+        private System.Windows.Forms.MaskedTextBox txtPhone2;
 
     }
 }

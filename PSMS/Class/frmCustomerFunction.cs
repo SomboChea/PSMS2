@@ -47,7 +47,7 @@ namespace PSMS
             param[11] = new SqlParameter("balance", cus.balance);
             param[12] = new SqlParameter("status", cus.status);
             param[13] = new SqlParameter("emp_id", cus.emp_id);
-            param[14] = new SqlParameter("acc_opendate", cus.acc_opendate);
+            param[14] = new SqlParameter("acc_opendate", cus.acc_opendate+" "+DateTime.Now.TimeOfDay);
             return param;
         }
         public int Insert(frmCus cus)
