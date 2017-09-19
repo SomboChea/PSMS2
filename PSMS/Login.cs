@@ -215,18 +215,48 @@ namespace PSMS
 
         }
 
-        Class.User user = new Class.User();
+        User user = new User();
+        private INIParser setting = new INIParser("Settings.ini");
+
         public Login()
         {
             InitializeComponent();
             this.ControlBox = false;
             FullMode.Fullscreen(this);
-            Connection.Open(Properties.Settings.Default.Hostname, "PSMS2");
+            //Connection.Open(Properties.Settings.Default.Hostname, "PSMS2");
+
+            OpenCon();
 
             txtUsername.Text = "admin";
             txtPassword.Text = "123";
             
 
+        }
+
+        private void OpenCon()
+        {
+            string section = "SQL Server Authentication";
+            string section2 = "Windows Authentication";
+            int type = 0;
+            try
+            {
+                type = int.Parse(setting.Read("AuthType"));
+                
+                if(type.Equals(1))
+                {
+                    Connection.Open(setting.Read("hostname",section), setting.Read("username", section), setting.Read("password", section), setting.Read("dbname", section));
+                }
+                else
+                {
+                    Connection.Open(setting.Read("hostname",section2), setting.Read("dbname", section2));
+                }
+            }
+            catch (Exception)
+            {
+                new DBSetting().ShowDialog();
+                OpenCon();
+                return;
+            }
         }
 
         private void Login_Load(object sender, EventArgs e)

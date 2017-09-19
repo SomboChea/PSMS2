@@ -46,6 +46,10 @@
             this.btnFilter = new MetroFramework.Controls.MetroButton();
             this.viewStock = new MetroFramework.Controls.MetroTile();
             this.btnBack = new MetroFramework.Controls.MetroButton();
+            this.txtSearch = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.lbNumRecord = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.viewReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -191,7 +195,7 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(807, 68);
+            this.metroLabel1.Location = new System.Drawing.Point(955, 41);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(78, 19);
             this.metroLabel1.TabIndex = 7;
@@ -200,7 +204,7 @@
             // dateStart
             // 
             this.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateStart.Location = new System.Drawing.Point(891, 63);
+            this.dateStart.Location = new System.Drawing.Point(955, 63);
             this.dateStart.MinimumSize = new System.Drawing.Size(0, 29);
             this.dateStart.Name = "dateStart";
             this.dateStart.Size = new System.Drawing.Size(107, 29);
@@ -219,7 +223,7 @@
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel2.Location = new System.Drawing.Point(1006, 68);
+            this.metroLabel2.Location = new System.Drawing.Point(1071, 41);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(57, 19);
             this.metroLabel2.TabIndex = 9;
@@ -269,11 +273,76 @@
             this.btnBack.UseSelectable = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // txtSearch
+            // 
+            // 
+            // 
+            // 
+            this.txtSearch.CustomButton.Image = null;
+            this.txtSearch.CustomButton.Location = new System.Drawing.Point(169, 1);
+            this.txtSearch.CustomButton.Name = "";
+            this.txtSearch.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txtSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtSearch.CustomButton.TabIndex = 1;
+            this.txtSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtSearch.CustomButton.UseSelectable = true;
+            this.txtSearch.CustomButton.Visible = false;
+            this.txtSearch.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.txtSearch.Lines = new string[0];
+            this.txtSearch.Location = new System.Drawing.Point(604, 63);
+            this.txtSearch.MaxLength = 32767;
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PasswordChar = '\0';
+            this.txtSearch.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtSearch.SelectedText = "";
+            this.txtSearch.SelectionLength = 0;
+            this.txtSearch.SelectionStart = 0;
+            this.txtSearch.ShortcutsEnabled = true;
+            this.txtSearch.Size = new System.Drawing.Size(197, 29);
+            this.txtSearch.TabIndex = 14;
+            this.txtSearch.UseSelectable = true;
+            this.txtSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel3.Location = new System.Drawing.Point(604, 41);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(119, 19);
+            this.metroLabel3.TabIndex = 15;
+            this.metroLabel3.Text = "Search by Name";
+            // 
+            // lbNumRecord
+            // 
+            this.lbNumRecord.AutoSize = true;
+            this.lbNumRecord.Location = new System.Drawing.Point(379, 707);
+            this.lbNumRecord.Name = "lbNumRecord";
+            this.lbNumRecord.Size = new System.Drawing.Size(91, 19);
+            this.lbNumRecord.TabIndex = 16;
+            this.lbNumRecord.Text = "found records";
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(228, 707);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(145, 19);
+            this.metroLabel5.TabIndex = 17;
+            this.metroLabel5.Text = "LIST RECORD COUNT :";
+            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1303, 749);
+            this.Controls.Add(this.metroLabel5);
+            this.Controls.Add(this.lbNumRecord);
+            this.Controls.Add(this.metroLabel3);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.viewStock);
             this.Controls.Add(this.btnFilter);
@@ -291,7 +360,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmReport";
             this.Text = "Report";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmReport_FormClosing);
             this.Load += new System.EventHandler(this.frmReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.viewReport)).EndInit();
             this.ResumeLayout(false);
@@ -315,5 +383,9 @@
         private MetroFramework.Controls.MetroButton btnFilter;
         private MetroFramework.Controls.MetroTile viewStock;
         private MetroFramework.Controls.MetroButton btnBack;
+        private MetroFramework.Controls.MetroTextBox txtSearch;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel lbNumRecord;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
     }
 }

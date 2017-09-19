@@ -89,6 +89,7 @@
     <Compile Include="Class\frmPos.cs" />
     <Compile Include="Class\FullMode.cs" />
     <Compile Include="Class\Helper.cs" />
+    <Compile Include="Class\INIParser.cs" />
     <Compile Include="Class\reportCustomer.cs" />
     <Compile Include="Class\reportEmployee.cs" />
     <Compile Include="Class\reportInvoice.cs" />
@@ -323,7 +324,6 @@
     </Compile>
     <Compile Include="Product2DataSet.cs">
       <DependentUpon>Product2DataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Product2DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
