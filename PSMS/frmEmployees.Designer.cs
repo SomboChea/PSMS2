@@ -177,11 +177,11 @@
             // 
             this.metroLabel8.AutoSize = true;
             this.metroLabel8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroLabel8.Location = new System.Drawing.Point(477, 92);
+            this.metroLabel8.Location = new System.Drawing.Point(480, 92);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(50, 19);
+            this.metroLabel8.Size = new System.Drawing.Size(91, 19);
             this.metroLabel8.TabIndex = 60;
-            this.metroLabel8.Text = "IDCard";
+            this.metroLabel8.Text = "National Card";
             // 
             // txtIDCard
             // 
@@ -189,7 +189,7 @@
             // 
             // 
             this.txtIDCard.CustomButton.Image = null;
-            this.txtIDCard.CustomButton.Location = new System.Drawing.Point(262, 1);
+            this.txtIDCard.CustomButton.Location = new System.Drawing.Point(248, 1);
             this.txtIDCard.CustomButton.Name = "";
             this.txtIDCard.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtIDCard.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -198,7 +198,7 @@
             this.txtIDCard.CustomButton.UseSelectable = true;
             this.txtIDCard.CustomButton.Visible = false;
             this.txtIDCard.Lines = new string[0];
-            this.txtIDCard.Location = new System.Drawing.Point(563, 92);
+            this.txtIDCard.Location = new System.Drawing.Point(577, 92);
             this.txtIDCard.MaxLength = 32767;
             this.txtIDCard.Name = "txtIDCard";
             this.txtIDCard.PasswordChar = '\0';
@@ -207,7 +207,7 @@
             this.txtIDCard.SelectionLength = 0;
             this.txtIDCard.SelectionStart = 0;
             this.txtIDCard.ShortcutsEnabled = true;
-            this.txtIDCard.Size = new System.Drawing.Size(284, 23);
+            this.txtIDCard.Size = new System.Drawing.Size(270, 23);
             this.txtIDCard.TabIndex = 61;
             this.txtIDCard.UseSelectable = true;
             this.txtIDCard.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -239,7 +239,7 @@
             // 
             // 
             this.txtEmail.CustomButton.Image = null;
-            this.txtEmail.CustomButton.Location = new System.Drawing.Point(262, 1);
+            this.txtEmail.CustomButton.Location = new System.Drawing.Point(248, 1);
             this.txtEmail.CustomButton.Name = "";
             this.txtEmail.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtEmail.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -248,7 +248,7 @@
             this.txtEmail.CustomButton.UseSelectable = true;
             this.txtEmail.CustomButton.Visible = false;
             this.txtEmail.Lines = new string[0];
-            this.txtEmail.Location = new System.Drawing.Point(563, 158);
+            this.txtEmail.Location = new System.Drawing.Point(577, 158);
             this.txtEmail.MaxLength = 32767;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
@@ -257,7 +257,7 @@
             this.txtEmail.SelectionLength = 0;
             this.txtEmail.SelectionStart = 0;
             this.txtEmail.ShortcutsEnabled = true;
-            this.txtEmail.Size = new System.Drawing.Size(284, 23);
+            this.txtEmail.Size = new System.Drawing.Size(270, 23);
             this.txtEmail.TabIndex = 66;
             this.txtEmail.Tag = "email";
             this.txtEmail.UseSelectable = true;
@@ -270,7 +270,7 @@
             // 
             // 
             this.txtSalary.CustomButton.Image = null;
-            this.txtSalary.CustomButton.Location = new System.Drawing.Point(262, 1);
+            this.txtSalary.CustomButton.Location = new System.Drawing.Point(248, 1);
             this.txtSalary.CustomButton.Name = "";
             this.txtSalary.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtSalary.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -279,7 +279,7 @@
             this.txtSalary.CustomButton.UseSelectable = true;
             this.txtSalary.CustomButton.Visible = false;
             this.txtSalary.Lines = new string[0];
-            this.txtSalary.Location = new System.Drawing.Point(563, 240);
+            this.txtSalary.Location = new System.Drawing.Point(577, 240);
             this.txtSalary.MaxLength = 32767;
             this.txtSalary.Name = "txtSalary";
             this.txtSalary.PasswordChar = '\0';
@@ -288,7 +288,7 @@
             this.txtSalary.SelectionLength = 0;
             this.txtSalary.SelectionStart = 0;
             this.txtSalary.ShortcutsEnabled = true;
-            this.txtSalary.Size = new System.Drawing.Size(284, 23);
+            this.txtSalary.Size = new System.Drawing.Size(270, 23);
             this.txtSalary.TabIndex = 68;
             this.txtSalary.UseSelectable = true;
             this.txtSalary.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -304,7 +304,7 @@
             this.Join_date.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.Join_date.ButtonDropDown.Visible = true;
             this.Join_date.IsPopupCalendarOpen = false;
-            this.Join_date.Location = new System.Drawing.Point(563, 282);
+            this.Join_date.Location = new System.Drawing.Point(577, 282);
             this.Join_date.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // 
@@ -335,7 +335,7 @@
             this.Join_date.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Join_date.MonthCalendar.TodayButtonVisible = true;
             this.Join_date.Name = "Join_date";
-            this.Join_date.Size = new System.Drawing.Size(284, 20);
+            this.Join_date.Size = new System.Drawing.Size(270, 20);
             this.Join_date.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Join_date.TabIndex = 69;
             // 
@@ -560,10 +560,11 @@
             // 
             // cbBPos
             // 
+            this.cbBPos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbBPos.FormattingEnabled = true;
-            this.cbBPos.Location = new System.Drawing.Point(563, 205);
+            this.cbBPos.Location = new System.Drawing.Point(577, 205);
             this.cbBPos.Name = "cbBPos";
-            this.cbBPos.Size = new System.Drawing.Size(138, 21);
+            this.cbBPos.Size = new System.Drawing.Size(146, 21);
             this.cbBPos.TabIndex = 83;
             this.cbBPos.Text = "1";
             // 
@@ -757,9 +758,9 @@
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(707, 194);
+            this.metroTile1.Location = new System.Drawing.Point(729, 194);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(140, 40);
+            this.metroTile1.Size = new System.Drawing.Size(118, 40);
             this.metroTile1.TabIndex = 85;
             this.metroTile1.Text = "Manage Postion";
             this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -818,10 +819,10 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(563, 123);
+            this.txtPhone.Location = new System.Drawing.Point(577, 124);
             this.txtPhone.Mask = "(999) 000-0000";
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(284, 20);
+            this.txtPhone.Size = new System.Drawing.Size(270, 20);
             this.txtPhone.TabIndex = 88;
             // 
             // btnpre

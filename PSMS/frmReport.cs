@@ -59,6 +59,8 @@ namespace PSMS
             Helper.BindGridView("SELECT * FROM viewCustomer;",binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(false);
+
+            loadNumRecord();
             currentSelected = "customer";
             
         }
@@ -69,6 +71,8 @@ namespace PSMS
             Helper.BindGridView("SELECT * FROM viewSupplier;", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(false);
+
+            loadNumRecord();
             currentSelected = "supplier";
 
         }
@@ -79,6 +83,8 @@ namespace PSMS
             Helper.BindGridView("SELECT EmpCode,FullNameEN,Gender,IDCard,Address,Phone,Email,PositionName,Salary,JoinDate FROM viewEmployee;", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(false);
+
+            loadNumRecord();
             currentSelected = "employee";
         }
 
@@ -88,6 +94,8 @@ namespace PSMS
             Helper.BindGridView("SELECT PurCode,Date,Payment,Balance,Total FROM Purchase;", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(true);
+
+            loadNumRecord();
             currentSelected = "purchase";
         }
 
@@ -97,6 +105,8 @@ namespace PSMS
             Helper.BindGridView("SELECT i.InvoiceCode, i.TotalPrice, i.Balance, i.Date, CONCAT(c.CusLNEN,c.CusFNEN) CustomerName FROM Invoice i INNER JOIN Customers c ON i.CusID = c.CusID; ", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(true);
+
+            loadNumRecord();
             currentSelected = "invoice";
         }
 
@@ -107,6 +117,8 @@ namespace PSMS
             Helper.BindGridView("SELECT PCode,PName,PSize,Color,Quantity,Brand,PhoneType,Type,SalePrice,UnitPrice FROM viewStock;", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(false);
+
+            loadNumRecord();
             currentSelected = "stock";
         }
 
@@ -337,12 +349,16 @@ namespace PSMS
                 {
                     Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,CONVERT(date,Date) Date FROM Invoice WHERE CONVERT(date,Date) BETWEEN '" + dStart + "' AND '" + dEnd + "' ;", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
+
+                    loadNumRecord();
                     currentSelected = "invoice";
                 }
                 else if (currentSelected.Equals("purchase"))
                 {
                     Helper.BindGridView("SELECT PurCode,CONVERT(date,Date) Date,Payment,Balance,Total FROM Purchase WHERE CONVERT(date,Date) BETWEEN '" + dStart + "' AND '" + dEnd + "';", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
+
+                    loadNumRecord();
                     currentSelected = "purchase";
                 }
             }
