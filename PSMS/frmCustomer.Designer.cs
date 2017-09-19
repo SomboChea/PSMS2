@@ -78,6 +78,8 @@
             this.lblBalance = new MetroFramework.Controls.MetroLabel();
             this.itemPanel2 = new DevComponents.DotNetBar.ItemPanel();
             this.controlContainerItem3 = new DevComponents.DotNetBar.ControlContainerItem();
+            this.btnpre = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -202,7 +204,7 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(4, 3);
+            this.metroPanel1.Location = new System.Drawing.Point(4, 4);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(960, 452);
             this.metroPanel1.TabIndex = 17;
@@ -925,11 +927,38 @@
             this.controlContainerItem3.MenuVisibility = DevComponents.DotNetBar.eMenuVisibility.VisibleAlways;
             this.controlContainerItem3.Name = "controlContainerItem3";
             // 
+            // btnpre
+            // 
+            this.btnpre.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnpre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnpre.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnpre.Location = new System.Drawing.Point(687, 86);
+            this.btnpre.Name = "btnpre";
+            this.btnpre.Size = new System.Drawing.Size(75, 23);
+            this.btnpre.TabIndex = 89;
+            this.btnpre.Text = "Previous";
+            this.btnpre.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button1.Enabled = false;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(768, 86);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 88;
+            this.button1.Text = "Next";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 585);
+            this.Controls.Add(this.btnpre);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblBalance);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.itemPanel2);
@@ -1003,6 +1032,8 @@
         private DevComponents.DotNetBar.ControlContainerItem controlContainerItem3;
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
+        private System.Windows.Forms.Button btnpre;
+        private System.Windows.Forms.Button button1;
 
     }
 }

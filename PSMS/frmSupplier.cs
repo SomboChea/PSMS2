@@ -41,6 +41,9 @@ namespace PSMS
             int Eid = empid == null ? 1 : int.Parse(empid + "") + 1;
             txtSuID.Text = Eid + "";
             txtSuCode.Text = "SU" + ("00000" + Eid).Substring(("00000" + Eid).Length - 5);
+
+           
+         
             
         }
         private frmSu GetSu()
@@ -62,11 +65,17 @@ namespace PSMS
             return su;
         }
 
+        void Check(Control.ControlCollection ctr)
+        {
+            
+        }
+
         private void btnNew_Click(object sender, EventArgs e)
         {
             int result = (int)suFun.Insert(GetSu());
             if (result > 0)
             {
+               
                 MetroMessageBox.Show(this, "New Record Insert", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 suFun.FillDataGridView(ref dgSu);
                 txtSuID.Text = result.ToString();
@@ -223,6 +232,11 @@ namespace PSMS
                 btnpre.Enabled = false;
 
             }
+        }
+
+        private void frmSupplier_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }

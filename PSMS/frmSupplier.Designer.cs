@@ -74,6 +74,7 @@
             this.txtEn2 = new MetroFramework.Controls.MetroTextBox();
             this.txtKh2 = new MetroFramework.Controls.MetroTextBox();
             this.txtKh1 = new MetroFramework.Controls.MetroTextBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSu)).BeginInit();
             this.SuspendLayout();
@@ -741,8 +742,8 @@
             this.rtxtAddress.Location = new System.Drawing.Point(172, 227);
             this.rtxtAddress.Name = "rtxtAddress";
             this.rtxtAddress.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1033{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
-    "ans Serif;}}\r\n{\\colortbl ;\\red0\\green120\\blue215;}\r\n\\viewkind4\\uc1\\pard\\cf1\\f0\\f" +
-    "s17\\par\r\n}\r\n";
+    "ans Serif;}}\r\n{\\colortbl ;\\red51\\green153\\blue255;}\r\n\\viewkind4\\uc1\\pard\\cf1\\f0\\" +
+    "fs17\\par\r\n}\r\n";
             this.rtxtAddress.Size = new System.Drawing.Size(264, 158);
             this.rtxtAddress.TabIndex = 37;
             // 
@@ -884,11 +885,19 @@
             this.txtKh1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtKh1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(265, 22);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox1.TabIndex = 14;
+            // 
             // frmSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 585);
+            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.metroPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -896,10 +905,12 @@
             this.Name = "frmSupplier";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSupplier_FormClosing);
             this.Load += new System.EventHandler(this.frmSupplier_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmSupplier_Paint);
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSu)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -947,5 +958,6 @@
         private DevComponents.DotNetBar.ButtonX btnPrevious;
         private System.Windows.Forms.Button btnpre;
         private System.Windows.Forms.Button btnNexts;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
     }
 }

@@ -574,6 +574,8 @@
             // 
             // dgData
             // 
+            this.dgData.AllowUserToAddRows = false;
+            this.dgData.AllowUserToDeleteRows = false;
             this.dgData.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgData.Location = new System.Drawing.Point(698, 358);

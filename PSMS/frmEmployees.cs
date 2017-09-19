@@ -1,4 +1,5 @@
 ﻿using MetroFramework;
+using MetroFramework.Controls;
 using MetroFramework.Forms;
 using PSMS.Class;
 using System;
@@ -18,30 +19,53 @@ namespace PSMS
     {
         frmEmployeeFunction empFun;
         frmPosFunction posFun;
+        MetroTextBox[] requirement;
         public frmEmployees()
         {
             
             InitializeComponent();
             empFun = new frmEmployeeFunction();
             posFun = new frmPosFunction();
-         
+            MetroTextBox[] tempRequire={txtEn1,txtEn2,txtEmail,txtPhone};
+           
+            requirement = tempRequire;
             
             btnnext.Enabled = false;
+            
 
 
             
         }
 
-        private void frmEmployees_Load(object sender, EventArgs e)
+        void requirementnull(Control ctr,ref bool end)
         {
+            Label redline = new Label();
+            redline.Tag = "remove";
+            redline.Location = new Point(ctr.Location.X-2, ctr.Location.Y-2);
+            redline.Size = new Size(ctr.Size.Width+4, ctr.Size.Height+4);
+            if (ctr.Text.Trim() == "")
+            {
+                redline.BackColor = Color.Red;
+                end = true;
+            }
+            else
+            {
+                redline.BackColor = Color.White;
+            }
+           
+            metroPanel1.Controls.Add(redline);
+        }
+
+        private void frmEmployees_Load(object sender, EventArgs e)
+        {    
             empFun.FillDataGridView(ref dgData);
             posFun.FillComboBox(ref cbBPos, "PosName", "PosID");
             cbBPos.SelectedIndex = 0;
             cbBGender.SelectedIndex = 0;
             Join_date.Value = DateTime.Now;
-            index = dgData.Rows.Count-2;
+            index = dgData.Rows.Count;
             btnpre.Enabled = dgData.Rows.Count < 2 ? false : true;
-           
+            metroLabel1.Text = dgData.Rows.Count + "";
 
             object empid = Connection.ExecuteScalar("Select ident_current('Employee')");
             int Eid = empid == null ? 1 : int.Parse(empid + "") + 1;
@@ -128,6 +152,16 @@ namespace PSMS
         {
             if (int.Parse(txtEmpID.Text) == int.Parse(Connection.ExecuteScalar("Select Ident_current('Employee')") + "") + 1)
             {
+                foreach (Label temp in metroPanel1.Controls.OfType<Label>())
+                    if (temp.Tag == "remove")
+                        temp.Visible = false;
+                bool end = false;
+                foreach(MetroTextBox temp in requirement)
+                {
+                    requirementnull(temp,ref end);
+                }
+                if (end)
+                    return;
                 txtSalary.Text = txtSalary.Text.Trim() == "" ? "0" : txtSalary.Text;
                 int result = (int)empFun.Insert(GetEmp());
                 if (result > 0)
@@ -260,37 +294,41 @@ namespace PSMS
         int index;
         private void btnnext_Click(object sender, EventArgs e)
         {
-            btnpre.Enabled = true;
-            int emp_id=int.Parse(dgData.Rows[index].Cells[0].Value+"");
-            DataTable dt = empFun.GetData("SELECT * FROM Employee WHERE EmpID = " + emp_id);
 
-            foreach (DataRow row in dt.Rows)
+            index++;
+            try
             {
-                txtEmpID.Text = row["EmpID"].ToString();
-                txtEmpCode.Text = row["EmpCode"].ToString();
-                txtKh1.Text = row["EmpLNKH"].ToString();
-                txtKh2.Text = row["EmpFNKH"].ToString();
-                txtEn1.Text = row["EmpLNEN"].ToString();
-                txtEn2.Text = row["EmpFNEN"].ToString();
-                cbBGender.SelectedItem = row["Gender"].ToString();
-                txtIDCard.Text = row["IDCard"].ToString();
-                rtxtAddress.Text = row["Address"].ToString();
-                txtPhone.Text = row["Phone"].ToString();
-                txtEmail.Text = row["email"].ToString();
-                cbBPos.SelectedValue = Convert.ToInt32(row["PosID"].ToString());
-                txtSalary.Text = row["Salary"].ToString();
-                Join_date.Text = row["JoinDate"].ToString();
-                try
+                btnpre.Enabled = true;
+                int emp_id = int.Parse(dgData.Rows[index].Cells[0].Value + "");
+                DataTable dt = empFun.GetData("SELECT * FROM Employee WHERE EmpID = " + emp_id);
+                metroLabel1.Text = index + "";
+                foreach (DataRow row in dt.Rows)
                 {
-                    pictureBox1.Image = Image.FromStream(new MemoryStream((byte[])row["Image"]));
-                }
-                catch(Exception)
-                {
-                    pictureBox1.Image = Properties.Resources.employee;
+                    txtEmpID.Text = row["EmpID"].ToString();
+                    txtEmpCode.Text = row["EmpCode"].ToString();
+                    txtKh1.Text = row["EmpLNKH"].ToString();
+                    txtKh2.Text = row["EmpFNKH"].ToString();
+                    txtEn1.Text = row["EmpLNEN"].ToString();
+                    txtEn2.Text = row["EmpFNEN"].ToString();
+                    cbBGender.SelectedItem = row["Gender"].ToString();
+                    txtIDCard.Text = row["IDCard"].ToString();
+                    rtxtAddress.Text = row["Address"].ToString();
+                    txtPhone.Text = row["Phone"].ToString();
+                    txtEmail.Text = row["email"].ToString();
+                    cbBPos.SelectedValue = Convert.ToInt32(row["PosID"].ToString());
+                    txtSalary.Text = row["Salary"].ToString();
+                    Join_date.Text = row["JoinDate"].ToString();
+                    try
+                    {
+                        pictureBox1.Image = Image.FromStream(new MemoryStream((byte[])row["Image"]));
+                    }
+                    catch (Exception)
+                    {
+                        pictureBox1.Image = Properties.Resources.employee;
+                    }
                 }
             }
-            index++;
-            if (index >= dgData.Rows.Count-1)
+            catch (Exception)
             {
                 btnClr_Click(this, null);
                 frmEmployees_Load(this, null);
@@ -301,42 +339,47 @@ namespace PSMS
 
         private void btnpre_Click(object sender, EventArgs e)
         {
-            btnnext.Enabled = true;
-            int emp_id = int.Parse(dgData.Rows[index].Cells[0].Value + "");
-            DataTable dt = empFun.GetData("SELECT * FROM Employee WHERE EmpID = " + emp_id);
-            metroLabel1.Text = index + "";
-            foreach (DataRow row in dt.Rows)
+            index--;
+            try
             {
-                txtEmpID.Text = row["EmpID"].ToString();
-                txtEmpCode.Text = row["EmpCode"].ToString();
-                txtKh1.Text = row["EmpLNKH"].ToString();
-                txtKh2.Text = row["EmpFNKH"].ToString();
-                txtEn1.Text = row["EmpLNEN"].ToString();
-                txtEn2.Text = row["EmpFNEN"].ToString();
-                cbBGender.SelectedItem = row["Gender"].ToString();
-                txtIDCard.Text = row["IDCard"].ToString();
-                rtxtAddress.Text = row["Address"].ToString();
-                txtPhone.Text = row["Phone"].ToString();
-                txtEmail.Text = row["email"].ToString();
-                cbBPos.SelectedValue = Convert.ToInt32(row["PosID"].ToString());
-                txtSalary.Text = row["Salary"].ToString();
-                Join_date.Text = row["JoinDate"].ToString();
-                try
+                btnnext.Enabled = true;
+                int emp_id = int.Parse(dgData.Rows[index].Cells[0].Value + "");
+                DataTable dt = empFun.GetData("SELECT * FROM Employee WHERE EmpID = " + emp_id);
+
+                foreach (DataRow row in dt.Rows)
                 {
-                    pictureBox1.Image = Image.FromStream(new MemoryStream((byte[])row["Image"]));
-                }
-                catch (Exception)
-                {
-                    pictureBox1.Image = Properties.Resources.employee;
+                    metroLabel1.Text = index + "";
+                    txtEmpID.Text = row["EmpID"].ToString();
+                    txtEmpCode.Text = row["EmpCode"].ToString();
+                    txtKh1.Text = row["EmpLNKH"].ToString();
+                    txtKh2.Text = row["EmpFNKH"].ToString();
+                    txtEn1.Text = row["EmpLNEN"].ToString();
+                    txtEn2.Text = row["EmpFNEN"].ToString();
+                    cbBGender.SelectedItem = row["Gender"].ToString();
+                    txtIDCard.Text = row["IDCard"].ToString();
+                    rtxtAddress.Text = row["Address"].ToString();
+                    txtPhone.Text = row["Phone"].ToString();
+                    txtEmail.Text = row["email"].ToString();
+                    cbBPos.SelectedValue = Convert.ToInt32(row["PosID"].ToString());
+                    txtSalary.Text = row["Salary"].ToString();
+                    Join_date.Text = row["JoinDate"].ToString();
+                    try
+                    {
+                        pictureBox1.Image = Image.FromStream(new MemoryStream((byte[])row["Image"]));
+                    }
+                    catch (Exception)
+                    {
+                        pictureBox1.Image = Properties.Resources.employee;
+                    }
                 }
             }
-            index--;
-            if (index < 0)
+            catch (Exception)
             {
                 index = 0;
                 btnpre.Enabled = false;
             }
         }
+        
 
         private void btnsearch_Click(object sender, EventArgs e)
         {
