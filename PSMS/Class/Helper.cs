@@ -145,7 +145,7 @@ namespace PSMS.Class
             /*
                 mark one error , just select ident_current('Table Name') no from Table , it error , try with empty table u will see  ,   i not sure
                 ============*/
-            sqlcmd.CommandText = "SELECT IDENT_CURRENT('" + table_name + "') FROM " + table_name + ";";
+            sqlcmd.CommandText = "SELECT IDENT_CURRENT('" + table_name + "')";
             
             try
             {

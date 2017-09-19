@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using MetroFramework;
 using System.Data;
 using PSMS.Class;
+using System.Drawing;
 
 namespace PSMS
 {
@@ -209,6 +210,7 @@ namespace PSMS
             this.Style = MetroFramework.MetroColorStyle.Pink;
             this.Text = "Login to Dashboard";
             this.Load += new System.EventHandler(this.Login_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Login_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -261,8 +263,7 @@ namespace PSMS
 
         private void Login_Load(object sender, EventArgs e)
         {
-            
-
+          
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -314,6 +315,11 @@ namespace PSMS
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Login_Paint(object sender, PaintEventArgs e)
+        {
+           
         }
     }
 }
