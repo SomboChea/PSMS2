@@ -23,6 +23,8 @@ namespace PSMS
             empFun = new frmEmployeeFunction();
 
             btnClr.Visible = false;
+            itemPanel1.Items.Remove(itemContainer1);
+            itemPanel1.Items.Remove(itemContainer4);
         }
 
         private void frmCustomerDetail_Load(object sender, EventArgs e)
@@ -109,13 +111,13 @@ namespace PSMS
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int result = (int)cusFun.Update(GetCus());
-            if (result > 0)
-            {
-                MetroMessageBox.Show(this, "Record Update", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cusFun.FillDataGridView(ref dgData);
+            //int result = (int)cusFun.Update(GetCus());
+            //if (result > 0)
+            //{
+            //    MetroMessageBox.Show(this, "Record Update", "MetroMessagebox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    cusFun.FillDataGridView(ref dgData);
 
-            }
+            //}
             customersBindingNavigatorSaveItem_Click(this, null);
         }
 

@@ -68,13 +68,13 @@ namespace PSMS
         {
             cusFun.FillDataGridView(ref dataGridView1);
             empFun.FillComboBox(ref cbbEmp2, "EmpFNEN", "EmpID");
-
+            btnpre.Enabled = dataGridView1.Rows.Count < 1 ? false : true;
             cbbEmp2.SelectedIndex = 0;
             cbBGender.SelectedIndex = 0;
             cbBStatus.SelectedIndex = 0;
             Opendate.Value = DateTime.Now;
 
-
+            btnNew.Enabled = true;
             string tempId = Helper.GetLastId("Customers") + "";
             int id = int.Parse(tempId) + 1;
             txtCusID.Text = id + "";
@@ -96,8 +96,8 @@ namespace PSMS
             cus.cus_fnen = txtEn2.Text;
             cus.gender = cbBGender.SelectedItem.ToString();
             cus.address = rtxtAddress.Text;
-            cus.phone = txtphonexx.Text;
-            cus.phone2 = txtPhone2xx.Text;
+            cus.phone = txtphone.Text;
+            cus.phone2 = txtPhone2.Text;
             cus.email = txtEmail.Text;
             cus.status = cbBStatus.SelectedItem.ToString();
             cus.emp_id = Convert.ToInt32(cbbEmp2.SelectedValue);
@@ -152,8 +152,8 @@ namespace PSMS
                 txtEn2.Text = row["CusFNEN"].ToString();
                 cbBGender.SelectedItem = row["Gender"].ToString();
                 rtxtAddress.Text = row["Address"].ToString();
-                txtphonexx.Text = row["Phone"].ToString();
-                txtPhone2xx.Text = row["Phone2"].ToString();
+                txtphone.Text = row["Phone"].ToString();
+                txtPhone2.Text = row["Phone2"].ToString();
                 txtEmail.Text = row["Email"].ToString();
                 lblBalance.Text = row["Balance"].ToString();
                 cbBStatus.SelectedItem = row["Status"].ToString();
@@ -198,16 +198,20 @@ namespace PSMS
             txtEn2.Text = "";
             cbBGender.SelectedIndex = 0;
             rtxtAddress.Text = "";
-            txtphonexx.Text = "";
-            txtPhone2xx.Text = "";
+            txtphone.Text = "";
+            txtPhone2.Text = "";
             txtEmail.Text = "";
             lblBalance.Text = "";
             cbBStatus.SelectedIndex = 0;
             cbbEmp2.SelectedIndex = 0;
 
             Opendate.Value = DateTime.Now;
-            
+
+            foreach (Label temp in metroPanel1.Controls.OfType<Label>())
+                if (temp.Tag == "remove")
+                    temp.Visible = false;
             frmCustomer_Load(this, null);
+            index = dataGridView1.Rows.Count;
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -265,8 +269,8 @@ namespace PSMS
                 txtEn2.Text = row["CusFNEN"].ToString();
                 cbBGender.SelectedItem = row["Gender"].ToString();
                 rtxtAddress.Text = row["Address"].ToString();
-                txtphonexx.Text = row["Phone"].ToString();
-                txtPhone2xx.Text = row["Phone2"].ToString();
+                txtphone.Text = row["Phone"].ToString();
+                txtPhone2.Text = row["Phone2"].ToString();
                 txtEmail.Text = row["Email"].ToString();
                 lblBalance.Text = row["Balance"].ToString();
                 cbBStatus.SelectedItem = row["Status"].ToString();
@@ -277,6 +281,7 @@ namespace PSMS
 
         private void button1_Click(object sender, EventArgs e)
         {
+            btnNew.Enabled = false;
             foreach (Label temp in metroPanel1.Controls.OfType<Label>())
                 if (temp.Tag == "remove")
                     temp.Visible = false;
@@ -297,6 +302,7 @@ namespace PSMS
 
         private void btnpre_Click(object sender, EventArgs e)
         {
+            btnNew.Enabled = false;
             foreach (Label temp in metroPanel1.Controls.OfType<Label>())
                 if (temp.Tag == "remove")
                     temp.Visible = false;
@@ -304,6 +310,7 @@ namespace PSMS
             index--;
             if (index == 0)
             {
+                
                 index = 0;
                 btnpre.Enabled = false;       
             } 

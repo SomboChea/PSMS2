@@ -21,6 +21,8 @@ namespace PSMS
             empFun = new frmEmployeeFunction();
 
             btnClr.Visible = false;
+            itemPanel1.Items.Remove(itemContainer1);
+            itemPanel1.Items.Remove(itemContainer4);
         }
 
         private void frmEmployeeDetail_Load(object sender, EventArgs e)

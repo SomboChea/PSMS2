@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,7 @@ namespace PSMS
     {
         frmSupplierFunction suFun;
         int index;
+        Control[] requirement;
         public frmSupplier()
         {
             InitializeComponent();
@@ -28,23 +30,57 @@ namespace PSMS
             this.Resizable = false;
           
             btnNexts.Enabled = false;
-        }
 
+            Control[] tempRequire = { txtEn1, txtEn2, txtEmail, txtPhone, txtPhone2, txtKh1, txtKh2 };
+            requirement = tempRequire;
+            txtPhone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            txtPhone2.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+        }
+        void requirementnull(Control ctr, ref bool end)
+        {
+            Label redline = new Label();
+            redline.Tag = "remove";
+            redline.Location = new Point(ctr.Location.X - 2, ctr.Location.Y - 2);
+            redline.Size = new Size(ctr.Size.Width + 4, ctr.Size.Height + 4);
+            if (ctr.Text.Trim() == "")
+            {
+                redline.BackColor = Color.Red;
+                end = true;
+            }
+            else
+            {
+                if (ctr.Tag == "email")
+                {
+                    try
+                    {
+                        MailAddress test = new MailAddress(ctr.Text);
+                        redline.BackColor = Color.White;
+                    }
+                    catch (Exception)
+                    {
+                        redline.BackColor = Color.Red;
+                        end = true;
+                    }
+                }
+            }
+
+
+            metroPanel1.Controls.Add(redline);
+        }
         private void frmSupplier_Load(object sender, EventArgs e)
         {
             suFun.FillDataGridView(ref dgSu);
-            index = dgSu.Rows.Count - 1;
+            index = dgSu.Rows.Count-1 ;
             cbBGender.SelectedIndex = 0;
             btnpre.Enabled=dgSu.Rows.Count<1?false:true;
-
-            object empid = Connection.ExecuteScalar("Select ident_current('Supplier')");
-            int Eid = empid == null ? 1 : int.Parse(empid + "") + 1;
-            txtSuID.Text = Eid + "";
-            txtSuCode.Text = "SU" + ("00000" + Eid).Substring(("00000" + Eid).Length - 5);
-
-           
-         
             
+            object suid = Connection.ExecuteScalar("Select ident_current('Supplier')");
+            int sid = suid == null ? 1 : int.Parse(suid + "") + 1;
+            txtSuID.Text = suid + "";
+            txtSuCode.Text = "SU" + ("00000" + sid).Substring(("00000" + sid).Length - 5);
+
+
+            btnNew.Enabled = true;            
         }
         private frmSu GetSu()
         {
@@ -72,6 +108,16 @@ namespace PSMS
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            foreach (Label temp in metroPanel1.Controls.OfType<Label>())
+                if (temp.Tag == "remove")
+                    temp.Visible = false;
+            bool end = false;
+            foreach (Control temp in requirement)
+            {
+                requirementnull(temp, ref end);
+            }
+            if (end)
+                return;
             int result = (int)suFun.Insert(GetSu());
             if (result > 0)
             {
@@ -84,6 +130,16 @@ namespace PSMS
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            foreach (Label temp in metroPanel1.Controls.OfType<Label>())
+                if (temp.Tag == "remove")
+                    temp.Visible = false;
+            bool end = false;
+            foreach (Control temp in requirement)
+            {
+                requirementnull(temp, ref end);
+            }
+            if (end)
+                return;
             int result = (int)suFun.Update(GetSu());
             if (result > 0)
             {
@@ -195,6 +251,14 @@ namespace PSMS
             txtEmail.Text = "";
             txtFax.Text = "";
             txtFax2.Text = "";
+            cbBGender.SelectedIndex = 0;
+
+            foreach (Label temp in metroPanel1.Controls.OfType<Label>())
+                if (temp.Tag == "remove")
+                    temp.Visible = false;
+            btnNew.Enabled = true;
+            index = dgSu.Rows.Count - 1;
+
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -210,10 +274,18 @@ namespace PSMS
 
         private void btnNexts_Click(object sender, EventArgs e)
         {
+            btnNew.Enabled = false;
+            foreach (Label temp in metroPanel1.Controls.OfType<Label>())
+                if (temp.Tag == "remove")
+                    temp.Visible = false;
             btnpre.Enabled = true;
-            showdata(index);
             index++;
-            if (index > dgSu.Rows.Count - 1)
+            try
+            {
+                showdata(index);
+            }
+            catch (Exception) { }
+            if (index == dgSu.Rows.Count )
             {
                 btnNexts.Enabled = false;
                 btnClr_Click(this, null);
@@ -223,6 +295,10 @@ namespace PSMS
 
         private void btnpre_Click(object sender, EventArgs e)
         {
+            btnNew.Enabled = false;
+            foreach (Label temp in metroPanel1.Controls.OfType<Label>())
+                if (temp.Tag == "remove")
+                    temp.Visible = false;
             btnNexts.Enabled = true;
             showdata(index);
             index--;
@@ -230,11 +306,16 @@ namespace PSMS
             {
                 index = 0;
                 btnpre.Enabled = false;
-
+                
             }
         }
 
         private void frmSupplier_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void dgSu_SelectionChanged(object sender, EventArgs e)
         {
             
         }

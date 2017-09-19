@@ -80,9 +80,9 @@ namespace PSMS
             cbBGender.SelectedIndex = 0;
             Join_date.Value = DateTime.Now;
             index = dgData.Rows.Count;
-            btnpre.Enabled = dgData.Rows.Count < 2 ? false : true;
-            metroLabel1.Text = dgData.Rows.Count + "";
+            btnpre.Enabled = dgData.Rows.Count < 1 ? false : true;
 
+            
             object empid = Connection.ExecuteScalar("Select ident_current('Employee')");
             int Eid = empid == null ? 1 : int.Parse(empid + "") + 1;
             txtEmpID.Text = Eid + "";
@@ -98,6 +98,7 @@ namespace PSMS
             //cbBGender.SelectedIndex = 0;
             //cbBPos.SelectedIndex = 0;
             //txtSalary.Text = "999999";
+            btnNew.Enabled = true;
             
         }
         private frmEmp GetEmp()
@@ -204,7 +205,7 @@ namespace PSMS
                 if (temp.Tag == "remove")
                     temp.Visible = false;
             bool end = false;
-            foreach (MetroTextBox temp in requirement)
+            foreach (Control temp in requirement)
             {
                 requirementnull(temp, ref end);
             }
@@ -271,6 +272,12 @@ namespace PSMS
             Join_date.Text = "";
             pictureBox1.Image = Properties.Resources.employee;
 
+            index = dgData.Rows.Count;
+            btnNew.Enabled = true;
+            foreach (Label temp in metroPanel1.Controls.OfType<Label>())
+                if (temp.Tag == "remove")
+                    temp.Visible = false;
+
             object empid = Connection.ExecuteScalar("Select ident_current('Employee') from Employee");
             int Eid = empid == null ? 1 : int.Parse(empid + "") + 1;
             txtEmpID.Text = Eid + "";
@@ -322,7 +329,10 @@ namespace PSMS
         int index;
         private void btnnext_Click(object sender, EventArgs e)
         {
-
+            btnNew.Enabled = false;
+            foreach (Label temp in metroPanel1.Controls.OfType<Label>())
+                if (temp.Tag == "remove")
+                    temp.Visible = false;
             index++;
             try
             {
@@ -367,6 +377,10 @@ namespace PSMS
 
         private void btnpre_Click(object sender, EventArgs e)
         {
+            btnNew.Enabled = false;
+            foreach (Label temp in metroPanel1.Controls.OfType<Label>())
+                if (temp.Tag == "remove")
+                    temp.Visible = false;
             index--;
             try
             {

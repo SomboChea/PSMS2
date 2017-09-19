@@ -21,6 +21,9 @@ namespace PSMS
             suFun = new frmSupplierFunction();
 
             btnClr.Visible = false;
+
+            itemPanel1.Items.Remove(itemContainer1);
+            itemPanel1.Items.Remove(itemContainer4);
         }
 
         private void frmSupplierDetail_Load(object sender, EventArgs e)

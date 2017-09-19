@@ -49,11 +49,9 @@
             this.txtSuCode = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.txtPhone = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.txtEmail = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.txtPhone2 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.txtFax = new MetroFramework.Controls.MetroTextBox();
             this.txtFax2 = new MetroFramework.Controls.MetroTextBox();
@@ -75,6 +73,8 @@
             this.txtKh2 = new MetroFramework.Controls.MetroTextBox();
             this.txtKh1 = new MetroFramework.Controls.MetroTextBox();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtPhone2 = new System.Windows.Forms.MaskedTextBox();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSu)).BeginInit();
             this.SuspendLayout();
@@ -337,36 +337,6 @@
             this.metroLabel5.TabIndex = 10;
             this.metroLabel5.Text = "Phone";
             // 
-            // txtPhone
-            // 
-            // 
-            // 
-            // 
-            this.txtPhone.CustomButton.Image = null;
-            this.txtPhone.CustomButton.Location = new System.Drawing.Point(221, 1);
-            this.txtPhone.CustomButton.Name = "";
-            this.txtPhone.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtPhone.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtPhone.CustomButton.TabIndex = 1;
-            this.txtPhone.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtPhone.CustomButton.UseSelectable = true;
-            this.txtPhone.CustomButton.Visible = false;
-            this.txtPhone.Lines = new string[0];
-            this.txtPhone.Location = new System.Drawing.Point(549, 113);
-            this.txtPhone.MaxLength = 32767;
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.PasswordChar = '\0';
-            this.txtPhone.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtPhone.SelectedText = "";
-            this.txtPhone.SelectionLength = 0;
-            this.txtPhone.SelectionStart = 0;
-            this.txtPhone.ShortcutsEnabled = true;
-            this.txtPhone.Size = new System.Drawing.Size(243, 23);
-            this.txtPhone.TabIndex = 11;
-            this.txtPhone.UseSelectable = true;
-            this.txtPhone.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtPhone.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // metroLabel9
             // 
             this.metroLabel9.AutoSize = true;
@@ -403,6 +373,7 @@
             this.txtEmail.ShortcutsEnabled = true;
             this.txtEmail.Size = new System.Drawing.Size(243, 23);
             this.txtEmail.TabIndex = 15;
+            this.txtEmail.Tag = "email";
             this.txtEmail.UseSelectable = true;
             this.txtEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEmail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -416,36 +387,6 @@
             this.metroLabel6.Size = new System.Drawing.Size(58, 19);
             this.metroLabel6.TabIndex = 8;
             this.metroLabel6.Text = "Address";
-            // 
-            // txtPhone2
-            // 
-            // 
-            // 
-            // 
-            this.txtPhone2.CustomButton.Image = null;
-            this.txtPhone2.CustomButton.Location = new System.Drawing.Point(221, 1);
-            this.txtPhone2.CustomButton.Name = "";
-            this.txtPhone2.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtPhone2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtPhone2.CustomButton.TabIndex = 1;
-            this.txtPhone2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtPhone2.CustomButton.UseSelectable = true;
-            this.txtPhone2.CustomButton.Visible = false;
-            this.txtPhone2.Lines = new string[0];
-            this.txtPhone2.Location = new System.Drawing.Point(548, 141);
-            this.txtPhone2.MaxLength = 32767;
-            this.txtPhone2.Name = "txtPhone2";
-            this.txtPhone2.PasswordChar = '\0';
-            this.txtPhone2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtPhone2.SelectedText = "";
-            this.txtPhone2.SelectionLength = 0;
-            this.txtPhone2.SelectionStart = 0;
-            this.txtPhone2.ShortcutsEnabled = true;
-            this.txtPhone2.Size = new System.Drawing.Size(243, 23);
-            this.txtPhone2.TabIndex = 19;
-            this.txtPhone2.UseSelectable = true;
-            this.txtPhone2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtPhone2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel8
             // 
@@ -536,6 +477,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.metroPanel1.Controls.Add(this.txtPhone);
+            this.metroPanel1.Controls.Add(this.txtPhone2);
             this.metroPanel1.Controls.Add(this.btnpre);
             this.metroPanel1.Controls.Add(this.btnNexts);
             this.metroPanel1.Controls.Add(this.metroLabel10);
@@ -556,11 +499,9 @@
             this.metroPanel1.Controls.Add(this.txtFax2);
             this.metroPanel1.Controls.Add(this.txtFax);
             this.metroPanel1.Controls.Add(this.metroLabel8);
-            this.metroPanel1.Controls.Add(this.txtPhone2);
             this.metroPanel1.Controls.Add(this.metroLabel6);
             this.metroPanel1.Controls.Add(this.txtEmail);
             this.metroPanel1.Controls.Add(this.metroLabel9);
-            this.metroPanel1.Controls.Add(this.txtPhone);
             this.metroPanel1.Controls.Add(this.metroLabel5);
             this.metroPanel1.Controls.Add(this.metroLabel4);
             this.metroPanel1.Controls.Add(this.txtSuCode);
@@ -595,6 +536,7 @@
             // btnNexts
             // 
             this.btnNexts.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnNexts.Enabled = false;
             this.btnNexts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNexts.ForeColor = System.Drawing.SystemColors.Control;
             this.btnNexts.Location = new System.Drawing.Point(716, 27);
@@ -670,6 +612,7 @@
             this.dgSu.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgSu.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgSu.Location = new System.Drawing.Point(500, 334);
+            this.dgSu.MultiSelect = false;
             this.dgSu.Name = "dgSu";
             this.dgSu.ReadOnly = true;
             this.dgSu.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -686,6 +629,7 @@
             this.dgSu.Size = new System.Drawing.Size(35, 21);
             this.dgSu.TabIndex = 30;
             this.dgSu.Visible = false;
+            this.dgSu.SelectionChanged += new System.EventHandler(this.dgSu_SelectionChanged);
             this.dgSu.Click += new System.EventHandler(this.dgSu_Click);
             // 
             // txtSuID
@@ -892,6 +836,24 @@
             this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
             this.maskedTextBox1.TabIndex = 14;
             // 
+            // txtPhone2
+            // 
+            this.txtPhone2.Location = new System.Drawing.Point(548, 134);
+            this.txtPhone2.Mask = "(999) 000-0000";
+            this.txtPhone2.Name = "txtPhone2";
+            this.txtPhone2.Size = new System.Drawing.Size(243, 20);
+            this.txtPhone2.TabIndex = 90;
+            this.txtPhone2.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(548, 108);
+            this.txtPhone.Mask = "(999) 000-0000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(243, 20);
+            this.txtPhone.TabIndex = 90;
+            this.txtPhone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
             // frmSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -933,11 +895,9 @@
         private MetroFramework.Controls.MetroTextBox txtSuCode;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroTextBox txtPhone;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroTextBox txtEmail;
         private MetroFramework.Controls.MetroLabel metroLabel6;
-        private MetroFramework.Controls.MetroTextBox txtPhone2;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroTextBox txtFax;
         private MetroFramework.Controls.MetroTextBox txtFax2;
@@ -959,5 +919,7 @@
         private System.Windows.Forms.Button btnpre;
         private System.Windows.Forms.Button btnNexts;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox txtPhone;
+        private System.Windows.Forms.MaskedTextBox txtPhone2;
     }
 }

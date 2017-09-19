@@ -33,7 +33,7 @@ namespace PSMS
             param[4] = new SqlParameter("SuFNEN", Su.su_fnen);
             param[5] = new SqlParameter("Gender", Su.gender);
             param[6] = new SqlParameter("Address", Su.address);
-            param[7] = new SqlParameter("Phone", Su.phone2);
+            param[7] = new SqlParameter("Phone", Su.phone);
             param[8] = new SqlParameter("Phone2", Su.phone2);
             param[9] = new SqlParameter("Email", Su.email);
             param[10] = new SqlParameter("Fax", Su.fax);
@@ -44,8 +44,8 @@ namespace PSMS
         public int Insert(frmSu Su)
         {
             return base.ExecNonQuery("INSERT INTO " +
-                "Supplier(SuLNKH, SuFNKH, SuLNEN, SuFNEN, Gender, Address,Phone,Phone2,Fax,Fax2, Balance) " +
-                "VALUES(@SuLNKH, @SuFNKH, @SuLNEN, @SuFNEN, @Gender, @Address, @Phone, @Phone2, @Fax, @Fax2, @Balance)",
+                "Supplier(SuLNKH, SuFNKH, SuLNEN, SuFNEN, Gender, Address,Email,Phone,Phone2,Fax,Fax2, Balance) " +
+                "VALUES(@SuLNKH, @SuFNKH, @SuLNEN, @SuFNEN, @Gender, @Address,@Email, @Phone, @Phone2, @Fax, @Fax2, @Balance)",
                 GetParameter(Su));
         }
 
@@ -60,7 +60,7 @@ namespace PSMS
         public int Update(frmSu Su)
         {
             return base.ExecNonQuery("UPDATE Supplier " +
-                "SET SuLNKH=@SuLNKH, SuFNKH=@SuFNKH, SuLNEN=@SuLNEN, SuFNEN=@SuFNEN, Gender=@Gender, Address=@Address, Phone=@Phone2, Fax=@Fax, Fax2=@Fax2 WHERE SuID=@SuID", GetParameter(Su));
+                "SET SuLNKH=@SuLNKH, SuFNKH=@SuFNKH, SuLNEN=@SuLNEN, SuFNEN=@SuFNEN, Gender=@Gender, Address=@Address, Email=@Email,Phone=@Phone,Phone2=@Phone2, Fax=@Fax, Fax2=@Fax2 WHERE SuID=@SuID", GetParameter(Su));
         }
 
         public int Delete(int suid)
