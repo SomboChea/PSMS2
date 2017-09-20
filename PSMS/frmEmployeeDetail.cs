@@ -19,7 +19,7 @@ namespace PSMS
         {
             InitializeComponent();
             empFun = new frmEmployeeFunction();
-
+           
             btnClr.Visible = false;
             itemPanel1.Items.Remove(itemContainer1);
             itemPanel1.Items.Remove(itemContainer4);
@@ -36,6 +36,7 @@ namespace PSMS
             {
 
             }
+            comboBox1.SelectedIndex = 0;
             //empFun.FillDataGridView(ref dataGridView1);
          
         }
@@ -236,6 +237,14 @@ namespace PSMS
                     e.Cancel=true;
                 }
             }
+        }
+
+        private void txtfilter_ButtonClick(object sender, EventArgs e)
+        {
+            string sql = "Select * from Employee ";
+            sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like '%" + txtfilter.Text.Trim() + "%'";
+            employeeTableAdapter.Adapter.SelectCommand.CommandText = sql;
+            employeeTableAdapter.Fill(this.pSMS2DataSet2.Employee);
         }
     }
 }

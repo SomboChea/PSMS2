@@ -98,6 +98,9 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtfilter = new MetroFramework.Controls.MetroTextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Join_date)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pSMS2DataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
@@ -810,6 +813,7 @@
             // pSMS2DataSet2
             // 
             this.pSMS2DataSet2.DataSetName = "PSMS2DataSet2";
+            this.pSMS2DataSet2.EnforceConstraints = false;
             this.pSMS2DataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // employeeBindingSource
@@ -1078,11 +1082,79 @@
             this.dataGridViewTextBoxColumn14.HeaderText = "JoinDate";
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             // 
+            // txtfilter
+            // 
+            // 
+            // 
+            // 
+            this.txtfilter.CustomButton.Image = null;
+            this.txtfilter.CustomButton.Location = new System.Drawing.Point(95, 1);
+            this.txtfilter.CustomButton.Name = "";
+            this.txtfilter.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtfilter.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtfilter.CustomButton.TabIndex = 1;
+            this.txtfilter.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtfilter.CustomButton.UseSelectable = true;
+            this.txtfilter.Icon = global::PSMS.Properties.Resources.searchicon;
+            this.txtfilter.Lines = new string[0];
+            this.txtfilter.Location = new System.Drawing.Point(572, 59);
+            this.txtfilter.MaxLength = 32767;
+            this.txtfilter.Name = "txtfilter";
+            this.txtfilter.PasswordChar = '\0';
+            this.txtfilter.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtfilter.SelectedText = "";
+            this.txtfilter.SelectionLength = 0;
+            this.txtfilter.SelectionStart = 0;
+            this.txtfilter.ShortcutsEnabled = true;
+            this.txtfilter.ShowButton = true;
+            this.txtfilter.Size = new System.Drawing.Size(117, 23);
+            this.txtfilter.TabIndex = 124;
+            this.txtfilter.UseSelectable = true;
+            this.txtfilter.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtfilter.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtfilter.ButtonClick += new MetroFramework.Controls.MetroTextBox.ButClick(this.txtfilter_ButtonClick);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "EmpID",
+            "EmpCode ",
+            "EmpLNKH ",
+            "EmpFNKH ",
+            "EmpLNEN ",
+            "EmpFNEN",
+            "Gender ",
+            "IDCard",
+            "Address ",
+            "Phone ",
+            "Email ",
+            "PosID ",
+            "Salary",
+            "JoinDate"});
+            this.comboBox1.Location = new System.Drawing.Point(497, 59);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(69, 21);
+            this.comboBox1.TabIndex = 123;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(454, 62);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 122;
+            this.label1.Text = "Filter By";
+            // 
             // frmEmployeeDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 480);
+            this.Controls.Add(this.txtfilter);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cbBGender);
             this.Controls.Add(this.employeeBindingNavigator);
@@ -1200,5 +1272,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private MetroFramework.Controls.MetroTextBox txtfilter;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

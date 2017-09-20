@@ -260,7 +260,7 @@ namespace PSMS
                 // and it continue loop to DBSetting , so i ask first to exit or Continue
                 // if no need just Change it back    
                 if (MessageBox.Show(this, "Your first open Please config first ?", "Warning ", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.Cancel)
-                    Environment.Exit(0);  
+                    Environment.Exit(0);
                 new DBSetting().ShowDialog();
                 OpenCon();
                 return;

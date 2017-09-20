@@ -28,7 +28,7 @@ namespace PSMS
 
         private void frmSupplierDetail_Load(object sender, EventArgs e)
         {
-            
+            comboBox1.SelectedIndex = 0;
             // TODO: This line of code loads data into the 'pSMS2DataSet2.Supplier' table. You can move, or remove it, as needed.
             this.supplierTableAdapter.Fill(this.pSMS2DataSet2.Supplier);
             //suFun.FillDataGridView(ref dgData);
@@ -146,6 +146,15 @@ namespace PSMS
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void txtfilter_ButtonClick(object sender, EventArgs e)
+        {
+            string sql = "Select * from Supplier ";
+            sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like '%" + txtfilter.Text.Trim() + "%'";
+            supplierTableAdapter.Adapter.SelectCommand.CommandText = sql;
+            supplierTableAdapter.Fill(this.pSMS2DataSet2.Supplier);
+        
         }
     }
 }

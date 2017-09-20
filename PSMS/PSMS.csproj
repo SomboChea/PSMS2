@@ -821,6 +821,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon%281%29.ico" />
+    <None Include="Resources\searchicon.jpg" />
     <None Include="Resources\Product.jpg" />
     <None Include="Resources\Settings-icon.png" />
     <None Include="Resources\employee.png" />
