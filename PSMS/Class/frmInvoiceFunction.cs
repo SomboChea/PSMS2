@@ -30,7 +30,7 @@ namespace PSMS
             param[1] = new SqlParameter("InvoiceCode", Inv.incode);
             param[2] = new SqlParameter("CusID", Inv.cusid);
             param[3] = new SqlParameter("EmpID", Inv.empid);
-            param[4] = new SqlParameter("Date", Inv.date);
+            param[4] = new SqlParameter("Date", Inv.date+" "+DateTime.Now.TimeOfDay);
             param[5] = new SqlParameter("Totalprice", Inv.totalprice);
             param[6] = new SqlParameter("Payment", Inv.payment);
             param[7] = new SqlParameter("PaymentVerify", Inv.paymentverify);

@@ -261,7 +261,10 @@ namespace PSMS
                 // if no need just Change it back    
                 if (MessageBox.Show(this, "Your first open Please config first ?", "Warning ", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.Cancel)
                     Environment.Exit(0);
+<<<<<<< HEAD
 
+=======
+>>>>>>> a4ca9856e10d7547109db6c3959c343ded296daa
                 new DBSetting().ShowDialog();
                 OpenCon();
 

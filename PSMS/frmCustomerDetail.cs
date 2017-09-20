@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace PSMS
             InitializeComponent();
             cusFun = new frmCustomerFunction();
             empFun = new frmEmployeeFunction();
-
+           
             btnClr.Visible = false;
             itemPanel1.Items.Remove(itemContainer1);
             itemPanel1.Items.Remove(itemContainer4);
@@ -29,11 +30,14 @@ namespace PSMS
 
         private void frmCustomerDetail_Load(object sender, EventArgs e)
         {
-           
+            //customersTableAdapter.Adapter = new SqlDataAdapter("Select * from Customers where balance=0", customersTableAdapter.Connection);
             // TODO: This line of code loads data into the 'pSMS2DataSet2.Customers' table. You can move, or remove it, as needed.
             this.customersTableAdapter.Fill(this.pSMS2DataSet2.Customers);
+            comboBox1.SelectedIndex = 0;
             //cusFun.FillDataGridView(ref dgData);
             //empFun.FillComboBox(ref cbBEmp, "EmpName", "EmpID");
+            //PSMS2DataSet2TableAdapters.CustomersTableAdapter adapt = new PSMS2DataSet2TableAdapters.CustomersTableAdapter();
+            //dapt.Adapter.SelectCommand = new SqlCommand("Select * from Customers where Balance=0;", customersTableAdapter.Connection);
         }
         private frmCus GetCus()
         {
@@ -227,6 +231,34 @@ namespace PSMS
             this.Validate();
             this.customersBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.pSMS2DataSet2);
+
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtfilter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtfilter_ButtonClick(object sender, EventArgs e)
+        {
+            string sql = "Select * from Customers ";
+            sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like '%" + txtfilter.Text.Trim() + "%'";
+            customersTableAdapter.Adapter.SelectCommand.CommandText = sql;
+            customersTableAdapter.Fill(this.pSMS2DataSet2.Customers);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }
