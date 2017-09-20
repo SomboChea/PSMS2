@@ -285,7 +285,12 @@ namespace PSMS
 
         }
 
-        Properties.Settings setting = new Properties.Settings();
+        Properties.Settings setting = new Properties.Settings(); //Unsed
+        INIParser mySetting = new INIParser("Settings.ini"); //Used
+
+        //AuthType
+        string section = "SQL Server Authentication";
+        string section2 = "Windows Authentication";
 
         public DBSetting()
         {
@@ -300,36 +305,38 @@ namespace PSMS
 
         }
 
-        private void reloadCheck()
+        private void reloadCheck(byte auth=0)
         {
-            INIParser setting = new INIParser("Settings.ini");
-            string section = "SQL Server Authentication";
-            string section2 = "Windows Authentication";
-            int type = 0;
+            byte type = auth;
 
             try
             {
-                type = int.Parse(setting.Read("AuthType"));
+                type = byte.Parse(mySetting.Read("AuthType"));
             }
             catch (Exception)
             {
                 type = 0;
             }
-            
+
             if (type == 0)
             {
-                txtHost.Text = setting.Read("hostname", section2);
+                txtHost.Text = mySetting.Read("hostname", section2);
                 cbAuthentication.SelectedIndex = 0;
                 UserPassEnable(false);
             }
             else
             {
-                cbAuthentication.SelectedIndex = 1;
-                txtHost.Text = setting.Read("hostname", section);
-                txtUsername.Text = setting.Read("username",section);
-                txtPassword.Text = setting.Read("password",section);
+                setAuthSQL();
                 UserPassEnable(true);
             }
+        }
+
+        private void setAuthSQL()
+        {
+            cbAuthentication.SelectedIndex = 1;
+            txtHost.Text = mySetting.Read("hostname", section);
+            txtUsername.Text = mySetting.Read("username", section);
+            txtPassword.Text = mySetting.Read("password", section);
         }
 
         private void UserPassEnable(bool enable)
@@ -343,6 +350,8 @@ namespace PSMS
             }
             else
             {
+                txtUsername.Clear();
+                txtPassword.Clear();
                 txtUsername.Enabled = false;
                 txtPassword.Enabled = false;
                 lbPass.ForeColor = System.Drawing.Color.LightGray;
@@ -353,9 +362,15 @@ namespace PSMS
         private void cbAuthentication_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbAuthentication.SelectedIndex == 0)
+            {
+                txtHost.Text = mySetting.Read("hostname", section2);
                 UserPassEnable(false);
+            }
             else
+            {
+                setAuthSQL();
                 UserPassEnable(true);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -367,22 +382,40 @@ namespace PSMS
         {
             try
             {
-                Hostname = txtHost.Text;
-                Username = txtUsername.Text;
-                Password = txtPassword.Text;
-                Authentication = (byte)cbAuthentication.SelectedIndex;
-                
-                MessageBox.Show("Saved!", "DB Setting");
-
                 saveSetting(Authentication);
-
+                MessageBox.Show("Saved!", "DB Setting");
                 reloadCheck();
-
             }
             catch(Exception)
             {
                 MessageBox.Show("Saving error!", "DB Setting");
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            btnApply_Click(sender, e);
+            this.Close();
+        }
+
+        private void saveSetting(byte auth)
+        {
+            if (auth.Equals(1))
+            {
+                mySetting.Write("AuthType", 1 + "");
+                mySetting.Write("hostname", txtHost.Text, section);
+                mySetting.Write("dbname", "PSMS2", section);
+                mySetting.Write("username", txtUsername.Text, section);
+                mySetting.Write("password", txtPassword.Text, section);
+            }
+            else
+            {
+                mySetting.Write("AuthType", 0 + "");
+                mySetting.Write("hostname", txtHost.Text, section2);
+                mySetting.Write("dbname", "PSMS2", section2);
+            }
+
+
         }
 
         private string Hostname
@@ -413,34 +446,5 @@ namespace PSMS
             get { return Properties.Settings.Default.PSMS2ConnectionString; }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            btnApply_Click(sender, e);
-            this.Close();
-        }
-
-        private void saveSetting(byte auth)
-        {
-            var mySetting = new INIParser("Settings.ini");
-
-            if(auth.Equals(1))
-            {
-                string section = "SQL Server Authentication";
-                mySetting.Write("AuthType",1+"");
-                mySetting.Write("hostname", txtHost.Text, section);
-                mySetting.Write("dbname", "PSMS2", section);
-                mySetting.Write("username", txtUsername.Text, section);
-                mySetting.Write("password", txtPassword.Text, section);
-            }
-            else
-            {
-                string section2 = "Windows Authentication";
-                mySetting.Write("AuthType", 0 + "");
-                mySetting.Write("hostname", txtHost.Text, section2);
-                mySetting.Write("dbname", "PSMS2", section2);
-            }
-            
-
-        }
     }
 }
