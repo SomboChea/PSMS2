@@ -345,7 +345,8 @@
             "Dialy",
             "Weekly",
             "Monthly",
-            "Yearly"});
+            "Yearly",
+            "All"});
             this.cbSortby.Location = new System.Drawing.Point(518, 63);
             this.cbSortby.Name = "cbSortby";
             this.cbSortby.Size = new System.Drawing.Size(143, 29);
@@ -358,9 +359,9 @@
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel4.Location = new System.Drawing.Point(518, 41);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(58, 19);
+            this.metroLabel4.Size = new System.Drawing.Size(66, 19);
             this.metroLabel4.TabIndex = 19;
-            this.metroLabel4.Text = "Sort by";
+            this.metroLabel4.Text = "Show by";
             // 
             // frmReport
             // 
