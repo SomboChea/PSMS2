@@ -32,9 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomerDetail));
             this.itemPanel1 = new DevComponents.DotNetBar.ItemPanel();
             this.itemContainer4 = new DevComponents.DotNetBar.ItemContainer();
+            this.btnNew = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.itemContainer2 = new DevComponents.DotNetBar.ItemContainer();
+            this.btnSave = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.itemContainer3 = new DevComponents.DotNetBar.ItemContainer();
+            this.btnDel = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
+            this.btnClr = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.txtCusID = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.txtEmpID = new MetroFramework.Controls.MetroTextBox();
@@ -69,11 +73,18 @@
             this.customersTableAdapter = new PSMS.PSMS2DataSet2TableAdapters.CustomersTableAdapter();
             this.tableAdapterManager = new PSMS.PSMS2DataSet2TableAdapters.TableAdapterManager();
             this.customersBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.customersBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.customersDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,17 +104,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtfilter = new MetroFramework.Controls.MetroTextBox();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.customersBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.btnNew = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.btnSave = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.btnDel = new DevComponents.DotNetBar.Metro.MetroTileItem();
-            this.btnClr = new DevComponents.DotNetBar.Metro.MetroTileItem();
             ((System.ComponentModel.ISupportInitialize)(this.Opendate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pSMS2DataSet2)).BeginInit();
@@ -148,6 +148,22 @@
             // 
             this.itemContainer4.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
+            // btnNew
+            // 
+            this.btnNew.Image = global::PSMS.Properties.Resources.add_documents_1_;
+            this.btnNew.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnNew.Name = "btnNew";
+            this.btnNew.SymbolColor = System.Drawing.Color.Empty;
+            this.btnNew.Text = "Save";
+            this.btnNew.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
+            this.btnNew.TileSize = new System.Drawing.Size(100, 60);
+            // 
+            // 
+            // 
+            this.btnNew.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.btnNew.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
             // itemContainer2
             // 
             // 
@@ -162,6 +178,22 @@
             // 
             // 
             this.itemContainer2.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::PSMS.Properties.Resources.save;
+            this.btnSave.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.SymbolColor = System.Drawing.Color.Empty;
+            this.btnSave.Text = "Update";
+            this.btnSave.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
+            this.btnSave.TileSize = new System.Drawing.Size(100, 60);
+            // 
+            // 
+            // 
+            this.btnSave.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.btnSave.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // itemContainer3
             // 
@@ -178,6 +210,22 @@
             // 
             this.itemContainer3.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
+            // btnDel
+            // 
+            this.btnDel.Image = global::PSMS.Properties.Resources.rubbish_bin;
+            this.btnDel.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnDel.Name = "btnDel";
+            this.btnDel.SymbolColor = System.Drawing.Color.Empty;
+            this.btnDel.Text = "Delete";
+            this.btnDel.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
+            this.btnDel.TileSize = new System.Drawing.Size(100, 60);
+            // 
+            // 
+            // 
+            this.btnDel.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.btnDel.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
             // itemContainer1
             // 
             // 
@@ -192,6 +240,21 @@
             // 
             // 
             this.itemContainer1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // btnClr
+            // 
+            this.btnClr.Image = global::PSMS.Properties.Resources.sweep1;
+            this.btnClr.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnClr.Name = "btnClr";
+            this.btnClr.SymbolColor = System.Drawing.Color.Empty;
+            this.btnClr.Text = "Clear";
+            this.btnClr.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
+            this.btnClr.TileSize = new System.Drawing.Size(100, 60);
+            // 
+            // 
+            // 
+            this.btnClr.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.btnClr.Click += new System.EventHandler(this.btnClr_Click);
             // 
             // txtCusID
             // 
@@ -819,12 +882,48 @@
             this.customersBindingNavigator.Text = "bindingNavigator1";
             this.customersBindingNavigator.Visible = false;
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
             // 
             // bindingNavigatorSeparator
             // 
@@ -845,10 +944,37 @@
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // customersBindingNavigatorSaveItem
+            // 
+            this.customersBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.customersBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("customersBindingNavigatorSaveItem.Image")));
+            this.customersBindingNavigatorSaveItem.Name = "customersBindingNavigatorSaveItem";
+            this.customersBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
+            this.customersBindingNavigatorSaveItem.Text = "Save Data";
+            this.customersBindingNavigatorSaveItem.Click += new System.EventHandler(this.customersBindingNavigatorSaveItem_Click);
             // 
             // customersDataGridView
             // 
@@ -1036,132 +1162,7 @@
             this.txtfilter.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.txtfilter.ButtonClick += new MetroFramework.Controls.MetroTextBox.ButClick(this.txtfilter_ButtonClick);
             this.txtfilter.Click += new System.EventHandler(this.txtfilter_Click);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // customersBindingNavigatorSaveItem
-            // 
-            this.customersBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.customersBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("customersBindingNavigatorSaveItem.Image")));
-            this.customersBindingNavigatorSaveItem.Name = "customersBindingNavigatorSaveItem";
-            this.customersBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.customersBindingNavigatorSaveItem.Text = "Save Data";
-            this.customersBindingNavigatorSaveItem.Click += new System.EventHandler(this.customersBindingNavigatorSaveItem_Click);
-            // 
-            // btnNew
-            // 
-            this.btnNew.Image = global::PSMS.Properties.Resources.add_documents_1_;
-            this.btnNew.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnNew.Name = "btnNew";
-            this.btnNew.SymbolColor = System.Drawing.Color.Empty;
-            this.btnNew.Text = "Save";
-            this.btnNew.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
-            this.btnNew.TileSize = new System.Drawing.Size(100, 60);
-            // 
-            // 
-            // 
-            this.btnNew.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.btnNew.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = global::PSMS.Properties.Resources.save;
-            this.btnSave.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnSave.Name = "btnSave";
-            this.btnSave.SymbolColor = System.Drawing.Color.Empty;
-            this.btnSave.Text = "Update";
-            this.btnSave.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
-            this.btnSave.TileSize = new System.Drawing.Size(100, 60);
-            // 
-            // 
-            // 
-            this.btnSave.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.btnSave.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.Image = global::PSMS.Properties.Resources.rubbish_bin;
-            this.btnDel.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnDel.Name = "btnDel";
-            this.btnDel.SymbolColor = System.Drawing.Color.Empty;
-            this.btnDel.Text = "Delete";
-            this.btnDel.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
-            this.btnDel.TileSize = new System.Drawing.Size(100, 60);
-            // 
-            // 
-            // 
-            this.btnDel.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.btnDel.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // btnClr
-            // 
-            this.btnClr.Image = global::PSMS.Properties.Resources.sweep1;
-            this.btnClr.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnClr.Name = "btnClr";
-            this.btnClr.SymbolColor = System.Drawing.Color.Empty;
-            this.btnClr.Text = "Clear";
-            this.btnClr.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure;
-            this.btnClr.TileSize = new System.Drawing.Size(100, 60);
-            // 
-            // 
-            // 
-            this.btnClr.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.btnClr.Click += new System.EventHandler(this.btnClr_Click);
+            this.txtfilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtfilter_KeyPress);
             // 
             // frmCustomerDetail
             // 

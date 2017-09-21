@@ -242,9 +242,23 @@ namespace PSMS
         private void txtfilter_ButtonClick(object sender, EventArgs e)
         {
             string sql = "Select * from Employee ";
-            sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like '%" + txtfilter.Text.Trim() + "%'";
+            sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
             employeeTableAdapter.Adapter.SelectCommand.CommandText = sql;
             employeeTableAdapter.Fill(this.pSMS2DataSet2.Employee);
+           
+        }
+
+        private void txtfilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                txtfilter_ButtonClick(this, null);
+            }
+        }
+
+        private void txtfilter_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
