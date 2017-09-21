@@ -1,0 +1,41 @@
+SELECT
+
+dbo.Purchase.PurCode,
+
+dbo.Purchase.[Date],
+dbo.Purchase.Payment,
+dbo.Purchase.Balance,
+Concat(dbo.Supplier.SuLNEN,' ',dbo.Supplier.SuFNEN) As SuEnName,
+Concat(dbo.Employee.EmpLNEN,' ',dbo.Employee.EmpFNEN) AS EmpEnName,
+dbo.Purchase.Total,
+Concat(dbo.Supplier.SuLNKH,' ',dbo.Supplier.SuFNKH) As SuKHName,
+Concat(dbo.Employee.EmpLNKH,' ',dbo.Employee.EmpFNKH) AS EmpKHName
+
+FROM
+dbo.Purchase
+INNER JOIN dbo.Employee ON dbo.Purchase.EmpID = dbo.Employee.EmpID
+INNER JOIN dbo.Supplier ON dbo.Purchase.SuID = dbo.Supplier.SuID
+
+
+
+SELECT
+
+dbo.Invoice.InvoiceCode,
+
+Concat(dbo.Customers.CusLNEN,' ',dbo.Customers.CusFNEN) 'CusEnName',
+
+Concat(dbo.Employee.EmpLNEN,' ',dbo.Employee.EmpFNEN) 'EmpEnName',
+dbo.Invoice.[Date],
+dbo.Invoice.TotalPrice,
+dbo.Invoice.Payment,
+dbo.Invoice.PaymentVerify,
+
+dbo.Invoice.Balance,
+Concat(dbo.Customers.CusLNKH,' ',dbo.Customers.CusFNKH) 'CusKHName',
+
+Concat(dbo.Employee.EmpLNKH,' ',dbo.Employee.EmpFNKH) 'EmpKHName'
+
+FROM
+dbo.Invoice
+INNER JOIN dbo.Customers ON dbo.Invoice.CusID = dbo.Customers.CusID
+INNER JOIN dbo.Employee ON dbo.Invoice.EmpID = dbo.Employee.EmpID
