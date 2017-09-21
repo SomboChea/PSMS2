@@ -40,9 +40,10 @@
             this.btnDel = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.itemContainer3 = new DevComponents.DotNetBar.ItemContainer();
             this.dgData = new MetroFramework.Controls.MetroGrid();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtfilter = new System.Windows.Forms.TextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -197,22 +198,24 @@
             this.dgData.Size = new System.Drawing.Size(650, 328);
             this.dgData.TabIndex = 30;
             // 
-            // textBox1
+            // txtfilter
             // 
-            this.textBox1.Location = new System.Drawing.Point(545, 71);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(141, 20);
-            this.textBox1.TabIndex = 32;
+            this.txtfilter.Location = new System.Drawing.Point(545, 71);
+            this.txtfilter.Name = "txtfilter";
+            this.txtfilter.Size = new System.Drawing.Size(141, 20);
+            this.txtfilter.TabIndex = 32;
+            this.txtfilter.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtfilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtfilter_KeyPress);
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(490, 72);
+            this.metroLabel1.Location = new System.Drawing.Point(378, 72);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(49, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(68, 19);
             this.metroLabel1.TabIndex = 33;
-            this.metroLabel1.Text = "Search";
+            this.metroLabel1.Text = "Search by";
             // 
             // metroTile1
             // 
@@ -225,14 +228,34 @@
             this.metroTile1.UseSelectable = true;
             this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "PurCode",
+            "Date",
+            "Payment",
+            "Balance,",
+            "SuEnName",
+            "EmpEnName",
+            "Total",
+            "SuKHName",
+            "EmpKHName"});
+            this.comboBox1.Location = new System.Drawing.Point(452, 71);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(87, 21);
+            this.comboBox1.TabIndex = 35;
+            // 
             // frmPurchaseDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 480);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtfilter);
             this.Controls.Add(this.itemPanel1);
             this.Controls.Add(this.dgData);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -259,8 +282,9 @@
         private DevComponents.DotNetBar.ItemContainer itemContainer3;
         private DevComponents.DotNetBar.Metro.MetroTileItem btnDel;
         private MetroFramework.Controls.MetroGrid dgData;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtfilter;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTile metroTile1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

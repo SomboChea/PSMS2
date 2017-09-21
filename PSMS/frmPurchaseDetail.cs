@@ -29,6 +29,7 @@ namespace PSMS
         private void frmPurchaseDetail_Load(object sender, EventArgs e)
         {
             purFun.FillDataGridView(ref dgData);
+            comboBox1.SelectedIndex = 0;
         }
 
         private void metroTile1_Click(object sender, EventArgs e)
@@ -80,6 +81,21 @@ namespace PSMS
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string sql = "Select * from viewPurchase2 ";
+            sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
+            dgData.DataSource = purFun.GetData(sql);
+            
+        }
+
+        private void txtfilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                textBox1_TextChanged(this, null);
+         
         }
     }
 }

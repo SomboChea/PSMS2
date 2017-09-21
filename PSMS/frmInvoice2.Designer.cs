@@ -541,6 +541,7 @@
             // dateDateTimePicker
             // 
             this.dateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.invoiceBindingSource, "Date", true));
+            this.dateDateTimePicker.Enabled = false;
             this.dateDateTimePicker.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateDateTimePicker.Location = new System.Drawing.Point(713, 65);

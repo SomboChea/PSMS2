@@ -41,6 +41,11 @@ namespace PSMS
             ////this.Hide();
             ////frmInv = new frmInvoice2();
             ////frmInv.Show();
+            //
+
+
+            // Action of Button Pay
+
             frmPayment frmpay = new frmPayment();
             frmpay.ShowDialog();
 
@@ -94,6 +99,20 @@ namespace PSMS
         private void dgInv_Click(object sender, EventArgs e)
         {
             btnNew.Enabled = dgInv.SelectedRows.Count > 0 ? true : false;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            string sql = "Select * from viewInvoice2 ";
+            sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
+            dgInv.DataSource = Invfun.GetData(sql);
+        }
+
+        private void txtfilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                textBox1_TextChanged(this, null);
         }
     }
 }

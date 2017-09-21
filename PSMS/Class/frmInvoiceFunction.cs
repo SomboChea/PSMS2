@@ -21,7 +21,7 @@ namespace PSMS
         }
         public void FillDataGridView(ref MetroFramework.Controls.MetroGrid dataGridView) 
         {
-            dataGridView.DataSource = base.GetData("SELECT [InvoiceCode],[CusID],[EmpID],[Date],[TotalPrice],[Payment],[PaymentVerify] ,[Balance] from Invoice where PaymentVerify=0");
+            dataGridView.DataSource = base.GetData("SELECT * from viewInvoice2");
         }
         public SqlParameter[] GetParameter(frmIn Inv)
         {

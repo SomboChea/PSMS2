@@ -81,10 +81,16 @@ namespace PSMS
                 {
                     if (this.PurchaseDetailDataGridView.SelectedCells.Count > 0)
                     {
-
+                       
                         int selectedrowindex = PurchaseDetailDataGridView.SelectedCells[0].RowIndex;
                         DataGridViewRow selectedRow = PurchaseDetailDataGridView.Rows[selectedrowindex];
-                        
+
+                        if (qty > int.Parse(selectedRow.Cells[4].Value + ""))
+                        {
+                            MetroMessageBox.Show(this, "Out of Quality", "Caution", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
                         DataTable dt = new DataTable();
 
                         if (dt.Columns.Count == 0)
@@ -139,6 +145,14 @@ namespace PSMS
                         this.totalPriceLabel1.Text = totalPrice.ToString();
                         dtGvBuy.DataSource = dt;
 
+                        if (int.Parse(selectedRow.Cells[4].Value+"")-qty > 0)
+                        {
+                            selectedRow.Cells[4].Value = (int.Parse(selectedRow.Cells[4].Value + "") - qty) + "";
+                        }
+                        else
+                        {
+                            PurchaseDetailDataGridView.Rows.Remove(selectedRow);
+                        }
                     }
                     else
                     {
@@ -245,7 +259,7 @@ namespace PSMS
                     SqlCommand cmd = new SqlCommand("INSERT INTO Purchase (Date,Payment,Balance,SuID,EmpID,Total) VALUES (@Date,@Payment,@Balance,@SuID,@EmpID,@Total);", Connection.con);
 
                     //cmd.Parameters.AddWithValue("@InvoiceCode", "U000002");
-                    cmd.Parameters.AddWithValue("@Date", Convert.ToDateTime(dateDateTimePicker.Text));
+                    cmd.Parameters.AddWithValue("@Date", DateTime.Now);
                     cmd.Parameters.AddWithValue("@Payment", paymentLabel1.Text);
 
                     cmd.Parameters.AddWithValue("@SuID", suIDComboBox.SelectedValue.ToString());
@@ -292,6 +306,7 @@ namespace PSMS
                             cmd5.ExecuteNonQuery();
 
                             BalanceLabel.Text = balance.ToString();
+                           
                         }
                         catch (Exception) { }
                     }
@@ -344,6 +359,14 @@ namespace PSMS
         {
             addCurrentPurchaseToPrint(Helper.GetLastIdCode("Purchase","PurID","PurCode"));
             new reportViewer(dataPurchases).ShowDialog();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow temp in dtGvBuy.Rows)
+                dtGvBuy.Rows.Remove(temp);
+            if (dtGvBuy.Rows.Count > 0)
+                btnClear_Click(this, null);
         }
     }
 }
