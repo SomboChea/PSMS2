@@ -239,17 +239,14 @@ namespace PSMS
             
         }
 
-        private void txtfilter_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtfilter_ButtonClick(object sender, EventArgs e)
         {
             string sql = "Select * from Customers ";
             sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
             customersTableAdapter.Adapter.SelectCommand.CommandText = sql;
             customersTableAdapter.Fill(this.pSMS2DataSet2.Customers);
+          
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -262,12 +259,19 @@ namespace PSMS
 
         }
 
+
         private void txtfilter_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
                 txtfilter_ButtonClick(this, null);
             }
+        }
+
+        private void txtfilter_TextChanged(object sender, EventArgs e)
+        {
+            txtfilter_ButtonClick(sender, e);
+
         }
     }
 }

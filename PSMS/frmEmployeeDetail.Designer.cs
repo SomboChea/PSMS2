@@ -1113,8 +1113,12 @@
             this.txtfilter.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtfilter.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.txtfilter.ButtonClick += new MetroFramework.Controls.MetroTextBox.ButClick(this.txtfilter_ButtonClick);
+
             this.txtfilter.Click += new System.EventHandler(this.txtfilter_Click);
             this.txtfilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtfilter_KeyPress);
+
+            this.txtfilter.TextChanged += new System.EventHandler(this.txtfilter_TextChanged);
+
             // 
             // comboBox1
             // 
@@ -1135,15 +1139,15 @@
             "PosID ",
             "Salary",
             "JoinDate"});
-            this.comboBox1.Location = new System.Drawing.Point(497, 59);
+            this.comboBox1.Location = new System.Drawing.Point(455, 59);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(69, 21);
+            this.comboBox1.Size = new System.Drawing.Size(111, 21);
             this.comboBox1.TabIndex = 123;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(454, 62);
+            this.label1.Location = new System.Drawing.Point(408, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 122;

@@ -50,6 +50,8 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.lbNumRecord = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.cbSortby = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.viewReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -289,7 +291,7 @@
             this.txtSearch.CustomButton.Visible = false;
             this.txtSearch.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtSearch.Lines = new string[0];
-            this.txtSearch.Location = new System.Drawing.Point(604, 63);
+            this.txtSearch.Location = new System.Drawing.Point(722, 63);
             this.txtSearch.MaxLength = 32767;
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
@@ -310,7 +312,7 @@
             // 
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel3.Location = new System.Drawing.Point(604, 41);
+            this.metroLabel3.Location = new System.Drawing.Point(722, 41);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(119, 19);
             this.metroLabel3.TabIndex = 15;
@@ -334,11 +336,40 @@
             this.metroLabel5.TabIndex = 17;
             this.metroLabel5.Text = "LIST RECORD COUNT :";
             // 
+            // cbSortby
+            // 
+            this.cbSortby.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbSortby.FormattingEnabled = true;
+            this.cbSortby.ItemHeight = 23;
+            this.cbSortby.Items.AddRange(new object[] {
+            "Dialy",
+            "Weekly",
+            "Monthly",
+            "Yearly",
+            "All"});
+            this.cbSortby.Location = new System.Drawing.Point(518, 63);
+            this.cbSortby.Name = "cbSortby";
+            this.cbSortby.Size = new System.Drawing.Size(143, 29);
+            this.cbSortby.TabIndex = 18;
+            this.cbSortby.UseSelectable = true;
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel4.Location = new System.Drawing.Point(518, 41);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(66, 19);
+            this.metroLabel4.TabIndex = 19;
+            this.metroLabel4.Text = "Show by";
+            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1303, 749);
+            this.Controls.Add(this.metroLabel4);
+            this.Controls.Add(this.cbSortby);
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.lbNumRecord);
             this.Controls.Add(this.metroLabel3);
@@ -387,5 +418,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel lbNumRecord;
         private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroComboBox cbSortby;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
     }
 }
