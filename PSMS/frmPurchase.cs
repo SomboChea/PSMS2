@@ -85,9 +85,16 @@ namespace PSMS
                         int selectedrowindex = PurchaseDetailDataGridView.SelectedCells[0].RowIndex;
                         DataGridViewRow selectedRow = PurchaseDetailDataGridView.Rows[selectedrowindex];
 
+                        if (int.Parse(selectedRow.Cells[4].Value + "")==0)
+                        {
+                            MetroMessageBox.Show(this, "Out of Stock", "Caution", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+
                         if (qty > int.Parse(selectedRow.Cells[4].Value + ""))
                         {
-                            MetroMessageBox.Show(this, "Out of Quality", "Caution", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MetroMessageBox.Show(this, "Out of Quantity"+Environment.NewLine+"There are "+selectedRow.Cells[4].Value+" left", "Caution", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
 
@@ -145,14 +152,6 @@ namespace PSMS
                         this.totalPriceLabel1.Text = totalPrice.ToString();
                         dtGvBuy.DataSource = dt;
 
-                        if (int.Parse(selectedRow.Cells[4].Value+"")-qty > 0)
-                        {
-                            selectedRow.Cells[4].Value = (int.Parse(selectedRow.Cells[4].Value + "") - qty) + "";
-                        }
-                        else
-                        {
-                            PurchaseDetailDataGridView.Rows.Remove(selectedRow);
-                        }
                     }
                     else
                     {

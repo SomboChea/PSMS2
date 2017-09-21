@@ -145,11 +145,7 @@ namespace PSMS
                         int selectedrowindex = invoiceDetailDataGridView.SelectedCells[0].RowIndex;
                         DataGridViewRow selectedRow = invoiceDetailDataGridView.Rows[selectedrowindex];
 
-                        if (qty > int.Parse(selectedRow.Cells[4].Value + ""))
-                        {
-                            MetroMessageBox.Show(this, "Out of Quality", "Caution", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
+                       
                         DataTable dt = new DataTable();
 
                         if (dt.Columns.Count == 0)
@@ -201,14 +197,6 @@ namespace PSMS
                         totalPriceLabel1.Text = totalPrice.ToString();
                         dtGvBuy.DataSource = dt;
 
-                        if (int.Parse(selectedRow.Cells[4].Value + "")-qty > 0)
-                        {
-                            selectedRow.Cells[4].Value = (int.Parse(selectedRow.Cells[4].Value + "") - qty) + "";
-                        }
-                        else
-                        {
-                            invoiceDetailDataGridView.Rows.Remove(selectedRow);
-                        }
                     }
                     else
                     {
