@@ -78,7 +78,7 @@ namespace PSMS
             if (dia == DialogResult.Yes)
             {
                 this.Dispose();
-                new frmLogin().Show();
+                new Login().Show();
             }
         }
 

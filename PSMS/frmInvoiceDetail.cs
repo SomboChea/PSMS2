@@ -104,9 +104,13 @@ namespace PSMS
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
-            string sql = "Select * from viewInvoice2 ";
-            sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
-            dgInv.DataSource = Invfun.GetData(sql);
+            try
+            {
+                string sql = "Select * from viewInvoice2 ";
+                sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
+                dgInv.DataSource = Invfun.GetData(sql);
+            }
+            catch(Exception) { }
         }
 
         private void txtfilter_KeyPress(object sender, KeyPressEventArgs e)

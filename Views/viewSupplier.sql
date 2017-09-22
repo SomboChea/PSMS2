@@ -1,0 +1,3 @@
+INSERT INTO [viewSupplier]([SuCode], [FullNameKH], [FullNameEN], [Gender], [Address], [Phone], [Phone2], [Email], [Fax], [Fax2], [Balance]) VALUES (N'SU00001', N'ខេម ហ្វូន', N'Camfone Camfone', N'Male', N'Phnom Penh', N'', N'', NULL, N'', N'', 0.000000000000000); GO
+INSERT INTO [viewSupplier]([SuCode], [FullNameKH], [FullNameEN], [Gender], [Address], [Phone], [Phone2], [Email], [Fax], [Fax2], [Balance]) VALUES (N'SU00002', N' ', N'Samsung Mobile', N'Male', N'Phnom Penh', N'', N'', NULL, N'', N'', 0.000000000000000); GO
+INSERT INTO [viewSupplier]([SuCode], [FullNameKH], [FullNameEN], [Gender], [Address], [Phone], [Phone2], [Email], [Fax], [Fax2], [Balance]) VALUES (N'SU00003', N' ', N'Sony Mobi', N'Male', N'Japan', N'', N'', NULL, N'', N'', 0.000000000000000); GO
