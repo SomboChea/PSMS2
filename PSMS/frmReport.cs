@@ -466,6 +466,69 @@ namespace PSMS
 
             Helper.AutoFitColumns(viewReport);
         }
-        
+
+        public static int DaysInYear(int year)
+        {
+            return DateTime.IsLeapYear(year) ? 366 : 365;
+        }
+
+        private void cbSortby_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            showBy();
+
+            //DateTime last_day = new DateTime(today.Year, today.Month, 1).AddMonths(1).AddDays(-1);//
+
+            //MessageBox.Show("" + current_date + "\n" + "");
+        }
+
+        private void showBy()
+        {
+            DateTime today = DateTime.Today;
+            int last_day = int.Parse(new DateTime(today.Year, today.Month, DateTime.DaysInMonth(today
+                .Year, today.Month)).ToString("dd"));
+            string[] show_by = { "daily", "weekly", "monthly", "yearly", "all" };
+            int[] in_day = { 1, 7, last_day, DaysInYear(today.Year), 0 };
+            int current_index = cbSortby.SelectedIndex;
+            string current_date = today.ToString("yyyy-MM-dd");
+            string end_date = (today.AddDays(in_day[current_index] - 1).ToString("yyyy-MM-dd"));
+
+            if (show_by[current_index].Equals(show_by[0]))
+            {
+                if (currentSelected.Equals("invoice"))
+                {
+                    Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,CONVERT(date,Date) Date FROM Invoice WHERE CONVERT(date,Date) BETWEEN '" + current_date + "' AND '" + end_date + "' ;", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
+
+                    loadNumRecord();
+                    currentSelected = "invoice";
+                }
+                else if (currentSelected.Equals("purchase"))
+                {
+                    Helper.BindGridView("SELECT PurCode,CONVERT(date,Date) Date,Payment,Balance,Total FROM Purchase WHERE CONVERT(date,Date) BETWEEN '" + current_date + "' AND '" + end_date + "';", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
+
+                    loadNumRecord();
+                    currentSelected = "purchase";
+                }
+            }
+            else if (show_by[current_index].Equals(show_by[1]))
+            {
+
+            }
+            else if (show_by[current_index].Equals(show_by
+                [2]))
+            {
+               
+            }
+            else if (show_by[current_index].Equals(show_by[3]))
+            {
+                
+            }
+            else
+            {
+                MessageBox.Show("All");
+            }
+        }
     }
 }

@@ -85,9 +85,13 @@ namespace PSMS
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string sql = "Select * from viewPurchase2 ";
-            sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
-            dgData.DataSource = purFun.GetData(sql);
+            try
+            {
+                string sql = "Select * from viewPurchase2 ";
+                sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
+                dgData.DataSource = purFun.GetData(sql);
+            }
+            catch(Exception) { }
             
         }
 

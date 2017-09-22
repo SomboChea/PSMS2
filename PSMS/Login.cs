@@ -308,8 +308,6 @@ namespace PSMS
                 //If count is equal to 1, than show frmMain form
                 if (count == 1)
                 {
-
-                    //MetroMessageBox.Show(this, "Login Successful!", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     user.Name = txtUsername.Text;
                     this.Hide();
                     new frmMain(user).Show();

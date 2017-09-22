@@ -93,9 +93,9 @@ namespace PSMS
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.Location = new System.Drawing.Point(56, 126);
+            this.metroLabel1.Location = new System.Drawing.Point(39, 126);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(103, 25);
+            this.metroLabel1.Size = new System.Drawing.Size(108, 25);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Lime;
             this.metroLabel1.TabIndex = 2;
             this.metroLabel1.Text = "Hostname : ";
@@ -137,7 +137,7 @@ namespace PSMS
             this.lbUser.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.lbUser.Location = new System.Drawing.Point(86, 242);
             this.lbUser.Name = "lbUser";
-            this.lbUser.Size = new System.Drawing.Size(103, 25);
+            this.lbUser.Size = new System.Drawing.Size(106, 25);
             this.lbUser.Style = MetroFramework.MetroColorStyle.Lime;
             this.lbUser.TabIndex = 6;
             this.lbUser.Text = "Username : ";
@@ -187,7 +187,7 @@ namespace PSMS
             this.lbPass.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.lbPass.Location = new System.Drawing.Point(86, 298);
             this.lbPass.Name = "lbPass";
-            this.lbPass.Size = new System.Drawing.Size(101, 25);
+            this.lbPass.Size = new System.Drawing.Size(104, 25);
             this.lbPass.Style = MetroFramework.MetroColorStyle.Lime;
             this.lbPass.TabIndex = 8;
             this.lbPass.Text = "Password  : ";
@@ -235,9 +235,9 @@ namespace PSMS
             // 
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel4.Location = new System.Drawing.Point(23, 184);
+            this.metroLabel4.Location = new System.Drawing.Point(5, 185);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(136, 25);
+            this.metroLabel4.Size = new System.Drawing.Size(142, 25);
             this.metroLabel4.Style = MetroFramework.MetroColorStyle.Lime;
             this.metroLabel4.TabIndex = 9;
             this.metroLabel4.Text = "Authentication : ";
@@ -248,13 +248,13 @@ namespace PSMS
             // cbAuthentication
             // 
             this.cbAuthentication.FormattingEnabled = true;
-            this.cbAuthentication.ItemHeight = 23;
+            this.cbAuthentication.ItemHeight = 24;
             this.cbAuthentication.Items.AddRange(new object[] {
             "Windows Authentication",
             "SQL Server Authentication"});
             this.cbAuthentication.Location = new System.Drawing.Point(159, 180);
             this.cbAuthentication.Name = "cbAuthentication";
-            this.cbAuthentication.Size = new System.Drawing.Size(281, 29);
+            this.cbAuthentication.Size = new System.Drawing.Size(281, 30);
             this.cbAuthentication.Style = MetroFramework.MetroColorStyle.Lime;
             this.cbAuthentication.TabIndex = 10;
             this.cbAuthentication.UseCustomBackColor = true;
@@ -382,7 +382,7 @@ namespace PSMS
         {
             try
             {
-                saveSetting(Authentication);
+                saveSetting((byte)cbAuthentication.SelectedIndex);
                 MessageBox.Show("Saved!", "DB Setting");
                 reloadCheck();
             }

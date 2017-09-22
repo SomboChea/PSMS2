@@ -132,10 +132,21 @@ namespace PSMS.Class
 
         public static bool ifnull(object value, bool checkSpace)
         {
-            if (value.Equals(null) || value.Equals("") || value.Equals(" "))
-                return true;
+            if (value.Equals(" "))
+                return ifnull(value);
             else
                 return ifnull(value);
+        }
+
+        public static bool canParse(object value)
+        {
+            try
+            {
+                double.Parse(value.ToString());
+
+                return true;
+            }
+            catch (Exception) { return false; }
         }
 
         public static int GetLastId(string table_name)

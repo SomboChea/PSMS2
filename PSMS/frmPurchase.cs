@@ -228,10 +228,20 @@ namespace PSMS
             pay = new frmPayment();
             pay.FormClosed += new FormClosedEventHandler(form2_FormClosed);
             pay.ShowDialog();
-            if (double.Parse(pay.txtAmount.Text) > double.Parse(totalPriceLabel1.Text))
+
+            double pays = Helper.ifnull(pay.txtAmount.Text) ? 0 : Helper.canParse(pay.txtAmount.Text)? double.Parse(pay.txtAmount.Text):0;
+
+            double prices = Helper.ifnull(totalPriceLabel1.Text) ? 0 : Helper.canParse(totalPriceLabel1.Text)? double.Parse(totalPriceLabel1.Text):0;
+
+            if(pays > prices)
             {
 
             }
+
+            //if (double.Parse(pay.txtAmount.Text) > double.Parse(totalPriceLabel1.Text))
+            //{
+
+            //}
         }
         void form2_FormClosed(object sender, FormClosedEventArgs e)
         {

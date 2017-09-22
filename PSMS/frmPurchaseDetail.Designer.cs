@@ -62,9 +62,10 @@
             this.itemContainer2,
             this.itemContainer3});
             this.itemPanel1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemPanel1.Location = new System.Drawing.Point(712, 107);
+            this.itemPanel1.Location = new System.Drawing.Point(949, 132);
+            this.itemPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.itemPanel1.Name = "itemPanel1";
-            this.itemPanel1.Size = new System.Drawing.Size(105, 214);
+            this.itemPanel1.Size = new System.Drawing.Size(140, 263);
             this.itemPanel1.TabIndex = 31;
             this.itemPanel1.Text = "itemPanel1";
             // 
@@ -182,7 +183,8 @@
             this.dgData.EnableHeadersVisualStyles = false;
             this.dgData.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgData.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgData.Location = new System.Drawing.Point(36, 107);
+            this.dgData.Location = new System.Drawing.Point(48, 132);
+            this.dgData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgData.Name = "dgData";
             this.dgData.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -195,14 +197,15 @@
             this.dgData.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgData.Size = new System.Drawing.Size(650, 328);
+            this.dgData.Size = new System.Drawing.Size(867, 404);
             this.dgData.TabIndex = 30;
             // 
             // txtfilter
             // 
-            this.txtfilter.Location = new System.Drawing.Point(545, 71);
+            this.txtfilter.Location = new System.Drawing.Point(727, 87);
+            this.txtfilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtfilter.Name = "txtfilter";
-            this.txtfilter.Size = new System.Drawing.Size(141, 20);
+            this.txtfilter.Size = new System.Drawing.Size(187, 22);
             this.txtfilter.TabIndex = 32;
             this.txtfilter.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.txtfilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtfilter_KeyPress);
@@ -211,18 +214,20 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(378, 72);
+            this.metroLabel1.Location = new System.Drawing.Point(504, 89);
+            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(68, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(73, 20);
             this.metroLabel1.TabIndex = 33;
             this.metroLabel1.Text = "Search by";
             // 
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(712, 383);
+            this.metroTile1.Location = new System.Drawing.Point(949, 471);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(105, 52);
+            this.metroTile1.Size = new System.Drawing.Size(140, 64);
             this.metroTile1.TabIndex = 34;
             this.metroTile1.Text = "Pay";
             this.metroTile1.UseSelectable = true;
@@ -236,22 +241,23 @@
             "PurCode",
             "Date",
             "Payment",
-            "Balance,",
+            "Balance",
             "SuEnName",
             "EmpEnName",
             "Total",
             "SuKHName",
             "EmpKHName"});
-            this.comboBox1.Location = new System.Drawing.Point(452, 71);
+            this.comboBox1.Location = new System.Drawing.Point(603, 87);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(87, 21);
+            this.comboBox1.Size = new System.Drawing.Size(115, 24);
             this.comboBox1.TabIndex = 35;
             // 
             // frmPurchaseDetail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 480);
+            this.ClientSize = new System.Drawing.Size(1120, 591);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.metroLabel1);
@@ -259,10 +265,12 @@
             this.Controls.Add(this.itemPanel1);
             this.Controls.Add(this.dgData);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Movable = false;
             this.Name = "frmPurchaseDetail";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Resizable = false;
             this.Text = "PurchaseDetail";
             this.Load += new System.EventHandler(this.frmPurchaseDetail_Load);

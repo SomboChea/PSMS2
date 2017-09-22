@@ -342,7 +342,7 @@
             this.cbSortby.FormattingEnabled = true;
             this.cbSortby.ItemHeight = 23;
             this.cbSortby.Items.AddRange(new object[] {
-            "Dialy",
+            "Daily",
             "Weekly",
             "Monthly",
             "Yearly",
@@ -352,6 +352,7 @@
             this.cbSortby.Size = new System.Drawing.Size(143, 29);
             this.cbSortby.TabIndex = 18;
             this.cbSortby.UseSelectable = true;
+            this.cbSortby.SelectedIndexChanged += new System.EventHandler(this.cbSortby_SelectedIndexChanged);
             // 
             // metroLabel4
             // 
