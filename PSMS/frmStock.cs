@@ -23,8 +23,9 @@ namespace PSMS
         
         private void frmStock_Load(object sender, EventArgs e)
         {
+            comboBox2.SelectedIndex = 0;
             ImageList imglist = new ImageList();
-            foreach (ListViewItem item in Class.Helper.getListStock(ref imglist))
+            foreach (ListViewItem item in Class.Helper.getListStock(ref imglist,""))
             {
                 
                 if(Class.Helper.checkStock(item.Text) <=0)
@@ -134,6 +135,23 @@ namespace PSMS
                 listStock.Items.Remove(temp);
             }
             frmStock_Load(this, null);
+        }
+
+        private void txtfilter_TextChanged(object sender, EventArgs e)
+        {
+            foreach (ListViewItem temp in listStock.Items)
+                listStock.Items.Remove(temp);
+
+            String addSql = txtfilter.Text == "" ? "" : "Where " + comboBox2.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
+            ImageList imglist = new ImageList();
+            foreach (ListViewItem item in Class.Helper.getListStock(ref imglist, addSql))
+            {
+                listStock.Items.Add(item);
+                listStock.LargeImageList = imglist;
+                listStock.Items[item.Index].ImageIndex = item.Index;
+
+            }
+            comboBox1_SelectedIndexChanged(this, null);
         }
     }
 }

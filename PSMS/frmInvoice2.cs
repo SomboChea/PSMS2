@@ -197,6 +197,8 @@ namespace PSMS
                         totalPriceLabel1.Text = totalPrice.ToString();
                         dtGvBuy.DataSource = dt;
 
+                        selectedRow.Cells[4].Value = (int.Parse(selectedRow.Cells[4].Value + "") + qty) + "";
+                        
                     }
                     else
                     {

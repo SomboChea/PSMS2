@@ -26,13 +26,13 @@ namespace PSMS.Class
             return Image.FromStream(ms);
         }
         
-        public static List<ListViewItem> getListStock(ref ImageList imglist)
+        public static List<ListViewItem> getListStock(ref ImageList imglist,string addSql)
         {
             try
             {
                 List<ListViewItem> items = new List<ListViewItem>();
-
-                SqlCommand cmd = new SqlCommand("SELECT * FROM viewStock;", Connection.con);
+                string sql = "SELECT * FROM viewStock " + addSql;
+                SqlCommand cmd = new SqlCommand(sql, Connection.con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 string[] item = new string[10];
 

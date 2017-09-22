@@ -273,5 +273,10 @@ namespace PSMS
             txtfilter_ButtonClick(sender, e);
 
         }
+
+        private void txtfilter_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

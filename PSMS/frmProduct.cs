@@ -86,7 +86,7 @@ namespace PSMS
                 {
                     if (row.Cells != null && row.Cells[0].Value != null)
                     {
-                        //pro_id = Convert.ToInt32(row.Cells[0].Value.ToString());
+                        pro_id = Convert.ToInt32(row.Cells[0].Value.ToString());
                     }
                 }
 
@@ -105,6 +105,13 @@ namespace PSMS
                     cbbType.SelectedValue = Convert.ToInt32(row["TID"].ToString());
                     txtSalePrice.Text = row["Saleprice"].ToString();
                     txtUnitprice.Text = row["Unitprice"].ToString();
+                    try{
+                    pro_img.Image=Image.FromStream(new MemoryStream((byte[])row["Image"]));
+                    }
+                    catch (Exception)
+                    {
+                        pro_img.Image = Properties.Resources.Product;
+                    }
                 }
             }
             catch (Exception ex)
@@ -190,7 +197,9 @@ namespace PSMS
             txtPSize.Text = "";
             txtColor.Text = "";
             txtQuantity.Text = "";
-           
+            cbBMo.SelectedIndex = 0;
+            cbBPT.SelectedIndex = 0;
+            cbbType.SelectedIndex = 0;
             txtSalePrice.Text = "";
             txtUnitprice.Text = "";
         }
