@@ -503,7 +503,7 @@ namespace PSMS
             {
                 if (currentSelected.Equals("invoice"))
                 {
-                    Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,CONVERT(date,Date) Date FROM Invoice;", binding, viewReport);
+                    Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,Profits,CONVERT(date,Date) Date FROM Invoice;", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
 
                     loadNumRecord();
@@ -522,7 +522,7 @@ namespace PSMS
             {
                 if (currentSelected.Equals("invoice"))
                 {
-                    Helper.BindGridView("select CONVERT(Date,MIN(DATE)) as Start_Date,CONVERT(Date,MAX(Date)) as End_Date,SUM(TotalPrice) TotalPrice,SUM(Balance) Balance from Invoice  GROUP BY YEAR([Date]),MONTH([Date]),DATEPART(ww, [Date])", binding, viewReport);
+                    Helper.BindGridView("select CONVERT(Date,MIN(DATE)) as Start_Date,CONVERT(Date,MAX(Date)) as End_Date,SUM(TotalPrice) TotalPrice,SUM(Balance) Balance,SUM(Profits) Profits from Invoice  GROUP BY YEAR([Date]),MONTH([Date]),DATEPART(ww, [Date])", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
 
                     loadNumRecord();
@@ -542,7 +542,7 @@ namespace PSMS
             {
                 if (currentSelected.Equals("invoice"))
                 {
-                    Helper.BindGridView("select format(Max(Date),'yyyy-MMM') as 'Year-Mon',SUM(TotalPrice) TotalPrice,SUM(Balance) Balance from Invoice GROUP BY YEAR([Date]),MONTH([Date]) ORDER BY 'Year-Mon'", binding, viewReport);
+                    Helper.BindGridView("select format(Max(Date),'yyyy-MMM') as 'Year-Mon',SUM(TotalPrice) TotalPrice,SUM(Balance) Balance,SUM(Profits) Profits from Invoice GROUP BY YEAR([Date]),MONTH([Date]) ORDER BY 'Year-Mon'", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
                     loadNumRecord();
                     currentSelected = "invoice";
@@ -560,7 +560,7 @@ namespace PSMS
             {
                 if (currentSelected.Equals("invoice"))
                 {
-                    Helper.BindGridView("select format(Max(Date),'yyyy') as Date,SUM(TotalPrice) TotalPrice,SUM(Balance) Balance from Invoice GROUP BY YEAR([Date])", binding, viewReport);
+                    Helper.BindGridView("select format(Max(Date),'yyyy') as Date,SUM(TotalPrice) TotalPrice,SUM(Balance) Balance ,SUM(Profits) Profits from Invoice GROUP BY YEAR([Date])", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
                     loadNumRecord();
                     currentSelected = "invoice";

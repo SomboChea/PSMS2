@@ -144,6 +144,18 @@ namespace PSMS
 
                         int selectedrowindex = invoiceDetailDataGridView.SelectedCells[0].RowIndex;
                         DataGridViewRow selectedRow = invoiceDetailDataGridView.Rows[selectedrowindex];
+                        if (int.Parse(selectedRow.Cells[4].Value + "") == 0)
+                        {
+                            MetroMessageBox.Show(this, "Out of Stock", "Caution", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+
+                        if (qty > int.Parse(selectedRow.Cells[4].Value + ""))
+                        {
+                            MetroMessageBox.Show(this, "Out of Quantity" + Environment.NewLine + "There are " + selectedRow.Cells[4].Value + " left", "Caution", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
 
                        
                         DataTable dt = new DataTable();
@@ -229,6 +241,8 @@ namespace PSMS
                 payment = Helper.ifnull(paymentLabel1.Text) ? 0 : float.Parse(paymentLabel1.Text);
                 totalPrice = float.Parse(totalPriceLabel1.Text);
 
+
+
                 if (dtGvBuy.Rows.Count == 0)
                 {
                     MessageBox.Show("Please select and buy product before you purchase");
@@ -237,7 +251,7 @@ namespace PSMS
                 {
                     try
                     {
-                        SqlCommand cmd = new SqlCommand("INSERT INTO Invoice (CusID,EmpID,Date,TotalPrice,Payment,PaymentVerify,Balance) VALUES (@CusID,@EmpID,@Date,@TotalPrice,@Payment,@PaymentVerify,@Balance)", Connection.con);
+                        SqlCommand cmd = new SqlCommand("INSERT INTO Invoice (CusID,EmpID,Date,TotalPrice,Payment,PaymentVerify,Balance,Profits) VALUES (@CusID,@EmpID,@Date,@TotalPrice,@Payment,@PaymentVerify,@Balance,@profit)", Connection.con);
 
                         //cmd.Parameters.AddWithValue("@InvoiceCode", "U000002");
                         cmd.Parameters.AddWithValue("@CusID", cusIDComboBox.SelectedValue.ToString());
@@ -245,16 +259,20 @@ namespace PSMS
                         cmd.Parameters.AddWithValue("@Date", DateTime.Now);
                         cmd.Parameters.AddWithValue("@TotalPrice", totalPrice);
                         cmd.Parameters.AddWithValue("@Payment", payment);
+                       
 
 
                         List<StructInvocieDetail> invoiceDetails = new List<StructInvocieDetail>();
-
+                        double profit = 0;
                         foreach (DataGridViewRow row in dtGvBuy.Rows)
                         {
                             StructInvocieDetail data = new StructInvocieDetail(Convert.ToInt32(row.Cells[0].Value), Convert.ToInt32(row.Cells[4].Value), float.Parse(row.Cells[5].Value + ""));
 
                             invoiceDetails.Add(data);
 
+                            double priceout=Convert.ToInt32(row.Cells[4].Value)* float.Parse(row.Cells[5].Value + "");
+                            double pricein = Convert.ToInt32(row.Cells[4].Value) * double.Parse(Connection.ExecuteScalar("Select UnitPrice from Product Where PID='" + row.Cells[0].Value + "'")+"");
+                            profit += priceout - pricein;
                         }
                         float balance;
                         if (payment >= totalPrice)
@@ -278,7 +296,7 @@ namespace PSMS
                         balance = balance + oldbalance;
                         SqlCommand cmd2 = new SqlCommand("UPDATE Customers SET Balance=@balance WHERE CusID=@CusID ", Connection.con);
                         cmd2.Parameters.AddWithValue("@CusID", cusIDComboBox.SelectedValue.ToString());
-
+                      
                         cmd2.Parameters.AddWithValue("@Balance", balance);
 
                         //MessageBox.Show(balance.ToString());
@@ -290,7 +308,7 @@ namespace PSMS
                         cmd2.Dispose();
 
 
-                        //cmd.Parameters.AddWithValue("@Profits", "10");
+                        cmd.Parameters.AddWithValue("@profit", profit);
 
                         cmd.ExecuteNonQuery();
 
