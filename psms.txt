@@ -1,0 +1,21 @@
++Add search box
+
+Sale
+Stock
+Products
+Customers
+Supplier
+Purchase
+Employees
+Reports
+Users
+
+
+---------
+- Supplier Manage
+- Customer Name
+- CustomerManage
+- Order Sales
+- Stock In/Out
+- Complete Task List
+- Daily/Monthly/Yearly Reports

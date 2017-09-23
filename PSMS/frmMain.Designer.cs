@@ -115,6 +115,8 @@
             // 
             // 
             // 
+            this.itemPanel1.BackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.itemPanel1.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.itemPanel1.BackgroundStyle.Class = "ItemPanel";
             this.itemPanel1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.itemPanel1.ContainerControlProcessDialogKey = true;
@@ -126,7 +128,7 @@
             this.itemContainer1});
             this.itemPanel1.KeyTipsFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemPanel1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemPanel1.Location = new System.Drawing.Point(47, 80);
+            this.itemPanel1.Location = new System.Drawing.Point(70, 132);
             this.itemPanel1.Name = "itemPanel1";
             this.itemPanel1.Size = new System.Drawing.Size(935, 458);
             this.itemPanel1.TabIndex = 3;
@@ -333,7 +335,7 @@
             // MetroDown
             // 
             this.MetroDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.MetroDown.Location = new System.Drawing.Point(22, 608);
+            this.MetroDown.Location = new System.Drawing.Point(22, 712);
             this.MetroDown.Name = "MetroDown";
             this.MetroDown.Size = new System.Drawing.Size(58, 37);
             this.MetroDown.TabIndex = 4;
@@ -348,7 +350,7 @@
             this.metroLink1.BackColor = System.Drawing.Color.Red;
             this.metroLink1.FontSize = MetroFramework.MetroLinkSize.Tall;
             this.metroLink1.ForeColor = System.Drawing.Color.White;
-            this.metroLink1.Location = new System.Drawing.Point(843, 38);
+            this.metroLink1.Location = new System.Drawing.Point(889, 38);
             this.metroLink1.Name = "metroLink1";
             this.metroLink1.Size = new System.Drawing.Size(139, 36);
             this.metroLink1.Style = MetroFramework.MetroColorStyle.Blue;
@@ -386,7 +388,7 @@
             this.btnQuit.BackColor = System.Drawing.Color.DarkRed;
             this.btnQuit.FontSize = MetroFramework.MetroLinkSize.Tall;
             this.btnQuit.ForeColor = System.Drawing.Color.White;
-            this.btnQuit.Location = new System.Drawing.Point(883, 544);
+            this.btnQuit.Location = new System.Drawing.Point(929, 648);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(99, 36);
             this.btnQuit.Style = MetroFramework.MetroColorStyle.Blue;
@@ -401,10 +403,10 @@
             // frmMain
             // 
             this.ApplyImageInvert = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1031, 612);
+            this.ClientSize = new System.Drawing.Size(1077, 716);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.MetroDown);
             this.Controls.Add(this.itemPanel1);

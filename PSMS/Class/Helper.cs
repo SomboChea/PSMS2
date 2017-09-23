@@ -149,6 +149,16 @@ namespace PSMS.Class
             catch (Exception) { return false; }
         }
 
+        public static DateTime StartOfWeek(DateTime dt, DayOfWeek startOfWeek)
+        {
+            int diff = dt.DayOfWeek - startOfWeek;
+            if (diff < 0)
+            {
+                diff += 7;
+            }
+            return dt.AddDays(-1 * diff).Date;
+        }
+
         public static int GetLastId(string table_name)
         {
             SqlCommand sqlcmd = new SqlCommand();
