@@ -43,6 +43,7 @@ namespace PSMS
                 dateStart.Enabled = true;
                 dateEnd.Enabled = true;
                 btnFilter.Enabled = true;
+             
             }
             else
             {
@@ -304,19 +305,24 @@ namespace PSMS
                 {
                     if (viewReport.SelectedCells.Count > 0)
                     {
-                        string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
-                        addCurrentPurchaseToPrint(code);
-                        new reportViewer(dataPurchases).ShowDialog();
+                        if (cbSortby.SelectedIndex == 0)
+                        {
+                            string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
+                            addCurrentPurchaseToPrint(code);
+                            new reportViewer(dataPurchases).ShowDialog();
+                        }
                     }
                 }
                 else if (currentSelected.Equals("invoice"))
                 {
                     if(viewReport.SelectedCells.Count > 0)
                     {
-                        string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
-
-                        addCurrentInvoiceToPrint(code);
-                        new reportViewer(dataInvoices).ShowDialog();
+                        if (cbSortby.SelectedIndex == 0)
+                        {
+                            string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
+                            addCurrentInvoiceToPrint(code);
+                            new reportViewer(dataInvoices).ShowDialog();
+                        }
                     }
                     
                 }
@@ -497,7 +503,7 @@ namespace PSMS
             {
                 if (currentSelected.Equals("invoice"))
                 {
-                    Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,CONVERT(date,Date) Date FROM Invoice WHERE CONVERT(date,Date) BETWEEN '" + current_date + "' AND '" + end_date + "' ;", binding, viewReport);
+                    Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,CONVERT(date,Date) Date FROM Invoice;", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
 
                     loadNumRecord();
@@ -505,7 +511,7 @@ namespace PSMS
                 }
                 else if (currentSelected.Equals("purchase"))
                 {
-                    Helper.BindGridView("SELECT PurCode,CONVERT(date,Date) Date,Payment,Balance,Total FROM Purchase WHERE CONVERT(date,Date) BETWEEN '" + current_date + "' AND '" + end_date + "';", binding, viewReport);
+                    Helper.BindGridView("SELECT PurCode,CONVERT(date,Date) Date,Payment,Balance,Total FROM Purchase);", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
 
                     loadNumRecord();
@@ -514,16 +520,58 @@ namespace PSMS
             }
             else if (show_by[current_index].Equals(show_by[1]))
             {
+                if (currentSelected.Equals("invoice"))
+                {
+                    Helper.BindGridView("select CONVERT(Date,MIN(DATE)) as Start_Date,CONVERT(Date,MAX(Date)) as End_Date,SUM(TotalPrice) TotalPrice,SUM(Balance) Balance from Invoice  GROUP BY YEAR([Date]),MONTH([Date]),DATEPART(ww, [Date])", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
 
+                    loadNumRecord();
+                    currentSelected = "invoice";
+                }
+                else if (currentSelected.Equals("purchase"))
+                {
+                    Helper.BindGridView("SELECT convert(date,MIN(DATE)) as Start_Date,CONVERT(date,Max(DATE)) as End_Date,sum(Payment) as Payment,sum(Balance) as Balance, sum(total) as Total from Purchase GROUP BY YEAR(Date),Month(DATE),DATEPART(ww, DATE) ORDER BY Start_date", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
+
+                    loadNumRecord();
+                    currentSelected = "purchase";
+                }
             }
             else if (show_by[current_index].Equals(show_by
                 [2]))
             {
-               
+                if (currentSelected.Equals("invoice"))
+                {
+                    Helper.BindGridView("select format(Max(Date),'yyyy-MMM') as 'Year-Mon',SUM(TotalPrice) TotalPrice,SUM(Balance) Balance from Invoice GROUP BY YEAR([Date]),MONTH([Date]) ORDER BY 'Year-Mon'", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
+                    loadNumRecord();
+                    currentSelected = "invoice";
+                }
+                else if (currentSelected.Equals("purchase"))
+                {
+                    Helper.BindGridView("SELECT format(convert(date,MIN(DATE)),'yyyy-MMM') 'Year-Mon',sum(Payment) as Payment,sum(Balance) as Balance, sum(total) as Total from Purchase GROUP BY YEAR(Date),Month(DATE) ORDER BY 'Year-Mon'", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
+
+                    loadNumRecord();
+                    currentSelected = "purchase";
+                }
             }
             else if (show_by[current_index].Equals(show_by[3]))
             {
-                
+                if (currentSelected.Equals("invoice"))
+                {
+                    Helper.BindGridView("select format(Max(Date),'yyyy') as Date,SUM(TotalPrice) TotalPrice,SUM(Balance) Balance from Invoice GROUP BY YEAR([Date])", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
+                    loadNumRecord();
+                    currentSelected = "invoice";
+                }
+                else if (currentSelected.Equals("purchase"))
+                {
+                    Helper.BindGridView("SELECT format(convert(date,MIN(DATE)),'yyyy') 'Year',sum(Payment) as Payment,sum(Balance) as Balance, sum(total) as Total from Purchase GROUP BY YEAR(Date) ORDER BY 'Year'", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
+                    loadNumRecord();
+                    currentSelected = "purchase";
+                }
             }
             else
             {
