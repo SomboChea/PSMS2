@@ -278,6 +278,7 @@ namespace PSMS
         { 
             Connection.con.Close();
             this.Dispose();
+            Application.ExitThread();
         }
 
         private void btnSetting_Click(object sender, EventArgs e)

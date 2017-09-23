@@ -17,11 +17,12 @@ namespace PSMS
        // [STAThread]
         static void Main()
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             
-            //Application.Run(new Login());
+            Application.Run(new Login());
 
+            /*
             Function dt = new Function();
 
             Connection.Open("localhost","PSMS2");
@@ -43,7 +44,7 @@ namespace PSMS
             }
             Console.Write("finish");
             Console.ReadKey();
-
+            */
         }
     }
 }
