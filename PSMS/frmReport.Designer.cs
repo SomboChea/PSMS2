@@ -178,6 +178,7 @@
             this.viewReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.viewReport.Size = new System.Drawing.Size(1102, 575);
             this.viewReport.TabIndex = 5;
+            this.viewReport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.viewReport_CellContentClick);
             // 
             // btnPreview
             // 
@@ -198,7 +199,7 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(955, 41);
+            this.metroLabel1.Location = new System.Drawing.Point(805, 44);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(78, 19);
             this.metroLabel1.TabIndex = 7;
@@ -207,8 +208,8 @@
             // dateStart
             // 
             this.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateStart.Location = new System.Drawing.Point(955, 63);
-            this.dateStart.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dateStart.Location = new System.Drawing.Point(800, 66);
+            this.dateStart.MinimumSize = new System.Drawing.Size(0, 29);
             this.dateStart.Name = "dateStart";
             this.dateStart.Size = new System.Drawing.Size(107, 29);
             this.dateStart.TabIndex = 8;
@@ -216,8 +217,8 @@
             // dateEnd
             // 
             this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateEnd.Location = new System.Drawing.Point(1071, 63);
-            this.dateEnd.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dateEnd.Location = new System.Drawing.Point(931, 66);
+            this.dateEnd.MinimumSize = new System.Drawing.Size(0, 29);
             this.dateEnd.Name = "dateEnd";
             this.dateEnd.Size = new System.Drawing.Size(107, 29);
             this.dateEnd.TabIndex = 10;
@@ -226,7 +227,7 @@
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel2.Location = new System.Drawing.Point(1071, 41);
+            this.metroLabel2.Location = new System.Drawing.Point(947, 44);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(57, 19);
             this.metroLabel2.TabIndex = 9;
@@ -282,9 +283,9 @@
             // 
             // 
             this.txtSearch.CustomButton.Image = null;
-            this.txtSearch.CustomButton.Location = new System.Drawing.Point(169, 1);
+            this.txtSearch.CustomButton.Location = new System.Drawing.Point(127, 1);
             this.txtSearch.CustomButton.Name = "";
-            this.txtSearch.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txtSearch.CustomButton.Size = new System.Drawing.Size(20, 22);
             this.txtSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtSearch.CustomButton.TabIndex = 1;
             this.txtSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -292,7 +293,7 @@
             this.txtSearch.CustomButton.Visible = false;
             this.txtSearch.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtSearch.Lines = new string[0];
-            this.txtSearch.Location = new System.Drawing.Point(722, 63);
+            this.txtSearch.Location = new System.Drawing.Point(463, 66);
             this.txtSearch.MaxLength = 32767;
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
@@ -313,7 +314,7 @@
             // 
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel3.Location = new System.Drawing.Point(722, 41);
+            this.metroLabel3.Location = new System.Drawing.Point(463, 44);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(119, 19);
             this.metroLabel3.TabIndex = 15;
@@ -348,7 +349,7 @@
             "Monthly",
             "Yearly",
             "All"});
-            this.cbSortby.Location = new System.Drawing.Point(518, 63);
+            this.cbSortby.Location = new System.Drawing.Point(271, 66);
             this.cbSortby.Name = "cbSortby";
             this.cbSortby.Size = new System.Drawing.Size(143, 29);
             this.cbSortby.TabIndex = 18;
@@ -359,7 +360,7 @@
             // 
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel4.Location = new System.Drawing.Point(518, 41);
+            this.metroLabel4.Location = new System.Drawing.Point(271, 44);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(66, 19);
             this.metroLabel4.TabIndex = 19;
@@ -369,9 +370,10 @@
             // 
             this.metroTile6.ActiveControl = null;
             this.metroTile6.ForeColor = System.Drawing.Color.White;
-            this.metroTile6.Location = new System.Drawing.Point(24, 588);
+            this.metroTile6.Location = new System.Drawing.Point(24, 467);
+            this.metroTile6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.metroTile6.Name = "metroTile6";
-            this.metroTile6.Size = new System.Drawing.Size(131, 52);
+            this.metroTile6.Size = new System.Drawing.Size(131, 62);
             this.metroTile6.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTile6.TabIndex = 20;
             this.metroTile6.Text = "Income";
@@ -384,7 +386,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1303, 749);
+            this.ClientSize = new System.Drawing.Size(1188, 721);
             this.Controls.Add(this.metroTile6);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.cbSortby);

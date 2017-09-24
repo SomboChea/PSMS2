@@ -89,7 +89,7 @@ namespace PSMS
             //txtEn1.Text = "sun";
             //txtEn2.Text = "l";
             //txtIDCard.Text = "111111";
-            //rtxtAddress.Text = "PP";
+            //rtxtAddress2.Text = "PP";
             //txtPhone.Text = "0123456789";
             //txtEmail.Text = "0987654321";
             //cbBGender.SelectedIndex = 0;
@@ -109,7 +109,7 @@ namespace PSMS
             emp.emp_fnen = txtEn2.Text;
             emp.gender = cbBGender.SelectedItem.ToString();
             emp.idcard = txtIDCard.Text;
-            emp.address = rtxtAddress.Text;
+            emp.address = rtxtAddress2.Text;
             emp.phone = txtPhone.Text;
             emp.email = txtEmail.Text;
             emp.pos_id = Convert.ToInt32(cbBPos.SelectedValue);
@@ -150,7 +150,7 @@ namespace PSMS
                 txtEn2.Text = row["EmpFNEN"].ToString();
                 cbBGender.SelectedItem = row["Gender"].ToString();
                 txtIDCard.Text = row["IDCard"].ToString();
-                rtxtAddress.Text = row["Address"].ToString();
+                rtxtAddress2.Text = row["Address"].ToString();
                 txtPhone.Text = row["Phone"].ToString();
                 txtEmail.Text = row["email"].ToString();
                 cbBPos.SelectedValue = Convert.ToInt32(row["PosID"].ToString());
@@ -237,7 +237,7 @@ namespace PSMS
                     txtEn1.Text = "";
                     txtEn2.Text = "";
                     txtIDCard.Text = "";
-                    rtxtAddress.Text = "";
+                    rtxtAddress2.Text = "";
                     txtPhone.Text = "";
                     txtEmail.Text = "";
                     txtSalary.Text = "";
@@ -260,7 +260,7 @@ namespace PSMS
             txtEn1.Text = "";
             txtEn2.Text = "";
             txtIDCard.Text = "";
-            rtxtAddress.Text = "";
+            rtxtAddress2.Text = "";
             txtPhone.Text = "";
             txtEmail.Text = "";
             cbBGender.SelectedIndex = 0;
@@ -347,7 +347,7 @@ namespace PSMS
                     txtEn2.Text = row["EmpFNEN"].ToString();
                     cbBGender.SelectedItem = row["Gender"].ToString();
                     txtIDCard.Text = row["IDCard"].ToString();
-                    rtxtAddress.Text = row["Address"].ToString();
+                    rtxtAddress2.Text = row["Address"].ToString();
                     txtPhone.Text = row["Phone"].ToString();
                     txtEmail.Text = row["email"].ToString();
                     cbBPos.SelectedValue = Convert.ToInt32(row["PosID"].ToString());
@@ -396,7 +396,7 @@ namespace PSMS
                     txtEn2.Text = row["EmpFNEN"].ToString();
                     cbBGender.SelectedItem = row["Gender"].ToString();
                     txtIDCard.Text = row["IDCard"].ToString();
-                    rtxtAddress.Text = row["Address"].ToString();
+                    rtxtAddress2.Text = row["Address"].ToString();
                     txtPhone.Text = row["Phone"].ToString();
                     txtEmail.Text = row["email"].ToString();
                     cbBPos.SelectedValue = Convert.ToInt32(row["PosID"].ToString());

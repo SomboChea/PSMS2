@@ -49,8 +49,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtCusID = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
-            this.btnNext = new DevComponents.DotNetBar.ButtonX();
-            this.btnPrevious = new DevComponents.DotNetBar.ButtonX();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.cbBStatus = new MetroFramework.Controls.MetroComboBox();
             this.rtxtAddress = new DevComponents.DotNetBar.Controls.RichTextBoxEx();
@@ -171,14 +169,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.metroPanel1.Controls.Add(this.btnne);
+            this.metroPanel1.Controls.Add(this.btnpre);
             this.metroPanel1.Controls.Add(this.metroLabel1);
             this.metroPanel1.Controls.Add(this.metroPanel2);
             this.metroPanel1.Controls.Add(this.cbbEmp2);
             this.metroPanel1.Controls.Add(this.dataGridView1);
             this.metroPanel1.Controls.Add(this.txtCusID);
             this.metroPanel1.Controls.Add(this.metroLabel14);
-            this.metroPanel1.Controls.Add(this.btnNext);
-            this.metroPanel1.Controls.Add(this.btnPrevious);
             this.metroPanel1.Controls.Add(this.metroLabel13);
             this.metroPanel1.Controls.Add(this.cbBStatus);
             this.metroPanel1.Controls.Add(this.rtxtAddress);
@@ -208,7 +206,7 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(4, 4);
+            this.metroPanel1.Location = new System.Drawing.Point(4, 3);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(960, 452);
             this.metroPanel1.TabIndex = 17;
@@ -222,7 +220,7 @@
             this.metroLabel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.metroLabel1.Location = new System.Drawing.Point(426, 351);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(69, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(71, 20);
             this.metroLabel1.TabIndex = 42;
             this.metroLabel1.Text = "Load Data";
             // 
@@ -361,7 +359,7 @@
             this.cbbEmp2.FormattingEnabled = true;
             this.cbbEmp2.Location = new System.Drawing.Point(526, 217);
             this.cbbEmp2.Name = "cbbEmp2";
-            this.cbbEmp2.Size = new System.Drawing.Size(262, 21);
+            this.cbbEmp2.Size = new System.Drawing.Size(262, 27);
             this.cbbEmp2.TabIndex = 41;
             this.cbbEmp2.Text = "1";
             // 
@@ -420,35 +418,10 @@
             this.metroLabel14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.metroLabel14.Location = new System.Drawing.Point(33, 42);
             this.metroLabel14.Name = "metroLabel14";
-            this.metroLabel14.Size = new System.Drawing.Size(78, 19);
+            this.metroLabel14.Size = new System.Drawing.Size(82, 20);
             this.metroLabel14.TabIndex = 38;
             this.metroLabel14.Text = "CustomerID";
             this.metroLabel14.Visible = false;
-            // 
-            // btnNext
-            // 
-            this.btnNext.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnNext.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnNext.Location = new System.Drawing.Point(689, 39);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(69, 24);
-            this.btnNext.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNext.TabIndex = 37;
-            this.btnNext.Text = "Next";
-            this.btnNext.Visible = false;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnPrevious
-            // 
-            this.btnPrevious.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnPrevious.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnPrevious.Location = new System.Drawing.Point(590, 39);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(75, 23);
-            this.btnPrevious.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnPrevious.TabIndex = 36;
-            this.btnPrevious.Text = "Previous";
-            this.btnPrevious.Visible = false;
             // 
             // metroLabel13
             // 
@@ -456,20 +429,20 @@
             this.metroLabel13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.metroLabel13.Location = new System.Drawing.Point(427, 214);
             this.metroLabel13.Name = "metroLabel13";
-            this.metroLabel13.Size = new System.Drawing.Size(44, 19);
+            this.metroLabel13.Size = new System.Drawing.Size(46, 20);
             this.metroLabel13.TabIndex = 34;
             this.metroLabel13.Text = "Agent";
             // 
             // cbBStatus
             // 
             this.cbBStatus.FormattingEnabled = true;
-            this.cbBStatus.ItemHeight = 23;
+            this.cbBStatus.ItemHeight = 24;
             this.cbBStatus.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
             this.cbBStatus.Location = new System.Drawing.Point(526, 247);
             this.cbBStatus.Name = "cbBStatus";
-            this.cbBStatus.Size = new System.Drawing.Size(262, 29);
+            this.cbBStatus.Size = new System.Drawing.Size(262, 30);
             this.cbBStatus.TabIndex = 33;
             this.cbBStatus.UseSelectable = true;
             // 
@@ -493,7 +466,7 @@
             this.metroLabel12.AutoSize = true;
             this.metroLabel12.Location = new System.Drawing.Point(186, 125);
             this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(109, 19);
+            this.metroLabel12.Size = new System.Drawing.Size(115, 20);
             this.metroLabel12.TabIndex = 30;
             this.metroLabel12.Text = "(Name in Khmer)";
             // 
@@ -502,7 +475,7 @@
             this.metroLabel11.AutoSize = true;
             this.metroLabel11.Location = new System.Drawing.Point(186, 182);
             this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(111, 19);
+            this.metroLabel11.Size = new System.Drawing.Size(118, 20);
             this.metroLabel11.TabIndex = 29;
             this.metroLabel11.Text = "(Name in English)";
             // 
@@ -637,20 +610,20 @@
             this.Opendate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Opendate.MonthCalendar.TodayButtonVisible = true;
             this.Opendate.Name = "Opendate";
-            this.Opendate.Size = new System.Drawing.Size(265, 22);
+            this.Opendate.Size = new System.Drawing.Size(265, 26);
             this.Opendate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Opendate.TabIndex = 25;
             // 
             // cbBGender
             // 
             this.cbBGender.FormattingEnabled = true;
-            this.cbBGender.ItemHeight = 23;
+            this.cbBGender.ItemHeight = 24;
             this.cbBGender.Items.AddRange(new object[] {
             "Male",
             "Female"});
             this.cbBGender.Location = new System.Drawing.Point(525, 89);
             this.cbBGender.Name = "cbBGender";
-            this.cbBGender.Size = new System.Drawing.Size(264, 29);
+            this.cbBGender.Size = new System.Drawing.Size(264, 30);
             this.cbBGender.TabIndex = 24;
             this.cbBGender.UseSelectable = true;
             // 
@@ -691,7 +664,7 @@
             this.metroLabel10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.metroLabel10.Location = new System.Drawing.Point(427, 287);
             this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(95, 19);
+            this.metroLabel10.Size = new System.Drawing.Size(100, 20);
             this.metroLabel10.TabIndex = 17;
             this.metroLabel10.Text = "Acc_Opendate";
             // 
@@ -701,7 +674,7 @@
             this.metroLabel6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.metroLabel6.Location = new System.Drawing.Point(32, 236);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(56, 19);
+            this.metroLabel6.Size = new System.Drawing.Size(59, 20);
             this.metroLabel6.TabIndex = 8;
             this.metroLabel6.Text = "Address";
             // 
@@ -742,7 +715,7 @@
             this.metroLabel9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.metroLabel9.Location = new System.Drawing.Point(428, 185);
             this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(41, 19);
+            this.metroLabel9.Size = new System.Drawing.Size(42, 20);
             this.metroLabel9.TabIndex = 14;
             this.metroLabel9.Text = "Email";
             // 
@@ -752,7 +725,7 @@
             this.metroLabel8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.metroLabel8.Location = new System.Drawing.Point(426, 250);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(43, 19);
+            this.metroLabel8.Size = new System.Drawing.Size(45, 20);
             this.metroLabel8.TabIndex = 12;
             this.metroLabel8.Text = "Status";
             // 
@@ -793,7 +766,7 @@
             this.metroLabel5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.metroLabel5.Location = new System.Drawing.Point(429, 128);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(46, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(49, 20);
             this.metroLabel5.TabIndex = 10;
             this.metroLabel5.Text = "Phone";
             // 
@@ -803,7 +776,7 @@
             this.metroLabel4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.metroLabel4.Location = new System.Drawing.Point(429, 93);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(52, 19);
+            this.metroLabel4.Size = new System.Drawing.Size(56, 20);
             this.metroLabel4.TabIndex = 8;
             this.metroLabel4.Text = "Gender";
             // 
@@ -845,7 +818,7 @@
             this.metroLabel3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.metroLabel3.Location = new System.Drawing.Point(33, 90);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(98, 19);
+            this.metroLabel3.Size = new System.Drawing.Size(102, 20);
             this.metroLabel3.TabIndex = 5;
             this.metroLabel3.Text = "CustomerCode";
             // 
@@ -885,7 +858,7 @@
             this.metroLabel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.metroLabel2.Location = new System.Drawing.Point(30, 156);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(102, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(107, 20);
             this.metroLabel2.TabIndex = 3;
             this.metroLabel2.Text = "CustomerName";
             // 
@@ -894,7 +867,7 @@
             this.txtPhone2.Location = new System.Drawing.Point(526, 156);
             this.txtPhone2.Mask = "(999) 000-0000";
             this.txtPhone2.Name = "txtPhone2";
-            this.txtPhone2.Size = new System.Drawing.Size(264, 23);
+            this.txtPhone2.Size = new System.Drawing.Size(264, 26);
             this.txtPhone2.TabIndex = 90;
             // 
             // txtphone
@@ -902,7 +875,7 @@
             this.txtphone.Location = new System.Drawing.Point(526, 128);
             this.txtphone.Mask = "(999) 000-0000";
             this.txtphone.Name = "txtphone";
-            this.txtphone.Size = new System.Drawing.Size(264, 23);
+            this.txtphone.Size = new System.Drawing.Size(264, 26);
             this.txtphone.TabIndex = 90;
             // 
             // metroLabel7
@@ -911,7 +884,7 @@
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.Location = new System.Drawing.Point(789, 546);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(54, 19);
+            this.metroLabel7.Size = new System.Drawing.Size(57, 20);
             this.metroLabel7.TabIndex = 18;
             this.metroLabel7.Text = "Balance";
             // 
@@ -957,9 +930,9 @@
             this.btnpre.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnpre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnpre.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnpre.Location = new System.Drawing.Point(687, 86);
+            this.btnpre.Location = new System.Drawing.Point(578, 3);
             this.btnpre.Name = "btnpre";
-            this.btnpre.Size = new System.Drawing.Size(75, 23);
+            this.btnpre.Size = new System.Drawing.Size(105, 38);
             this.btnpre.TabIndex = 89;
             this.btnpre.Text = "Previous";
             this.btnpre.UseVisualStyleBackColor = false;
@@ -971,9 +944,9 @@
             this.btnne.Enabled = false;
             this.btnne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnne.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnne.Location = new System.Drawing.Point(768, 86);
+            this.btnne.Location = new System.Drawing.Point(700, 3);
             this.btnne.Name = "btnne";
-            this.btnne.Size = new System.Drawing.Size(75, 23);
+            this.btnne.Size = new System.Drawing.Size(107, 38);
             this.btnne.TabIndex = 88;
             this.btnne.Text = "Next";
             this.btnne.UseVisualStyleBackColor = false;
@@ -981,11 +954,9 @@
             // 
             // frmCustomer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 585);
-            this.Controls.Add(this.btnpre);
-            this.Controls.Add(this.btnne);
             this.Controls.Add(this.lblBalance);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.itemPanel2);
@@ -1030,8 +1001,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private MetroFramework.Controls.MetroTextBox txtCusID;
         private MetroFramework.Controls.MetroLabel metroLabel14;
-        private DevComponents.DotNetBar.ButtonX btnNext;
-        private DevComponents.DotNetBar.ButtonX btnPrevious;
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroComboBox cbBStatus;
         private DevComponents.DotNetBar.Controls.RichTextBoxEx rtxtAddress;

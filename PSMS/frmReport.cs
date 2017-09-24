@@ -593,6 +593,8 @@ namespace PSMS
             //MessageBox.Show("" + current_date + "\n" + "");
         }
 
+        
+
         private void showBy()
         {
             DateTime today = DateTime.Today;
@@ -602,13 +604,18 @@ namespace PSMS
             int[] in_day = { 1, 7, last_day, DaysInYear(today.Year), 0 };
             int current_index = cbSortby.SelectedIndex;
             string current_date = today.ToString("yyyy-MM-dd");
-            string end_date = (today.AddDays(in_day[current_index] - 1).ToString("yyyy-MM-dd"));
+            string start_date = Helper.StartOfWeek(today, DayOfWeek.Monday).ToString("yyyy-MM-dd");
+            string end_date = (Helper.StartOfWeek(today,DayOfWeek.Monday).AddDays(in_day[current_index]-1).ToString("yyyy-MM-dd"));
 
             if (show_by[current_index].Equals(show_by[0]))
             {
                 if (currentSelected.Equals("invoice"))
                 {
+
                     Helper.BindGridView("Select convert(date,Min(Date)) Date,SUM(Payment) as Payment,SUM(Balance) as Balance,SUM(TotalPrice) as TotalPrice  from Invoice GROUP BY YEAR([Date]) , MONTH(Date),DAY([Date])", binding, viewReport);
+
+                    //Helper.BindGridView("SELECT i.InvoiceNo,i.Date,i.TotalPrice,i.Payment,i.Profits,i.Balance,CONCAT(c.CusLNEN,' ',c.CusFNEN) Buyer,CONCAT(e.EmpLNEN,' ',e.EmpFNEN) Seller FROM Invoice i INNER JOIN Customers c ON i.CusID = c.CusID INNER JOIN Employee e ON i.EmpID = e.EmpID;", binding, viewReport);
+
                     Helper.AutoFitColumns(viewReport);
 
                     loadNumRecord();
@@ -616,7 +623,11 @@ namespace PSMS
                 }
                 else if (currentSelected.Equals("purchase"))
                 {
+
                     Helper.BindGridView("Select convert(date,Min(Date)) Date,SUM(Payment) as Payment,SUM(Balance) as Balance,SUM(Total) as Total  from Purchase GROUP BY YEAR([Date]) , MONTH(Date),DAY([Date])", binding, viewReport);
+
+                   // Helper.BindGridView("SELECT PurCode,CONVERT(date,Date) Date,Payment,Balance,Total FROM Purchase;", binding, viewReport);
+
                     Helper.AutoFitColumns(viewReport);
 
                     loadNumRecord();
@@ -643,7 +654,11 @@ namespace PSMS
             {
                 if (currentSelected.Equals("invoice"))
                 {
+
                     Helper.BindGridView("set datefirst 1 select Convert(date,DATEADD(day,1-DATEPART(dw, min(DATE)),min(DATE))) as Start_Date, convert(date,DATEADD(day,7-DATEPART(dw, min(DATE)),min(DATE))) as End_Date, SUM(TotalPrice) TotalPrice, SUM(Balance) Balance, SUM(Payment) Payment from Invoice  GROUP BY YEAR([Date]),MONTH([Date]),DATEPART(ww, [Date])", binding, viewReport);
+
+                    //Helper.BindGridView("SELECT i.InvoiceNo,i.Date,i.TotalPrice,i.Payment,i.Profits,i.Balance,CONCAT(c.CusLNEN,' ',c.CusFNEN) Buyer,CONCAT(e.EmpLNEN,' ',e.EmpFNEN) Seller FROM Invoice i INNER JOIN Customers c ON i.CusID = c.CusID INNER JOIN Employee e ON i.EmpID = e.EmpID WHERE Date BETWEEN '" + start_date + "' AND '" + end_date + "';", binding, viewReport);
+
                     Helper.AutoFitColumns(viewReport);
 
                     loadNumRecord();
@@ -776,6 +791,11 @@ namespace PSMS
                 balance += double.Parse(row.Cells["Invoice"].Value.ToString()) - double.Parse(row.Cells["Purchase"].Value.ToString());
                 row.Cells["columnBalance"].Value = balance + "";
             }
+
+        }
+
+        private void viewReport_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

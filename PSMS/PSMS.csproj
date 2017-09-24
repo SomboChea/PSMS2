@@ -100,10 +100,14 @@
     <Compile Include="Class\reportPurchaseRenew.cs" />
     <Compile Include="Class\reportPurchaseWeekly.cs" />
     <Compile Include="Class\reportRevenueWeekly.cs" />
+    <Compile Include="Class\reportRevenue.cs" />
+    <Compile Include="Class\reportStockIn.cs" />
+    <Compile Include="Class\reportStockOut.cs" />
     <Compile Include="Class\reportSupplierRenew.cs" />
     <Compile Include="Class\Stock.cs" />
     <Compile Include="Class\StructInvocieDetail.cs" />
     <Compile Include="Class\StructPurchaseDetail.cs" />
+    <Compile Include="Class\StructStockInOut.cs" />
     <Compile Include="Class\User.cs" />
     <Compile Include="DBSetting.cs">
       <SubType>Form</SubType>
@@ -524,6 +528,24 @@
       <DependentUpon>reportIncomeWeekly.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\RevenueReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RevenueReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\StockInReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockInReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\StockOutReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockOutReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\SupplierReport1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -744,6 +766,18 @@
     <EmbeddedResource Include="Reports\reportIncomeWeekly.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>reportIncomeWeekly.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RevenueReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RevenueReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\StockInReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StockInReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\StockOutReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StockOutReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\SupplierReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
