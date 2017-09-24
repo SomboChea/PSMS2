@@ -16,14 +16,14 @@ namespace PSMS.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class StockInOutReport : ReportClass {
+    public class StockInReport : ReportClass {
         
-        public StockInOutReport() {
+        public StockInReport() {
         }
         
         public override string ResourceName {
             get {
-                return "StockInOutReport.rpt";
+                return "StockInReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace PSMS.Reports {
         
         public override string FullResourceName {
             get {
-                return "PSMS.Reports.StockInOutReport.rpt";
+                return "PSMS.Reports.StockInReport.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace PSMS.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedStockInOutReport : Component, ICachedReport {
+    public class CachedStockInReport : Component, ICachedReport {
         
-        public CachedStockInOutReport() {
+        public CachedStockInReport() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace PSMS.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            StockInOutReport rpt = new StockInOutReport();
+            StockInReport rpt = new StockInReport();
             rpt.Site = this.Site;
             return rpt;
         }

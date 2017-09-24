@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace PSMS.Class
 {
-    class reportStockInOut
+    public class reportStockIn:StructStockInOut
     {
-        
+        public string SupName { get; set; }
     }
 }
