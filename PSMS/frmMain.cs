@@ -99,14 +99,14 @@ namespace PSMS
 
         private void metroTileItem7_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                frmReport frm= new frmReport();
                Helper.Defaultform(frm);
                frm.ShowDialog();
 
-            }
-            catch (Exception) { }
+            //}
+            //catch (Exception) { }
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)

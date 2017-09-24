@@ -1,4 +1,7 @@
-﻿using MetroFramework.Forms;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Windows.Forms;
+using MetroFramework.Forms;
+using PSMS.Class;
 using PSMS.Reports;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -7,11 +10,43 @@ namespace PSMS
 {
     public partial class reportViewer : MetroForm
     {
+       
         public reportViewer()
         {
+            InitializeComponent();           
+        }
+        Function func;
+        public reportViewer(List<reportPurchaseWeekly> list)
+        {
             InitializeComponent();
+
+            PurchaseWeeklyReport report = new PurchaseWeeklyReport();
+            report.SetDataSource(list);
+            crystalReportViewer1.ReportSource = report;
+            crystalReportViewer1.RefreshReport();
+        }
+        reportIncomeWeekly reportIncomeWeekly = new reportIncomeWeekly();
+
+        public reportViewer(ReportDocument report)
+        {
+            InitializeComponent();
+            
+            crystalReportViewer1.ReportSource = report;
+            //crystalReportViewer1.ParameterFieldInfo[0].DefaultValues.Add("title");
+            crystalReportViewer1.RefreshReport();
+
         }
 
+        public reportViewer(List<Class.reportRevenueWeekly> listRevenueWeekly)
+        {
+            InitializeComponent();
+            Class.FullMode.Fullscreen(this);
+
+            //reportInvoiceRevenue.DataSourceConnections.Clear();
+            //reportInvoiceRevenue.Load(@"E:\C# Project PSMS\PSMS new\PSMS2\PSMS\Reports\partRevenueWeeklyReport.rpt");
+            reportIncomeWeekly.Subreports[0].SetDataSource(listRevenueWeekly);
+            crystalReportViewer1.ReportSource = reportIncomeWeekly;
+        }
         public reportViewer(List<Class.reportInvoice> reportInvoice)
         {
             InitializeComponent();

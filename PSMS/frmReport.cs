@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
 using PSMS.Class;
+using PSMS.Reports;
 
 namespace PSMS
 {
@@ -43,6 +44,7 @@ namespace PSMS
                 dateStart.Enabled = true;
                 dateEnd.Enabled = true;
                 btnFilter.Enabled = true;
+                cbSortby.Enabled = true;
              
             }
             else
@@ -50,6 +52,7 @@ namespace PSMS
                 dateStart.Enabled = false;
                 dateEnd.Enabled = false;
                 btnFilter.Enabled = false;
+                cbSortby.Enabled=false;
             }
         }
         
@@ -92,6 +95,7 @@ namespace PSMS
         //View Purchases
         private void metroTile2_Click(object sender, EventArgs e)
         {
+            cbSortby.SelectedIndex = 4;
             Helper.BindGridView("SELECT PurCode,Date,Payment,Balance,Total FROM Purchase;", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(true);
@@ -103,6 +107,7 @@ namespace PSMS
         //View Invoices
         private void metroTile3_Click(object sender, EventArgs e)
         {
+            cbSortby.SelectedIndex = 4;
             Helper.BindGridView("SELECT i.InvoiceCode, i.TotalPrice, i.Balance, i.Date, CONCAT(c.CusLNEN,c.CusFNEN) CustomerName FROM Invoice i INNER JOIN Customers c ON i.CusID = c.CusID; ", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(true);
@@ -130,6 +135,8 @@ namespace PSMS
         List<reportProduct> dataProducts;
         List<reportPurchaseRenew> dataPurchases;
         List<reportSupplierRenew> dataSuppliers;
+
+        List<reportRevenueWeekly> dataRevenueweekly;
         
         private void addCurrentCustomerToPrint()
         {
@@ -207,6 +214,8 @@ namespace PSMS
             }
         }
 
+        
+        Function func;
         private void addCurrentProductToPrint()
         {
             DataSet ds = Helper.getDataSet("SELECT * FROM viewStock;");
@@ -281,62 +290,158 @@ namespace PSMS
                 dataSuppliers.Add(dataList);
             }
         }
-        
+
         private void btnPreview_Click(object sender, EventArgs e)
         {
-            try
+            //try
+            //{
+            if (currentSelected.Equals("customer"))
             {
-                if (currentSelected.Equals("customer"))
+                addCurrentCustomerToPrint();
+                new reportViewer(dataCustomers).ShowDialog();
+            }
+            else if (currentSelected.Equals("supplier"))
+            {
+                addCurrentSupplierToPrint();
+                new reportViewer(dataSuppliers).ShowDialog();
+            }
+            else if (currentSelected.Equals("employee"))
+            {
+                addCurrentEmployeeToPrint();
+                new reportViewer(dataEmployees).ShowDialog();
+            }
+            else if (currentSelected.Equals("purchase"))
+            {
+                try
                 {
-                    addCurrentCustomerToPrint();
-                    new reportViewer(dataCustomers).ShowDialog();
-                }
-                else if (currentSelected.Equals("supplier"))
-                {
-                    addCurrentSupplierToPrint();
-                    new reportViewer(dataSuppliers).ShowDialog();
-                }
-                else if (currentSelected.Equals("employee"))
-                {
-                    addCurrentEmployeeToPrint();
-                    new reportViewer(dataEmployees).ShowDialog();
-                }
-                else if (currentSelected.Equals("purchase"))
-                {
-                    if (viewReport.SelectedCells.Count > 0)
+                    if (cbSortby.SelectedIndex == 4)
                     {
-                        if (cbSortby.SelectedIndex == 0)
-                        {
-                            string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
-                            addCurrentPurchaseToPrint(code);
-                            new reportViewer(dataPurchases).ShowDialog();
-                        }
+                        string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
+                        addCurrentPurchaseToPrint(code);
+                        new reportViewer(dataPurchases).ShowDialog();
                     }
+
                 }
-                else if (currentSelected.Equals("invoice"))
+                catch (Exception)
                 {
-                    if(viewReport.SelectedCells.Count > 0)
+                    purchaseAllReport report = new purchaseAllReport();
+                    new reportViewer(report).ShowDialog();
+                }
+                if (cbSortby.SelectedIndex == 1)
+                {
+                    List<reportPurchaseWeekly> list = new List<reportPurchaseWeekly>();
+                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
                     {
-                        if (cbSortby.SelectedIndex == 0)
-                        {
-                            string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
-                            addCurrentInvoiceToPrint(code);
-                            new reportViewer(dataInvoices).ShowDialog();
-                        }
+                        DataGridViewRow row = viewReport.Rows[i];
+                        reportPurchaseWeekly obj = new reportPurchaseWeekly(DateTime.Parse(row.Cells[0].Value.ToString()).ToShortDateString(), DateTime.Parse(row.Cells[1].Value.ToString()).ToShortDateString(), row.Cells["Payment"].Value.ToString(), row.Cells["Balance"].Value.ToString(), row.Cells["Total"].Value.ToString());
+                        list.Add(obj);
                     }
-                    
+
+                    new reportViewer(list).ShowDialog();
                 }
-                else if (currentSelected.Equals("stock"))
+                if (cbSortby.SelectedIndex == 2)
                 {
-                    addCurrentProductToPrint();
-                    new reportViewer(dataProducts).ShowDialog();
+                    purchaseMonthlyReport report = new purchaseMonthlyReport();
+                    new reportViewer(report).ShowDialog();
                 }
-                else
+                if (cbSortby.SelectedIndex == 3)
                 {
-                    MessageBox.Show("Something error!!!", "Warning!");
+                    purchaseYearlyReport report = new purchaseYearlyReport();
+                    new reportViewer(report).ShowDialog();
                 }
             }
-            catch (Exception) { return; }
+            else if (currentSelected.Equals("invoice"))
+            {
+
+                try
+                {
+                    if (cbSortby.SelectedIndex == 4)
+                    {
+                        string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
+                        addCurrentInvoiceToPrint(code);
+
+                        new reportViewer(dataInvoices).ShowDialog();
+                    }
+                }
+
+                catch (Exception)
+                {
+                    invoiceAllReport report = new invoiceAllReport();
+                    new reportViewer(report).ShowDialog();
+                }
+                if (cbSortby.SelectedIndex == 1)
+                {
+                    invoiceWeeklyReport report = new invoiceWeeklyReport();
+                    List<reportPurchaseWeekly> list = new List<reportPurchaseWeekly>();
+                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
+                    {
+                        DataGridViewRow row = viewReport.Rows[i];
+                        reportPurchaseWeekly obj = new reportPurchaseWeekly(DateTime.Parse(row.Cells[0].Value.ToString()).ToShortDateString(), DateTime.Parse(row.Cells[1].Value.ToString()).ToShortDateString(), row.Cells["Payment"].Value.ToString(), row.Cells["Balance"].Value.ToString(), row.Cells["TotalPrice"].Value.ToString());
+                        list.Add(obj);
+                    }
+
+                    report.SetDataSource(list);
+                    new reportViewer(report).ShowDialog();
+                   
+                }
+                if (cbSortby.SelectedIndex == 2)
+                {
+                    invoiceMonthlyReport report = new invoiceMonthlyReport();
+                    new reportViewer(report).ShowDialog();
+                }
+                if(cbSortby.SelectedIndex==3)
+                {
+                    invoiceYearlyReport report = new invoiceYearlyReport();
+                    new reportViewer(report).ShowDialog();
+                }
+                if (cbSortby.SelectedIndex == 0)
+                {
+                    invoiceDailyReport report=new invoiceDailyReport();
+                    new reportViewer(report).ShowDialog();
+                }
+
+            }
+            else if (currentSelected.Equals("stock"))
+            {
+                addCurrentProductToPrint();
+                new reportViewer(dataProducts).ShowDialog();
+            }
+            else if (currentSelected.Equals("income"))
+            {
+                if(cbSortby.SelectedIndex==1)
+                {
+                    IncomeWeeklyReport report = new IncomeWeeklyReport();
+                    new reportViewer(report).ShowDialog();
+                }
+                else if(cbSortby.SelectedIndex==0)
+                {
+                    IncomeDailyReport report = new IncomeDailyReport();
+                    new reportViewer(report).ShowDialog();
+                }
+                else if(cbSortby.SelectedIndex==2)
+                {
+                    IncomeMonthlyReport report = new IncomeMonthlyReport();
+                    new reportViewer(report).ShowDialog();
+                }
+                else if (cbSortby.SelectedIndex == 3)
+                {
+                    IncomeYearlyReport report = new IncomeYearlyReport();
+                    new reportViewer(report).ShowDialog();
+                }
+                else if (cbSortby.SelectedIndex == 4)
+                {
+                    IncomeAllReport report = new IncomeAllReport();
+                    new reportViewer(report).ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Something error!!!", "Warning!");
+            }
+
+            //catch (Exception ex) {
+            //    MessageBox.Show(ex.Message);
+            //    return; }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -503,7 +608,7 @@ namespace PSMS
             {
                 if (currentSelected.Equals("invoice"))
                 {
-                    Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,Profits,CONVERT(date,Date) Date FROM Invoice;", binding, viewReport);
+                    Helper.BindGridView("Select convert(date,Min(Date)) Date,SUM(Payment) as Payment,SUM(Balance) as Balance,SUM(TotalPrice) as TotalPrice  from Invoice GROUP BY YEAR([Date]) , MONTH(Date),DAY([Date])", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
 
                     loadNumRecord();
@@ -511,18 +616,34 @@ namespace PSMS
                 }
                 else if (currentSelected.Equals("purchase"))
                 {
-                    Helper.BindGridView("SELECT PurCode,CONVERT(date,Date) Date,Payment,Balance,Total FROM Purchase);", binding, viewReport);
+                    Helper.BindGridView("Select convert(date,Min(Date)) Date,SUM(Payment) as Payment,SUM(Balance) as Balance,SUM(Total) as Total  from Purchase GROUP BY YEAR([Date]) , MONTH(Date),DAY([Date])", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
 
                     loadNumRecord();
                     currentSelected = "purchase";
+                }
+                else if (currentSelected.Equals("income"))
+                {
+                    Helper.BindGridView("SELECT  convert(date,max(date)) as dated , sum(Total) as Purchase ,'' as Invoice from Purchase UNION select convert(date,min(DATE)) as dated , '',sum(TotalPrice)  from Invoice group BY YEAR(Date),MONTH(date),day(date) ORDER BY dated", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
+                    loadNumRecord();
+                    currentSelected = "income";
+
+                    viewReport.Columns.Add("columnBalance", "Balance");
+                    double balance = 0;
+                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
+                    {
+                        DataGridViewRow row = viewReport.Rows[i];
+                        balance += double.Parse(row.Cells["Invoice"].Value.ToString()) - double.Parse(row.Cells["Purchase"].Value.ToString());
+                        row.Cells["columnBalance"].Value = balance + "";
+                    }
                 }
             }
             else if (show_by[current_index].Equals(show_by[1]))
             {
                 if (currentSelected.Equals("invoice"))
                 {
-                    Helper.BindGridView("select CONVERT(Date,MIN(DATE)) as Start_Date,CONVERT(Date,MAX(Date)) as End_Date,SUM(TotalPrice) TotalPrice,SUM(Balance) Balance,SUM(Profits) Profits from Invoice  GROUP BY YEAR([Date]),MONTH([Date]),DATEPART(ww, [Date])", binding, viewReport);
+                    Helper.BindGridView("set datefirst 1 select Convert(date,DATEADD(day,1-DATEPART(dw, min(DATE)),min(DATE))) as Start_Date, convert(date,DATEADD(day,7-DATEPART(dw, min(DATE)),min(DATE))) as End_Date, SUM(TotalPrice) TotalPrice, SUM(Balance) Balance, SUM(Payment) Payment from Invoice  GROUP BY YEAR([Date]),MONTH([Date]),DATEPART(ww, [Date])", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
 
                     loadNumRecord();
@@ -530,19 +651,34 @@ namespace PSMS
                 }
                 else if (currentSelected.Equals("purchase"))
                 {
-                    Helper.BindGridView("SELECT convert(date,MIN(DATE)) as Start_Date,CONVERT(date,Max(DATE)) as End_Date,sum(Payment) as Payment,sum(Balance) as Balance, sum(total) as Total from Purchase GROUP BY YEAR(Date),Month(DATE),DATEPART(ww, DATE) ORDER BY Start_date", binding, viewReport);
+                    Helper.BindGridView("set datefirst 1 select Convert(date,DATEADD(day,1-DATEPART(dw, min(DATE)),min(DATE))) as Start_Date,convert(date,DATEADD(day,7-DATEPART(dw, min(DATE)),min(DATE))) as End_Date,sum(Payment) as Payment,sum(Balance) as Balance, sum(total) as Total from Purchase GROUP BY YEAR(Date),Month(DATE),DATEPART(ww, DATE) ORDER BY Start_date", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
 
                     loadNumRecord();
                     currentSelected = "purchase";
                 }
+                else if (currentSelected.Equals("income"))
+                {
+                    Helper.BindGridView("SELECT Convert(date,DATEADD(day,1-DATEPART(dw, min(DATE)),min(DATE))) as Start_Date, convert(date,DATEADD(day,7-DATEPART(dw, min(DATE)),min(DATE))) as End_Date , sum(Total) as Purchase ,'' as Invoice from Purchase UNION select Convert(date,DATEADD(day,1-DATEPART(dw, min(DATE)),min(DATE))) as Start_Date,convert(date,DATEADD(day,7-DATEPART(dw, min(DATE)),min(DATE))) as End_Date, '',sum(TotalPrice)  from Invoice group BY YEAR(Date),MONTH(date),DATEPART(ww, date)", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
+                    loadNumRecord();
+                    currentSelected = "income";
+
+                    viewReport.Columns.Add("columnBalance", "Balance");
+                    double balance = 0;
+                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
+                    {
+                        DataGridViewRow row = viewReport.Rows[i];
+                        balance += double.Parse(row.Cells["Invoice"].Value.ToString()) - double.Parse(row.Cells["Purchase"].Value.ToString());
+                        row.Cells["columnBalance"].Value = balance + "";
+                    }
+                }
             }
-            else if (show_by[current_index].Equals(show_by
-                [2]))
+            else if (show_by[current_index].Equals(show_by[2]))
             {
                 if (currentSelected.Equals("invoice"))
                 {
-                    Helper.BindGridView("select format(Max(Date),'yyyy-MMM') as 'Year-Mon',SUM(TotalPrice) TotalPrice,SUM(Balance) Balance,SUM(Profits) Profits from Invoice GROUP BY YEAR([Date]),MONTH([Date]) ORDER BY 'Year-Mon'", binding, viewReport);
+                    Helper.BindGridView("select format(Max(Date),'yyyy-MMM') as 'Year-Mon',SUM(TotalPrice) TotalPrice,SUM(Balance) Balance,SUM(Payment) Payment from Invoice GROUP BY YEAR([Date]),MONTH([Date]) ORDER BY 'Year-Mon'", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
                     loadNumRecord();
                     currentSelected = "invoice";
@@ -555,12 +691,28 @@ namespace PSMS
                     loadNumRecord();
                     currentSelected = "purchase";
                 }
+                else if (currentSelected.Equals("income"))
+                {
+                    Helper.BindGridView("select format(min(date),'yyyy-MMM') as Date ,sum(Total) as Purchase ,'' Invoice from Purchase union select format(min(date),'yyyy-MMM') as Date, '',sum(TotalPrice)  from Invoice group BY YEAR(Date),MONTH(date),MONTH(date) ORDER BY date", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
+                    loadNumRecord();
+                    currentSelected = "income";
+
+                    viewReport.Columns.Add("columnBalance", "Balance");
+                    double balance = 0;
+                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
+                    {
+                        DataGridViewRow row = viewReport.Rows[i];
+                        balance += double.Parse(row.Cells["Invoice"].Value.ToString()) - double.Parse(row.Cells["Purchase"].Value.ToString());
+                        row.Cells["columnBalance"].Value = balance + "";
+                    }
+                }
             }
             else if (show_by[current_index].Equals(show_by[3]))
             {
                 if (currentSelected.Equals("invoice"))
                 {
-                    Helper.BindGridView("select format(Max(Date),'yyyy') as Date,SUM(TotalPrice) TotalPrice,SUM(Balance) Balance ,SUM(Profits) Profits from Invoice GROUP BY YEAR([Date])", binding, viewReport);
+                    Helper.BindGridView("select format(Max(Date),'yyyy') as Date,SUM(TotalPrice) TotalPrice,SUM(Balance) Balance ,SUM(Payment) Payment from Invoice GROUP BY YEAR([Date])", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
                     loadNumRecord();
                     currentSelected = "invoice";
@@ -572,11 +724,59 @@ namespace PSMS
                     loadNumRecord();
                     currentSelected = "purchase";
                 }
+                else if (currentSelected.Equals("income"))
+                {
+                    Helper.BindGridView("SELECT  format(max(date),'yyyy') as dated , sum(Total) as Purchase ,'' as Invoice from Purchase UNION select format(min(DATE),'yyyy') as dated , '',sum(TotalPrice)  from Invoice group BY YEAR(Date)", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
+                    loadNumRecord();
+                    currentSelected = "income";
+
+                    viewReport.Columns.Add("columnBalance", "Balance");
+                    double balance = 0;
+                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
+                    {
+                        DataGridViewRow row = viewReport.Rows[i];
+                        balance += double.Parse(row.Cells["Invoice"].Value.ToString()) - double.Parse(row.Cells["Purchase"].Value.ToString());
+                        row.Cells["columnBalance"].Value = balance + "";
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("All");
+                if (currentSelected.Equals("invoice"))
+                {
+                    metroTile3_Click(null, null);
+                }
+                else if (currentSelected.Equals("purchase"))
+                {
+                    metroTile2_Click(null, null);
+                }
+                else if (currentSelected.Equals("income"))
+                {
+                    metroTile6_Click(null, null);
+                }
             }
+        }
+
+        private void metroTile6_Click(object sender, EventArgs e)
+        {
+            cbSortby.SelectedIndex = 4;
+            Helper.BindGridView("SELECT  date , Total as Purchase ,'' as Invoice from Purchase UNION select DATE , '',TotalPrice  from Invoice ORDER BY Date;", binding, viewReport);
+            Helper.AutoFitColumns(viewReport);
+            dateEnable(true);
+
+            loadNumRecord();
+            currentSelected = "income";
+
+            viewReport.Columns.Add("columnBalance", "Balance");
+            double balance = 0;
+            for (int i = 0; i < viewReport.Rows.Count - 1; i++)
+            {
+                DataGridViewRow row = viewReport.Rows[i];
+                balance += double.Parse(row.Cells["Invoice"].Value.ToString()) - double.Parse(row.Cells["Purchase"].Value.ToString());
+                row.Cells["columnBalance"].Value = balance + "";
+            }
+
         }
     }
 }

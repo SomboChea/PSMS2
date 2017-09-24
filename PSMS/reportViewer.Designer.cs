@@ -36,6 +36,7 @@
             this.productReportDoc = new PSMS.Reports.ProductReport();
             this.supplierReportDoc = new PSMS.Reports.SupplierReport();
             this.purchaseReportD = new PSMS.Reports.PurchaseReport();
+         
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -74,5 +75,6 @@
         private Reports.ProductReport productReportDoc;
         private Reports.SupplierReport supplierReportDoc;
         private Reports.PurchaseReport purchaseReportD;
+   
     }
 }

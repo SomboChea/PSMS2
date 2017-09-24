@@ -52,6 +52,7 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.cbSortby = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroTile6 = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.viewReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -207,7 +208,7 @@
             // 
             this.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateStart.Location = new System.Drawing.Point(955, 63);
-            this.dateStart.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dateStart.MinimumSize = new System.Drawing.Size(4, 29);
             this.dateStart.Name = "dateStart";
             this.dateStart.Size = new System.Drawing.Size(107, 29);
             this.dateStart.TabIndex = 8;
@@ -216,7 +217,7 @@
             // 
             this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateEnd.Location = new System.Drawing.Point(1071, 63);
-            this.dateEnd.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dateEnd.MinimumSize = new System.Drawing.Size(4, 29);
             this.dateEnd.Name = "dateEnd";
             this.dateEnd.Size = new System.Drawing.Size(107, 29);
             this.dateEnd.TabIndex = 10;
@@ -364,11 +365,27 @@
             this.metroLabel4.TabIndex = 19;
             this.metroLabel4.Text = "Show by";
             // 
+            // metroTile6
+            // 
+            this.metroTile6.ActiveControl = null;
+            this.metroTile6.ForeColor = System.Drawing.Color.White;
+            this.metroTile6.Location = new System.Drawing.Point(24, 588);
+            this.metroTile6.Name = "metroTile6";
+            this.metroTile6.Size = new System.Drawing.Size(131, 52);
+            this.metroTile6.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTile6.TabIndex = 20;
+            this.metroTile6.Text = "Income";
+            this.metroTile6.UseCustomForeColor = true;
+            this.metroTile6.UseSelectable = true;
+            this.metroTile6.UseStyleColors = true;
+            this.metroTile6.Click += new System.EventHandler(this.metroTile6_Click);
+            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1303, 749);
+            this.Controls.Add(this.metroTile6);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.cbSortby);
             this.Controls.Add(this.metroLabel5);
@@ -421,5 +438,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroComboBox cbSortby;
         private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroTile metroTile6;
     }
 }
