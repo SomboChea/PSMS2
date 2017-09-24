@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,47 +24,131 @@ namespace PSMS
         
         private void frmStock_Load(object sender, EventArgs e)
         {
+            cbFilter.SelectedIndex = 0;
             comboBox2.SelectedIndex = 0;
-            ImageList imglist = new ImageList();
-            foreach (ListViewItem item in Class.Helper.getListStock(ref imglist,""))
-            {
-                
-                if(Class.Helper.checkStock(item.Text) <=0)
-                {
-                    /*
-                    DialogResult confirm = MessageBox.Show("Do you want to add this item?","Confirm Action",MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
 
-                    if (confirm == DialogResult.Yes)
-                        new frmProduct().ShowDialog();
-                    */
+            listStock.Items.Clear();
+            loadData();
 
-                    MetroFramework.MetroMessageBox.Show(this, "This item is of out stock?", "Warning : Item Code " + item.Text);
-
-                }
-                
-               
-                listStock.Items.Add(item);
-
-                listStock.LargeImageList = imglist;
-                listStock.Items[item.Index].ImageIndex = item.Index;
-
-                
-            }
             comboBox1_SelectedIndexChanged(this, null);
-
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             View view = comboBox1.SelectedIndex == 0 ? View.Details : View.LargeIcon;
             listStock.View = view;
-            
+
+        }
+
+        private void loadData(string sql="")
+        {
+            ImageList imglist = new ImageList();
+            foreach (ListViewItem item in Helper.getListStock(ref imglist, sql))
+            {
+
+                if (Helper.checkStock(item.Text) <= 0)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "This item is of out stock?", "Warning : Item Code " + item.Text);
+
+                }
+
+                listStock.Items.Add(item);
+                listStock.LargeImageList = imglist;
+                listStock.Items[item.Index].ImageIndex = item.Index;
+            }
+        }
+
+        private void exec(string table)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM " + table + ";", Connection.con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    cbFilter2.Items.Add(reader.GetValue(2) + "");
+                }
+
+                reader.Close();
+                cmd.Dispose();
+
+                cbFilter2.SelectedIndex = 0;
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "EXEC");
+            }
+        }
+
+        private void loadFilterData(int filtertype)
+        {
+            try
+            {
+                if (filtertype.Equals(0))
+                {
+                    exec("Model");
+                }
+                else
+                {
+                    exec("Phone_Type");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "loadFilter");
+            }
+        }
+
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbFilter2.Enabled = true;
+
+            if (cbFilter.SelectedIndex.Equals(1))
+            {
+                cbFilter2.Items.Clear();
+                loadFilterData(0);
+
+            }
+            else if (cbFilter.SelectedIndex.Equals(2))
+            {
+                cbFilter2.Items.Clear();
+                loadFilterData(1);
+
+            }
+            else
+            {
+                cbFilter2.Items.Clear();
+                cbFilter2.Enabled = false;
+
+                listStock.Items.Clear();
+                loadData("");
+            }
+        }
+
+        private void cbFilter2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbFilter.SelectedIndex.Equals(1))
+            {
+                listStock.Items.Clear();
+                loadData("WHERE Brand = '" + cbFilter2.SelectedItem + "'");
+            }
+            else if (cbFilter.SelectedIndex.Equals(2))
+            {
+                listStock.Items.Clear();
+                loadData(" WHERE PhoneType = '" + cbFilter2.SelectedItem + "';");
+            }
+            else
+            {
+                listStock.Items.Clear();
+                loadData("");
+            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            PSMS.Class.Connection.ExecuteScalar("Delete from Product where [PCode]='" + listStock.SelectedItems[0].Text + "'");
+            Connection.ExecuteScalar("Delete from Product where [PCode]='" + listStock.SelectedItems[0].Text + "'");
             listStock.Items.RemoveAt(listStock.SelectedIndices[0]);
         }
 
@@ -142,7 +227,18 @@ namespace PSMS
             foreach (ListViewItem temp in listStock.Items)
                 listStock.Items.Remove(temp);
 
-            String addSql = txtfilter.Text == "" ? "" : "Where " + comboBox2.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
+            String addSql = "";
+
+            if (comboBox2.SelectedIndex.Equals(0))
+            {
+                addSql = txtfilter.Text == "" ? "" : "Where PCode like '%" + txtfilter.Text.Trim() + "%'";
+            }
+            else
+            {
+                addSql = txtfilter.Text == "" ? "" : "Where PName like '%" + txtfilter.Text.Trim() + "%'";
+            }
+
+            
             ImageList imglist = new ImageList();
             foreach (ListViewItem item in Class.Helper.getListStock(ref imglist, addSql))
             {
@@ -153,5 +249,7 @@ namespace PSMS
             }
             comboBox1_SelectedIndexChanged(this, null);
         }
+
+        
     }
 }

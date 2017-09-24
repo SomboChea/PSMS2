@@ -27,7 +27,10 @@ namespace PSMS.Class
         public int Quantity { get; set; }
         public double UnitPrice { get; set; }
         public double SalePrice { get; set; }
-        public double Amount { get { return UnitPrice * UnitPrice; } }
+        public double Amount
+        {
+            get { return Quantity * UnitPrice; }
+        }
 
     }
 }
