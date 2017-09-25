@@ -91,6 +91,7 @@ namespace PSMS.Class
         {
             try
                 {
+                gridView.Columns.Clear();
                 DataTable dt = new DataTable();
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmdText, Connection.con);
