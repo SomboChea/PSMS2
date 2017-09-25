@@ -363,7 +363,7 @@
             // 
             // 
             this.txtKh1.CustomButton.Image = null;
-            this.txtKh1.CustomButton.Location = new System.Drawing.Point(153, 2);
+            this.txtKh1.CustomButton.Location = new System.Drawing.Point(151, 2);
             this.txtKh1.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.txtKh1.CustomButton.Name = "";
             this.txtKh1.CustomButton.Size = new System.Drawing.Size(23, 23);
@@ -372,6 +372,7 @@
             this.txtKh1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtKh1.CustomButton.UseSelectable = true;
             this.txtKh1.CustomButton.Visible = false;
+            this.txtKh1.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtKh1.Lines = new string[0];
             this.txtKh1.Location = new System.Drawing.Point(188, 186);
             this.txtKh1.Margin = new System.Windows.Forms.Padding(4);
@@ -383,11 +384,13 @@
             this.txtKh1.SelectionLength = 0;
             this.txtKh1.SelectionStart = 0;
             this.txtKh1.ShortcutsEnabled = true;
-            this.txtKh1.Size = new System.Drawing.Size(179, 28);
+            this.txtKh1.Size = new System.Drawing.Size(177, 28);
             this.txtKh1.TabIndex = 71;
             this.txtKh1.UseSelectable = true;
             this.txtKh1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtKh1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtKh1.Enter += new System.EventHandler(this.txtKh1_Enter);
+            this.txtKh1.Leave += new System.EventHandler(this.txtKh1_Leave);
             // 
             // txtKh2
             // 
@@ -395,7 +398,7 @@
             // 
             // 
             this.txtKh2.CustomButton.Image = null;
-            this.txtKh2.CustomButton.Location = new System.Drawing.Point(142, 2);
+            this.txtKh2.CustomButton.Location = new System.Drawing.Point(168, 2);
             this.txtKh2.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.txtKh2.CustomButton.Name = "";
             this.txtKh2.CustomButton.Size = new System.Drawing.Size(23, 23);
@@ -404,8 +407,9 @@
             this.txtKh2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtKh2.CustomButton.UseSelectable = true;
             this.txtKh2.CustomButton.Visible = false;
+            this.txtKh2.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtKh2.Lines = new string[0];
-            this.txtKh2.Location = new System.Drawing.Point(399, 186);
+            this.txtKh2.Location = new System.Drawing.Point(373, 186);
             this.txtKh2.Margin = new System.Windows.Forms.Padding(4);
             this.txtKh2.MaxLength = 32767;
             this.txtKh2.Name = "txtKh2";
@@ -415,11 +419,13 @@
             this.txtKh2.SelectionLength = 0;
             this.txtKh2.SelectionStart = 0;
             this.txtKh2.ShortcutsEnabled = true;
-            this.txtKh2.Size = new System.Drawing.Size(168, 28);
+            this.txtKh2.Size = new System.Drawing.Size(194, 28);
             this.txtKh2.TabIndex = 72;
             this.txtKh2.UseSelectable = true;
             this.txtKh2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtKh2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtKh2.Enter += new System.EventHandler(this.txtKh2_Enter);
+            this.txtKh2.Leave += new System.EventHandler(this.txtKh2_Leave);
             // 
             // txtEn2
             // 
@@ -427,7 +433,7 @@
             // 
             // 
             this.txtEn2.CustomButton.Image = null;
-            this.txtEn2.CustomButton.Location = new System.Drawing.Point(142, 2);
+            this.txtEn2.CustomButton.Location = new System.Drawing.Point(168, 2);
             this.txtEn2.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.txtEn2.CustomButton.Name = "";
             this.txtEn2.CustomButton.Size = new System.Drawing.Size(23, 23);
@@ -436,8 +442,9 @@
             this.txtEn2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtEn2.CustomButton.UseSelectable = true;
             this.txtEn2.CustomButton.Visible = false;
+            this.txtEn2.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtEn2.Lines = new string[0];
-            this.txtEn2.Location = new System.Drawing.Point(399, 245);
+            this.txtEn2.Location = new System.Drawing.Point(373, 244);
             this.txtEn2.Margin = new System.Windows.Forms.Padding(4);
             this.txtEn2.MaxLength = 32767;
             this.txtEn2.Name = "txtEn2";
@@ -447,11 +454,14 @@
             this.txtEn2.SelectionLength = 0;
             this.txtEn2.SelectionStart = 0;
             this.txtEn2.ShortcutsEnabled = true;
-            this.txtEn2.Size = new System.Drawing.Size(168, 28);
+            this.txtEn2.Size = new System.Drawing.Size(194, 28);
             this.txtEn2.TabIndex = 73;
+            this.txtEn2.UseCustomForeColor = true;
             this.txtEn2.UseSelectable = true;
             this.txtEn2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEn2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtEn2.Enter += new System.EventHandler(this.txtEn2_Enter);
+            this.txtEn2.Leave += new System.EventHandler(this.txtEn2_Leave);
             // 
             // txtEn1
             // 
@@ -459,7 +469,7 @@
             // 
             // 
             this.txtEn1.CustomButton.Image = null;
-            this.txtEn1.CustomButton.Location = new System.Drawing.Point(153, 2);
+            this.txtEn1.CustomButton.Location = new System.Drawing.Point(151, 2);
             this.txtEn1.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.txtEn1.CustomButton.Name = "";
             this.txtEn1.CustomButton.Size = new System.Drawing.Size(23, 23);
@@ -468,8 +478,9 @@
             this.txtEn1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtEn1.CustomButton.UseSelectable = true;
             this.txtEn1.CustomButton.Visible = false;
+            this.txtEn1.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtEn1.Lines = new string[0];
-            this.txtEn1.Location = new System.Drawing.Point(188, 249);
+            this.txtEn1.Location = new System.Drawing.Point(188, 244);
             this.txtEn1.Margin = new System.Windows.Forms.Padding(4);
             this.txtEn1.MaxLength = 32767;
             this.txtEn1.Name = "txtEn1";
@@ -479,11 +490,14 @@
             this.txtEn1.SelectionLength = 0;
             this.txtEn1.SelectionStart = 0;
             this.txtEn1.ShortcutsEnabled = true;
-            this.txtEn1.Size = new System.Drawing.Size(179, 28);
+            this.txtEn1.Size = new System.Drawing.Size(177, 28);
             this.txtEn1.TabIndex = 74;
+            this.txtEn1.UseCustomForeColor = true;
             this.txtEn1.UseSelectable = true;
             this.txtEn1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEn1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtEn1.Enter += new System.EventHandler(this.txtEn1_Enter);
+            this.txtEn1.Leave += new System.EventHandler(this.txtEn1_Leave);
             // 
             // metroLabel9
             // 
@@ -620,10 +634,10 @@
             this.itemContainer3,
             this.itemContainer5});
             this.itemPanel1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemPanel1.Location = new System.Drawing.Point(1161, 52);
+            this.itemPanel1.Location = new System.Drawing.Point(1199, 52);
             this.itemPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.itemPanel1.Name = "itemPanel1";
-            this.itemPanel1.Size = new System.Drawing.Size(140, 441);
+            this.itemPanel1.Size = new System.Drawing.Size(102, 359);
             this.itemPanel1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014;
             this.itemPanel1.TabIndex = 71;
             this.itemPanel1.Text = "itemPanel1";
@@ -942,6 +956,7 @@
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(132, 22);
             this.maskedTextBox1.TabIndex = 87;
+            this.maskedTextBox1.Visible = false;
             // 
             // frmEmployees
             // 

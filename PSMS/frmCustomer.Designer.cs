@@ -36,6 +36,8 @@
             this.controlContainerItem1 = new DevComponents.DotNetBar.ControlContainerItem();
             this.controlContainerItem2 = new DevComponents.DotNetBar.ControlContainerItem();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.btnne = new System.Windows.Forms.Button();
+            this.btnpre = new System.Windows.Forms.Button();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.itemPanel1 = new DevComponents.DotNetBar.ItemPanel();
@@ -78,8 +80,6 @@
             this.lblBalance = new MetroFramework.Controls.MetroLabel();
             this.itemPanel2 = new DevComponents.DotNetBar.ItemPanel();
             this.controlContainerItem3 = new DevComponents.DotNetBar.ControlContainerItem();
-            this.btnpre = new System.Windows.Forms.Button();
-            this.btnne = new System.Windows.Forms.Button();
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -214,11 +214,38 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // btnne
+            // 
+            this.btnne.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnne.Enabled = false;
+            this.btnne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnne.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnne.Location = new System.Drawing.Point(700, 3);
+            this.btnne.Name = "btnne";
+            this.btnne.Size = new System.Drawing.Size(107, 38);
+            this.btnne.TabIndex = 88;
+            this.btnne.Text = "Next";
+            this.btnne.UseVisualStyleBackColor = false;
+            this.btnne.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnpre
+            // 
+            this.btnpre.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnpre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnpre.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnpre.Location = new System.Drawing.Point(578, 3);
+            this.btnpre.Name = "btnpre";
+            this.btnpre.Size = new System.Drawing.Size(105, 38);
+            this.btnpre.TabIndex = 89;
+            this.btnpre.Text = "Previous";
+            this.btnpre.UseVisualStyleBackColor = false;
+            this.btnpre.Click += new System.EventHandler(this.btnpre_Click);
+            // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroLabel1.Location = new System.Drawing.Point(426, 351);
+            this.metroLabel1.Location = new System.Drawing.Point(526, 333);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(71, 20);
             this.metroLabel1.TabIndex = 42;
@@ -232,7 +259,7 @@
             this.metroPanel2.HorizontalScrollbarSize = 10;
             this.metroPanel2.Location = new System.Drawing.Point(813, 39);
             this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(111, 359);
+            this.metroPanel2.Size = new System.Drawing.Size(111, 364);
             this.metroPanel2.TabIndex = 31;
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
@@ -259,7 +286,7 @@
             this.itemPanel1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
             this.itemPanel1.Location = new System.Drawing.Point(3, 3);
             this.itemPanel1.Name = "itemPanel1";
-            this.itemPanel1.Size = new System.Drawing.Size(105, 359);
+            this.itemPanel1.Size = new System.Drawing.Size(105, 361);
             this.itemPanel1.TabIndex = 20;
             this.itemPanel1.Text = "itemPanel1";
             // 
@@ -370,7 +397,7 @@
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.GridColor = System.Drawing.Color.CadetBlue;
-            this.dataGridView1.Location = new System.Drawing.Point(446, 376);
+            this.dataGridView1.Location = new System.Drawing.Point(546, 358);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(29, 22);
             this.dataGridView1.TabIndex = 29;
@@ -924,33 +951,6 @@
             this.controlContainerItem3.Control = this.metroPanel1;
             this.controlContainerItem3.MenuVisibility = DevComponents.DotNetBar.eMenuVisibility.VisibleAlways;
             this.controlContainerItem3.Name = "controlContainerItem3";
-            // 
-            // btnpre
-            // 
-            this.btnpre.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnpre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnpre.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnpre.Location = new System.Drawing.Point(578, 3);
-            this.btnpre.Name = "btnpre";
-            this.btnpre.Size = new System.Drawing.Size(105, 38);
-            this.btnpre.TabIndex = 89;
-            this.btnpre.Text = "Previous";
-            this.btnpre.UseVisualStyleBackColor = false;
-            this.btnpre.Click += new System.EventHandler(this.btnpre_Click);
-            // 
-            // btnne
-            // 
-            this.btnne.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnne.Enabled = false;
-            this.btnne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnne.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnne.Location = new System.Drawing.Point(700, 3);
-            this.btnne.Name = "btnne";
-            this.btnne.Size = new System.Drawing.Size(107, 38);
-            this.btnne.TabIndex = 88;
-            this.btnne.Text = "Next";
-            this.btnne.UseVisualStyleBackColor = false;
-            this.btnne.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmCustomer
             // 

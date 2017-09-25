@@ -29,6 +29,8 @@ namespace PSMS
             empFun = new frmEmployeeFunction();
             posFun = new frmPosFunction();
 
+            loadPlaceHolder();
+
             Control[] tempRequire={txtEn1,txtEn2,txtEmail,txtPhone,txtKh1,txtKh2};           
             requirement = tempRequire;
             
@@ -41,11 +43,13 @@ namespace PSMS
             redline.Tag = "remove";
             redline.Location = new Point(ctr.Location.X-2, ctr.Location.Y-2);
             redline.Size = new Size(ctr.Size.Width+4, ctr.Size.Height+4);
-            if (ctr.Text.Trim() == "")
+
+            if (ctr.Text.Trim() == ""|| ctr.Text == ph_en1 || ctr.Text == ph_en2 || ctr.Text == ph_kh1 || ctr.Text == ph_kh2)
             {
                 redline.BackColor = Color.Red;
                 end = true;
             }
+            /*
             else
             {
                 if (ctr.Tag == "email")
@@ -62,6 +66,7 @@ namespace PSMS
                     }
                 }
             }
+            */
 
             
 
@@ -84,17 +89,6 @@ namespace PSMS
             txtEmpID.Text = Eid + "";
             txtEmpCode.Text = "EMP" + ("00000" + Eid).Substring(("00000" + Eid).Length - 5);
 
-            //txtKh1.Text = "សំ";
-            //txtKh2.Text = "បូរ";
-            //txtEn1.Text = "sun";
-            //txtEn2.Text = "l";
-            //txtIDCard.Text = "111111";
-            //rtxtAddress2.Text = "PP";
-            //txtPhone.Text = "0123456789";
-            //txtEmail.Text = "0987654321";
-            //cbBGender.SelectedIndex = 0;
-            //cbBPos.SelectedIndex = 0;
-            //txtSalary.Text = "999999";
             btnNew.Enabled = true;
    
         }
@@ -156,9 +150,7 @@ namespace PSMS
                 cbBPos.SelectedValue = Convert.ToInt32(row["PosID"].ToString());
                 txtSalary.Text = row["Salary"].ToString();
                 Join_date.Text = row["JoinDate"].ToString();
-
-
-                // pictureBox1.Image = Image.FromStream(new MemoryStream((byte[])row["Image"]));
+                
             }
         }
 
@@ -175,7 +167,12 @@ namespace PSMS
                     requirementnull(temp,ref end);
                 }
                 if (end)
+                {
+
+                    MessageBox.Show("Please fill all required fields!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
+                }
+
                 txtSalary.Text = txtSalary.Text.Trim() == "" ? "0" : txtSalary.Text;
                 int result = (int)empFun.Insert(GetEmp());
                 if (result > 0)
@@ -428,6 +425,105 @@ namespace PSMS
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        string ph_kh1 = "សូមបញ្ចូល ត្រកូលរបស់អ្នក...";
+        string ph_kh2 = "សូមបញ្ចូល ឈ្មោះរបស់អ្នក...";
+        string ph_en1 = "Enter lastname...";
+        string ph_en2 = "Enter firstname...";
+
+        private void loadPlaceHolder()
+        {
+            txtKh1.UseCustomForeColor = true;
+            txtKh2.UseCustomForeColor = true;
+            txtEn1.UseCustomForeColor = true;
+            txtEn2.UseCustomForeColor = true;
+
+            txtKh1.ForeColor = Color.Gray;
+            txtKh2.ForeColor = Color.Gray;
+            txtEn1.ForeColor = Color.Gray;
+            txtEn2.ForeColor = Color.Gray;
+
+            txtKh1.Text = ph_kh1;
+            txtKh2.Text = ph_kh2;
+            txtEn1.Text = ph_en1;
+            txtEn2.Text = ph_en2;
+        }
+
+        private void txtKh1_Enter(object sender, EventArgs e)
+        {
+            if (txtKh1.Text == ph_kh1)
+            {
+                txtKh1.Text = "";
+                txtKh1.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtKh1_Leave(object sender, EventArgs e)
+        {
+            if (txtKh1.Text == "")
+            {
+                txtKh1.UseCustomForeColor = true;
+                txtKh1.ForeColor = Color.Gray;
+                txtKh1.Text = ph_kh1;
+            }
+        }
+
+        private void txtKh2_Enter(object sender, EventArgs e)
+        {
+            if (txtKh2.Text == ph_kh2)
+            {
+                txtKh2.Text = "";
+                txtKh2.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtKh2_Leave(object sender, EventArgs e)
+        {
+            if (txtKh2.Text == "")
+            {
+                txtKh2.UseCustomForeColor = true;
+                txtKh2.ForeColor = Color.Gray;
+                txtKh2.Text = ph_kh2;
+            }
+        }
+
+        private void txtEn1_Enter(object sender, EventArgs e)
+        {
+            if (txtEn1.Text == ph_en1)
+            {
+                txtEn1.Text = "";
+                txtEn1.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtEn1_Leave(object sender, EventArgs e)
+        {
+            if (txtEn1.Text == "")
+            {
+                txtEn1.UseCustomForeColor = true;
+                txtEn1.ForeColor = Color.Gray;
+                txtEn1.Text = ph_en1;
+            }
+        }
+
+        private void txtEn2_Enter(object sender, EventArgs e)
+        {
+            if (txtEn2.Text == ph_en2)
+            {
+                txtEn2.Text = "";
+                txtEn2.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtEn2_Leave(object sender, EventArgs e)
+        {
+            if (txtEn2.Text == "")
+            {
+                txtEn2.UseCustomForeColor = true;
+                txtEn2.ForeColor = Color.Gray;
+                txtEn2.Text = ph_en2;
+            }
         }
     }
 }

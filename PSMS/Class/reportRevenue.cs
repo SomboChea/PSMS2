@@ -9,6 +9,6 @@ namespace PSMS.Class
     class reportRevenue
     {
         public string Date { get; set; }
-        public int MyProperty { get; set; }
+
     }
 }
