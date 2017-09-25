@@ -397,6 +397,7 @@ namespace PSMS
                 if (cbSortby.SelectedIndex == 0)
                 {
                     invoiceDailyReport report=new invoiceDailyReport();
+                    
                     new reportViewer(report).ShowDialog();
                 }
 
@@ -416,6 +417,7 @@ namespace PSMS
                 else if(cbSortby.SelectedIndex==0)
                 {
                     IncomeDailyReport report = new IncomeDailyReport();
+                    
                     new reportViewer(report).ShowDialog();
                 }
                 else if(cbSortby.SelectedIndex==2)
@@ -443,7 +445,7 @@ namespace PSMS
             //    MessageBox.Show(ex.Message);
             //    return; }
         }
-
+       
         private void btnBack_Click(object sender, EventArgs e)
         {
             Dispose();
@@ -635,6 +637,8 @@ namespace PSMS
                 }
                 else if (currentSelected.Equals("income"))
                 {
+                    viewReport.Columns.Clear();
+
                     Helper.BindGridView("SELECT  convert(date,max(date)) as dated , sum(Total) as Purchase ,'' as Invoice from Purchase UNION select convert(date,min(DATE)) as dated , '',sum(TotalPrice)  from Invoice group BY YEAR(Date),MONTH(date),day(date) ORDER BY dated", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
                     loadNumRecord();
@@ -674,6 +678,8 @@ namespace PSMS
                 }
                 else if (currentSelected.Equals("income"))
                 {
+                    viewReport.Columns.Clear();
+
                     Helper.BindGridView("SELECT Convert(date,DATEADD(day,1-DATEPART(dw, min(DATE)),min(DATE))) as Start_Date, convert(date,DATEADD(day,7-DATEPART(dw, min(DATE)),min(DATE))) as End_Date , sum(Total) as Purchase ,'' as Invoice from Purchase UNION select Convert(date,DATEADD(day,1-DATEPART(dw, min(DATE)),min(DATE))) as Start_Date,convert(date,DATEADD(day,7-DATEPART(dw, min(DATE)),min(DATE))) as End_Date, '',sum(TotalPrice)  from Invoice group BY YEAR(Date),MONTH(date),DATEPART(ww, date)", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
                     loadNumRecord();
@@ -708,6 +714,7 @@ namespace PSMS
                 }
                 else if (currentSelected.Equals("income"))
                 {
+                    viewReport.Columns.Clear();
                     Helper.BindGridView("select format(min(date),'yyyy-MMM') as Date ,sum(Total) as Purchase ,'' Invoice from Purchase union select format(min(date),'yyyy-MMM') as Date, '',sum(TotalPrice)  from Invoice group BY YEAR(Date),MONTH(date),MONTH(date) ORDER BY date", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
                     loadNumRecord();
@@ -741,6 +748,8 @@ namespace PSMS
                 }
                 else if (currentSelected.Equals("income"))
                 {
+                    viewReport.Columns.Clear();
+
                     Helper.BindGridView("SELECT  format(max(date),'yyyy') as dated , sum(Total) as Purchase ,'' as Invoice from Purchase UNION select format(min(DATE),'yyyy') as dated , '',sum(TotalPrice)  from Invoice group BY YEAR(Date)", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
                     loadNumRecord();
@@ -776,6 +785,7 @@ namespace PSMS
         private void metroTile6_Click(object sender, EventArgs e)
         {
             cbSortby.SelectedIndex = 4;
+            viewReport.Columns.Clear();
             Helper.BindGridView("SELECT  date , Total as Purchase ,'' as Invoice from Purchase UNION select DATE , '',TotalPrice  from Invoice ORDER BY Date;", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(true);
