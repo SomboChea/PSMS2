@@ -1,2 +1,3 @@
 1. Search must match for case , If name is iphone , u can search Iphone
 
+2. In formStock , after Add brand , type , Phone type , must close and reopen to refresh 
