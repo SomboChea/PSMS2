@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -91,6 +92,7 @@ namespace PSMS.Class
         {
             try
                 {
+                    gridView.Columns.Clear();
                 DataTable dt = new DataTable();
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmdText, Connection.con);
@@ -117,9 +119,11 @@ namespace PSMS.Class
         {
             try
             {
+               
                 dg.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
             }
-            catch(Exception) { }
+            catch (Exception) { }
         }
 
         public static bool ifnull(object value)

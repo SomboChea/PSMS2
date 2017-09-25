@@ -783,7 +783,7 @@ namespace PSMS
             loadNumRecord();
             currentSelected = "income";
 
-            viewReport.Columns.Add("columnBalance", "Balance");
+            viewReport.Columns.Add("columnBalance", "Profits");
             double balance = 0;
             for (int i = 0; i < viewReport.Rows.Count - 1; i++)
             {
