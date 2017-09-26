@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
 using PSMS.Class;
 using PSMS.Reports;
+using PSMS.ReportNew;
 
 namespace PSMS
 {
@@ -108,7 +109,7 @@ namespace PSMS
         private void metroTile3_Click(object sender, EventArgs e)
         {
             cbSortby.SelectedIndex = 4;
-            Helper.BindGridView("SELECT i.InvoiceCode, i.TotalPrice, i.Balance, i.Date, CONCAT(c.CusLNEN,c.CusFNEN) CustomerName FROM Invoice i INNER JOIN Customers c ON i.CusID = c.CusID; ", binding, viewReport);
+            Helper.BindGridView("SELECT i.InvoiceCode,i.Payment , i.Balance,i.TotalPrice, i.Date, CONCAT(c.CusLNEN,c.CusFNEN) CustomerName FROM Invoice i INNER JOIN Customers c ON i.CusID = c.CusID; ", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(true);
 
@@ -312,17 +313,7 @@ namespace PSMS
             }
             else if (currentSelected.Equals("purchase"))
             {
-                try
-                {
-                    if (cbSortby.SelectedIndex == 4)
-                    {
-                        string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
-                        addCurrentPurchaseToPrint(code);
-                        new reportViewer(dataPurchases).ShowDialog();
-                    }
-
-                }
-                catch (Exception)
+                if (cbSortby.SelectedIndex == 4)
                 {
                     purchaseAllReport report = new purchaseAllReport();
                     new reportViewer(report).ShowDialog();
@@ -353,19 +344,10 @@ namespace PSMS
             else if (currentSelected.Equals("invoice"))
             {
 
-                try
-                {
-                    if (cbSortby.SelectedIndex == 4)
-                    {
-                        string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
-                        addCurrentInvoiceToPrint(code);
 
-                        new reportViewer(dataInvoices).ShowDialog();
-                    }
-                }
-
-                catch (Exception)
+                if (cbSortby.SelectedIndex == 4)
                 {
+
                     invoiceAllReport report = new invoiceAllReport();
                     new reportViewer(report).ShowDialog();
                 }
@@ -693,6 +675,7 @@ namespace PSMS
                         balance += double.Parse(row.Cells["Invoice"].Value.ToString()) - double.Parse(row.Cells["Purchase"].Value.ToString());
                         row.Cells["columnBalance"].Value = balance + "";
                     }
+                    this.Text = balance + "";
                 }
             }
             else if (show_by[current_index].Equals(show_by[2]))
@@ -807,6 +790,193 @@ namespace PSMS
         private void viewReport_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+        DataGridViewRow currentrow;
+        string additionalsql = "";
+        private void viewReport_DoubleClick(object sender, EventArgs e)
+        {
+            func = new Function();
+            currentrow=viewReport.SelectedRows[0];
+            if (!currentrow.Cells[0].Value.ToString().Equals(""))
+            {
+                ReportDocument report=new ReportDocument();
+                if(currentSelected.Equals("invoice"))
+                {  
+                    // Daily Invoice
+                    List<GeneralReport> list=new List<GeneralReport>();
+                    
+                    if (cbSortby.SelectedIndex == 0)
+                    {
+                      
+                        foreach (DataRow row in func.GetData("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.Payment, I.Balance,I.TotalPrice from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE CONVERT(date,i.[Date])='"+DateTime.Parse(Cell("Date")).ToShortDateString()+"'").Rows)
+                        {
+                            GeneralReport obj=new GeneralReport(row[0]+"",DateTime.Parse(Cell(0)).ToShortDateString(),row[1].ToString(),row[2].ToString(),row[3].ToString(),row[4].ToString(),row[5].ToString());
+                            obj.Title = "Daily Invoice";
+                            list.Add(obj);
+                        }
+                        report=new listPurchaseReport();
+                        report.SetDataSource(list);
+                    }
+
+                    // Invoice Weekly
+                    if (cbSortby.SelectedIndex == 1)
+                    {
+
+                        foreach (DataRow row in func.GetData("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.Payment, I.Balance,I.TotalPrice from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE I.Date BETWEEN '" + DateTime.Parse(Cell("Start_Date")).ToShortDateString() + "' and '" + DateTime.Parse(Cell("End_Date")).ToShortDateString() + "'").Rows)
+                        {
+                            GeneralReport obj = new GeneralReport(row[0] + "", DateTime.Parse(Cell(0)).ToShortDateString(), DateTime.Parse(Cell(1)).ToShortDateString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
+                            obj.Title = "Weekly Invoice";
+                            list.Add(obj);
+                        }
+                        report = new listWeeklyPurchaseReport();
+                        report.SetDataSource(list);
+                    }
+                    // Monthly Invoice
+                    else if(cbSortby.SelectedIndex==2)
+                    {
+                        
+                        foreach (DataRow row in func.GetData("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.Payment, I.Balance,I.TotalPrice from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE format(i.[Date],'yyyy-MMM')=format(convert(date,'"+DateTime.Parse(Cell("Year-Mon")).ToShortDateString()+"'),'yyyy-MMM')").Rows)
+                        {
+                            GeneralReport obj = new GeneralReport(row[0] + "", DateTime.Parse(Cell(0)).ToShortDateString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
+                            obj.Title = "Monthly Invoice";
+                            list.Add(obj);
+                        }
+                        report = new listPurchaseReport();
+                        report.SetDataSource(list);
+                    }
+                    // Yearly Invoice
+                    else if (cbSortby.SelectedIndex == 3)
+                    {
+                        foreach (DataRow row in func.GetData("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.Payment, I.Balance,I.TotalPrice from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE format(i.[Date],'yyyy')='" + Cell("Date") + "'").Rows)
+                        {
+                            GeneralReport obj = new GeneralReport(row[0] + "", Cell(0), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
+                            obj.Title = "Yearly Invoice";
+                            list.Add(obj);
+                        }
+                        report = new listPurchaseReport();
+                        report.SetDataSource(list);
+                    }
+                    else
+                    {
+                        if (cbSortby.SelectedIndex == 4)
+                        {
+                            string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
+                            addCurrentInvoiceToPrint(code);
+
+                            new reportViewer(dataInvoices).ShowDialog();
+                            return;
+                        }
+                    }
+                }
+                else if (currentSelected == "purchase")
+                {
+                    List<GeneralReport> list = new List<GeneralReport>();
+                    // Purchase Daily
+                    if (cbSortby.SelectedIndex == 0)
+                    {
+                        foreach (DataRow row in func.GetData("select PurCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(SuFNKH,' ',SuLNKH) as SupplierName ,I.Payment, I.Balance,I.Total from Purchase as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Supplier S on I.SuID=S.SuID WHERE CONVERT(date,i.[Date])='" + DateTime.Parse(Cell(0)).ToShortDateString() + "'").Rows)
+                        {
+                            GeneralReport obj = new GeneralReport(row[0] + "",DateTime.Parse(Cell(0)).ToShortDateString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
+                            obj.Title = "Purchase Daily";
+                            list.Add(obj);
+                        }
+                        report = new listPurchaseReport();
+                        report.SetDataSource(list);
+
+                    }
+                    // Weekly Purchase
+                    else if (cbSortby.SelectedIndex == 1)
+                    {
+                        foreach (DataRow row in func.GetData("select PurCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(SuFNKH,' ',SuLNKH) as SupplierName ,I.Payment, I.Balance,I.Total from Purchase as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Supplier S on I.SuID=S.SuID WHERE I.[Date] BETWEEN '"+DateTime.Parse(Cell(0)).ToShortDateString()+"' and '"+DateTime.Parse(Cell(1)).ToShortDateString()+"'").Rows)
+                        {
+                            GeneralReport obj = new GeneralReport(row[0] + "", DateTime.Parse(Cell(0)).ToShortDateString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
+                            obj.Title = "Purchase Weekly";
+                            list.Add(obj);
+                        }
+                        report = new listWeeklyPurchaseReport();
+                        report.SetDataSource(list);
+                    }
+                    // Purchase Monthly
+                    else if (cbSortby.SelectedIndex == 2)
+                    {
+                        foreach (DataRow row in func.GetData("select PurCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(SuFNKH,' ',SuLNKH) as SupplierName ,I.Payment, I.Balance,I.Total from Purchase as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Supplier S on I.SuID=S.SuID WHERE format(Date,'yyyy-MMM')='"+Cell("Year-Mon")+"'").Rows)
+                        {
+                            GeneralReport obj = new GeneralReport(row[0] + "", Cell(0), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
+                            obj.Title = "Purchase Monthly";
+                            list.Add(obj);
+                        }
+                        report = new listPurchaseReport();
+                        report.SetDataSource(list);
+                    }
+                    // Purchase Yearly
+                    else if (cbSortby.SelectedIndex == 3)
+                    {
+                        foreach (DataRow row in func.GetData("select PurCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(SuFNKH,' ',SuLNKH) as SupplierName ,I.Payment, I.Balance,I.Total from Purchase as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Supplier S on I.SuID=S.SuID WHERE format(Date,'yyyy')='"+Cell(0)+"'").Rows)
+                        {
+                            GeneralReport obj = new GeneralReport(row[0] + "", Cell(0), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
+                            obj.Title = "Purchase Yearly";
+                            list.Add(obj);
+                        }
+                        report = new listPurchaseReport();
+                        report.SetDataSource(list);
+                    }
+                    else
+                    {
+                        if (cbSortby.SelectedIndex == 4)
+                        {
+                            string code = viewReport.SelectedRows[0].Cells[0].Value.ToString();
+                            addCurrentPurchaseToPrint(code);
+                            new reportViewer(dataPurchases).ShowDialog();
+                            return;
+                        }
+                    }
+
+                }
+                else if (currentSelected.Equals("income"))
+                {
+                    List<IncomeReport> list1 = new List<IncomeReport>();
+                    List<IncomeReport> list2 = new List<IncomeReport>();
+
+                    // income daily
+                    if (cbSortby.SelectedIndex == 0)
+                    {
+                        report = new listIncomeReport();
+         
+                        foreach (DataRow row1 in func.GetData("select I.InvoiceCode , concat(CusFNKH,CusLNKH) CustomerName,concat(EmpFNKH,EmpLNKH) EmployeeName,TotalPrice from Invoice I INNER JOIN Customers C on I.CusID=C.CusID INNER JOIN Employee E on E.EmpID=I.EmpID where Convert(date,[Date])='" + DateTime.Parse(Cell(0)).ToString("MM-dd-yyyy") + "'").Rows)
+                        {
+                            IncomeReport Revenue = new IncomeReport();
+                            Revenue.InvoiceCode = row1[0].ToString();
+                            Revenue.OtherName = row1[1].ToString();
+                            Revenue.EmpName = row1[2].ToString();
+                            Revenue.Revenue = row1[3].ToString();
+
+                            list1.Add(Revenue);
+                        } 
+                        report.Subreports[0].SetDataSource(list1);
+                        foreach(DataRow row2 in func.GetData("select P.PurCode , concat(SuFNKH,SuLNKH) SupplierName,concat(EmpFNKH,EmpLNKH) EmployeeName,P.Total from Purchase P INNER JOIN Employee E on E.EmpID=P.EmpID INNER JOIN Supplier S on S.SuID=P.SuID where convert(date,[Date])='"+DateTime.Parse(Cell(0)).ToString("MM-dd-yyyy")+"'").Rows)
+                        {  IncomeReport Expense = new IncomeReport();
+                           Expense.InvoiceCode = row2[0].ToString();
+                           Expense.OtherName = row2[1].ToString();
+                           Expense.EmpName = row2[2].ToString();
+                           Expense.Expense = row2[3].ToString();
+
+                           list1.Add(Expense);                       
+                        } 
+                        report.Subreports[1].SetDataSource(list2);
+                    }
+                }
+                new reportViewer(report).ShowDialog();
+            }
+        }
+
+        public string Cell(int index)
+        {
+            return currentrow.Cells[index].Value.ToString();
+        }
+
+        public string Cell(string index)
+        {
+            return currentrow.Cells[index].Value.ToString();
         }
     }
 }
