@@ -340,6 +340,11 @@ namespace PSMS
                     purchaseYearlyReport report = new purchaseYearlyReport();
                     new reportViewer(report).ShowDialog();
                 }
+                if (cbSortby.SelectedIndex == 0)
+                {
+                    PurchaseDailyReport report = new PurchaseDailyReport();
+                    new reportViewer(report).ShowDialog();
+                }
             }
             else if (currentSelected.Equals("invoice"))
             {
@@ -391,32 +396,101 @@ namespace PSMS
             }
             else if (currentSelected.Equals("income"))
             {
+                List<GeneralReport> list=new List<GeneralReport>();
+                ReportDocument report=new ReportDocument();
                 if(cbSortby.SelectedIndex==1)
                 {
-                    IncomeWeeklyReport report = new IncomeWeeklyReport();
-                    new reportViewer(report).ShowDialog();
+
+                    report = new ReportIncomeWeekly();
+                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
+                    {
+                        DataGridViewRow row = viewReport.Rows[i];
+                        GeneralReport obj = new GeneralReport();
+                        obj.Date1 = row.Cells[0].Value + "";
+                        obj.Date2 = row.Cells[1].Value + "";
+                        obj.Payment = double.Parse(row.Cells[2].Value + "");
+                        obj.Balance = double.Parse(row.Cells[3].Value + "");
+                        obj.Total = double.Parse(row.Cells[4].Value + "");
+
+                        obj.Title = "Income Daily";
+                        list.Add(obj);
+
+                    }
                 }
                 else if(cbSortby.SelectedIndex==0)
                 {
-                    IncomeDailyReport report = new IncomeDailyReport();
-                    
-                    new reportViewer(report).ShowDialog();
+                    report = new ReportIncome();
+                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
+                    {
+                        DataGridViewRow row=viewReport.Rows[i];
+                        GeneralReport obj = new GeneralReport();
+                        obj.Date1 = row.Cells[0].Value+"";
+                        obj.Payment = double.Parse(row.Cells[1].Value + "");
+                        obj.Balance = double.Parse(row.Cells[2].Value + "");
+                        obj.Total = double.Parse(row.Cells[3].Value + "");
+
+                        obj.Title = "Income Daily";
+                        list.Add(obj);
+
+                    }
                 }
                 else if(cbSortby.SelectedIndex==2)
                 {
-                    IncomeMonthlyReport report = new IncomeMonthlyReport();
-                    new reportViewer(report).ShowDialog();
+
+                    report = new ReportIncome();
+                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
+                    {
+                        DataGridViewRow row = viewReport.Rows[i];
+                        GeneralReport obj = new GeneralReport();
+                        obj.Date1 = row.Cells[0].Value + "";
+                        obj.Payment = double.Parse(row.Cells[1].Value + "");
+                        obj.Balance = double.Parse(row.Cells[2].Value + "");
+                        obj.Total = double.Parse(row.Cells[3].Value + "");
+
+                        obj.Title = "Income Daily";
+                        list.Add(obj);
+
+                    }
                 }
                 else if (cbSortby.SelectedIndex == 3)
                 {
-                    IncomeYearlyReport report = new IncomeYearlyReport();
-                    new reportViewer(report).ShowDialog();
+
+                    report = new ReportIncome();
+                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
+                    {
+                        DataGridViewRow row = viewReport.Rows[i];
+                        GeneralReport obj = new GeneralReport();
+                        obj.Date1 = row.Cells[0].Value + "";
+                        obj.Payment = double.Parse(row.Cells[1].Value + "");
+                        obj.Balance = double.Parse(row.Cells[2].Value + "");
+                        obj.Total = double.Parse(row.Cells[3].Value + "");
+
+                        obj.Title = "Income Daily";
+                        list.Add(obj);
+
+                    }
                 }
                 else if (cbSortby.SelectedIndex == 4)
                 {
-                    IncomeAllReport report = new IncomeAllReport();
-                    new reportViewer(report).ShowDialog();
+
+                    report = new ReportIncome();
+                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
+                    {
+                        DataGridViewRow row = viewReport.Rows[i];
+                        GeneralReport obj = new GeneralReport();
+                        obj.Date1 = row.Cells[0].Value + "";
+                        obj.Payment = double.Parse(row.Cells[1].Value + "");
+                        obj.Balance = double.Parse(row.Cells[2].Value + "");
+                        obj.Total = double.Parse(row.Cells[3].Value + "");
+
+                        obj.Title = "Income Daily";
+                        list.Add(obj);
+
+                    }
+
                 }
+                report.SetDataSource(list);
+                new reportViewer(report).ShowDialog();
             }
             else
             {
@@ -621,19 +695,11 @@ namespace PSMS
                 {
                     viewReport.Columns.Clear();
 
-                    Helper.BindGridView("SELECT  convert(date,max(date)) as dated , sum(Total) as Purchase ,'' as Invoice from Purchase UNION select convert(date,min(DATE)) as dated , '',sum(TotalPrice)  from Invoice group BY YEAR(Date),MONTH(date),day(date) ORDER BY dated", binding, viewReport);
+                    Helper.BindGridView("Select format(min([Date]),'yyyy-MM-dd') Date,SUM(TotalPrice) TotalPrice,(SUM(TotalPrice)-SUM(Profits)) Cost,SUM(Profits) Profits from Invoice group BY year([Date]),Month([Date]),day([Date]) ORDER BY Date ", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
                     loadNumRecord();
                     currentSelected = "income";
 
-                    viewReport.Columns.Add("columnBalance", "Balance");
-                    double balance = 0;
-                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
-                    {
-                        DataGridViewRow row = viewReport.Rows[i];
-                        balance += double.Parse(row.Cells["Invoice"].Value.ToString()) - double.Parse(row.Cells["Purchase"].Value.ToString());
-                        row.Cells["columnBalance"].Value = balance + "";
-                    }
                 }
             }
             else if (show_by[current_index].Equals(show_by[1]))
@@ -662,20 +728,11 @@ namespace PSMS
                 {
                     viewReport.Columns.Clear();
 
-                    Helper.BindGridView("SELECT Convert(date,DATEADD(day,1-DATEPART(dw, min(DATE)),min(DATE))) as Start_Date, convert(date,DATEADD(day,7-DATEPART(dw, min(DATE)),min(DATE))) as End_Date , sum(Total) as Purchase ,'' as Invoice from Purchase UNION select Convert(date,DATEADD(day,1-DATEPART(dw, min(DATE)),min(DATE))) as Start_Date,convert(date,DATEADD(day,7-DATEPART(dw, min(DATE)),min(DATE))) as End_Date, '',sum(TotalPrice)  from Invoice group BY YEAR(Date),MONTH(date),DATEPART(ww, date)", binding, viewReport);
+                    Helper.BindGridView("set datefirst 1 Select format(DATEADD(day, 1-DATEPART(dw, min([Date])), min([Date])),'yyyy-MM-dd') Start_Date,format(DATEADD(day, 7-DATEPART(dw, min([Date])), min([Date])),'yyyy-MM-dd') END_Date,SUM(TotalPrice) TotalPrice,(SUM(TotalPrice)-SUM(Profits)) Cost,SUM(Profits) Profits from Invoice group BY year([Date]) ,Month([Date]) ,DATEPART(wk, [Date]) ORDER BY Start_Date", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
                     loadNumRecord();
                     currentSelected = "income";
 
-                    viewReport.Columns.Add("columnBalance", "Balance");
-                    double balance = 0;
-                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
-                    {
-                        DataGridViewRow row = viewReport.Rows[i];
-                        balance += double.Parse(row.Cells["Invoice"].Value.ToString()) - double.Parse(row.Cells["Purchase"].Value.ToString());
-                        row.Cells["columnBalance"].Value = balance + "";
-                    }
-                    this.Text = balance + "";
                 }
             }
             else if (show_by[current_index].Equals(show_by[2]))
@@ -698,19 +755,11 @@ namespace PSMS
                 else if (currentSelected.Equals("income"))
                 {
                     viewReport.Columns.Clear();
-                    Helper.BindGridView("select format(min(date),'yyyy-MMM') as Date ,sum(Total) as Purchase ,'' Invoice from Purchase union select format(min(date),'yyyy-MMM') as Date, '',sum(TotalPrice)  from Invoice group BY YEAR(Date),MONTH(date),MONTH(date) ORDER BY date", binding, viewReport);
+                    Helper.BindGridView("Select format(min([Date]),'yyyy-MMM') Date,SUM(TotalPrice) TotalPrice,(SUM(TotalPrice)-SUM(Profits)) Cost,SUM(Profits) Profits from Invoice group BY year([Date]),Month([Date]) ORDER BY Date ", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
                     loadNumRecord();
                     currentSelected = "income";
 
-                    viewReport.Columns.Add("columnBalance", "Balance");
-                    double balance = 0;
-                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
-                    {
-                        DataGridViewRow row = viewReport.Rows[i];
-                        balance += double.Parse(row.Cells["Invoice"].Value.ToString()) - double.Parse(row.Cells["Purchase"].Value.ToString());
-                        row.Cells["columnBalance"].Value = balance + "";
-                    }
                 }
             }
             else if (show_by[current_index].Equals(show_by[3]))
@@ -733,19 +782,11 @@ namespace PSMS
                 {
                     viewReport.Columns.Clear();
 
-                    Helper.BindGridView("SELECT  format(max(date),'yyyy') as dated , sum(Total) as Purchase ,'' as Invoice from Purchase UNION select format(min(DATE),'yyyy') as dated , '',sum(TotalPrice)  from Invoice group BY YEAR(Date)", binding, viewReport);
+                    Helper.BindGridView("Select format(min([Date]),'yyyy') Date,SUM(TotalPrice) TotalPrice,(SUM(TotalPrice)-SUM(Profits)) Cost,SUM(Profits) Profits from Invoice group BY year([Date]) ORDER BY Date ", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
                     loadNumRecord();
                     currentSelected = "income";
 
-                    viewReport.Columns.Add("columnBalance", "Balance");
-                    double balance = 0;
-                    for (int i = 0; i < viewReport.Rows.Count - 1; i++)
-                    {
-                        DataGridViewRow row = viewReport.Rows[i];
-                        balance += double.Parse(row.Cells["Invoice"].Value.ToString()) - double.Parse(row.Cells["Purchase"].Value.ToString());
-                        row.Cells["columnBalance"].Value = balance + "";
-                    }
                 }
             }
             else
@@ -769,21 +810,13 @@ namespace PSMS
         {
             cbSortby.SelectedIndex = 4;
             viewReport.Columns.Clear();
-            Helper.BindGridView("SELECT  date , Total as Purchase ,'' as Invoice from Purchase UNION select DATE , '',TotalPrice  from Invoice ORDER BY Date;", binding, viewReport);
+            Helper.BindGridView("Select format([Date],'yyyy-MM-dd hh:mm tt') DATETIME,TotalPrice,(TotalPrice-Profits) Cost,Profits from Invoice ORDER BY Date;", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(true);
 
             loadNumRecord();
             currentSelected = "income";
 
-            viewReport.Columns.Add("columnBalance", "Profits");
-            double balance = 0;
-            for (int i = 0; i < viewReport.Rows.Count - 1; i++)
-            {
-                DataGridViewRow row = viewReport.Rows[i];
-                balance += double.Parse(row.Cells["Invoice"].Value.ToString()) - double.Parse(row.Cells["Purchase"].Value.ToString());
-                row.Cells["columnBalance"].Value = balance + "";
-            }
 
         }
 

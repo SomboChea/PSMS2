@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="PSMS2DataSet2.cs">
       <DependentUpon>PSMS2DataSet2.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="PurchaseDetail.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -157,6 +158,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>listPurchaseReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportNew\ReportIncome.cs">
+      <DependentUpon>ReportIncome.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Reports\CustomerReport.cs">
       <AutoGen>True</AutoGen>
@@ -356,6 +363,7 @@
     </Compile>
     <Compile Include="Product2DataSet.cs">
       <DependentUpon>Product2DataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Product2DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -465,8 +473,8 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Reports\purchaseDailyReport.cs">
-      <DependentUpon>purchaseDailyReport.rpt</DependentUpon>
+    <Compile Include="ReportNew\ReportIncomeWeekly.cs">
+      <DependentUpon>ReportIncomeWeekly.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -544,6 +552,12 @@
       <DependentUpon>PurchaseReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\PurchaseDailyReport.cs">
+      <DependentUpon>PurchaseDailyReport.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reports\reportIncomeWeekly.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -606,6 +620,10 @@
     <EmbeddedResource Include="ReportNew\listPurchaseReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>listPurchaseReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportNew\ReportIncome.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportIncome.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\CustomerReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -761,9 +779,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>purchaseMonthlyReport.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\purchaseDailyReport.rpt">
+    <EmbeddedResource Include="ReportNew\ReportIncomeWeekly.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>purchaseDailyReport.cs</LastGenOutput>
+      <LastGenOutput>ReportIncomeWeekly.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\invoiceDailyReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -796,6 +814,10 @@
     <EmbeddedResource Include="Reports\PurchaseReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PurchaseReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PurchaseDailyReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurchaseDailyReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\reportIncomeWeekly.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PSMS.Reports {
+namespace PSMS.ReportNew {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace PSMS.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class PurchaseDailyReport : ReportClass {
+    public class ReportIncome : ReportClass {
         
-        public PurchaseDailyReport() {
+        public ReportIncome() {
         }
         
         public override string ResourceName {
             get {
-                return "PurchaseDailyReport.rpt";
+                return "ReportIncome.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace PSMS.Reports {
         
         public override string FullResourceName {
             get {
-                return "PSMS.Reports.PurchaseDailyReport.rpt";
+                return "PSMS.ReportNew.ReportIncome.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace PSMS.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPurchaseDailyReport : Component, ICachedReport {
+    public class CachedReportIncome : Component, ICachedReport {
         
-        public CachedPurchaseDailyReport() {
+        public CachedReportIncome() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace PSMS.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            PurchaseDailyReport rpt = new PurchaseDailyReport();
+            ReportIncome rpt = new ReportIncome();
             rpt.Site = this.Site;
             return rpt;
         }
