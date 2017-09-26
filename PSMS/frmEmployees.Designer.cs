@@ -643,7 +643,7 @@
             this.itemContainer3,
             this.itemContainer5});
             this.itemPanel1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemPanel1.Location = new System.Drawing.Point(1199, 52);
+            this.itemPanel1.Location = new System.Drawing.Point(1137, 52);
             this.itemPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.itemPanel1.Name = "itemPanel1";
             this.itemPanel1.Size = new System.Drawing.Size(102, 359);

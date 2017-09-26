@@ -60,10 +60,10 @@
             // 
             this.metroTile1.ActiveControl = null;
             this.metroTile1.ForeColor = System.Drawing.Color.White;
-            this.metroTile1.Location = new System.Drawing.Point(31, 134);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile1.Location = new System.Drawing.Point(41, 165);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(132, 52);
+            this.metroTile1.Size = new System.Drawing.Size(176, 64);
             this.metroTile1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTile1.TabIndex = 0;
             this.metroTile1.Text = "Customer";
@@ -78,10 +78,10 @@
             // 
             this.metroTile2.ActiveControl = null;
             this.metroTile2.ForeColor = System.Drawing.Color.White;
-            this.metroTile2.Location = new System.Drawing.Point(31, 348);
-            this.metroTile2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile2.Location = new System.Drawing.Point(41, 428);
+            this.metroTile2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(132, 52);
+            this.metroTile2.Size = new System.Drawing.Size(176, 64);
             this.metroTile2.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTile2.TabIndex = 1;
             this.metroTile2.Text = "Puchase";
@@ -94,10 +94,10 @@
             // 
             this.metroTile3.ActiveControl = null;
             this.metroTile3.ForeColor = System.Drawing.Color.White;
-            this.metroTile3.Location = new System.Drawing.Point(31, 420);
-            this.metroTile3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile3.Location = new System.Drawing.Point(41, 517);
+            this.metroTile3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(132, 52);
+            this.metroTile3.Size = new System.Drawing.Size(176, 64);
             this.metroTile3.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTile3.TabIndex = 2;
             this.metroTile3.Text = "Invoice";
@@ -110,10 +110,10 @@
             // 
             this.metroTile5.ActiveControl = null;
             this.metroTile5.ForeColor = System.Drawing.Color.White;
-            this.metroTile5.Location = new System.Drawing.Point(31, 206);
-            this.metroTile5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile5.Location = new System.Drawing.Point(41, 254);
+            this.metroTile5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.metroTile5.Name = "metroTile5";
-            this.metroTile5.Size = new System.Drawing.Size(132, 52);
+            this.metroTile5.Size = new System.Drawing.Size(176, 64);
             this.metroTile5.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTile5.TabIndex = 4;
             this.metroTile5.Text = "Supplier";
@@ -126,10 +126,10 @@
             // 
             this.metroTile4.ActiveControl = null;
             this.metroTile4.ForeColor = System.Drawing.Color.White;
-            this.metroTile4.Location = new System.Drawing.Point(31, 277);
-            this.metroTile4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile4.Location = new System.Drawing.Point(41, 341);
+            this.metroTile4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.metroTile4.Name = "metroTile4";
-            this.metroTile4.Size = new System.Drawing.Size(132, 52);
+            this.metroTile4.Size = new System.Drawing.Size(176, 64);
             this.metroTile4.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTile4.TabIndex = 3;
             this.metroTile4.Text = "Employee";
@@ -167,8 +167,8 @@
             this.viewReport.EnableHeadersVisualStyles = false;
             this.viewReport.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.viewReport.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.viewReport.Location = new System.Drawing.Point(213, 134);
-            this.viewReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.viewReport.Location = new System.Drawing.Point(284, 165);
+            this.viewReport.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.viewReport.Name = "viewReport";
             this.viewReport.ReadOnly = true;
             this.viewReport.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -182,7 +182,7 @@
             this.viewReport.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.viewReport.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.viewReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.viewReport.Size = new System.Drawing.Size(751, 575);
+            this.viewReport.Size = new System.Drawing.Size(1001, 708);
             this.viewReport.TabIndex = 5;
             this.viewReport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.viewReport_CellContentClick);
             this.viewReport.DoubleClick += new System.EventHandler(this.viewReport_DoubleClick);
@@ -192,10 +192,10 @@
             this.btnPreview.BackColor = System.Drawing.Color.Green;
             this.btnPreview.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnPreview.ForeColor = System.Drawing.Color.White;
-            this.btnPreview.Location = new System.Drawing.Point(832, 717);
-            this.btnPreview.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPreview.Location = new System.Drawing.Point(1109, 882);
+            this.btnPreview.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(131, 36);
+            this.btnPreview.Size = new System.Drawing.Size(175, 44);
             this.btnPreview.TabIndex = 6;
             this.btnPreview.Text = "Preview";
             this.btnPreview.UseCustomBackColor = true;
@@ -207,39 +207,41 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(633, 44);
+            this.metroLabel1.Location = new System.Drawing.Point(844, 54);
+            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(78, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(81, 20);
             this.metroLabel1.TabIndex = 7;
             this.metroLabel1.Text = "From date";
             // 
             // dateStart
             // 
             this.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateStart.Location = new System.Drawing.Point(633, 64);
-            this.dateStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateStart.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dateStart.Location = new System.Drawing.Point(844, 79);
+            this.dateStart.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dateStart.MinimumSize = new System.Drawing.Size(0, 30);
             this.dateStart.Name = "dateStart";
-            this.dateStart.Size = new System.Drawing.Size(107, 30);
+            this.dateStart.Size = new System.Drawing.Size(141, 30);
             this.dateStart.TabIndex = 8;
             // 
             // dateEnd
             // 
             this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateEnd.Location = new System.Drawing.Point(806, 64);
-            this.dateEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateEnd.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dateEnd.Location = new System.Drawing.Point(1075, 79);
+            this.dateEnd.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dateEnd.MinimumSize = new System.Drawing.Size(0, 30);
             this.dateEnd.Name = "dateEnd";
-            this.dateEnd.Size = new System.Drawing.Size(107, 30);
+            this.dateEnd.Size = new System.Drawing.Size(141, 30);
             this.dateEnd.TabIndex = 10;
             // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel2.Location = new System.Drawing.Point(806, 37);
+            this.metroLabel2.Location = new System.Drawing.Point(1075, 46);
+            this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(57, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(59, 20);
             this.metroLabel2.TabIndex = 9;
             this.metroLabel2.Text = "to date";
             // 
@@ -247,10 +249,10 @@
             // 
             this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnFilter.ForeColor = System.Drawing.Color.White;
-            this.btnFilter.Location = new System.Drawing.Point(929, 64);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFilter.Location = new System.Drawing.Point(1239, 79);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(74, 24);
+            this.btnFilter.Size = new System.Drawing.Size(99, 30);
             this.btnFilter.TabIndex = 11;
             this.btnFilter.Text = "Filler";
             this.btnFilter.UseCustomBackColor = true;
@@ -262,10 +264,10 @@
             // 
             this.viewStock.ActiveControl = null;
             this.viewStock.ForeColor = System.Drawing.Color.White;
-            this.viewStock.Location = new System.Drawing.Point(32, 491);
-            this.viewStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.viewStock.Location = new System.Drawing.Point(43, 604);
+            this.viewStock.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.viewStock.Name = "viewStock";
-            this.viewStock.Size = new System.Drawing.Size(131, 52);
+            this.viewStock.Size = new System.Drawing.Size(175, 64);
             this.viewStock.Style = MetroFramework.MetroColorStyle.Blue;
             this.viewStock.TabIndex = 12;
             this.viewStock.Text = "Stock";
@@ -279,9 +281,10 @@
             this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnBack.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(32, 714);
+            this.btnBack.Location = new System.Drawing.Point(43, 879);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(131, 36);
+            this.btnBack.Size = new System.Drawing.Size(175, 44);
             this.btnBack.TabIndex = 13;
             this.btnBack.Text = "Back";
             this.btnBack.UseCustomBackColor = true;
@@ -295,10 +298,10 @@
             // 
             // 
             this.txtSearch.CustomButton.Image = null;
-            this.txtSearch.CustomButton.Location = new System.Drawing.Point(100, 2);
-            this.txtSearch.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearch.CustomButton.Location = new System.Drawing.Point(240, 2);
+            this.txtSearch.CustomButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtSearch.CustomButton.Name = "";
-            this.txtSearch.CustomButton.Size = new System.Drawing.Size(14, 15);
+            this.txtSearch.CustomButton.Size = new System.Drawing.Size(33, 31);
             this.txtSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtSearch.CustomButton.TabIndex = 1;
             this.txtSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -306,8 +309,8 @@
             this.txtSearch.CustomButton.Visible = false;
             this.txtSearch.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtSearch.Lines = new string[0];
-            this.txtSearch.Location = new System.Drawing.Point(405, 64);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearch.Location = new System.Drawing.Point(540, 79);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtSearch.MaxLength = 32767;
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
@@ -317,7 +320,7 @@
             this.txtSearch.SelectionLength = 0;
             this.txtSearch.SelectionStart = 0;
             this.txtSearch.ShortcutsEnabled = true;
-            this.txtSearch.Size = new System.Drawing.Size(156, 24);
+            this.txtSearch.Size = new System.Drawing.Size(208, 30);
             this.txtSearch.TabIndex = 14;
             this.txtSearch.UseSelectable = true;
             this.txtSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -328,27 +331,30 @@
             // 
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel3.Location = new System.Drawing.Point(405, 44);
+            this.metroLabel3.Location = new System.Drawing.Point(540, 54);
+            this.metroLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(119, 19);
+            this.metroLabel3.Size = new System.Drawing.Size(122, 20);
             this.metroLabel3.TabIndex = 15;
             this.metroLabel3.Text = "Search by Name";
             // 
             // lbNumRecord
             // 
             this.lbNumRecord.AutoSize = true;
-            this.lbNumRecord.Location = new System.Drawing.Point(376, 726);
+            this.lbNumRecord.Location = new System.Drawing.Point(501, 894);
+            this.lbNumRecord.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbNumRecord.Name = "lbNumRecord";
-            this.lbNumRecord.Size = new System.Drawing.Size(91, 19);
+            this.lbNumRecord.Size = new System.Drawing.Size(96, 20);
             this.lbNumRecord.TabIndex = 16;
             this.lbNumRecord.Text = "found records";
             // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(226, 726);
+            this.metroLabel5.Location = new System.Drawing.Point(301, 894);
+            this.metroLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(145, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(152, 20);
             this.metroLabel5.TabIndex = 17;
             this.metroLabel5.Text = "LIST RECORD COUNT :";
             // 
@@ -356,17 +362,17 @@
             // 
             this.cbSortby.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbSortby.FormattingEnabled = true;
-            this.cbSortby.ItemHeight = 23;
+            this.cbSortby.ItemHeight = 24;
             this.cbSortby.Items.AddRange(new object[] {
             "Daily",
             "Weekly",
             "Monthly",
             "Yearly",
             "All"});
-            this.cbSortby.Location = new System.Drawing.Point(213, 64);
-            this.cbSortby.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbSortby.Location = new System.Drawing.Point(284, 79);
+            this.cbSortby.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.cbSortby.Name = "cbSortby";
-            this.cbSortby.Size = new System.Drawing.Size(143, 29);
+            this.cbSortby.Size = new System.Drawing.Size(189, 30);
             this.cbSortby.TabIndex = 18;
             this.cbSortby.UseSelectable = true;
             this.cbSortby.SelectedIndexChanged += new System.EventHandler(this.cbSortby_SelectedIndexChanged);
@@ -375,9 +381,10 @@
             // 
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel4.Location = new System.Drawing.Point(213, 44);
+            this.metroLabel4.Location = new System.Drawing.Point(284, 54);
+            this.metroLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(66, 19);
+            this.metroLabel4.Size = new System.Drawing.Size(68, 20);
             this.metroLabel4.TabIndex = 19;
             this.metroLabel4.Text = "Show by";
             // 
@@ -385,10 +392,10 @@
             // 
             this.metroTile6.ActiveControl = null;
             this.metroTile6.ForeColor = System.Drawing.Color.White;
-            this.metroTile6.Location = new System.Drawing.Point(32, 561);
-            this.metroTile6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTile6.Location = new System.Drawing.Point(43, 690);
+            this.metroTile6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroTile6.Name = "metroTile6";
-            this.metroTile6.Size = new System.Drawing.Size(131, 62);
+            this.metroTile6.Size = new System.Drawing.Size(175, 76);
             this.metroTile6.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTile6.TabIndex = 20;
             this.metroTile6.Text = "Income";
@@ -399,9 +406,9 @@
             // 
             // frmReport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1378, 780);
+            this.ClientSize = new System.Drawing.Size(1363, 944);
             this.Controls.Add(this.metroTile6);
             this.Controls.Add(this.cbSortby);
             this.Controls.Add(this.metroLabel4);
@@ -424,8 +431,9 @@
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "frmReport";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Report";
             this.Load += new System.EventHandler(this.frmReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.viewReport)).EndInit();
