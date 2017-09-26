@@ -92,8 +92,12 @@ namespace PSMS.Class
         {
             try
                 {
+<<<<<<< HEAD
 
                     gridView.Columns.Clear();
+=======
+                gridView.Columns.Clear();
+>>>>>>> 51674970f0215119dbee3bfbe26b57df15ba00dd
 
                 DataTable dt = new DataTable();
 

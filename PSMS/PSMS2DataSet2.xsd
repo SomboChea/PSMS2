@@ -1041,6 +1041,62 @@ SELECT UID, UCode, UName, Password FROM Users WHERE (UID = @UID)</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CustomersDetailsTableAdapter" GeneratorDataComponentClassName="CustomersDetailsTableAdapter" Name="CustomersDetails" UserDataComponentName="CustomersDetailsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PSMS2ConnectionString (Settings)" DbObjectName="PSMS2.dbo.Customers" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT c.CusCode AS Code, CONCAT(c.CusLNEN, ' ', c.CusFNEN)  AS CustomerNameEN, CONCAT(c.CusLNKH, ' ', c.CusFNKH) AS CustomerNameKH, c.Gender, c.Address, c.Phone, c.Phone2, c.Email, c.Balance, c.Status,  CONCAT(e.EmpLNEN, ' ', e.EmpFNEN)  AS EmployeeName, c.Acc_Opendate FROM Customers AS c INNER JOIN Employee AS e ON c.Emp_ID = e.EmpID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Code" DataSetColumn="Code" />
+              <Mapping SourceColumn="CustomerNameEN" DataSetColumn="CustomerNameEN" />
+              <Mapping SourceColumn="CustomerNameKH" DataSetColumn="CustomerNameKH" />
+              <Mapping SourceColumn="Gender" DataSetColumn="Gender" />
+              <Mapping SourceColumn="Address" DataSetColumn="Address" />
+              <Mapping SourceColumn="Phone" DataSetColumn="Phone" />
+              <Mapping SourceColumn="Phone2" DataSetColumn="Phone2" />
+              <Mapping SourceColumn="Email" DataSetColumn="Email" />
+              <Mapping SourceColumn="Balance" DataSetColumn="Balance" />
+              <Mapping SourceColumn="Status" DataSetColumn="Status" />
+              <Mapping SourceColumn="EmployeeName" DataSetColumn="EmployeeName" />
+              <Mapping SourceColumn="Acc_Opendate" DataSetColumn="Acc_Opendate" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EmployeeDetailsTableAdapter" GeneratorDataComponentClassName="EmployeeDetailsTableAdapter" Name="EmployeeDetails" UserDataComponentName="EmployeeDetailsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PSMS2ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT e.EmpCode Code,CONCAT(e.EmpLNEN,' ',e.EmpFNEN) EmployeeNameEN,CONCAT(e.EmpLNKH,' ',e.EmpFNKH) EmployeeNameKH,e.Gender,e.IDCard NationalID,e.Address,e.Phone,e.Email,p.PosName PositionName,e.Salary,e.JoinDate
+FROM Employee e
+INNER JOIN Position p
+ON e.PosID = p.PosID;</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Code" DataSetColumn="Code" />
+              <Mapping SourceColumn="EmployeeNameEN" DataSetColumn="EmployeeNameEN" />
+              <Mapping SourceColumn="EmployeeNameKH" DataSetColumn="EmployeeNameKH" />
+              <Mapping SourceColumn="Gender" DataSetColumn="Gender" />
+              <Mapping SourceColumn="NationalID" DataSetColumn="NationalID" />
+              <Mapping SourceColumn="Address" DataSetColumn="Address" />
+              <Mapping SourceColumn="Phone" DataSetColumn="Phone" />
+              <Mapping SourceColumn="Email" DataSetColumn="Email" />
+              <Mapping SourceColumn="Salary" DataSetColumn="Salary" />
+              <Mapping SourceColumn="JoinDate" DataSetColumn="JoinDate" />
+              <Mapping SourceColumn="PositionName" DataSetColumn="PositionName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -1547,6 +1603,167 @@ SELECT UID, UCode, UName, Password FROM Users WHERE (UID = @UID)</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Password" msprop:Generator_ColumnVarNameInTable="columnPassword" msprop:Generator_ColumnPropNameInRow="Password" msprop:Generator_ColumnPropNameInTable="PasswordColumn" msprop:Generator_UserColumnName="Password" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CustomersDetails" msprop:Generator_TableClassName="CustomersDetailsDataTable" msprop:Generator_TableVarName="tableCustomersDetails" msprop:Generator_RowChangedName="CustomersDetailsRowChanged" msprop:Generator_TablePropName="CustomersDetails" msprop:Generator_RowDeletingName="CustomersDetailsRowDeleting" msprop:Generator_RowChangingName="CustomersDetailsRowChanging" msprop:Generator_RowEvHandlerName="CustomersDetailsRowChangeEventHandler" msprop:Generator_RowDeletedName="CustomersDetailsRowDeleted" msprop:Generator_RowClassName="CustomersDetailsRow" msprop:Generator_UserTableName="CustomersDetails" msprop:Generator_RowEvArgName="CustomersDetailsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Code" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustomerNameEN" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCustomerNameEN" msprop:Generator_ColumnPropNameInRow="CustomerNameEN" msprop:Generator_ColumnPropNameInTable="CustomerNameENColumn" msprop:Generator_UserColumnName="CustomerNameEN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="21" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustomerNameKH" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCustomerNameKH" msprop:Generator_ColumnPropNameInRow="CustomerNameKH" msprop:Generator_ColumnPropNameInTable="CustomerNameKHColumn" msprop:Generator_UserColumnName="CustomerNameKH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="21" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Gender" msprop:Generator_ColumnVarNameInTable="columnGender" msprop:Generator_ColumnPropNameInRow="Gender" msprop:Generator_ColumnPropNameInTable="GenderColumn" msprop:Generator_UserColumnName="Gender" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Address" msprop:Generator_ColumnVarNameInTable="columnAddress" msprop:Generator_ColumnPropNameInRow="Address" msprop:Generator_ColumnPropNameInTable="AddressColumn" msprop:Generator_UserColumnName="Address" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Phone" msprop:Generator_ColumnVarNameInTable="columnPhone" msprop:Generator_ColumnPropNameInRow="Phone" msprop:Generator_ColumnPropNameInTable="PhoneColumn" msprop:Generator_UserColumnName="Phone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Phone2" msprop:Generator_ColumnVarNameInTable="columnPhone2" msprop:Generator_ColumnPropNameInRow="Phone2" msprop:Generator_ColumnPropNameInTable="Phone2Column" msprop:Generator_UserColumnName="Phone2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_UserColumnName="Email" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Balance" msprop:Generator_ColumnVarNameInTable="columnBalance" msprop:Generator_ColumnPropNameInRow="Balance" msprop:Generator_ColumnPropNameInTable="BalanceColumn" msprop:Generator_UserColumnName="Balance" type="xs:double" minOccurs="0" />
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EmployeeName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnEmployeeName" msprop:Generator_ColumnPropNameInRow="EmployeeName" msprop:Generator_ColumnPropNameInTable="EmployeeNameColumn" msprop:Generator_UserColumnName="EmployeeName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="21" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Acc_Opendate" msprop:Generator_ColumnVarNameInTable="columnAcc_Opendate" msprop:Generator_ColumnPropNameInRow="Acc_Opendate" msprop:Generator_ColumnPropNameInTable="Acc_OpendateColumn" msprop:Generator_UserColumnName="Acc_Opendate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EmployeeDetails" msprop:Generator_TableClassName="EmployeeDetailsDataTable" msprop:Generator_TableVarName="tableEmployeeDetails" msprop:Generator_TablePropName="EmployeeDetails" msprop:Generator_RowDeletingName="EmployeeDetailsRowDeleting" msprop:Generator_RowChangingName="EmployeeDetailsRowChanging" msprop:Generator_RowEvHandlerName="EmployeeDetailsRowChangeEventHandler" msprop:Generator_RowDeletedName="EmployeeDetailsRowDeleted" msprop:Generator_UserTableName="EmployeeDetails" msprop:Generator_RowChangedName="EmployeeDetailsRowChanged" msprop:Generator_RowEvArgName="EmployeeDetailsRowChangeEvent" msprop:Generator_RowClassName="EmployeeDetailsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Code" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EmployeeNameEN" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnEmployeeNameEN" msprop:Generator_ColumnPropNameInRow="EmployeeNameEN" msprop:Generator_ColumnPropNameInTable="EmployeeNameENColumn" msprop:Generator_UserColumnName="EmployeeNameEN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="21" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EmployeeNameKH" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnEmployeeNameKH" msprop:Generator_ColumnPropNameInRow="EmployeeNameKH" msprop:Generator_ColumnPropNameInTable="EmployeeNameKHColumn" msprop:Generator_UserColumnName="EmployeeNameKH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="21" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Gender" msprop:Generator_ColumnVarNameInTable="columnGender" msprop:Generator_ColumnPropNameInRow="Gender" msprop:Generator_ColumnPropNameInTable="GenderColumn" msprop:Generator_UserColumnName="Gender" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NationalID" msprop:Generator_ColumnVarNameInTable="columnNationalID" msprop:Generator_ColumnPropNameInRow="NationalID" msprop:Generator_ColumnPropNameInTable="NationalIDColumn" msprop:Generator_UserColumnName="NationalID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Address" msprop:Generator_ColumnVarNameInTable="columnAddress" msprop:Generator_ColumnPropNameInRow="Address" msprop:Generator_ColumnPropNameInTable="AddressColumn" msprop:Generator_UserColumnName="Address" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Phone" msprop:Generator_ColumnVarNameInTable="columnPhone" msprop:Generator_ColumnPropNameInRow="Phone" msprop:Generator_ColumnPropNameInTable="PhoneColumn" msprop:Generator_UserColumnName="Phone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_UserColumnName="Email" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Salary" msprop:Generator_ColumnVarNameInTable="columnSalary" msprop:Generator_ColumnPropNameInRow="Salary" msprop:Generator_ColumnPropNameInTable="SalaryColumn" msprop:Generator_UserColumnName="Salary" type="xs:int" minOccurs="0" />
+              <xs:element name="JoinDate" msprop:Generator_ColumnVarNameInTable="columnJoinDate" msprop:Generator_ColumnPropNameInRow="JoinDate" msprop:Generator_ColumnPropNameInTable="JoinDateColumn" msprop:Generator_UserColumnName="JoinDate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PositionName" msprop:Generator_ColumnVarNameInTable="columnPositionName" msprop:Generator_ColumnPropNameInRow="PositionName" msprop:Generator_ColumnPropNameInTable="PositionNameColumn" msprop:Generator_UserColumnName="PositionName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />

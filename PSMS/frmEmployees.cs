@@ -431,6 +431,10 @@ namespace PSMS
         string ph_kh2 = "សូមបញ្ចូល ឈ្មោះរបស់អ្នក...";
         string ph_en1 = "Enter lastname...";
         string ph_en2 = "Enter firstname...";
+        string ph_em = "Enter email...";
+        string ph_add = "Enter address...";
+        string ph_id = "Enter national card...";
+        string ph_sl = "Enter salary...";
 
         private void loadPlaceHolder()
         {
@@ -438,16 +442,27 @@ namespace PSMS
             txtKh2.UseCustomForeColor = true;
             txtEn1.UseCustomForeColor = true;
             txtEn2.UseCustomForeColor = true;
+            txtEmail.UseCustomForeColor = true;
+            txtIDCard.UseCustomForeColor = true;
+            txtSalary.UseCustomForeColor = true;
 
             txtKh1.ForeColor = Color.Gray;
             txtKh2.ForeColor = Color.Gray;
             txtEn1.ForeColor = Color.Gray;
             txtEn2.ForeColor = Color.Gray;
+            txtEmail.ForeColor = Color.Gray;
+            rtxtAddress2.ForeColor = Color.Gray;
+            txtIDCard.ForeColor = Color.Gray;
+            txtSalary.ForeColor = Color.Gray;
 
             txtKh1.Text = ph_kh1;
             txtKh2.Text = ph_kh2;
             txtEn1.Text = ph_en1;
             txtEn2.Text = ph_en2;
+            txtEmail.Text = ph_em;
+            rtxtAddress2.Text = ph_add;
+            txtIDCard.Text = ph_id;
+            txtSalary.Text = ph_sl;
         }
 
         private void txtKh1_Enter(object sender, EventArgs e)
@@ -523,6 +538,81 @@ namespace PSMS
                 txtEn2.UseCustomForeColor = true;
                 txtEn2.ForeColor = Color.Gray;
                 txtEn2.Text = ph_en2;
+            }
+        }
+
+        private void txtEmail_Enter(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == ph_em)
+            {
+                txtEmail.Text = "";
+                txtEmail.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == "")
+            {
+                txtEmail.UseCustomForeColor = true;
+                txtEmail.ForeColor = Color.Gray;
+                txtEmail.Text = ph_em;
+            }
+        }
+
+        private void rtxtAddress2_Enter(object sender, EventArgs e)
+        {
+            if (rtxtAddress2.Text == ph_add)
+            {
+                rtxtAddress2.Text = "";
+                rtxtAddress2.ForeColor = Color.Black;
+            }
+        }
+
+        private void rtxtAddress2_Leave(object sender, EventArgs e)
+        {
+            if (rtxtAddress2.Text == "")
+            {
+                rtxtAddress2.ForeColor = Color.Gray;
+                rtxtAddress2.Text = ph_add;
+            }
+        }
+
+        private void txtIDCard_Enter(object sender, EventArgs e)
+        {
+            if (txtIDCard.Text == ph_id)
+            {
+                txtIDCard.Text = "";
+                txtIDCard.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtIDCard_Leave(object sender, EventArgs e)
+        {
+            if (txtIDCard.Text == "")
+            {
+                txtIDCard.UseCustomForeColor = true;
+                txtIDCard.ForeColor = Color.Gray;
+                txtIDCard.Text = ph_id;
+            }
+        }
+
+        private void txtSalary_Enter(object sender, EventArgs e)
+        {
+            if (txtSalary.Text == ph_sl)
+            {
+                txtSalary.Text = "";
+                txtSalary.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtSalary_Leave(object sender, EventArgs e)
+        {
+            if (txtSalary.Text == "")
+            {
+                txtSalary.UseCustomForeColor = true;
+                txtSalary.ForeColor = Color.Gray;
+                txtSalary.Text = ph_sl;
             }
         }
     }

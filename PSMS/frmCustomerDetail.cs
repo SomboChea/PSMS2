@@ -1,6 +1,7 @@
 ﻿using MetroFramework;
 using MetroFramework.Forms;
 using PSMS.Class;
+using PSMS.PSMS2DataSet2TableAdapters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +20,7 @@ namespace PSMS
         frmCustomerFunction cusFun;
         frmEmployeeFunction empFun;
 
-        BindingSource binding = new BindingSource();
+        //BindingSource binding = new BindingSource();
 
         public frmCustomerDetail()
         {
@@ -31,21 +32,21 @@ namespace PSMS
             itemPanel1.Items.Remove(itemContainer1);
             itemPanel1.Items.Remove(itemContainer4);
 
-            customersDataGridView.DataSource = binding;
+            //customersDataGridView.DataSource = binding;
 
-            Helper.BindGridView("SELECT * FROM Customers;", binding, customersDataGridView);
-            Helper.AutoFitColumns(customersDataGridView);
+            //Helper.BindGridView("SELECT * FROM Customers;", binding, customersDataGridView);
+            //Helper.AutoFitColumns(customersDataGridView);
 
         }
-
+        
         private void frmCustomerDetail_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'pSMS2DataSet2.CustomersDetails' table. You can move, or remove it, as needed.
+            this.customersDetailsTableAdapter.Fill(this.pSMS2DataSet2.CustomersDetails);
             //customersTableAdapter.Adapter = new SqlDataAdapter("Select * from Customers where balance=0", customersTableAdapter.Connection);
             // TODO: This line of code loads data into the 'pSMS2DataSet2.Customers' table. You can move, or remove it, as needed.
-            //this.customersTableAdapter.Fill(this.pSMS2DataSet2.Customers);
-
             comboBox1.SelectedIndex = 0;
-
+            
             //cusFun.FillDataGridView(ref dgData);
             //empFun.FillComboBox(ref cbBEmp, "EmpName", "EmpID");
             //PSMS2DataSet2TableAdapters.CustomersTableAdapter adapt = new PSMS2DataSet2TableAdapters.CustomersTableAdapter();
@@ -253,11 +254,13 @@ namespace PSMS
 
         private void txtfilter_ButtonClick(object sender, EventArgs e)
         {
-            string sql = "Select * from Customers ";
-            sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like '%" + txtfilter.Text.Trim() + "%'";
-            customersTableAdapter.Adapter.SelectCommand.CommandText = sql;
-            customersTableAdapter.Fill(this.pSMS2DataSet2.Customers);
-          
+            string sql = "Select * from viewCustomerDetails ";
+            sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
+            
+            this.customersDetailsTableAdapter.Adapter.SelectCommand.CommandText = sql;
+           
+            this.customersDetailsTableAdapter.Fill(this.pSMS2DataSet2.CustomersDetails);
+            customersDataGridView.DataSource = pSMS2DataSet2.CustomersDetails;
 
         }
 
@@ -289,6 +292,12 @@ namespace PSMS
         private void txtfilter_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void customersDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            string col =customersDataGridView.Columns[e.ColumnIndex].HeaderText;
+            
         }
     }
 }
