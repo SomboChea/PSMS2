@@ -147,6 +147,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ReportNew\listReportIncomeWeekly.cs">
+      <DependentUpon>listReportIncomeWeekly.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="ReportNew\listWeeklyPurchaseReport.cs">
       <DependentUpon>listWeeklyPurchaseReport.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -158,6 +164,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>listPurchaseReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportNew\listReportIncome.cs">
+      <DependentUpon>listReportIncome.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ReportNew\ReportIncome.cs">
       <DependentUpon>ReportIncome.rpt</DependentUpon>
@@ -613,6 +625,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>listIncomeReport.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportNew\listReportIncomeWeekly.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>listReportIncomeWeekly.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportNew\listWeeklyPurchaseReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>listWeeklyPurchaseReport.cs</LastGenOutput>
@@ -620,6 +636,10 @@
     <EmbeddedResource Include="ReportNew\listPurchaseReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>listPurchaseReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportNew\listReportIncome.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>listReportIncome.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportNew\ReportIncome.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

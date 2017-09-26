@@ -412,7 +412,7 @@ namespace PSMS
                         obj.Balance = double.Parse(row.Cells[3].Value + "");
                         obj.Total = double.Parse(row.Cells[4].Value + "");
 
-                        obj.Title = "Income Daily";
+                        obj.Title = "Income Weekly";
                         list.Add(obj);
 
                     }
@@ -447,7 +447,7 @@ namespace PSMS
                         obj.Balance = double.Parse(row.Cells[2].Value + "");
                         obj.Total = double.Parse(row.Cells[3].Value + "");
 
-                        obj.Title = "Income Daily";
+                        obj.Title = "Income Monthly";
                         list.Add(obj);
 
                     }
@@ -465,7 +465,7 @@ namespace PSMS
                         obj.Balance = double.Parse(row.Cells[2].Value + "");
                         obj.Total = double.Parse(row.Cells[3].Value + "");
 
-                        obj.Title = "Income Daily";
+                        obj.Title = "Income Yearly";
                         list.Add(obj);
 
                     }
@@ -483,7 +483,7 @@ namespace PSMS
                         obj.Balance = double.Parse(row.Cells[2].Value + "");
                         obj.Total = double.Parse(row.Cells[3].Value + "");
 
-                        obj.Title = "Income Daily";
+                        obj.Title = "Income All";
                         list.Add(obj);
 
                     }
@@ -516,7 +516,7 @@ namespace PSMS
             {
                 if (currentSelected.Equals("invoice"))
                 {
-                    Helper.BindGridView("SELECT InvoiceCode, TotalPrice,Balance,CONVERT(date,Date) Date FROM Invoice WHERE CONVERT(date,Date) BETWEEN '" + dStart + "' AND '" + dEnd + "' ;", binding, viewReport);
+                    Helper.BindGridView("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.Payment, I.Balance,I.TotalPrice from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE I.Date BETWEEN '" + dStart + "' and '" + dEnd + "'", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
 
                     loadNumRecord();
@@ -524,11 +524,19 @@ namespace PSMS
                 }
                 else if (currentSelected.Equals("purchase"))
                 {
-                    Helper.BindGridView("SELECT PurCode,CONVERT(date,Date) Date,Payment,Balance,Total FROM Purchase WHERE CONVERT(date,Date) BETWEEN '" + dStart + "' AND '" + dEnd + "';", binding, viewReport);
+                    Helper.BindGridView("select PurCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(SuFNKH,' ',SuLNKH) as SupplierName ,I.Payment, I.Balance,I.Total from Purchase as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Supplier S on I.SuID=S.SuID WHERE I.[Date] BETWEEN '" + dStart + "' and '" + dEnd + "'", binding, viewReport);
                     Helper.AutoFitColumns(viewReport);
 
                     loadNumRecord();
                     currentSelected = "purchase";
+                }
+                else if (currentSelected.Equals("income"))
+                {
+                    Helper.BindGridView("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.TotalPrice,(TotalPrice-Profits) Cost,I.Profits from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE [Date] BETWEEN '" + dStart + "' and '" + dEnd + "'", binding, viewReport);
+                    Helper.AutoFitColumns(viewReport);
+
+                    loadNumRecord();
+                    currentSelected = "income";
                 }
             }
             catch (Exception) { return; }
@@ -810,7 +818,7 @@ namespace PSMS
         {
             cbSortby.SelectedIndex = 4;
             viewReport.Columns.Clear();
-            Helper.BindGridView("Select format([Date],'yyyy-MM-dd hh:mm tt') DATETIME,TotalPrice,(TotalPrice-Profits) Cost,Profits from Invoice ORDER BY Date;", binding, viewReport);
+            Helper.BindGridView("Select format([Date],'yyyy-MM-dd hh:mm tt') DATETIME,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) CustomerName,TotalPrice,(TotalPrice-Profits) Cost,Profits from Invoice I INNER JOIN Customers C on C.CusID=I.CusID INNER JOIN Employee E on E.EmpID=I.EmpID ORDER BY Date;", binding, viewReport);
             Helper.AutoFitColumns(viewReport);
             dateEnable(true);
 
@@ -844,7 +852,7 @@ namespace PSMS
                         foreach (DataRow row in func.GetData("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.Payment, I.Balance,I.TotalPrice from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE CONVERT(date,i.[Date])='"+DateTime.Parse(Cell("Date")).ToShortDateString()+"'").Rows)
                         {
                             GeneralReport obj=new GeneralReport(row[0]+"",DateTime.Parse(Cell(0)).ToShortDateString(),row[1].ToString(),row[2].ToString(),row[3].ToString(),row[4].ToString(),row[5].ToString());
-                            obj.Title = "Daily Invoice";
+                            obj.Title = "List Invoice-Day";
                             list.Add(obj);
                         }
                         report=new listPurchaseReport();
@@ -858,7 +866,7 @@ namespace PSMS
                         foreach (DataRow row in func.GetData("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.Payment, I.Balance,I.TotalPrice from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE I.Date BETWEEN '" + DateTime.Parse(Cell("Start_Date")).ToShortDateString() + "' and '" + DateTime.Parse(Cell("End_Date")).ToShortDateString() + "'").Rows)
                         {
                             GeneralReport obj = new GeneralReport(row[0] + "", DateTime.Parse(Cell(0)).ToShortDateString(), DateTime.Parse(Cell(1)).ToShortDateString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
-                            obj.Title = "Weekly Invoice";
+                            obj.Title = "Invoice List-Week";
                             list.Add(obj);
                         }
                         report = new listWeeklyPurchaseReport();
@@ -871,7 +879,7 @@ namespace PSMS
                         foreach (DataRow row in func.GetData("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.Payment, I.Balance,I.TotalPrice from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE format(i.[Date],'yyyy-MMM')=format(convert(date,'"+DateTime.Parse(Cell("Year-Mon")).ToShortDateString()+"'),'yyyy-MMM')").Rows)
                         {
                             GeneralReport obj = new GeneralReport(row[0] + "", DateTime.Parse(Cell(0)).ToShortDateString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
-                            obj.Title = "Monthly Invoice";
+                            obj.Title = "List Invoice-Month";
                             list.Add(obj);
                         }
                         report = new listPurchaseReport();
@@ -883,7 +891,7 @@ namespace PSMS
                         foreach (DataRow row in func.GetData("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.Payment, I.Balance,I.TotalPrice from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE format(i.[Date],'yyyy')='" + Cell("Date") + "'").Rows)
                         {
                             GeneralReport obj = new GeneralReport(row[0] + "", Cell(0), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
-                            obj.Title = "Yearly Invoice";
+                            obj.Title = "List Invoice-Year";
                             list.Add(obj);
                         }
                         report = new listPurchaseReport();
@@ -910,7 +918,7 @@ namespace PSMS
                         foreach (DataRow row in func.GetData("select PurCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(SuFNKH,' ',SuLNKH) as SupplierName ,I.Payment, I.Balance,I.Total from Purchase as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Supplier S on I.SuID=S.SuID WHERE CONVERT(date,i.[Date])='" + DateTime.Parse(Cell(0)).ToShortDateString() + "'").Rows)
                         {
                             GeneralReport obj = new GeneralReport(row[0] + "",DateTime.Parse(Cell(0)).ToShortDateString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
-                            obj.Title = "Purchase Daily";
+                            obj.Title = "List Purchase-Day";
                             list.Add(obj);
                         }
                         report = new listPurchaseReport();
@@ -923,7 +931,7 @@ namespace PSMS
                         foreach (DataRow row in func.GetData("select PurCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(SuFNKH,' ',SuLNKH) as SupplierName ,I.Payment, I.Balance,I.Total from Purchase as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Supplier S on I.SuID=S.SuID WHERE I.[Date] BETWEEN '"+DateTime.Parse(Cell(0)).ToShortDateString()+"' and '"+DateTime.Parse(Cell(1)).ToShortDateString()+"'").Rows)
                         {
                             GeneralReport obj = new GeneralReport(row[0] + "", DateTime.Parse(Cell(0)).ToShortDateString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
-                            obj.Title = "Purchase Weekly";
+                            obj.Title = "List Purchase-Week";
                             list.Add(obj);
                         }
                         report = new listWeeklyPurchaseReport();
@@ -935,7 +943,7 @@ namespace PSMS
                         foreach (DataRow row in func.GetData("select PurCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(SuFNKH,' ',SuLNKH) as SupplierName ,I.Payment, I.Balance,I.Total from Purchase as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Supplier S on I.SuID=S.SuID WHERE format(Date,'yyyy-MMM')='"+Cell("Year-Mon")+"'").Rows)
                         {
                             GeneralReport obj = new GeneralReport(row[0] + "", Cell(0), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
-                            obj.Title = "Purchase Monthly";
+                            obj.Title = "List Purchase-Month";
                             list.Add(obj);
                         }
                         report = new listPurchaseReport();
@@ -947,7 +955,7 @@ namespace PSMS
                         foreach (DataRow row in func.GetData("select PurCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(SuFNKH,' ',SuLNKH) as SupplierName ,I.Payment, I.Balance,I.Total from Purchase as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Supplier S on I.SuID=S.SuID WHERE format(Date,'yyyy')='"+Cell(0)+"'").Rows)
                         {
                             GeneralReport obj = new GeneralReport(row[0] + "", Cell(0), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString());
-                            obj.Title = "Purchase Yearly";
+                            obj.Title = "List Purchase- Day";
                             list.Add(obj);
                         }
                         report = new listPurchaseReport();
@@ -967,36 +975,64 @@ namespace PSMS
                 }
                 else if (currentSelected.Equals("income"))
                 {
-                    List<IncomeReport> list1 = new List<IncomeReport>();
-                    List<IncomeReport> list2 = new List<IncomeReport>();
+                    List<GeneralReport> list = new List<GeneralReport>();
 
                     // income daily
                     if (cbSortby.SelectedIndex == 0)
                     {
-                        report = new listIncomeReport();
-         
-                        foreach (DataRow row1 in func.GetData("select I.InvoiceCode , concat(CusFNKH,CusLNKH) CustomerName,concat(EmpFNKH,EmpLNKH) EmployeeName,TotalPrice from Invoice I INNER JOIN Customers C on I.CusID=C.CusID INNER JOIN Employee E on E.EmpID=I.EmpID where Convert(date,[Date])='" + DateTime.Parse(Cell(0)).ToString("MM-dd-yyyy") + "'").Rows)
+                        report = new listReportIncome();
+                        foreach(DataRow row in func.GetData("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.TotalPrice,(TotalPrice-Profits) Cost,I.Profits from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE CONVERT(date,i.[Date])='"+DateTime.Parse(Cell(0)).ToShortDateString()+"'").Rows)
                         {
-                            IncomeReport Revenue = new IncomeReport();
-                            Revenue.InvoiceCode = row1[0].ToString();
-                            Revenue.OtherName = row1[1].ToString();
-                            Revenue.EmpName = row1[2].ToString();
-                            Revenue.Revenue = row1[3].ToString();
-
-                            list1.Add(Revenue);
-                        } 
-                        report.Subreports[0].SetDataSource(list1);
-                        foreach(DataRow row2 in func.GetData("select P.PurCode , concat(SuFNKH,SuLNKH) SupplierName,concat(EmpFNKH,EmpLNKH) EmployeeName,P.Total from Purchase P INNER JOIN Employee E on E.EmpID=P.EmpID INNER JOIN Supplier S on S.SuID=P.SuID where convert(date,[Date])='"+DateTime.Parse(Cell(0)).ToString("MM-dd-yyyy")+"'").Rows)
-                        {  IncomeReport Expense = new IncomeReport();
-                           Expense.InvoiceCode = row2[0].ToString();
-                           Expense.OtherName = row2[1].ToString();
-                           Expense.EmpName = row2[2].ToString();
-                           Expense.Expense = row2[3].ToString();
-
-                           list1.Add(Expense);                       
-                        } 
-                        report.Subreports[1].SetDataSource(list2);
+                            GeneralReport obj=new GeneralReport(row[0].ToString(),DateTime.Parse(Cell(0)).ToShortDateString(),row[1]+"",row[2]+"",row[3]+"",row[4]+"",row[5]+"");
+                            obj.Title = "Income List-Day";
+                            list.Add(obj);
+                        }
+                        report.SetDataSource(list);
                     }
+
+                    // income Monthly
+                    if (cbSortby.SelectedIndex == 2)
+                    {
+                     
+                        report = new listReportIncome();
+                        foreach (DataRow row in func.GetData("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.TotalPrice,(TotalPrice-Profits) Cost,I.Profits from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE format(i.[Date],'yyyy-MMM')='"+Cell(0)+"'").Rows)
+                        {
+                            GeneralReport obj = new GeneralReport(row[0].ToString(), DateTime.Parse(Cell(0)).ToShortDateString(), row[1] + "", row[2] + "", row[3] + "", row[4] + "", row[5] + "");
+                            obj.Title = "Income  List-Month";
+                            list.Add(obj);
+                        }
+                        report.SetDataSource(list);
+                    }
+
+                    // Yearly List Income
+                    if (cbSortby.SelectedIndex == 3)
+                    {
+
+                        report = new listReportIncome();
+                        foreach (DataRow row in func.GetData("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.TotalPrice,(TotalPrice-Profits) Cost,I.Profits from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE year(i.[Date])='"+Cell(0)+"'").Rows)
+                        {
+                            GeneralReport obj = new GeneralReport(row[0].ToString(), DateTime.Parse(Cell(0)).ToShortDateString(), row[1] + "", row[2] + "", row[3] + "", row[4] + "", row[5] + "");
+                            obj.Title = "Income  List-Year";
+                            list.Add(obj);
+                        }
+                        report.SetDataSource(list);
+                    }
+
+                    // Weekly lncome List
+                    if (cbSortby.SelectedIndex == 1)
+                    {
+                        report = new listReportIncomeWeekly();
+                        foreach (DataRow row in func.GetData("select InvoiceCode,concat(E.EmpFNKH,' ',E.EmpLNKH) as EmployeeName,concat(CusFNKH,' ',CusLNKH) as CustomerName ,I.TotalPrice,(TotalPrice-Profits) Cost,I.Profits from Invoice as I INNER JOIN Employee as E on E.EmpID=I.EmpID INNER JOIN Customers C on I.CusID=C.CusID WHERE [Date] BETWEEN '"+DateTime.Parse(Cell(0)).ToShortDateString()+"' and '"+DateTime.Parse(Cell(1)).ToShortDateString()+"'").Rows)
+                        {
+                            GeneralReport obj = new GeneralReport(row[0].ToString(), DateTime.Parse(Cell(0)).ToShortDateString(),DateTime.Parse(Cell(1)).ToShortDateString(), row[1] + "", row[2] + "", row[3] + "", row[4] + "", row[5] + "");
+                            obj.Title = "Income  List-Week";
+                            list.Add(obj);
+                        }
+                        report.SetDataSource(list);
+                    }
+                    // Nothing To Show
+                    if (cbSortby.SelectedIndex == 4)
+                        return;
                 }
                 new reportViewer(report).ShowDialog();
             }
@@ -1010,6 +1046,21 @@ namespace PSMS
         public string Cell(string index)
         {
             return currentrow.Cells[index].Value.ToString();
+        }
+
+        private void dateStart_DropDown(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void dateStart_Enter(object sender, EventArgs e)
+        {
+            dateStart.MaxDate = dateEnd.Value;
+        }
+
+        private void dateEnd_Enter(object sender, EventArgs e)
+        {
+            dateEnd.MinDate = dateStart.Value;
         }
     }
 }

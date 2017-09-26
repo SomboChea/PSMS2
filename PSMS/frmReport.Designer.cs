@@ -222,16 +222,19 @@
             this.dateStart.Name = "dateStart";
             this.dateStart.Size = new System.Drawing.Size(107, 30);
             this.dateStart.TabIndex = 8;
+            this.dateStart.DropDown += new System.EventHandler(this.dateStart_DropDown);
+            this.dateStart.Enter += new System.EventHandler(this.dateStart_Enter);
             // 
             // dateEnd
             // 
             this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateEnd.Location = new System.Drawing.Point(806, 64);
             this.dateEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateEnd.MinimumSize = new System.Drawing.Size(4, 30);
+            this.dateEnd.MinimumSize = new System.Drawing.Size(0, 29);
             this.dateEnd.Name = "dateEnd";
             this.dateEnd.Size = new System.Drawing.Size(107, 30);
             this.dateEnd.TabIndex = 10;
+            this.dateEnd.Enter += new System.EventHandler(this.dateEnd_Enter);
             // 
             // metroLabel2
             // 
