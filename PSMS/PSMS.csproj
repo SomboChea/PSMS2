@@ -120,6 +120,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyInvoice.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PSMS2DataSet2.cs">
+      <DependentUpon>PSMS2DataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseDetail.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -333,7 +336,6 @@
     </Compile>
     <Compile Include="Product2DataSet.cs">
       <DependentUpon>Product2DataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Product2DataSet.Designer.cs">
       <AutoGen>True</AutoGen>

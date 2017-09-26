@@ -1,5 +1,6 @@
 ﻿using MetroFramework;
 using MetroFramework.Forms;
+using PSMS.EmpDataSetTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,18 +25,13 @@ namespace PSMS
             itemPanel1.Items.Remove(itemContainer1);
             itemPanel1.Items.Remove(itemContainer4);
         }
-
+        
         private void frmEmployeeDetail_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'pSMS2DataSet2.EmployeeDetails' table. You can move, or remove it, as needed.
+            this.employeeDetailsTableAdapter.Fill(this.pSMS2DataSet2.EmployeeDetails);
             // TODO: This line of code loads data into the 'pSMS2DataSet2.Employee' table. You can move, or remove it, as needed.
-            try
-            {
-                this.employeeTableAdapter.Fill(this.pSMS2DataSet2.Employee);
-            }
-            catch(Exception)
-            {
 
-            }
             comboBox1.SelectedIndex = 0;
             //empFun.FillDataGridView(ref dataGridView1);
          
@@ -241,10 +237,11 @@ namespace PSMS
 
         private void txtfilter_ButtonClick(object sender, EventArgs e)
         {
-            string sql = "Select * from Employee ";
+            string sql = "Select * from viewEmployeeDetails ";
             sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
-            employeeTableAdapter.Adapter.SelectCommand.CommandText = sql;
-            employeeTableAdapter.Fill(this.pSMS2DataSet2.Employee);
+
+this.employeeDetailsTableAdapter.Adapter.SelectCommand.CommandText = sql;
+            this.employeeDetailsTableAdapter.Fill(this.pSMS2DataSet2.EmployeeDetails);
            
         }
 

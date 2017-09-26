@@ -207,6 +207,7 @@
             this.txtIDCard.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtIDCard.CustomButton.UseSelectable = true;
             this.txtIDCard.CustomButton.Visible = false;
+            this.txtIDCard.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtIDCard.Lines = new string[0];
             this.txtIDCard.Location = new System.Drawing.Point(769, 113);
             this.txtIDCard.Margin = new System.Windows.Forms.Padding(4);
@@ -223,6 +224,8 @@
             this.txtIDCard.UseSelectable = true;
             this.txtIDCard.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtIDCard.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtIDCard.Enter += new System.EventHandler(this.txtIDCard_Enter);
+            this.txtIDCard.Leave += new System.EventHandler(this.txtIDCard_Leave);
             // 
             // joindate
             // 
@@ -261,6 +264,7 @@
             this.txtEmail.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtEmail.CustomButton.UseSelectable = true;
             this.txtEmail.CustomButton.Visible = false;
+            this.txtEmail.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtEmail.Lines = new string[0];
             this.txtEmail.Location = new System.Drawing.Point(769, 194);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
@@ -278,6 +282,8 @@
             this.txtEmail.UseSelectable = true;
             this.txtEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEmail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // txtSalary
             // 
@@ -294,6 +300,7 @@
             this.txtSalary.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtSalary.CustomButton.UseSelectable = true;
             this.txtSalary.CustomButton.Visible = false;
+            this.txtSalary.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtSalary.Lines = new string[0];
             this.txtSalary.Location = new System.Drawing.Point(769, 295);
             this.txtSalary.Margin = new System.Windows.Forms.Padding(4);
@@ -310,6 +317,8 @@
             this.txtSalary.UseSelectable = true;
             this.txtSalary.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtSalary.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtSalary.Enter += new System.EventHandler(this.txtSalary_Enter);
+            this.txtSalary.Leave += new System.EventHandler(this.txtSalary_Leave);
             // 
             // Join_date
             // 
@@ -886,6 +895,8 @@
     "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs16\\par\r\n}\r\n";
             this.rtxtAddress2.Size = new System.Drawing.Size(377, 203);
             this.rtxtAddress2.TabIndex = 89;
+            this.rtxtAddress2.Enter += new System.EventHandler(this.rtxtAddress2_Enter);
+            this.rtxtAddress2.Leave += new System.EventHandler(this.rtxtAddress2_Leave);
             // 
             // txtPhone
             // 
