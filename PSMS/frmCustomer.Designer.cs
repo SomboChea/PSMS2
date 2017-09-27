@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             this.btnFind = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.btnNew = new DevComponents.DotNetBar.Metro.MetroTileItem();
             this.btnSave = new DevComponents.DotNetBar.Metro.MetroTileItem();
@@ -487,6 +486,8 @@
     "";
             this.rtxtAddress.Size = new System.Drawing.Size(265, 169);
             this.rtxtAddress.TabIndex = 32;
+            this.rtxtAddress.Enter += new System.EventHandler(this.rtxtAddress_Enter);
+            this.rtxtAddress.Leave += new System.EventHandler(this.rtxtAddress_Leave);
             // 
             // metroLabel12
             // 
@@ -535,6 +536,8 @@
             this.txtEn1.UseSelectable = true;
             this.txtEn1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEn1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtEn1.Enter += new System.EventHandler(this.txtEn1_Enter);
+            this.txtEn1.Leave += new System.EventHandler(this.txtEn1_Leave);
             // 
             // txtEn2
             // 
@@ -565,6 +568,8 @@
             this.txtEn2.UseSelectable = true;
             this.txtEn2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEn2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtEn2.Enter += new System.EventHandler(this.txtEn2_Enter);
+            this.txtEn2.Leave += new System.EventHandler(this.txtEn2_Leave);
             // 
             // txtKh2
             // 
@@ -595,6 +600,8 @@
             this.txtKh2.UseSelectable = true;
             this.txtKh2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtKh2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtKh2.Enter += new System.EventHandler(this.txtKh2_Enter);
+            this.txtKh2.Leave += new System.EventHandler(this.txtKh2_Leave);
             // 
             // Opendate
             // 
@@ -735,6 +742,8 @@
             this.txtEmail.UseSelectable = true;
             this.txtEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEmail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // metroLabel9
             // 
@@ -878,6 +887,8 @@
             this.txtKh1.UseSelectable = true;
             this.txtKh1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtKh1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtKh1.Enter += new System.EventHandler(this.txtKh1_Enter);
+            this.txtKh1.Leave += new System.EventHandler(this.txtKh1_Leave);
             // 
             // metroLabel2
             // 
@@ -962,7 +973,6 @@
             this.Controls.Add(this.itemPanel2);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCustomer";
             this.Resizable = false;
             this.Text = "Customer Info";

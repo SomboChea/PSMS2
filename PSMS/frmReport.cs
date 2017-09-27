@@ -67,7 +67,9 @@ namespace PSMS
 
             loadNumRecord();
             currentSelected = "customer";
-            
+
+            visiableFilterStock(false);
+
         }
 
         //View Suppliers
@@ -80,6 +82,8 @@ namespace PSMS
             loadNumRecord();
             currentSelected = "supplier";
 
+            visiableFilterStock(false);
+
         }
 
         //View Employees
@@ -91,6 +95,8 @@ namespace PSMS
 
             loadNumRecord();
             currentSelected = "employee";
+
+            visiableFilterStock(false);
         }
 
         //View Purchases
@@ -103,6 +109,8 @@ namespace PSMS
 
             loadNumRecord();
             currentSelected = "purchase";
+
+            visiableFilterStock(false);
         }
 
         //View Invoices
@@ -115,6 +123,8 @@ namespace PSMS
 
             loadNumRecord();
             currentSelected = "invoice";
+
+            visiableFilterStock(false);
         }
 
         //View Stocks
@@ -127,6 +137,26 @@ namespace PSMS
 
             loadNumRecord();
             currentSelected = "stock";
+            cbFilter.SelectedIndex = 0;
+
+            visiableFilterStock(true);
+            
+        }
+
+        private void visiableFilterStock(bool tf)
+        {
+            if (tf)
+            {
+                cbFilter.Visible = tf;
+                cbFilter2.Visible = tf;
+                lbFilter.Visible = tf;
+            }
+            else
+            {
+                cbFilter.Visible = tf;
+                cbFilter2.Visible = tf;
+                lbFilter.Visible = tf;
+            }
         }
 
         //Defines for Reports DATA
@@ -219,8 +249,9 @@ namespace PSMS
         Function func;
         private void addCurrentProductToPrint()
         {
-            DataSet ds = Helper.getDataSet("SELECT * FROM viewStock;");
-            DataTable dt = ds.Tables[0];
+            //DataSet ds = Helper.getDataSet("SELECT * FROM viewStock;");
+            //DataSet ds = viewReport;
+            DataTable dt = (DataTable)binding.DataSource;
 
             dataProducts = new List<reportProduct>();
 
@@ -479,9 +510,9 @@ namespace PSMS
                         DataGridViewRow row = viewReport.Rows[i];
                         GeneralReport obj = new GeneralReport();
                         obj.Date1 = row.Cells[0].Value + "";
-                        obj.Payment = double.Parse(row.Cells[1].Value + "");
-                        obj.Balance = double.Parse(row.Cells[2].Value + "");
-                        obj.Total = double.Parse(row.Cells[3].Value + "");
+                        obj.Payment = double.Parse(row.Cells[3].Value + "");
+                        obj.Balance = double.Parse(row.Cells[4].Value + "");
+                        obj.Total = double.Parse(row.Cells[5].Value + "");
 
                         obj.Title = "Income All";
                         list.Add(obj);
@@ -509,6 +540,7 @@ namespace PSMS
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
+            cbSortby.SelectedIndex = 4;
             string dStart = dateStart.Value.ToString("yyyy-MM-dd");
             string dEnd = dateEnd.Value.ToString("yyyy-MM-dd");
 
@@ -825,6 +857,7 @@ namespace PSMS
             loadNumRecord();
             currentSelected = "income";
 
+            visiableFilterStock(false);
 
         }
 
@@ -834,6 +867,7 @@ namespace PSMS
         }
         DataGridViewRow currentrow;
         string additionalsql = "";
+
         private void viewReport_DoubleClick(object sender, EventArgs e)
         {
             func = new Function();
@@ -857,6 +891,7 @@ namespace PSMS
                         }
                         report=new listPurchaseReport();
                         report.SetDataSource(list);
+
                     }
 
                     // Invoice Weekly
@@ -1005,6 +1040,7 @@ namespace PSMS
                     }
 
                     // Yearly List Income
+                    
                     if (cbSortby.SelectedIndex == 3)
                     {
 
@@ -1029,12 +1065,17 @@ namespace PSMS
                             list.Add(obj);
                         }
                         report.SetDataSource(list);
+                        
                     }
                     // Nothing To Show
                     if (cbSortby.SelectedIndex == 4)
                         return;
                 }
-                new reportViewer(report).ShowDialog();
+
+                if (currentSelected.Equals("invoice")||currentSelected.Equals("purchase")||currentSelected.Equals("income"))
+                {
+                    new reportViewer(report).ShowDialog();
+                }
             }
         }
 
@@ -1061,6 +1102,107 @@ namespace PSMS
         private void dateEnd_Enter(object sender, EventArgs e)
         {
             dateEnd.MinDate = dateStart.Value;
+        }
+
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exec(string table)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM " + table + ";", Connection.con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    cbFilter2.Items.Add(reader.GetValue(2) + "");
+                }
+
+                reader.Close();
+                cmd.Dispose();
+
+                cbFilter2.SelectedIndex = 0;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "EXEC");
+            }
+        }
+
+        private void loadFilterData(int filtertype)
+        {
+            try
+            {
+                if (filtertype.Equals(0))
+                {
+                    exec("Model");
+                }
+                else
+                {
+                    exec("Phone_Type");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "loadFilter");
+            }
+        }
+
+        private void cbFilter_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            cbFilter2.Enabled = true;
+
+            if (cbFilter.SelectedIndex.Equals(1))
+            {
+                cbFilter2.Items.Clear();
+                loadFilterData(0);
+
+            }
+            else if (cbFilter.SelectedIndex.Equals(2))
+            {
+                cbFilter2.Items.Clear();
+                loadFilterData(1);
+
+            }
+            else
+            {
+                cbFilter2.Items.Clear();
+                cbFilter2.Enabled = false;
+
+                loadData("");
+                
+            }
+        }
+
+        private void loadData(string sql="")
+        {
+            Helper.BindGridView("SELECT * FROM viewStock "+sql, binding, viewReport);
+            Helper.AutoFitColumns(viewReport);
+        }
+
+        private void cbFilter2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbFilter.SelectedIndex.Equals(1))
+            {
+                loadData("WHERE Brand = '" + cbFilter2.SelectedItem + "'");
+            }
+            else if (cbFilter.SelectedIndex.Equals(2))
+            {
+                loadData("WHERE PhoneType = '" + cbFilter2.SelectedItem + "';");
+            }
+            else
+            {
+                loadData("");
+            }
         }
     }
 }

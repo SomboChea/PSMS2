@@ -77,8 +77,14 @@ namespace PSMS
         {    
             empFun.FillDataGridView(ref dgData);
             posFun.FillComboBox(ref cbBPos, "PosName", "PosID");
-            cbBPos.SelectedIndex = 0;
-            cbBGender.SelectedIndex = 0;
+            
+            try
+            {
+                cbBPos.SelectedIndex = 0;
+                cbBGender.SelectedIndex = 0;
+            }
+            catch(Exception) { }
+
             Join_date.Value = DateTime.Now;
             index = dgData.Rows.Count;
             btnpre.Enabled = dgData.Rows.Count < 1 ? false : true;
@@ -431,7 +437,7 @@ namespace PSMS
         string ph_kh2 = "សូមបញ្ចូល ឈ្មោះរបស់អ្នក...";
         string ph_en1 = "Enter lastname...";
         string ph_en2 = "Enter firstname...";
-        string ph_em = "Enter email...";
+        string ph_em = "someone@example.com...";
         string ph_add = "Enter address...";
         string ph_id = "Enter national card...";
         string ph_sl = "Enter salary...";

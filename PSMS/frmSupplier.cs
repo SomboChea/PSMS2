@@ -35,6 +35,8 @@ namespace PSMS
             requirement = tempRequire;
             txtPhone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             txtPhone2.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+
+            loadPlaceHolder();
         }
         void requirementnull(Control ctr, ref bool end)
         {
@@ -318,6 +320,194 @@ namespace PSMS
         private void dgSu_SelectionChanged(object sender, EventArgs e)
         {
             
+        }
+
+        string ph_kh1 = "សូមបញ្ចូល ត្រកូលរបស់អ្នក...";
+        string ph_kh2 = "សូមបញ្ចូល ឈ្មោះរបស់អ្នក...";
+        string ph_en1 = "Enter lastname...";
+        string ph_en2 = "Enter firstname...";
+        string ph_em = "someone@example.com...";
+        string ph_add = "Enter address...";
+        string ph_fax = "Enter fax number...";
+
+        private void loadPlaceHolder()
+        {
+            txtKh1.UseCustomForeColor = true;
+            txtKh2.UseCustomForeColor = true;
+            txtEn1.UseCustomForeColor = true;
+            txtEn2.UseCustomForeColor = true;
+            txtEmail.UseCustomForeColor = true;
+            txtFax.UseCustomForeColor = true;
+            txtFax2.UseCustomForeColor = true;
+
+            txtKh1.ForeColor = Color.Gray;
+            txtKh2.ForeColor = Color.Gray;
+            txtEn1.ForeColor = Color.Gray;
+            txtEn2.ForeColor = Color.Gray;
+            txtEmail.ForeColor = Color.Gray;
+            rtxtAddress.ForeColor = Color.Gray;
+            txtFax.ForeColor = Color.Gray;
+            txtFax2.ForeColor = Color.Gray;
+
+            txtKh1.Text = ph_kh1;
+            txtKh2.Text = ph_kh2;
+            txtEn1.Text = ph_en1;
+            txtEn2.Text = ph_en2;
+            txtEmail.Text = ph_em;
+            rtxtAddress.Text = ph_add;
+            txtFax.Text = ph_fax;
+            txtFax2.Text = ph_fax;
+        }
+
+        private void txtKh1_Enter(object sender, EventArgs e)
+        {
+            if (txtKh1.Text == ph_kh1)
+            {
+                txtKh1.Text = "";
+                txtKh1.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtKh1_Leave(object sender, EventArgs e)
+        {
+            if (txtKh1.Text == "")
+            {
+                txtKh1.UseCustomForeColor = true;
+                txtKh1.ForeColor = Color.Gray;
+                txtKh1.Text = ph_kh1;
+            }
+        }
+
+        private void txtKh2_Enter(object sender, EventArgs e)
+        {
+            if (txtKh2.Text == ph_kh2)
+            {
+                txtKh2.Text = "";
+                txtKh2.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtKh2_Leave(object sender, EventArgs e)
+        {
+            if (txtKh2.Text == "")
+            {
+                txtKh2.UseCustomForeColor = true;
+                txtKh2.ForeColor = Color.Gray;
+                txtKh2.Text = ph_kh2;
+            }
+        }
+
+        private void txtEn1_Enter(object sender, EventArgs e)
+        {
+            if (txtEn1.Text == ph_en1)
+            {
+                txtEn1.Text = "";
+                txtEn1.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtEn1_Leave(object sender, EventArgs e)
+        {
+            if (txtEn1.Text == "")
+            {
+                txtEn1.UseCustomForeColor = true;
+                txtEn1.ForeColor = Color.Gray;
+                txtEn1.Text = ph_en1;
+            }
+        }
+
+        private void txtEn2_Enter(object sender, EventArgs e)
+        {
+            if (txtEn2.Text == ph_en2)
+            {
+                txtEn2.Text = "";
+                txtEn2.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtEn2_Leave(object sender, EventArgs e)
+        {
+            if (txtEn2.Text == "")
+            {
+                txtEn2.UseCustomForeColor = true;
+                txtEn2.ForeColor = Color.Gray;
+                txtEn2.Text = ph_en2;
+            }
+        }
+
+        private void rtxtAddress_Enter(object sender, EventArgs e)
+        {
+            if (rtxtAddress.Text == ph_add)
+            {
+                rtxtAddress.Text = "";
+                rtxtAddress.ForeColor = Color.Black;
+            }
+        }
+
+        private void rtxtAddress_Leave(object sender, EventArgs e)
+        {
+            if (rtxtAddress.Text == "")
+            {
+                rtxtAddress.ForeColor = Color.Gray;
+                rtxtAddress.Text = ph_add;
+            }
+        }
+
+        private void txtEmail_Enter(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == ph_em)
+            {
+                txtEmail.Text = "";
+                txtEmail.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == "")
+            {
+                txtEmail.UseCustomForeColor = true;
+                txtEmail.ForeColor = Color.Gray;
+                txtEmail.Text = ph_em;
+            }
+        }
+
+        private void txtFax_Enter(object sender, EventArgs e)
+        {
+            if (txtFax.Text == ph_fax)
+            {
+                txtFax.Text = "";
+                txtFax.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtFax_Leave(object sender, EventArgs e)
+        {
+            if (txtFax.Text == "")
+            {
+                txtFax.UseCustomForeColor = true;
+                txtFax.ForeColor = Color.Gray;
+                txtFax.Text = ph_fax;
+            }
+        }
+
+        private void txtFax2_Enter(object sender, EventArgs e)
+        {
+            if (txtFax2.Text == ph_fax)
+            {
+                txtFax2.Text = "";
+                txtFax2.UseCustomForeColor = false;
+            }
+        }
+
+        private void txtFax2_Leave(object sender, EventArgs e)
+        {
+            if (txtFax2.Text == "")
+            {
+                txtFax2.UseCustomForeColor = true;
+                txtFax2.ForeColor = Color.Gray;
+                txtFax2.Text = ph_fax;
+            }
         }
     }
 }

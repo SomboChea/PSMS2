@@ -3,6 +3,7 @@ using CrystalDecisions.Windows.Forms;
 using MetroFramework.Forms;
 using PSMS.Class;
 using PSMS.Reports;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -30,8 +31,13 @@ namespace PSMS
         public reportViewer(ReportDocument report)
         {
             InitializeComponent();
-            
-            crystalReportViewer1.ReportSource = report;
+
+            try
+            {
+                crystalReportViewer1.ReportSource = report;
+            }
+            catch (Exception ex) { }
+
             //crystalReportViewer1.ParameterFieldInfo[0].DefaultValues.Add("title");
             crystalReportViewer1.RefreshReport();
 
