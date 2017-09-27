@@ -205,9 +205,9 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(4, 3);
+            this.metroPanel1.Location = new System.Drawing.Point(9, 3);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(960, 452);
+            this.metroPanel1.Size = new System.Drawing.Size(937, 452);
             this.metroPanel1.TabIndex = 17;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
@@ -249,6 +249,7 @@
             this.metroLabel1.Size = new System.Drawing.Size(71, 20);
             this.metroLabel1.TabIndex = 42;
             this.metroLabel1.Text = "Load Data";
+            this.metroLabel1.Visible = false;
             // 
             // metroPanel2
             // 
@@ -400,6 +401,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(29, 22);
             this.dataGridView1.TabIndex = 29;
+            this.dataGridView1.Visible = false;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
@@ -952,7 +954,7 @@
             this.itemPanel2.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
             this.itemPanel2.Location = new System.Drawing.Point(33, 63);
             this.itemPanel2.Name = "itemPanel2";
-            this.itemPanel2.Size = new System.Drawing.Size(968, 458);
+            this.itemPanel2.Size = new System.Drawing.Size(956, 458);
             this.itemPanel2.TabIndex = 29;
             this.itemPanel2.Text = "itemPanel2";
             // 

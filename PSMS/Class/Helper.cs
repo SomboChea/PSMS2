@@ -32,7 +32,7 @@ namespace PSMS.Class
             try
             {
                 List<ListViewItem> items = new List<ListViewItem>();
-                string sql = "SELECT * FROM viewStock " + addSql;
+                string sql = "SELECT * FROM viewStock2 " + addSql;
                 SqlCommand cmd = new SqlCommand(sql, Connection.con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 string[] item = new string[10];

@@ -86,11 +86,6 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.customersBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.customersDataGridView = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.txtfilter = new MetroFramework.Controls.MetroTextBox();
-            this.customersDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.customersDetailsTableAdapter = new PSMS.PSMS2DataSet2TableAdapters.CustomersDetailsTableAdapter();
             this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerNameENDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerNameKHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -103,6 +98,11 @@
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accOpendateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customersDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtfilter = new MetroFramework.Controls.MetroTextBox();
+            this.customersDetailsTableAdapter = new PSMS.PSMS2DataSet2TableAdapters.CustomersDetailsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.Opendate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pSMS2DataSet2)).BeginInit();
@@ -134,6 +134,7 @@
             this.itemPanel1.Size = new System.Drawing.Size(105, 250);
             this.itemPanel1.TabIndex = 28;
             this.itemPanel1.Text = "itemPanel1";
+            this.itemPanel1.Visible = false;
             // 
             // itemContainer4
             // 
@@ -890,6 +891,7 @@
             this.tableAdapterManager.TypeTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = PSMS.PSMS2DataSet2TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsersTableAdapter = null;
+            this.tableAdapterManager.viewSupplierTableAdapter = null;
             // 
             // customersBindingNavigator
             // 
@@ -1019,6 +1021,8 @@
             // 
             // customersDataGridView
             // 
+            this.customersDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.customersDataGridView.AutoGenerateColumns = false;
             this.customersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1038,81 +1042,9 @@
             this.customersDataGridView.Location = new System.Drawing.Point(19, 107);
             this.customersDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.customersDataGridView.Name = "customersDataGridView";
-            this.customersDataGridView.Size = new System.Drawing.Size(904, 417);
+            this.customersDataGridView.Size = new System.Drawing.Size(1045, 455);
             this.customersDataGridView.TabIndex = 69;
             this.customersDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersDataGridView_CellValueChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(474, 63);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 17);
-            this.label1.TabIndex = 70;
-            this.label1.Text = "Search by";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Code",
-            "CustomerNameEN",
-            "CustomerNameKH"});
-            this.comboBox1.Location = new System.Drawing.Point(551, 63);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(156, 24);
-            this.comboBox1.TabIndex = 71;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // txtfilter
-            // 
-            // 
-            // 
-            // 
-            this.txtfilter.CustomButton.Image = null;
-            this.txtfilter.CustomButton.Location = new System.Drawing.Point(182, 2);
-            this.txtfilter.CustomButton.Margin = new System.Windows.Forms.Padding(4);
-            this.txtfilter.CustomButton.Name = "";
-            this.txtfilter.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.txtfilter.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtfilter.CustomButton.TabIndex = 1;
-            this.txtfilter.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtfilter.CustomButton.UseSelectable = true;
-            this.txtfilter.Icon = global::PSMS.Properties.Resources.searchicon;
-            this.txtfilter.Lines = new string[0];
-            this.txtfilter.Location = new System.Drawing.Point(715, 60);
-            this.txtfilter.Margin = new System.Windows.Forms.Padding(4);
-            this.txtfilter.MaxLength = 32767;
-            this.txtfilter.Name = "txtfilter";
-            this.txtfilter.PasswordChar = '\0';
-            this.txtfilter.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtfilter.SelectedText = "";
-            this.txtfilter.SelectionLength = 0;
-            this.txtfilter.SelectionStart = 0;
-            this.txtfilter.ShortcutsEnabled = true;
-            this.txtfilter.ShowButton = true;
-            this.txtfilter.Size = new System.Drawing.Size(208, 28);
-            this.txtfilter.TabIndex = 72;
-            this.txtfilter.UseSelectable = true;
-            this.txtfilter.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtfilter.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.txtfilter.ButtonClick += new MetroFramework.Controls.MetroTextBox.ButClick(this.txtfilter_ButtonClick);
-            this.txtfilter.TextChanged += new System.EventHandler(this.txtfilter_TextChanged);
-            this.txtfilter.Click += new System.EventHandler(this.txtfilter_Click);
-            this.txtfilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtfilter_KeyPress);
-            // 
-            // customersDetailsBindingSource
-            // 
-            this.customersDetailsBindingSource.DataMember = "CustomersDetails";
-            this.customersDetailsBindingSource.DataSource = this.pSMS2DataSet2;
-            // 
-            // customersDetailsTableAdapter
-            // 
-            this.customersDetailsTableAdapter.ClearBeforeFill = true;
             // 
             // codeDataGridViewTextBoxColumn
             // 
@@ -1190,6 +1122,78 @@
             this.accOpendateDataGridViewTextBoxColumn.HeaderText = "Acc_Opendate";
             this.accOpendateDataGridViewTextBoxColumn.Name = "accOpendateDataGridViewTextBoxColumn";
             // 
+            // customersDetailsBindingSource
+            // 
+            this.customersDetailsBindingSource.DataMember = "CustomersDetails";
+            this.customersDetailsBindingSource.DataSource = this.pSMS2DataSet2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(474, 63);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 17);
+            this.label1.TabIndex = 70;
+            this.label1.Text = "Search by";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Code",
+            "CustomerNameEN",
+            "CustomerNameKH"});
+            this.comboBox1.Location = new System.Drawing.Point(551, 63);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(156, 24);
+            this.comboBox1.TabIndex = 71;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // txtfilter
+            // 
+            // 
+            // 
+            // 
+            this.txtfilter.CustomButton.Image = null;
+            this.txtfilter.CustomButton.Location = new System.Drawing.Point(182, 2);
+            this.txtfilter.CustomButton.Margin = new System.Windows.Forms.Padding(4);
+            this.txtfilter.CustomButton.Name = "";
+            this.txtfilter.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtfilter.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtfilter.CustomButton.TabIndex = 1;
+            this.txtfilter.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtfilter.CustomButton.UseSelectable = true;
+            this.txtfilter.Icon = global::PSMS.Properties.Resources.searchicon;
+            this.txtfilter.Lines = new string[0];
+            this.txtfilter.Location = new System.Drawing.Point(715, 60);
+            this.txtfilter.Margin = new System.Windows.Forms.Padding(4);
+            this.txtfilter.MaxLength = 32767;
+            this.txtfilter.Name = "txtfilter";
+            this.txtfilter.PasswordChar = '\0';
+            this.txtfilter.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtfilter.SelectedText = "";
+            this.txtfilter.SelectionLength = 0;
+            this.txtfilter.SelectionStart = 0;
+            this.txtfilter.ShortcutsEnabled = true;
+            this.txtfilter.ShowButton = true;
+            this.txtfilter.Size = new System.Drawing.Size(208, 28);
+            this.txtfilter.TabIndex = 72;
+            this.txtfilter.UseSelectable = true;
+            this.txtfilter.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtfilter.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtfilter.ButtonClick += new MetroFramework.Controls.MetroTextBox.ButClick(this.txtfilter_ButtonClick);
+            this.txtfilter.TextChanged += new System.EventHandler(this.txtfilter_TextChanged);
+            this.txtfilter.Click += new System.EventHandler(this.txtfilter_Click);
+            this.txtfilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtfilter_KeyPress);
+            // 
+            // customersDetailsTableAdapter
+            // 
+            this.customersDetailsTableAdapter.ClearBeforeFill = true;
+            // 
             // frmCustomerDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1232,6 +1236,8 @@
             this.Controls.Add(this.itemPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCustomerDetail";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "CustomerDetail";

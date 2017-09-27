@@ -31,7 +31,7 @@ namespace PSMS
 
             loadPlaceHolder();
 
-            Control[] tempRequire={txtEn1,txtEn2,txtEmail,txtPhone,txtKh1,txtKh2};           
+            Control[] tempRequire={txtEn1,txtEn2,txtEmail,txtPhone,txtSalary};           
             requirement = tempRequire;
             
             btnnext.Enabled = false;
@@ -44,7 +44,9 @@ namespace PSMS
             redline.Location = new Point(ctr.Location.X-2, ctr.Location.Y-2);
             redline.Size = new Size(ctr.Size.Width+4, ctr.Size.Height+4);
 
-            if (ctr.Text.Trim() == ""|| ctr.Text == ph_en1 || ctr.Text == ph_en2 || ctr.Text == ph_kh1 || ctr.Text == ph_kh2)
+            
+
+            if (ctr.Text.Trim() == ""|| ctr.Text == ph_en1 || ctr.Text == ph_en2 || ctr.Text == ph_kh1 || ctr.Text == ph_kh2 || ctr.Text == ph_em || ctr.Text == ph_sl)
             {
                 redline.BackColor = Color.Red;
                 end = true;
@@ -83,7 +85,10 @@ namespace PSMS
                 cbBPos.SelectedIndex = 0;
                 cbBGender.SelectedIndex = 0;
             }
-            catch(Exception) { }
+            catch(Exception)
+            {
+                MessageBox.Show("Please add an employee!", "No Employee!");
+            }
 
             Join_date.Value = DateTime.Now;
             index = dgData.Rows.Count;
@@ -112,8 +117,8 @@ namespace PSMS
             emp.address = rtxtAddress2.Text;
             emp.phone = txtPhone.Text;
             emp.email = txtEmail.Text;
-            emp.pos_id = Convert.ToInt32(cbBPos.SelectedValue);
-            emp.salary = Convert.ToInt32(txtSalary.Text);
+            emp.pos_id = Helper.ifnull(cbBPos.SelectedValue)?0: Convert.ToInt32(cbBPos.SelectedValue);
+            emp.salary = Helper.ifnull(txtSalary.Text) ? 0 : Convert.ToInt32(txtSalary.Text);
             emp.join_date = Join_date.Text;
 
             MemoryStream mem=new MemoryStream();
@@ -267,7 +272,13 @@ namespace PSMS
             txtPhone.Text = "";
             txtEmail.Text = "";
             cbBGender.SelectedIndex = 0;
-            cbBPos.SelectedIndex = 0;
+            
+            try
+            {
+                cbBPos.SelectedIndex = 0;
+            }
+            catch(Exception) { return; }
+
             txtSalary.Text = "";
             Join_date.Text = "";
             pictureBox1.Image = Properties.Resources.employee;
@@ -339,7 +350,7 @@ namespace PSMS
                 btnpre.Enabled = true;
                 int emp_id = int.Parse(dgData.Rows[index].Cells[0].Value + "");
                 DataTable dt = empFun.GetData("SELECT * FROM Employee WHERE EmpID = " + emp_id);
-                metroLabel1.Text = index + "";
+               
                 foreach (DataRow row in dt.Rows)
                 {
                     txtEmpID.Text = row["EmpID"].ToString();
@@ -390,7 +401,6 @@ namespace PSMS
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    metroLabel1.Text = index + "";
                     txtEmpID.Text = row["EmpID"].ToString();
                     txtEmpCode.Text = row["EmpCode"].ToString();
                     txtKh1.Text = row["EmpLNKH"].ToString();

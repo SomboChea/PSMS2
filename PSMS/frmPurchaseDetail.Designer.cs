@@ -63,7 +63,7 @@
             this.itemContainer3});
             this.itemPanel1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
             this.itemPanel1.Location = new System.Drawing.Point(949, 132);
-            this.itemPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.itemPanel1.Name = "itemPanel1";
             this.itemPanel1.Size = new System.Drawing.Size(140, 263);
             this.itemPanel1.TabIndex = 31;
@@ -184,7 +184,7 @@
             this.dgData.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgData.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgData.Location = new System.Drawing.Point(48, 132);
-            this.dgData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgData.Margin = new System.Windows.Forms.Padding(4);
             this.dgData.Name = "dgData";
             this.dgData.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -203,7 +203,7 @@
             // txtfilter
             // 
             this.txtfilter.Location = new System.Drawing.Point(727, 87);
-            this.txtfilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtfilter.Margin = new System.Windows.Forms.Padding(4);
             this.txtfilter.Name = "txtfilter";
             this.txtfilter.Size = new System.Drawing.Size(187, 22);
             this.txtfilter.TabIndex = 32;
@@ -225,7 +225,7 @@
             // 
             this.metroTile1.ActiveControl = null;
             this.metroTile1.Location = new System.Drawing.Point(949, 471);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(4);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(140, 64);
             this.metroTile1.TabIndex = 34;
@@ -238,17 +238,11 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "PurCode",
-            "Date",
-            "Payment",
-            "Balance",
-            "SuEnName",
-            "EmpEnName",
-            "Total",
-            "SuKHName",
-            "EmpKHName"});
+            "Code",
+            "SupplierName",
+            "EmployeeName"});
             this.comboBox1.Location = new System.Drawing.Point(603, 87);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(115, 24);
             this.comboBox1.TabIndex = 35;
@@ -265,14 +259,14 @@
             this.Controls.Add(this.itemPanel1);
             this.Controls.Add(this.dgData);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Movable = false;
             this.Name = "frmPurchaseDetail";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Resizable = false;
-            this.Text = "PurchaseDetail";
+            this.Text = "Purchase Detail";
             this.Load += new System.EventHandler(this.frmPurchaseDetail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).EndInit();
             this.ResumeLayout(false);

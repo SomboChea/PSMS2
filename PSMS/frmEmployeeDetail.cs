@@ -24,6 +24,8 @@ namespace PSMS
             btnClr.Visible = false;
             itemPanel1.Items.Remove(itemContainer1);
             itemPanel1.Items.Remove(itemContainer4);
+
+            comboBox1.SelectedIndex = 0;
         }
         
         private void frmEmployeeDetail_Load(object sender, EventArgs e)
@@ -220,6 +222,7 @@ namespace PSMS
 
         private void frmEmployeeDetail_FormClosing(object sender, FormClosingEventArgs e)
         {
+            /*
             DialogResult diag = MetroMessageBox.Show(this, "Do you Want to Save Change ? ", "MetroMessage", MessageBoxButtons.YesNo);
             if (diag == DialogResult.Yes)
             {
@@ -232,7 +235,7 @@ namespace PSMS
                     MetroMessageBox.Show(this, ex.Message);
                     e.Cancel=true;
                 }
-            }
+            }*/
         }
 
         private void txtfilter_ButtonClick(object sender, EventArgs e)

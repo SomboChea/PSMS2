@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\Connection.cs" />
+    <Compile Include="Class\customerListReports.cs" />
     <Compile Include="Class\frmPos.cs" />
     <Compile Include="Class\FullMode.cs" />
     <Compile Include="Class\GeneralReport.cs" />
@@ -124,7 +125,6 @@
     </Compile>
     <Compile Include="PSMS2DataSet2.cs">
       <DependentUpon>PSMS2DataSet2.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="PurchaseDetail.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -140,6 +140,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EmpDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReportNew\customerAllReports.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>customerAllReports.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportNew\employeeAllReports.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>employeeAllReports.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReportNew\listIncomeReport.cs">
       <DependentUpon>listIncomeReport.rpt</DependentUpon>
@@ -176,6 +188,12 @@
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ReportNew\supplierAllReports.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>supplierAllReports.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\CustomerReport.cs">
       <AutoGen>True</AutoGen>
@@ -375,7 +393,6 @@
     </Compile>
     <Compile Include="Product2DataSet.cs">
       <DependentUpon>Product2DataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Product2DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -621,6 +638,14 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportNew\customerAllReports.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>customerAllReports.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportNew\employeeAllReports.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>employeeAllReports.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportNew\listIncomeReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>listIncomeReport.cs</LastGenOutput>
@@ -644,6 +669,10 @@
     <EmbeddedResource Include="ReportNew\ReportIncome.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReportIncome.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportNew\supplierAllReports.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>supplierAllReports.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\CustomerReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

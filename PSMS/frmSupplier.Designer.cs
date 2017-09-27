@@ -62,8 +62,6 @@
             this.btnpre = new System.Windows.Forms.Button();
             this.btnNexts = new System.Windows.Forms.Button();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            this.btnNext = new DevComponents.DotNetBar.ButtonX();
-            this.btnPrevious = new DevComponents.DotNetBar.ButtonX();
             this.dgSu = new MetroFramework.Controls.MetroGrid();
             this.txtSuID = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
@@ -98,7 +96,7 @@
             this.itemPanel1.Location = new System.Drawing.Point(1101, 33);
             this.itemPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.itemPanel1.Name = "itemPanel1";
-            this.itemPanel1.Size = new System.Drawing.Size(140, 441);
+            this.itemPanel1.Size = new System.Drawing.Size(104, 359);
             this.itemPanel1.TabIndex = 28;
             this.itemPanel1.Text = "itemPanel1";
             // 
@@ -507,8 +505,6 @@
             this.metroPanel1.Controls.Add(this.btnpre);
             this.metroPanel1.Controls.Add(this.btnNexts);
             this.metroPanel1.Controls.Add(this.metroLabel10);
-            this.metroPanel1.Controls.Add(this.btnNext);
-            this.metroPanel1.Controls.Add(this.btnPrevious);
             this.metroPanel1.Controls.Add(this.itemPanel1);
             this.metroPanel1.Controls.Add(this.dgSu);
             this.metroPanel1.Controls.Add(this.txtSuID);
@@ -540,7 +536,7 @@
             this.metroPanel1.Location = new System.Drawing.Point(47, 78);
             this.metroPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(1267, 557);
+            this.metroPanel1.Size = new System.Drawing.Size(1217, 495);
             this.metroPanel1.TabIndex = 13;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
@@ -571,7 +567,7 @@
             this.btnpre.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnpre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnpre.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnpre.Location = new System.Drawing.Point(847, 33);
+            this.btnpre.Location = new System.Drawing.Point(820, 33);
             this.btnpre.Margin = new System.Windows.Forms.Padding(4);
             this.btnpre.Name = "btnpre";
             this.btnpre.Size = new System.Drawing.Size(100, 28);
@@ -606,32 +602,6 @@
             this.metroLabel10.TabIndex = 40;
             this.metroLabel10.Text = "Load data";
             this.metroLabel10.Visible = false;
-            // 
-            // btnNext
-            // 
-            this.btnNext.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnNext.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnNext.Location = new System.Drawing.Point(899, 33);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(4);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(92, 30);
-            this.btnNext.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNext.TabIndex = 42;
-            this.btnNext.Text = "Next";
-            this.btnNext.Visible = false;
-            // 
-            // btnPrevious
-            // 
-            this.btnPrevious.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnPrevious.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnPrevious.Location = new System.Drawing.Point(767, 33);
-            this.btnPrevious.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(100, 28);
-            this.btnPrevious.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnPrevious.TabIndex = 41;
-            this.btnPrevious.Text = "Previous";
-            this.btnPrevious.Visible = false;
             // 
             // dgSu
             // 
@@ -918,7 +888,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1365, 720);
+            this.ClientSize = new System.Drawing.Size(1315, 619);
             this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.metroPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -976,8 +946,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroGrid dgSu;
         private MetroFramework.Controls.MetroLabel metroLabel10;
-        private DevComponents.DotNetBar.ButtonX btnNext;
-        private DevComponents.DotNetBar.ButtonX btnPrevious;
         private System.Windows.Forms.Button btnpre;
         private System.Windows.Forms.Button btnNexts;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;

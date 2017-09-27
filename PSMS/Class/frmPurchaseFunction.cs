@@ -20,7 +20,7 @@ namespace PSMS
         }
         public void FillDataGridView(ref MetroFramework.Controls.MetroGrid dataGridView) 
         {
-            dataGridView.DataSource = base.GetData("select * from viewPurchase2 WHERE Payment < Total");
+            dataGridView.DataSource = base.GetData("select * from viewPurchase3 WHERE Paid < Total");
         }
     }
 }

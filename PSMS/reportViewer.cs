@@ -107,7 +107,16 @@ namespace PSMS
             supplierReportDoc.SetDataSource(reportSupplier);
             crystalReportViewer1.ReportSource = supplierReportDoc;
         }
-       
+
+        public reportViewer(List<customerListReports> reportCustomerAllReports)
+        {
+            InitializeComponent();
+            FullMode.Fullscreen(this);
+
+            customerAllReportsDoc.SetDataSource(reportCustomerAllReports);
+            crystalReportViewer1.ReportSource = customerAllReportsDoc;
+        }
+
         private void reportViewer_FormClosing(object sender, FormClosingEventArgs e)
         {
             

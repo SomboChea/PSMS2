@@ -31,7 +31,7 @@ namespace PSMS
           
             btnNexts.Enabled = false;
 
-            Control[] tempRequire = { txtEn1, txtEn2, txtEmail, txtPhone, txtPhone2, txtKh1, txtKh2 };
+            Control[] tempRequire = { txtEn1, txtEn2, txtEmail, txtPhone};
             requirement = tempRequire;
             txtPhone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             txtPhone2.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
@@ -44,7 +44,7 @@ namespace PSMS
             redline.Tag = "remove";
             redline.Location = new Point(ctr.Location.X - 2, ctr.Location.Y - 2);
             redline.Size = new Size(ctr.Size.Width + 4, ctr.Size.Height + 4);
-            if (ctr.Text.Trim() == "")
+            if (ctr.Text.Trim() == "" || ctr.Text == ph_em || ctr.Text == ph_en1 || ctr.Text == ph_en2)
             {
                 redline.BackColor = Color.Red;
                 end = true;

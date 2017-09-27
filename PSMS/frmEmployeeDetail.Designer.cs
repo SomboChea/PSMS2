@@ -84,11 +84,6 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.employeeBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtfilter = new MetroFramework.Controls.MetroTextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.employeeDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeDetailsTableAdapter = new PSMS.PSMS2DataSet2TableAdapters.EmployeeDetailsTableAdapter();
             this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeNameEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeNameKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,6 +95,11 @@
             this.PositionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtfilter = new MetroFramework.Controls.MetroTextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.employeeDetailsTableAdapter = new PSMS.PSMS2DataSet2TableAdapters.EmployeeDetailsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.Join_date)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pSMS2DataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
@@ -130,6 +130,7 @@
             this.itemPanel1.Size = new System.Drawing.Size(140, 308);
             this.itemPanel1.TabIndex = 33;
             this.itemPanel1.Text = "itemPanel1";
+            this.itemPanel1.Visible = false;
             // 
             // itemContainer4
             // 
@@ -881,6 +882,7 @@
             this.tableAdapterManager.TypeTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = PSMS.PSMS2DataSet2TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsersTableAdapter = null;
+            this.tableAdapterManager.viewSupplierTableAdapter = null;
             // 
             // employeeBindingNavigator
             // 
@@ -927,7 +929,7 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 28);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 24);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -937,7 +939,7 @@
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(24, 28);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(24, 24);
             this.bindingNavigatorDeleteItem.Text = "Delete";
             this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
@@ -947,7 +949,7 @@
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(24, 28);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(24, 24);
             this.bindingNavigatorMoveFirstItem.Text = "Move first";
             // 
             // bindingNavigatorMovePreviousItem
@@ -956,13 +958,13 @@
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(24, 28);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(24, 24);
             this.bindingNavigatorMovePreviousItem.Text = "Move previous";
             // 
             // bindingNavigatorSeparator
             // 
             this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 31);
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 27);
             // 
             // bindingNavigatorPositionItem
             // 
@@ -976,7 +978,7 @@
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -984,7 +986,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(24, 28);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(24, 24);
             this.bindingNavigatorMoveNextItem.Text = "Move next";
             this.bindingNavigatorMoveNextItem.Click += new System.EventHandler(this.bindingNavigatorMoveNextItem_Click);
             // 
@@ -994,20 +996,20 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(24, 28);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(24, 24);
             this.bindingNavigatorMoveLastItem.Text = "Move last";
             // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // employeeBindingNavigatorSaveItem
             // 
             this.employeeBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.employeeBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("employeeBindingNavigatorSaveItem.Image")));
             this.employeeBindingNavigatorSaveItem.Name = "employeeBindingNavigatorSaveItem";
-            this.employeeBindingNavigatorSaveItem.Size = new System.Drawing.Size(24, 28);
+            this.employeeBindingNavigatorSaveItem.Size = new System.Drawing.Size(24, 24);
             this.employeeBindingNavigatorSaveItem.Text = "Save Data";
             this.employeeBindingNavigatorSaveItem.Click += new System.EventHandler(this.employeeBindingNavigatorSaveItem_Click);
             // 
@@ -1028,81 +1030,11 @@
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14});
             this.dataGridView1.DataSource = this.employeeDetailsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(27, 108);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 117);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(892, 454);
+            this.dataGridView1.Size = new System.Drawing.Size(1062, 503);
             this.dataGridView1.TabIndex = 121;
-            // 
-            // txtfilter
-            // 
-            // 
-            // 
-            // 
-            this.txtfilter.CustomButton.Image = null;
-            this.txtfilter.CustomButton.Location = new System.Drawing.Point(130, 2);
-            this.txtfilter.CustomButton.Margin = new System.Windows.Forms.Padding(4);
-            this.txtfilter.CustomButton.Name = "";
-            this.txtfilter.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.txtfilter.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtfilter.CustomButton.TabIndex = 1;
-            this.txtfilter.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtfilter.CustomButton.UseSelectable = true;
-            this.txtfilter.Icon = global::PSMS.Properties.Resources.searchicon;
-            this.txtfilter.Lines = new string[0];
-            this.txtfilter.Location = new System.Drawing.Point(763, 73);
-            this.txtfilter.Margin = new System.Windows.Forms.Padding(4);
-            this.txtfilter.MaxLength = 32767;
-            this.txtfilter.Name = "txtfilter";
-            this.txtfilter.PasswordChar = '\0';
-            this.txtfilter.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtfilter.SelectedText = "";
-            this.txtfilter.SelectionLength = 0;
-            this.txtfilter.SelectionStart = 0;
-            this.txtfilter.ShortcutsEnabled = true;
-            this.txtfilter.ShowButton = true;
-            this.txtfilter.Size = new System.Drawing.Size(156, 28);
-            this.txtfilter.TabIndex = 124;
-            this.txtfilter.UseSelectable = true;
-            this.txtfilter.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtfilter.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.txtfilter.ButtonClick += new MetroFramework.Controls.MetroTextBox.ButClick(this.txtfilter_ButtonClick);
-            this.txtfilter.TextChanged += new System.EventHandler(this.txtfilter_TextChanged);
-            this.txtfilter.Click += new System.EventHandler(this.txtfilter_Click);
-            this.txtfilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtfilter_KeyPress);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Code",
-            "EmployeeNameEN",
-            "EmployeeNameKH"});
-            this.comboBox1.Location = new System.Drawing.Point(607, 76);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(147, 24);
-            this.comboBox1.TabIndex = 123;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(540, 79);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 17);
-            this.label1.TabIndex = 122;
-            this.label1.Text = "Filter By";
-            // 
-            // employeeDetailsBindingSource
-            // 
-            this.employeeDetailsBindingSource.DataMember = "EmployeeDetails";
-            this.employeeDetailsBindingSource.DataSource = this.pSMS2DataSet2;
-            // 
-            // employeeDetailsTableAdapter
-            // 
-            this.employeeDetailsTableAdapter.ClearBeforeFill = true;
             // 
             // Code
             // 
@@ -1173,11 +1105,81 @@
             this.dataGridViewTextBoxColumn14.HeaderText = "JoinDate";
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             // 
+            // employeeDetailsBindingSource
+            // 
+            this.employeeDetailsBindingSource.DataMember = "EmployeeDetails";
+            this.employeeDetailsBindingSource.DataSource = this.pSMS2DataSet2;
+            // 
+            // txtfilter
+            // 
+            // 
+            // 
+            // 
+            this.txtfilter.CustomButton.Image = null;
+            this.txtfilter.CustomButton.Location = new System.Drawing.Point(130, 2);
+            this.txtfilter.CustomButton.Margin = new System.Windows.Forms.Padding(4);
+            this.txtfilter.CustomButton.Name = "";
+            this.txtfilter.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtfilter.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtfilter.CustomButton.TabIndex = 1;
+            this.txtfilter.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtfilter.CustomButton.UseSelectable = true;
+            this.txtfilter.Icon = global::PSMS.Properties.Resources.searchicon;
+            this.txtfilter.Lines = new string[0];
+            this.txtfilter.Location = new System.Drawing.Point(763, 73);
+            this.txtfilter.Margin = new System.Windows.Forms.Padding(4);
+            this.txtfilter.MaxLength = 32767;
+            this.txtfilter.Name = "txtfilter";
+            this.txtfilter.PasswordChar = '\0';
+            this.txtfilter.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtfilter.SelectedText = "";
+            this.txtfilter.SelectionLength = 0;
+            this.txtfilter.SelectionStart = 0;
+            this.txtfilter.ShortcutsEnabled = true;
+            this.txtfilter.ShowButton = true;
+            this.txtfilter.Size = new System.Drawing.Size(156, 28);
+            this.txtfilter.TabIndex = 124;
+            this.txtfilter.UseSelectable = true;
+            this.txtfilter.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtfilter.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtfilter.ButtonClick += new MetroFramework.Controls.MetroTextBox.ButClick(this.txtfilter_ButtonClick);
+            this.txtfilter.TextChanged += new System.EventHandler(this.txtfilter_TextChanged);
+            this.txtfilter.Click += new System.EventHandler(this.txtfilter_Click);
+            this.txtfilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtfilter_KeyPress);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Code",
+            "EmployeeNameEN",
+            "EmployeeNameKH"});
+            this.comboBox1.Location = new System.Drawing.Point(607, 76);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(147, 24);
+            this.comboBox1.TabIndex = 123;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(540, 79);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 17);
+            this.label1.TabIndex = 122;
+            this.label1.Text = "Filter By";
+            // 
+            // employeeDetailsTableAdapter
+            // 
+            this.employeeDetailsTableAdapter.ClearBeforeFill = true;
+            // 
             // frmEmployeeDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1120, 591);
+            this.ClientSize = new System.Drawing.Size(1120, 640);
             this.Controls.Add(this.txtfilter);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
@@ -1213,6 +1215,8 @@
             this.Controls.Add(this.Join_date);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmEmployeeDetail";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "EmployeeDetail";

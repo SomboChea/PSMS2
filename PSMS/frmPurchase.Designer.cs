@@ -92,6 +92,11 @@
             this.tableAdapterManager1 = new PSMS.EmpDataSetTableAdapters.TableAdapterManager();
             this.purchaseDetailTableAdapter = new PSMS.PurchaseDetailTableAdapters.PurchaseDetailTableAdapter();
             this.tableAdapterManager2 = new PSMS.PurchaseDetailTableAdapters.TableAdapterManager();
+            this.pSMS2DataSet2 = new PSMS.PSMS2DataSet2();
+            this.supplierBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.supplierTableAdapter1 = new PSMS.PSMS2DataSet2TableAdapters.SupplierTableAdapter();
+            this.viewSupplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.viewSupplierTableAdapter = new PSMS.PSMS2DataSet2TableAdapters.viewSupplierTableAdapter();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             phoneLabel = new System.Windows.Forms.Label();
@@ -112,15 +117,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.empDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseDetailDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pSMS2DataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewSupplierBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label2.Location = new System.Drawing.Point(167, 449);
+            label2.Location = new System.Drawing.Point(223, 553);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(35, 20);
+            label2.Size = new System.Drawing.Size(45, 25);
             label2.TabIndex = 29;
             label2.Text = "Qty:";
             // 
@@ -128,9 +137,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label1.Location = new System.Drawing.Point(121, 166);
+            label1.Location = new System.Drawing.Point(161, 204);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(51, 20);
+            label1.Size = new System.Drawing.Size(66, 25);
             label1.TabIndex = 25;
             label1.Text = "Brand:";
             // 
@@ -138,9 +148,10 @@
             // 
             phoneLabel.AutoSize = true;
             phoneLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            phoneLabel.Location = new System.Drawing.Point(30, 70);
+            phoneLabel.Location = new System.Drawing.Point(40, 86);
+            phoneLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new System.Drawing.Size(53, 20);
+            phoneLabel.Size = new System.Drawing.Size(70, 25);
             phoneLabel.TabIndex = 22;
             phoneLabel.Text = "Phone:";
             // 
@@ -148,9 +159,10 @@
             // 
             addressLabel.AutoSize = true;
             addressLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            addressLabel.Location = new System.Drawing.Point(20, 114);
+            addressLabel.Location = new System.Drawing.Point(27, 140);
+            addressLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             addressLabel.Name = "addressLabel";
-            addressLabel.Size = new System.Drawing.Size(65, 20);
+            addressLabel.Size = new System.Drawing.Size(83, 25);
             addressLabel.TabIndex = 21;
             addressLabel.Text = "Address:";
             // 
@@ -158,9 +170,10 @@
             // 
             dateLabel.AutoSize = true;
             dateLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dateLabel.Location = new System.Drawing.Point(660, 70);
+            dateLabel.Location = new System.Drawing.Point(880, 86);
+            dateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             dateLabel.Name = "dateLabel";
-            dateLabel.Size = new System.Drawing.Size(44, 20);
+            dateLabel.Size = new System.Drawing.Size(55, 25);
             dateLabel.TabIndex = 12;
             dateLabel.Text = "Date:";
             // 
@@ -168,9 +181,10 @@
             // 
             empIDLabel.AutoSize = true;
             empIDLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            empIDLabel.Location = new System.Drawing.Point(660, 117);
+            empIDLabel.Location = new System.Drawing.Point(880, 144);
+            empIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             empIDLabel.Name = "empIDLabel";
-            empIDLabel.Size = new System.Drawing.Size(61, 20);
+            empIDLabel.Size = new System.Drawing.Size(76, 25);
             empIDLabel.TabIndex = 10;
             empIDLabel.Text = "Emp ID:";
             // 
@@ -178,9 +192,10 @@
             // 
             cusIDLabel.AutoSize = true;
             cusIDLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            cusIDLabel.Location = new System.Drawing.Point(12, 26);
+            cusIDLabel.Location = new System.Drawing.Point(16, 32);
+            cusIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             cusIDLabel.Name = "cusIDLabel";
-            cusIDLabel.Size = new System.Drawing.Size(71, 20);
+            cusIDLabel.Size = new System.Drawing.Size(91, 25);
             cusIDLabel.TabIndex = 4;
             cusIDLabel.Text = "Supplier :";
             // 
@@ -188,9 +203,10 @@
             // 
             invoiceCodeLabel.AutoSize = true;
             invoiceCodeLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            invoiceCodeLabel.Location = new System.Drawing.Point(660, 25);
+            invoiceCodeLabel.Location = new System.Drawing.Point(880, 31);
+            invoiceCodeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             invoiceCodeLabel.Name = "invoiceCodeLabel";
-            invoiceCodeLabel.Size = new System.Drawing.Size(109, 20);
+            invoiceCodeLabel.Size = new System.Drawing.Size(142, 25);
             invoiceCodeLabel.TabIndex = 2;
             invoiceCodeLabel.Text = "Purchase Code:";
             // 
@@ -198,9 +214,10 @@
             // 
             paymentLabel.AutoSize = true;
             paymentLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            paymentLabel.Location = new System.Drawing.Point(594, 553);
+            paymentLabel.Location = new System.Drawing.Point(792, 681);
+            paymentLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             paymentLabel.Name = "paymentLabel";
-            paymentLabel.Size = new System.Drawing.Size(72, 20);
+            paymentLabel.Size = new System.Drawing.Size(93, 25);
             paymentLabel.TabIndex = 32;
             paymentLabel.Text = " Payment:";
             // 
@@ -208,9 +225,10 @@
             // 
             totalPriceLabel.AutoSize = true;
             totalPriceLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            totalPriceLabel.Location = new System.Drawing.Point(364, 555);
+            totalPriceLabel.Location = new System.Drawing.Point(485, 683);
+            totalPriceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             totalPriceLabel.Name = "totalPriceLabel";
-            totalPriceLabel.Size = new System.Drawing.Size(81, 20);
+            totalPriceLabel.Size = new System.Drawing.Size(103, 25);
             totalPriceLabel.TabIndex = 35;
             totalPriceLabel.Text = "Total Price:";
             // 
@@ -218,9 +236,10 @@
             // 
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label3.Location = new System.Drawing.Point(812, 553);
+            label3.Location = new System.Drawing.Point(1083, 681);
+            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(64, 20);
+            label3.Size = new System.Drawing.Size(82, 25);
             label3.TabIndex = 36;
             label3.Text = "Balance:";
             // 
@@ -302,9 +321,10 @@
             this.BalanceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BalanceLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.BalanceLabel.ForeColor = System.Drawing.Color.Red;
-            this.BalanceLabel.Location = new System.Drawing.Point(888, 553);
+            this.BalanceLabel.Location = new System.Drawing.Point(1184, 681);
+            this.BalanceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.BalanceLabel.Name = "BalanceLabel";
-            this.BalanceLabel.Size = new System.Drawing.Size(114, 19);
+            this.BalanceLabel.Size = new System.Drawing.Size(152, 23);
             this.BalanceLabel.TabIndex = 28;
             this.BalanceLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
@@ -312,18 +332,20 @@
             // 
             this.paymentLabel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.paymentLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.paymentLabel1.Location = new System.Drawing.Point(670, 553);
+            this.paymentLabel1.Location = new System.Drawing.Point(893, 681);
+            this.paymentLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.paymentLabel1.Name = "paymentLabel1";
-            this.paymentLabel1.Size = new System.Drawing.Size(122, 23);
+            this.paymentLabel1.Size = new System.Drawing.Size(163, 28);
             this.paymentLabel1.TabIndex = 34;
             // 
             // totalPriceLabel1
             // 
             this.totalPriceLabel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.totalPriceLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalPriceLabel1.Location = new System.Drawing.Point(455, 552);
+            this.totalPriceLabel1.Location = new System.Drawing.Point(607, 679);
+            this.totalPriceLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.totalPriceLabel1.Name = "totalPriceLabel1";
-            this.totalPriceLabel1.Size = new System.Drawing.Size(120, 23);
+            this.totalPriceLabel1.Size = new System.Drawing.Size(160, 28);
             this.totalPriceLabel1.TabIndex = 33;
             // 
             // metroPanel1
@@ -356,21 +378,23 @@
             this.metroPanel1.Controls.Add(this.invoiceCodeTextBox);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(21, 55);
+            this.metroPanel1.HorizontalScrollbarSize = 12;
+            this.metroPanel1.Location = new System.Drawing.Point(28, 68);
+            this.metroPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(991, 492);
+            this.metroPanel1.Size = new System.Drawing.Size(1320, 605);
             this.metroPanel1.TabIndex = 31;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
+            this.metroPanel1.VerticalScrollbarSize = 13;
             // 
             // phoneTextBox
             // 
             this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierBindingSource, "Phone", true));
-            this.phoneTextBox.Location = new System.Drawing.Point(99, 70);
+            this.phoneTextBox.Location = new System.Drawing.Point(132, 86);
+            this.phoneTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(196, 20);
+            this.phoneTextBox.Size = new System.Drawing.Size(260, 22);
             this.phoneTextBox.TabIndex = 40;
             // 
             // supplierBindingSource
@@ -386,22 +410,25 @@
             // addressTextBox
             // 
             this.addressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierBindingSource, "Address", true));
-            this.addressTextBox.Location = new System.Drawing.Point(99, 113);
+            this.addressTextBox.Location = new System.Drawing.Point(132, 139);
+            this.addressTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new System.Drawing.Size(196, 20);
+            this.addressTextBox.Size = new System.Drawing.Size(260, 22);
             this.addressTextBox.TabIndex = 39;
             // 
             // suIDComboBox
             // 
             this.suIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierBindingSource, "SuFNEN", true));
-            this.suIDComboBox.DataSource = this.supplierBindingSource;
-            this.suIDComboBox.DisplayMember = "SuFNEN";
+            this.suIDComboBox.DataSource = this.viewSupplierBindingSource;
+            this.suIDComboBox.DisplayMember = "SupplierName";
             this.suIDComboBox.FormattingEnabled = true;
-            this.suIDComboBox.Location = new System.Drawing.Point(99, 26);
+            this.suIDComboBox.Location = new System.Drawing.Point(132, 32);
+            this.suIDComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.suIDComboBox.Name = "suIDComboBox";
-            this.suIDComboBox.Size = new System.Drawing.Size(121, 21);
+            this.suIDComboBox.Size = new System.Drawing.Size(260, 24);
             this.suIDComboBox.TabIndex = 38;
             this.suIDComboBox.ValueMember = "SuID";
+            this.suIDComboBox.SelectedIndexChanged += new System.EventHandler(this.suIDComboBox_SelectedIndexChanged);
             // 
             // dtGvBuy
             // 
@@ -420,11 +447,12 @@
             this.unitpriceDataGridViewTextBoxColumn,
             this.salepriceDataGridViewTextBoxColumn1});
             this.dtGvBuy.DataSource = this.purchaseDetailBindingSource;
-            this.dtGvBuy.Location = new System.Drawing.Point(526, 209);
+            this.dtGvBuy.Location = new System.Drawing.Point(701, 257);
+            this.dtGvBuy.Margin = new System.Windows.Forms.Padding(4);
             this.dtGvBuy.MultiSelect = false;
             this.dtGvBuy.Name = "dtGvBuy";
             this.dtGvBuy.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dtGvBuy.Size = new System.Drawing.Size(441, 220);
+            this.dtGvBuy.Size = new System.Drawing.Size(588, 271);
             this.dtGvBuy.TabIndex = 37;
             // 
             // pIDDataGridViewTextBoxColumn1
@@ -485,9 +513,10 @@
             this.empIDComboBox.DataSource = this.employeeBindingSource;
             this.empIDComboBox.DisplayMember = "EmpFNEN";
             this.empIDComboBox.FormattingEnabled = true;
-            this.empIDComboBox.Location = new System.Drawing.Point(727, 117);
+            this.empIDComboBox.Location = new System.Drawing.Point(969, 144);
+            this.empIDComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.empIDComboBox.Name = "empIDComboBox";
-            this.empIDComboBox.Size = new System.Drawing.Size(121, 21);
+            this.empIDComboBox.Size = new System.Drawing.Size(160, 24);
             this.empIDComboBox.TabIndex = 36;
             this.empIDComboBox.ValueMember = "EmpID";
             // 
@@ -504,9 +533,10 @@
             // btnPurchase
             // 
             this.btnPurchase.ActiveControl = null;
-            this.btnPurchase.Location = new System.Drawing.Point(865, 436);
+            this.btnPurchase.Location = new System.Drawing.Point(1153, 537);
+            this.btnPurchase.Margin = new System.Windows.Forms.Padding(4);
             this.btnPurchase.Name = "btnPurchase";
-            this.btnPurchase.Size = new System.Drawing.Size(101, 38);
+            this.btnPurchase.Size = new System.Drawing.Size(135, 47);
             this.btnPurchase.TabIndex = 20;
             this.btnPurchase.Text = "Purchase";
             this.btnPurchase.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -516,9 +546,10 @@
             // btnClear
             // 
             this.btnClear.ActiveControl = null;
-            this.btnClear.Location = new System.Drawing.Point(865, 117);
+            this.btnClear.Location = new System.Drawing.Point(1153, 144);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(101, 38);
+            this.btnClear.Size = new System.Drawing.Size(135, 47);
             this.btnClear.TabIndex = 32;
             this.btnClear.Text = "Clear";
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -528,9 +559,10 @@
             // btnManage
             // 
             this.btnManage.ActiveControl = null;
-            this.btnManage.Location = new System.Drawing.Point(640, 436);
+            this.btnManage.Location = new System.Drawing.Point(853, 537);
+            this.btnManage.Margin = new System.Windows.Forms.Padding(4);
             this.btnManage.Name = "btnManage";
-            this.btnManage.Size = new System.Drawing.Size(101, 38);
+            this.btnManage.Size = new System.Drawing.Size(135, 47);
             this.btnManage.TabIndex = 31;
             this.btnManage.Text = "Manage";
             this.btnManage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -540,19 +572,19 @@
             // txtQty
             // 
             this.txtQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQty.Location = new System.Drawing.Point(209, 440);
-            this.txtQty.Margin = new System.Windows.Forms.Padding(2);
+            this.txtQty.Location = new System.Drawing.Point(279, 542);
+            this.txtQty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtQty.Multiline = true;
             this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(150, 34);
+            this.txtQty.Size = new System.Drawing.Size(199, 41);
             this.txtQty.TabIndex = 28;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(362, 440);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Location = new System.Drawing.Point(483, 542);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(124, 33);
+            this.btnAdd.Size = new System.Drawing.Size(165, 41);
             this.btnAdd.TabIndex = 26;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -561,10 +593,10 @@
             // modelComboBox
             // 
             this.modelComboBox.FormattingEnabled = true;
-            this.modelComboBox.Location = new System.Drawing.Point(177, 165);
-            this.modelComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.modelComboBox.Location = new System.Drawing.Point(236, 203);
+            this.modelComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.modelComboBox.Name = "modelComboBox";
-            this.modelComboBox.Size = new System.Drawing.Size(147, 21);
+            this.modelComboBox.Size = new System.Drawing.Size(195, 24);
             this.modelComboBox.TabIndex = 24;
             this.modelComboBox.SelectedIndexChanged += new System.EventHandler(this.modelComboBox_SelectedIndexChanged);
             // 
@@ -586,11 +618,12 @@
             this.unitpriceDataGridViewTextBoxColumn1,
             this.salepriceDataGridViewTextBoxColumn});
             this.PurchaseDetailDataGridView.DataSource = this.purchaseDetailBindingSource;
-            this.PurchaseDetailDataGridView.Location = new System.Drawing.Point(46, 209);
+            this.PurchaseDetailDataGridView.Location = new System.Drawing.Point(61, 257);
+            this.PurchaseDetailDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.PurchaseDetailDataGridView.MultiSelect = false;
             this.PurchaseDetailDataGridView.Name = "PurchaseDetailDataGridView";
             this.PurchaseDetailDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.PurchaseDetailDataGridView.Size = new System.Drawing.Size(441, 220);
+            this.PurchaseDetailDataGridView.Size = new System.Drawing.Size(588, 271);
             this.PurchaseDetailDataGridView.TabIndex = 21;
             // 
             // pIDDataGridViewTextBoxColumn
@@ -638,9 +671,10 @@
             // btnPrint
             // 
             this.btnPrint.ActiveControl = null;
-            this.btnPrint.Location = new System.Drawing.Point(525, 435);
+            this.btnPrint.Location = new System.Drawing.Point(700, 535);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(101, 38);
+            this.btnPrint.Size = new System.Drawing.Size(135, 47);
             this.btnPrint.TabIndex = 21;
             this.btnPrint.Text = "Print";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -650,9 +684,10 @@
             // btnPayment
             // 
             this.btnPayment.ActiveControl = null;
-            this.btnPayment.Location = new System.Drawing.Point(752, 436);
+            this.btnPayment.Location = new System.Drawing.Point(1003, 537);
+            this.btnPayment.Margin = new System.Windows.Forms.Padding(4);
             this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(101, 38);
+            this.btnPayment.Size = new System.Drawing.Size(135, 47);
             this.btnPayment.TabIndex = 20;
             this.btnPayment.Text = "Payment";
             this.btnPayment.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -664,19 +699,21 @@
             this.dateDateTimePicker.Enabled = false;
             this.dateDateTimePicker.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDateTimePicker.Location = new System.Drawing.Point(713, 65);
+            this.dateDateTimePicker.Location = new System.Drawing.Point(951, 80);
+            this.dateDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.dateDateTimePicker.Name = "dateDateTimePicker";
-            this.dateDateTimePicker.Size = new System.Drawing.Size(254, 27);
+            this.dateDateTimePicker.Size = new System.Drawing.Size(337, 32);
             this.dateDateTimePicker.TabIndex = 13;
             // 
             // invoiceCodeTextBox
             // 
             this.invoiceCodeTextBox.Enabled = false;
             this.invoiceCodeTextBox.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.invoiceCodeTextBox.Location = new System.Drawing.Point(784, 22);
+            this.invoiceCodeTextBox.Location = new System.Drawing.Point(1045, 27);
+            this.invoiceCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.invoiceCodeTextBox.Name = "invoiceCodeTextBox";
             this.invoiceCodeTextBox.ReadOnly = true;
-            this.invoiceCodeTextBox.Size = new System.Drawing.Size(100, 27);
+            this.invoiceCodeTextBox.Size = new System.Drawing.Size(132, 32);
             this.invoiceCodeTextBox.TabIndex = 3;
             // 
             // supplierTableAdapter
@@ -709,11 +746,35 @@
             this.tableAdapterManager2.PurchaseDetailTableAdapter = this.purchaseDetailTableAdapter;
             this.tableAdapterManager2.UpdateOrder = PSMS.PurchaseDetailTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // pSMS2DataSet2
+            // 
+            this.pSMS2DataSet2.DataSetName = "PSMS2DataSet2";
+            this.pSMS2DataSet2.EnforceConstraints = false;
+            this.pSMS2DataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // supplierBindingSource1
+            // 
+            this.supplierBindingSource1.DataMember = "Supplier";
+            this.supplierBindingSource1.DataSource = this.pSMS2DataSet2;
+            // 
+            // supplierTableAdapter1
+            // 
+            this.supplierTableAdapter1.ClearBeforeFill = true;
+            // 
+            // viewSupplierBindingSource
+            // 
+            this.viewSupplierBindingSource.DataMember = "viewSupplier";
+            this.viewSupplierBindingSource.DataSource = this.pSMS2DataSet2;
+            // 
+            // viewSupplierTableAdapter
+            // 
+            this.viewSupplierTableAdapter.ClearBeforeFill = true;
+            // 
             // frmPurchase
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1027, 586);
+            this.ClientSize = new System.Drawing.Size(1369, 721);
             this.Controls.Add(label3);
             this.Controls.Add(totalPriceLabel);
             this.Controls.Add(paymentLabel);
@@ -722,7 +783,9 @@
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.BalanceLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmPurchase";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Purchase";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPurchase_FormClosing);
             this.Load += new System.EventHandler(this.frmPurchase_Load);
@@ -736,6 +799,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.empDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseDetailDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pSMS2DataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewSupplierBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -794,5 +860,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitpriceDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn salepriceDataGridViewTextBoxColumn;
+        private PSMS2DataSet2 pSMS2DataSet2;
+        private System.Windows.Forms.BindingSource supplierBindingSource1;
+        private PSMS2DataSet2TableAdapters.SupplierTableAdapter supplierTableAdapter1;
+        private System.Windows.Forms.BindingSource viewSupplierBindingSource;
+        private PSMS2DataSet2TableAdapters.viewSupplierTableAdapter viewSupplierTableAdapter;
     }
 }

@@ -27,7 +27,7 @@ namespace PSMS
             empFun = new frmEmployeeFunction();
             dataGridView1.MultiSelect = false;
 
-            Control[] tempRequire = { txtEn1, txtEn2, txtEmail, txtphone,txtPhone2, txtKh1, txtKh2 };
+            Control[] tempRequire = { txtEn1, txtEn2, txtEmail, txtphone};
             requirement = tempRequire;
             txtphone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             txtPhone2.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
@@ -41,7 +41,7 @@ namespace PSMS
             redline.Tag = "remove";
             redline.Location = new Point(ctr.Location.X - 2, ctr.Location.Y - 2);
             redline.Size = new Size(ctr.Size.Width + 4, ctr.Size.Height + 4);
-            if (ctr.Text.Trim() == "")
+            if (ctr.Text.Trim() == "" || ctr.Text == ph_em || ctr.Text == ph_en1 || ctr.Text == ph_en2)
             {
                 redline.BackColor = Color.Red;
                 end = true;
@@ -78,7 +78,10 @@ namespace PSMS
                 cbBGender.SelectedIndex = 0;
                 cbBStatus.SelectedIndex = 0;
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+                MessageBox.Show("Please add a customer!", "No Customer!");
+            }
 
             Opendate.Value = DateTime.Now;
 
@@ -211,7 +214,9 @@ namespace PSMS
             txtEmail.Text = "";
             lblBalance.Text = "";
             cbBStatus.SelectedIndex = 0;
-            cbbEmp2.SelectedIndex = 0;
+
+            try { cbbEmp2.SelectedIndex = 0; } catch (Exception) { }
+            
 
             Opendate.Value = DateTime.Now;
 

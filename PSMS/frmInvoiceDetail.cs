@@ -14,6 +14,8 @@ namespace PSMS
             InitializeComponent();
             Invfun = new frmInvoiceFunction();
             btnNew.Text = "Pay";
+
+            comboBox1.SelectedIndex = 0;
         }
 
         private void frmInvoiceDetail_Load(object sender, EventArgs e)
@@ -106,8 +108,8 @@ namespace PSMS
 
             try
             {
-                string sql = "Select * from viewInvoice2 ";
-                sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
+                string sql = "Select * from viewInvoice3 ";
+                sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like '%" + txtfilter.Text.Trim() + "%'";
                 dgInv.DataSource = Invfun.GetData(sql);
             }
             catch(Exception) { }

@@ -209,7 +209,7 @@ namespace PSMS
                         totalPriceLabel1.Text = totalPrice.ToString();
                         dtGvBuy.DataSource = dt;
 
-                        selectedRow.Cells[4].Value = (int.Parse(selectedRow.Cells[4].Value + "") + qty) + "";
+                        //selectedRow.Cells[4].Value = (int.Parse(selectedRow.Cells[4].Value + "") - qty) + "";
                         
                     }
                     else
@@ -240,8 +240,7 @@ namespace PSMS
                 float payment, totalPrice = 0;
                 payment = Helper.ifnull(paymentLabel1.Text) ? 0 : float.Parse(paymentLabel1.Text);
                 totalPrice = float.Parse(totalPriceLabel1.Text);
-
-
+                
 
                 if (dtGvBuy.Rows.Count == 0)
                 {
@@ -260,8 +259,6 @@ namespace PSMS
                         cmd.Parameters.AddWithValue("@TotalPrice", totalPrice);
                         cmd.Parameters.AddWithValue("@Payment", payment);
                        
-
-
                         List<StructInvocieDetail> invoiceDetails = new List<StructInvocieDetail>();
                         double profit = 0;
                         foreach (DataGridViewRow row in dtGvBuy.Rows)
@@ -279,10 +276,9 @@ namespace PSMS
                         {
                             cmd.Parameters.AddWithValue("@PaymentVerify", "1");
                         
-
                             if (payment > totalPrice)
                             {
-                                MetroMessageBox.Show(this, "Purchase Successful Change Back " + (payment - totalPrice), "Purchase!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MetroMessageBox.Show(this, "Purchase Successful Change Back $" + (payment - totalPrice), "Purchase!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                         else
@@ -290,7 +286,13 @@ namespace PSMS
                             cmd.Parameters.AddWithValue("@PaymentVerify", "0");
                            
                         } 
+
                         balance = totalPrice - payment;
+                        if(balance<=0)
+                        {
+                            balance = 0;
+                        }
+
                         cmd.Parameters.AddWithValue("@Balance", balance);
                         float oldbalance = float.Parse(Connection.ExecuteScalar("Select Balance from Customers where CusID=" + cusIDComboBox.SelectedValue) + "");
                         balance = balance + oldbalance;
@@ -381,7 +383,7 @@ namespace PSMS
 
         private void addCurrentInvoiceToPrint(string code)
         {
-            DataSet ds = Helper.getDataSet("SELECT * FROM viewInvoice WHERE InvoiceCode = '" + code + "';");
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewInvoice3 WHERE Code = '" + code + "';");
             DataTable dt = ds.Tables[0];
 
             listReport = new List<reportInvoice>();
@@ -390,13 +392,13 @@ namespace PSMS
             {
                 reportInvoice dataList = new reportInvoice();
 
-                dataList.InvoiceCode = dt.Rows[i]["InvoiceCode"].ToString();
+                dataList.InvoiceCode = dt.Rows[i]["Code"].ToString();
                 dataList.ProCode = dt.Rows[i]["ProCode"].ToString();
-                dataList.ProName = dt.Rows[i]["ProName"].ToString();
+                dataList.ProName = dt.Rows[i]["ProductName"].ToString();
                 dataList.Quantity = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
                 dataList.Price = Convert.ToDouble(dt.Rows[i]["Price"].ToString());
                 dataList.Amount = Convert.ToDouble(dt.Rows[i]["Amount"].ToString());
-                dataList.Sellby = dt.Rows[i]["Sellby"].ToString();
+                dataList.Sellby = dt.Rows[i]["EmployeeName"].ToString();
                 dataList.CustomerName = dt.Rows[i]["CustomerName"].ToString();
                 dataList.Phone = dt.Rows[i]["Phone"].ToString();
                 dataList.Address = dt.Rows[i]["Address"].ToString();

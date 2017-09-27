@@ -157,6 +157,10 @@ namespace PSMS
 
         private void frmPurchase_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'pSMS2DataSet2.viewSupplier' table. You can move, or remove it, as needed.
+            this.viewSupplierTableAdapter.Fill(this.pSMS2DataSet2.viewSupplier);
+            // TODO: This line of code loads data into the 'pSMS2DataSet2.Supplier' table. You can move, or remove it, as needed.
+            this.supplierTableAdapter1.Fill(this.pSMS2DataSet2.Supplier);
             // TODO: This line of code loads data into the 'purchaseDetail._PurchaseDetail' table. You can move, or remove it, as needed.
             //this.purchaseDetailTableAdapter.Fill(this.purchaseDetail._PurchaseDetail);
             // TODO: This line of code loads data into the 'empDataSet.Employee' table. You can move, or remove it, as needed.
@@ -264,6 +268,12 @@ namespace PSMS
                     cmd.Parameters.AddWithValue("@Total", totalPriceLabel1.Text);
 
                     balance = totalPirce - payment;
+                    if (balance < 0)
+                    {
+                        MessageBox.Show("Payback : $" + Math.Abs(balance), "Payback Money!");
+                        balance = 0;
+                    }
+
                     cmd.Parameters.AddWithValue("@Balance", balance);
 
                     cmd.ExecuteNonQuery();
@@ -310,7 +320,7 @@ namespace PSMS
 
                     MetroMessageBox.Show(this, "New Purchase Save", "Alert!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    //btnPrint.Enabled = true;
+                    btnPrint.Enabled = true;
                 }
             }
             catch(Exception ex) {
@@ -328,7 +338,7 @@ namespace PSMS
         List<reportPurchaseRenew> dataPurchases;
         private void addCurrentPurchaseToPrint(string code)
         {
-            DataSet ds = Helper.getDataSet("SELECT * FROM viewPurchase WHERE PurCode = '" + code + "';");
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewPurchase WHERE Code = '" + code + "';");
             DataTable dt = ds.Tables[0];
 
             dataPurchases = new List<reportPurchaseRenew>();
@@ -337,12 +347,12 @@ namespace PSMS
             {
                 reportPurchaseRenew dataList = new reportPurchaseRenew();
 
-                dataList.PurCode = dt.Rows[i]["PurCode"].ToString();
+                dataList.PurCode = dt.Rows[i]["Code"].ToString();
                 dataList.PurDate = dt.Rows[i]["PurDate"].ToString();
-                dataList.ProName = dt.Rows[i]["ProName"].ToString();
+                dataList.ProName = dt.Rows[i]["ProductName"].ToString();
                 dataList.Quantity = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
                 dataList.UnitPrice = Convert.ToDouble(dt.Rows[i]["Unitprice"].ToString());
-                dataList.Payment = Convert.ToDouble(dt.Rows[i]["Payment"].ToString());
+                dataList.Payment = Convert.ToDouble(dt.Rows[i]["Paid"].ToString());
                 dataList.Balance = Convert.ToDouble(dt.Rows[i]["Balance"].ToString());
                 dataList.SupName = dt.Rows[i]["SupplierName"].ToString();
                 dataList.EmpName = dt.Rows[i]["EmployeeName"].ToString();
@@ -364,6 +374,11 @@ namespace PSMS
                 dtGvBuy.Rows.Remove(temp);
             if (dtGvBuy.Rows.Count > 0)
                 btnClear_Click(this, null);
+        }
+
+        private void suIDComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

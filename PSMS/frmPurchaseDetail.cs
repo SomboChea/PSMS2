@@ -22,7 +22,7 @@ namespace PSMS
             btnDel.Visible = false;
             btnSave.Visible = false;
             itemPanel1.Visible = false;
-
+            
             purFun = new frmPurchaseFunction();
         }
 
@@ -87,8 +87,8 @@ namespace PSMS
         {
             try
             {
-                string sql = "Select * from viewPurchase2 ";
-                sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
+                string sql = "Select * from viewPurchase3 ";
+                sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like '%" + txtfilter.Text.Trim() + "%'";
                 dgData.DataSource = purFun.GetData(sql);
             }
             catch(Exception) { }

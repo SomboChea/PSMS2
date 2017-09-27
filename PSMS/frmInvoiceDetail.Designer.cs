@@ -94,7 +94,8 @@
             this.dgInv.EnableHeadersVisualStyles = false;
             this.dgInv.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgInv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgInv.Location = new System.Drawing.Point(14, 88);
+            this.dgInv.Location = new System.Drawing.Point(19, 108);
+            this.dgInv.Margin = new System.Windows.Forms.Padding(4);
             this.dgInv.MultiSelect = false;
             this.dgInv.Name = "dgInv";
             this.dgInv.ReadOnly = true;
@@ -109,7 +110,7 @@
             this.dgInv.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgInv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgInv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgInv.Size = new System.Drawing.Size(671, 338);
+            this.dgInv.Size = new System.Drawing.Size(895, 416);
             this.dgInv.TabIndex = 0;
             this.dgInv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgInv_CellContentClick);
             this.dgInv.Click += new System.EventHandler(this.dgInv_Click);
@@ -118,9 +119,10 @@
             // 
             this.metroLabel19.AutoSize = true;
             this.metroLabel19.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel19.Location = new System.Drawing.Point(23, 441);
+            this.metroLabel19.Location = new System.Drawing.Point(31, 543);
+            this.metroLabel19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel19.Name = "metroLabel19";
-            this.metroLabel19.Size = new System.Drawing.Size(357, 19);
+            this.metroLabel19.Size = new System.Drawing.Size(373, 20);
             this.metroLabel19.TabIndex = 25;
             this.metroLabel19.Text = "Payment Verify Note: 0 = Not Paid Yet, 1 = Full Paid";
             // 
@@ -138,9 +140,10 @@
             this.itemContainer2,
             this.itemContainer3});
             this.itemPanel1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemPanel1.Location = new System.Drawing.Point(712, 88);
+            this.itemPanel1.Location = new System.Drawing.Point(922, 108);
+            this.itemPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.itemPanel1.Name = "itemPanel1";
-            this.itemPanel1.Size = new System.Drawing.Size(105, 214);
+            this.itemPanel1.Size = new System.Drawing.Size(109, 91);
             this.itemPanel1.TabIndex = 30;
             this.itemPanel1.Text = "itemPanel1";
             // 
@@ -238,17 +241,19 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(377, 53);
+            this.metroLabel1.Location = new System.Drawing.Point(503, 65);
+            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(68, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(73, 20);
             this.metroLabel1.TabIndex = 35;
             this.metroLabel1.Text = "Search by";
             // 
             // txtfilter
             // 
-            this.txtfilter.Location = new System.Drawing.Point(555, 52);
+            this.txtfilter.Location = new System.Drawing.Point(740, 64);
+            this.txtfilter.Margin = new System.Windows.Forms.Padding(4);
             this.txtfilter.Name = "txtfilter";
-            this.txtfilter.Size = new System.Drawing.Size(141, 20);
+            this.txtfilter.Size = new System.Drawing.Size(174, 22);
             this.txtfilter.TabIndex = 34;
             this.txtfilter.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.txtfilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtfilter_KeyPress);
@@ -256,143 +261,159 @@
             // Iabel1
             // 
             this.Iabel1.AutoSize = true;
-            this.Iabel1.Location = new System.Drawing.Point(217, 56);
+            this.Iabel1.Location = new System.Drawing.Point(289, 69);
+            this.Iabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Iabel1.Name = "Iabel1";
-            this.Iabel1.Size = new System.Drawing.Size(33, 13);
+            this.Iabel1.Size = new System.Drawing.Size(39, 17);
             this.Iabel1.TabIndex = 36;
             this.Iabel1.Text = "InvID";
             this.Iabel1.Visible = false;
             // 
             // txtInvID
             // 
-            this.txtInvID.Location = new System.Drawing.Point(267, 53);
+            this.txtInvID.Location = new System.Drawing.Point(356, 65);
+            this.txtInvID.Margin = new System.Windows.Forms.Padding(4);
             this.txtInvID.Name = "txtInvID";
-            this.txtInvID.Size = new System.Drawing.Size(100, 20);
+            this.txtInvID.Size = new System.Drawing.Size(132, 22);
             this.txtInvID.TabIndex = 37;
             this.txtInvID.Visible = false;
             // 
             // txtInvCode
             // 
-            this.txtInvCode.Location = new System.Drawing.Point(205, 148);
+            this.txtInvCode.Location = new System.Drawing.Point(273, 182);
+            this.txtInvCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtInvCode.Name = "txtInvCode";
-            this.txtInvCode.Size = new System.Drawing.Size(100, 20);
+            this.txtInvCode.Size = new System.Drawing.Size(132, 22);
             this.txtInvCode.TabIndex = 39;
             this.txtInvCode.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(155, 151);
+            this.label2.Location = new System.Drawing.Point(207, 186);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.Size = new System.Drawing.Size(59, 17);
             this.label2.TabIndex = 38;
             this.label2.Text = "InvCode";
             this.label2.Visible = false;
             // 
             // txtCusID
             // 
-            this.txtCusID.Location = new System.Drawing.Point(205, 185);
+            this.txtCusID.Location = new System.Drawing.Point(273, 228);
+            this.txtCusID.Margin = new System.Windows.Forms.Padding(4);
             this.txtCusID.Name = "txtCusID";
-            this.txtCusID.Size = new System.Drawing.Size(100, 20);
+            this.txtCusID.Size = new System.Drawing.Size(132, 22);
             this.txtCusID.TabIndex = 41;
             this.txtCusID.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(155, 188);
+            this.label3.Location = new System.Drawing.Point(207, 231);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.Size = new System.Drawing.Size(45, 17);
             this.label3.TabIndex = 40;
             this.label3.Text = "CusID";
             this.label3.Visible = false;
             // 
             // txtEmpID
             // 
-            this.txtEmpID.Location = new System.Drawing.Point(205, 211);
+            this.txtEmpID.Location = new System.Drawing.Point(273, 260);
+            this.txtEmpID.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmpID.Name = "txtEmpID";
-            this.txtEmpID.Size = new System.Drawing.Size(100, 20);
+            this.txtEmpID.Size = new System.Drawing.Size(132, 22);
             this.txtEmpID.TabIndex = 43;
             this.txtEmpID.Visible = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(155, 214);
+            this.label4.Location = new System.Drawing.Point(207, 263);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.Size = new System.Drawing.Size(49, 17);
             this.label4.TabIndex = 42;
             this.label4.Text = "EmpID";
             this.label4.Visible = false;
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(436, 144);
+            this.txtTotal.Location = new System.Drawing.Point(581, 177);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(100, 20);
+            this.txtTotal.Size = new System.Drawing.Size(132, 22);
             this.txtTotal.TabIndex = 45;
             this.txtTotal.Visible = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(155, 249);
+            this.label5.Location = new System.Drawing.Point(207, 306);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 13);
+            this.label5.Size = new System.Drawing.Size(38, 17);
             this.label5.TabIndex = 44;
             this.label5.Text = "Date";
             this.label5.Visible = false;
             // 
             // txtPayment
             // 
-            this.txtPayment.Location = new System.Drawing.Point(436, 181);
+            this.txtPayment.Location = new System.Drawing.Point(581, 223);
+            this.txtPayment.Margin = new System.Windows.Forms.Padding(4);
             this.txtPayment.Name = "txtPayment";
-            this.txtPayment.Size = new System.Drawing.Size(100, 20);
+            this.txtPayment.Size = new System.Drawing.Size(132, 22);
             this.txtPayment.TabIndex = 47;
             this.txtPayment.Visible = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(375, 151);
+            this.label6.Location = new System.Drawing.Point(500, 186);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.Size = new System.Drawing.Size(72, 17);
             this.label6.TabIndex = 46;
             this.label6.Text = "TotalPrice";
             this.label6.Visible = false;
             // 
             // txtPaymentVerify
             // 
-            this.txtPaymentVerify.Location = new System.Drawing.Point(436, 214);
+            this.txtPaymentVerify.Location = new System.Drawing.Point(581, 263);
+            this.txtPaymentVerify.Margin = new System.Windows.Forms.Padding(4);
             this.txtPaymentVerify.Name = "txtPaymentVerify";
-            this.txtPaymentVerify.Size = new System.Drawing.Size(100, 20);
+            this.txtPaymentVerify.Size = new System.Drawing.Size(132, 22);
             this.txtPaymentVerify.TabIndex = 49;
             this.txtPaymentVerify.Visible = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(375, 184);
+            this.label7.Location = new System.Drawing.Point(500, 226);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 13);
+            this.label7.Size = new System.Drawing.Size(63, 17);
             this.label7.TabIndex = 48;
             this.label7.Text = "Payment";
             this.label7.Visible = false;
             // 
             // txtBalance
             // 
-            this.txtBalance.Location = new System.Drawing.Point(436, 246);
+            this.txtBalance.Location = new System.Drawing.Point(581, 303);
+            this.txtBalance.Margin = new System.Windows.Forms.Padding(4);
             this.txtBalance.Name = "txtBalance";
-            this.txtBalance.Size = new System.Drawing.Size(100, 20);
+            this.txtBalance.Size = new System.Drawing.Size(132, 22);
             this.txtBalance.TabIndex = 51;
             this.txtBalance.Visible = false;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(375, 221);
+            this.label8.Location = new System.Drawing.Point(500, 272);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 13);
+            this.label8.Size = new System.Drawing.Size(68, 17);
             this.label8.TabIndex = 50;
             this.label8.Text = "PayVerify";
             this.label8.Visible = false;
@@ -400,18 +421,20 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(205, 243);
+            this.dateTimePicker1.Location = new System.Drawing.Point(273, 299);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(100, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(132, 22);
             this.dateTimePicker1.TabIndex = 52;
             this.dateTimePicker1.Visible = false;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(375, 253);
+            this.label9.Location = new System.Drawing.Point(500, 311);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.Size = new System.Drawing.Size(59, 17);
             this.label9.TabIndex = 53;
             this.label9.Text = "Balance";
             this.label9.Visible = false;
@@ -421,25 +444,20 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "PurCode",
-            "Date",
-            "Payment",
-            "Balance",
-            "SuEnName",
-            "EmpEnName",
-            "Total",
-            "SuKHName",
-            "EmpKHName"});
-            this.comboBox1.Location = new System.Drawing.Point(451, 52);
+            "Code",
+            "CustomerName",
+            "EmployeeName"});
+            this.comboBox1.Location = new System.Drawing.Point(601, 64);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(98, 21);
+            this.comboBox1.Size = new System.Drawing.Size(129, 24);
             this.comboBox1.TabIndex = 54;
             // 
             // frmInvoiceDetail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 480);
+            this.ClientSize = new System.Drawing.Size(1058, 591);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.dateTimePicker1);
@@ -465,8 +483,10 @@
             this.Controls.Add(this.metroLabel19);
             this.Controls.Add(this.dgInv);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmInvoiceDetail";
-            this.Text = "InvoiceDetail";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
+            this.Text = "Invoice Detail";
             this.Load += new System.EventHandler(this.frmInvoiceDetail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgInv)).EndInit();
             this.ResumeLayout(false);

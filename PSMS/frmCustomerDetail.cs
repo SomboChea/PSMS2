@@ -224,6 +224,7 @@ namespace PSMS
 
         private void frmCustomerDetail_FormClosing(object sender, FormClosingEventArgs e)
         {
+            /*
             DialogResult diag = MetroMessageBox.Show(this, "Do you Want to Save Change ? ", "MetroMessage", MessageBoxButtons.YesNo);
             if (diag == DialogResult.Yes)
             {
@@ -237,6 +238,7 @@ namespace PSMS
                     e.Cancel = true;
                 }
             }
+            */
         }
 
         private void customersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
