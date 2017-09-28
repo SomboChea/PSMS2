@@ -17,6 +17,31 @@ namespace PSMS
             InitializeComponent();           
         }
         Function func;
+
+        public reportViewer(List<supplierListReports> supReports)
+        {
+            InitializeComponent();
+            Class.FullMode.Fullscreen(this);
+
+            supplierAllReportsDoc.SetDataSource(supReports);
+            crystalReportViewer1.ReportSource = supplierAllReportsDoc;
+        }
+        public reportViewer(List<employeeListReportsPurchase> empPurchase)
+        {
+            InitializeComponent();
+            Class.FullMode.Fullscreen(this);
+
+            employeeAllReportsPurchaseDoc.SetDataSource(empPurchase);
+            crystalReportViewer1.ReportSource = employeeAllReportsPurchaseDoc;
+        }
+        public reportViewer(List<employeeListReportsInvoice> empInvoice)
+        {
+            InitializeComponent();
+            Class.FullMode.Fullscreen(this);
+
+            employeeAllReportsInvoiceDoc.SetDataSource(empInvoice);
+            crystalReportViewer1.ReportSource = employeeAllReportsInvoiceDoc;
+        }
         public reportViewer(List<reportPurchaseWeekly> list)
         {
             InitializeComponent();

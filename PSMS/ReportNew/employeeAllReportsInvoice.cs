@@ -16,14 +16,14 @@ namespace PSMS.ReportNew {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class employeeAllReports : ReportClass {
+    public class employeeAllReportsInvoice : ReportClass {
         
-        public employeeAllReports() {
+        public employeeAllReportsInvoice() {
         }
         
         public override string ResourceName {
             get {
-                return "employeeAllReports.rpt";
+                return "employeeAllReportsInvoice.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace PSMS.ReportNew {
         
         public override string FullResourceName {
             get {
-                return "PSMS.ReportNew.employeeAllReports.rpt";
+                return "PSMS.ReportNew.employeeAllReportsInvoice.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace PSMS.ReportNew {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedemployeeAllReports : Component, ICachedReport {
+    public class CachedemployeeAllReportsInvoice : Component, ICachedReport {
         
-        public CachedemployeeAllReports() {
+        public CachedemployeeAllReportsInvoice() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace PSMS.ReportNew {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            employeeAllReports rpt = new employeeAllReports();
+            employeeAllReportsInvoice rpt = new employeeAllReportsInvoice();
             rpt.Site = this.Site;
             return rpt;
         }

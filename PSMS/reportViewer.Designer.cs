@@ -37,6 +37,9 @@
             this.supplierReportDoc = new PSMS.Reports.SupplierReport();
             this.purchaseReportD = new PSMS.Reports.PurchaseReport();
             this.customerAllReportsDoc = new PSMS.ReportNew.customerAllReports();
+            this.employeeAllReportsPurchaseDoc = new PSMS.ReportNew.employeeAllReportsPurchase();
+            this.supplierAllReportsDoc = new PSMS.ReportNew.supplierAllReports();
+            this.employeeAllReportsInvoiceDoc = new PSMS.ReportNew.employeeAllReportsInvoice();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -46,7 +49,7 @@
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(27, 74);
-            this.crystalReportViewer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.crystalReportViewer1.Margin = new System.Windows.Forms.Padding(4);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.Size = new System.Drawing.Size(1466, 831);
             this.crystalReportViewer1.TabIndex = 0;
@@ -59,7 +62,7 @@
             this.ClientSize = new System.Drawing.Size(1520, 930);
             this.Controls.Add(this.crystalReportViewer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "reportViewer";
@@ -80,5 +83,8 @@
         private Reports.SupplierReport supplierReportDoc;
         private Reports.PurchaseReport purchaseReportD;
         private ReportNew.customerAllReports customerAllReportsDoc;
+        private ReportNew.employeeAllReportsPurchase employeeAllReportsPurchaseDoc;
+        private ReportNew.supplierAllReports supplierAllReportsDoc;
+        private ReportNew.employeeAllReportsInvoice employeeAllReportsInvoiceDoc;
     }
 }

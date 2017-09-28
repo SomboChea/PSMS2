@@ -72,6 +72,7 @@ namespace PSMS
 
             this.Refresh();
 
+            visiableEmployeeby(false);
             visiableFilterStock(false);
             visiableFilterDate(false);
             visiableShowby(false);
@@ -91,6 +92,7 @@ namespace PSMS
 
             this.Refresh();
 
+            visiableEmployeeby(false);
             visiableFilterStock(false);
             visiableFilterDate(false);
             visiableShowby(false);
@@ -109,10 +111,18 @@ namespace PSMS
             this.Text = "Report Employee";
             this.Refresh();
 
+            cbEmployeeby.SelectedIndex = 0;
+            visiableEmployeeby();
             visiableFilterStock(false);
             visiableFilterDate(false);
             visiableShowby(false);
 
+        }
+
+        private void visiableEmployeeby(bool tf=true)
+        {
+            cbEmployeeby.Visible = tf?true:false;
+            lbEmp.Visible = tf ? true : false;
         }
 
         //View Purchases
@@ -129,6 +139,7 @@ namespace PSMS
             this.Text = "Report Purchase";
             this.Refresh();
 
+            visiableEmployeeby(false);
             visiableFilterStock(false);
             visiableFilterDate();
             visiableShowby();
@@ -149,6 +160,7 @@ namespace PSMS
             this.Text = "Report Invoice";
             this.Refresh();
 
+            visiableEmployeeby(false);
             visiableFilterStock(false);
             visiableFilterDate();
             visiableShowby();
@@ -203,6 +215,9 @@ namespace PSMS
 
         //Details for DATA
         List<customerListReports> dataCustomerAllReports;
+        List<employeeListReportsInvoice> dataEmployeeAllReportsInvoice;
+        List<employeeListReportsPurchase> dataEmployeeAllReportsPurchase;
+        List<supplierListReports> dataSupplierAllReports;
 
         List<reportRevenueWeekly> dataRevenueweekly;
         
@@ -229,6 +244,96 @@ namespace PSMS
                 dataList.Price = Convert.ToDouble(dt.Rows[i]["Price"].ToString());
 
                 dataCustomerAllReports.Add(dataList);
+            }
+        }
+
+        private void addCurrentEmployeeListReportInvoice(string EmpCode)
+        {
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewEmployeeReportInvoice WHERE EmpCode = '" + EmpCode + "';");
+            DataTable dt = ds.Tables[0];
+
+            dataEmployeeAllReportsInvoice = new List<employeeListReportsInvoice>();
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                employeeListReportsInvoice dataList = new employeeListReportsInvoice();
+
+                dataList.Code = dt.Rows[i]["Code"].ToString();
+                dataList.EmpCode = dt.Rows[i]["EmpCode"].ToString();
+                dataList.EmployeeName = dt.Rows[i]["EmployeeName"].ToString();
+                dataList.Address = dt.Rows[i]["Address"].ToString();
+                dataList.Tel = dt.Rows[i]["Phone"].ToString();
+                dataList.Email = dt.Rows[i]["Email"].ToString();
+                dataList.ProQty = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
+                dataList.ProCode = dt.Rows[i]["ProCode"].ToString();
+                dataList.ProName = dt.Rows[i]["ProName"].ToString();
+                dataList.Date = dt.Rows[i]["Date"].ToString();
+                dataList.Price = Convert.ToDouble(dt.Rows[i]["Price"].ToString());
+                dataList.CustomerName = dt.Rows[i]["CustomerName"].ToString();
+
+                dataEmployeeAllReportsInvoice.Add(dataList);
+            }
+        }
+
+        private void addCurrentEmployeeListReportPurchase(string EmpCode)
+        {
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewEmployeeReportPurchase WHERE EmpCode = '" + EmpCode + "';");
+            DataTable dt = ds.Tables[0];
+
+            dataEmployeeAllReportsPurchase = new List<employeeListReportsPurchase>();
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                employeeListReportsPurchase dataList = new employeeListReportsPurchase();
+
+                dataList.Code = dt.Rows[i]["Code"].ToString();
+                dataList.EmpCode = dt.Rows[i]["EmpCode"].ToString();
+                dataList.EmployeeName = dt.Rows[i]["EmployeeName"].ToString();
+                dataList.Address = dt.Rows[i]["Address"].ToString();
+                dataList.Tel = dt.Rows[i]["Phone"].ToString();
+                dataList.Email = dt.Rows[i]["Email"].ToString();
+                dataList.ProQty = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
+
+                dataList.ProCode = dt.Rows[i]["ProCode"].ToString();
+                dataList.ProName = dt.Rows[i]["ProName"].ToString();
+                dataList.Date = dt.Rows[i]["Date"].ToString();
+                dataList.Price = Convert.ToDouble(dt.Rows[i]["UnitPrice"].ToString());
+                dataList.CustomerName = dt.Rows[i]["SupplierName"].ToString();
+                dataList.Balance = Convert.ToDouble(dt.Rows[i]["Balance"].ToString());
+                dataList.Paid = Convert.ToDouble(dt.Rows[i]["Paid"].ToString());
+
+
+                dataEmployeeAllReportsPurchase.Add(dataList);
+            }
+        }
+
+        private void addCurrentSupplierListReport(string SuCode)
+        {
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewSupplierReports WHERE SuCode = '" + SuCode + "';");
+            DataTable dt = ds.Tables[0];
+
+            dataSupplierAllReports = new List<supplierListReports>();
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                supplierListReports dataList = new supplierListReports();
+
+                dataList.Code = dt.Rows[i]["Code"].ToString();
+                dataList.EmpCode = dt.Rows[i]["SuCode"].ToString();
+                dataList.EmployeeName = dt.Rows[i]["SupplierName"].ToString();
+                dataList.Address = dt.Rows[i]["Address"].ToString();
+                dataList.Tel = dt.Rows[i]["Phone"].ToString();
+                dataList.Email = dt.Rows[i]["Email"].ToString();
+                dataList.CustomerName = dt.Rows[i]["EmployeeName"].ToString();
+                //dataList.ProQty = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
+                //dataList.ProCode = dt.Rows[i]["ProCode"].ToString();
+                //dataList.ProName = dt.Rows[i]["ProName"].ToString();
+                dataList.Date = dt.Rows[i]["Date"].ToString();
+                dataList.Total = Convert.ToDouble(dt.Rows[i]["Total"].ToString());
+                dataList.Paid = Convert.ToDouble(dt.Rows[i]["Paid"].ToString());
+                dataList.Balance = Convert.ToDouble(dt.Rows[i]["Balance"].ToString());
+
+                dataSupplierAllReports.Add(dataList);
             }
         }
 
@@ -1234,6 +1339,25 @@ namespace PSMS
                     //MessageBox.Show(Cell(0));
                     addCurrentCustomerListReport(Cell(0));
                     new reportViewer(dataCustomerAllReports).ShowDialog();
+                }
+                else if(currentSelected.Equals("employee"))
+                {
+                    if (cbEmployeeby.SelectedIndex.Equals(0))
+                    {
+                        addCurrentEmployeeListReportInvoice(Cell(0));
+                        new reportViewer(dataEmployeeAllReportsInvoice).ShowDialog();
+                    }
+                    else if(cbEmployeeby.SelectedIndex.Equals(1))
+                    {
+                        addCurrentEmployeeListReportPurchase(Cell(0));
+                        new reportViewer(dataEmployeeAllReportsPurchase).ShowDialog();
+                    }
+
+                }
+                else if(currentSelected.Equals("supplier"))
+                {
+                    addCurrentSupplierListReport(Cell(0));
+                    new reportViewer(dataSupplierAllReports).ShowDialog();
                 }
 
                 if (currentSelected.Equals("invoice")||currentSelected.Equals("purchase")||currentSelected.Equals("income"))

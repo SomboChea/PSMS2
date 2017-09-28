@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSMS.Class
 {
-    class supplierListReports
+    public class supplierListReports:employeeListReportsPurchase
     {
 
     }

@@ -57,6 +57,8 @@
             this.cbFilter = new System.Windows.Forms.ComboBox();
             this.lbFilter = new MetroFramework.Controls.MetroLabel();
             this.cbSearchBy = new MetroFramework.Controls.MetroComboBox();
+            this.cbEmployeeby = new MetroFramework.Controls.MetroComboBox();
+            this.lbEmp = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.viewReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -306,7 +308,7 @@
             // 
             // 
             this.txtSearch.CustomButton.Image = null;
-            this.txtSearch.CustomButton.Location = new System.Drawing.Point(180, 2);
+            this.txtSearch.CustomButton.Location = new System.Drawing.Point(199, 2);
             this.txtSearch.CustomButton.Margin = new System.Windows.Forms.Padding(5);
             this.txtSearch.CustomButton.Name = "";
             this.txtSearch.CustomButton.Size = new System.Drawing.Size(25, 25);
@@ -328,7 +330,7 @@
             this.txtSearch.SelectionLength = 0;
             this.txtSearch.SelectionStart = 0;
             this.txtSearch.ShortcutsEnabled = true;
-            this.txtSearch.Size = new System.Drawing.Size(208, 30);
+            this.txtSearch.Size = new System.Drawing.Size(227, 30);
             this.txtSearch.TabIndex = 14;
             this.txtSearch.UseSelectable = true;
             this.txtSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -381,7 +383,7 @@
             this.cbSortby.Location = new System.Drawing.Point(615, 118);
             this.cbSortby.Margin = new System.Windows.Forms.Padding(5);
             this.cbSortby.Name = "cbSortby";
-            this.cbSortby.Size = new System.Drawing.Size(189, 30);
+            this.cbSortby.Size = new System.Drawing.Size(201, 30);
             this.cbSortby.TabIndex = 18;
             this.cbSortby.UseSelectable = true;
             this.cbSortby.SelectedIndexChanged += new System.EventHandler(this.cbSortby_SelectedIndexChanged);
@@ -472,11 +474,41 @@
             this.cbSearchBy.TabIndex = 45;
             this.cbSearchBy.UseSelectable = true;
             // 
+            // cbEmployeeby
+            // 
+            this.cbEmployeeby.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbEmployeeby.FormattingEnabled = true;
+            this.cbEmployeeby.ItemHeight = 24;
+            this.cbEmployeeby.Items.AddRange(new object[] {
+            "Invoice",
+            "Purchase"});
+            this.cbEmployeeby.Location = new System.Drawing.Point(615, 117);
+            this.cbEmployeeby.Margin = new System.Windows.Forms.Padding(5);
+            this.cbEmployeeby.Name = "cbEmployeeby";
+            this.cbEmployeeby.Size = new System.Drawing.Size(178, 30);
+            this.cbEmployeeby.TabIndex = 47;
+            this.cbEmployeeby.UseSelectable = true;
+            this.cbEmployeeby.Visible = false;
+            // 
+            // lbEmp
+            // 
+            this.lbEmp.AutoSize = true;
+            this.lbEmp.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.lbEmp.Location = new System.Drawing.Point(615, 89);
+            this.lbEmp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbEmp.Name = "lbEmp";
+            this.lbEmp.Size = new System.Drawing.Size(98, 20);
+            this.lbEmp.TabIndex = 46;
+            this.lbEmp.Text = "Employee by";
+            this.lbEmp.Visible = false;
+            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1321, 765);
+            this.Controls.Add(this.cbEmployeeby);
+            this.Controls.Add(this.lbEmp);
             this.Controls.Add(this.cbSearchBy);
             this.Controls.Add(this.cbFilter2);
             this.Controls.Add(this.cbFilter);
@@ -544,5 +576,7 @@
         private System.Windows.Forms.ComboBox cbFilter;
         private MetroFramework.Controls.MetroLabel lbFilter;
         private MetroFramework.Controls.MetroComboBox cbSearchBy;
+        private MetroFramework.Controls.MetroComboBox cbEmployeeby;
+        private MetroFramework.Controls.MetroLabel lbEmp;
     }
 }

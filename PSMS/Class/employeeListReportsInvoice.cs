@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSMS.Class
 {
-    class employeeListReportsInvoice
+    public class employeeListReportsInvoice
     {
         public string Code { get; set; }
         public string Date { get; set; }
