@@ -223,7 +223,7 @@ namespace PSMS
         
         private void addCurrentCustomerListReport(string customerCode)
         {
-            DataSet ds = Helper.getDataSet("SELECT * FROM viewCustomerReports WHERE CusCode = '"+ customerCode + "';");
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewCustomerReports2 WHERE CusCode = '"+ customerCode + "';");
             DataTable dt = ds.Tables[0];
 
             dataCustomerAllReports = new List<customerListReports>();
@@ -237,11 +237,12 @@ namespace PSMS
                 dataList.Name = dt.Rows[i]["CustomerName"].ToString();
                 dataList.Address = dt.Rows[i]["Address"].ToString();
                 dataList.Tel = dt.Rows[i]["Phone"].ToString();
-                dataList.ProQty = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
-                dataList.ProCode = dt.Rows[i]["ProCode"].ToString();
-                dataList.ProName = dt.Rows[i]["ProName"].ToString();
+                //dataList.ProQty = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
+                //dataList.ProCode = dt.Rows[i]["ProCode"].ToString();
+                //dataList.ProName = dt.Rows[i]["ProName"].ToString();
                 dataList.Date = dt.Rows[i]["Date"].ToString();
-                dataList.Price = Convert.ToDouble(dt.Rows[i]["Price"].ToString());
+                dataList.Profits = Convert.ToDouble(dt.Rows[i]["Profits"].ToString());
+                dataList.Amount = Convert.ToDouble(dt.Rows[i]["Amount"].ToString());
 
                 dataCustomerAllReports.Add(dataList);
             }
@@ -930,6 +931,21 @@ namespace PSMS
             }
 
             Helper.AutoFitColumns(viewReport);
+        }
+
+        private void loadSearchFilter(string searchText,string field, DataGridView dg)
+        {
+            foreach(DataGridViewRow row in dg.Rows)
+            {
+                if (row.Cells[field].ToString().ToLower().Contains(searchText.ToLower()))
+                {
+                    MessageBox.Show(row.Cells[field].ToString());
+                }
+                else
+                {
+                    dg.Rows.Remove(row);
+                }
+            }
         }
 
         public static int DaysInYear(int year)

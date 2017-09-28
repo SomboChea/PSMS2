@@ -12,7 +12,7 @@
  Target Server Version : 13004206
  File Encoding         : 65001
 
- Date: 28/09/2017 04:54:11
+ Date: 28/09/2017 17:22:21
 */
 
 
@@ -26,10 +26,10 @@ GO
 CREATE TABLE [dbo].[Customers] (
   [CusID] int IDENTITY(1,1) NOT NULL,
   [CusCode] AS ('CUS'+right('0000'+CONVERT([nvarchar](5),[CusID]),(5))) PERSISTED NOT NULL,
-  [CusLNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-  [CusFNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-  [CusLNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-  [CusFNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [CusLNKH] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [CusFNKH] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [CusLNEN] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [CusFNEN] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Gender] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Address] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Phone] nvarchar(13) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -56,10 +56,10 @@ GO
 CREATE TABLE [dbo].[Employee] (
   [EmpID] int IDENTITY(1,1) NOT NULL,
   [EmpCode] AS ('EMP'+right('0000'+CONVERT([nvarchar](5),[EmpID]),(5))) PERSISTED NOT NULL,
-  [EmpLNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-  [EmpFNKH] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-  [EmpLNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-  [EmpFNEN] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [EmpLNKH] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [EmpFNKH] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [EmpLNEN] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [EmpFNEN] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Gender] nvarchar(6) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [IDCard] nvarchar(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Address] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -185,7 +185,7 @@ GO
 CREATE TABLE [dbo].[Product] (
   [PID] int IDENTITY(1,1) NOT NULL,
   [PCode] AS ('P'+right('0000'+CONVERT([nvarchar](5),[PID]),(5))) PERSISTED NOT NULL,
-  [PName] nvarchar(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [PName] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [PSize] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Color] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Quantity] int DEFAULT ((0)) NOT NULL,
@@ -258,8 +258,8 @@ CREATE TABLE [dbo].[Supplier] (
   [SuCode] AS ('SU'+right('0000'+CONVERT([nvarchar](5),[SuID]),(5))) PERSISTED NOT NULL,
   [SuLNKH] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [SuFNKH] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-  [SuLNEN] nvarchar(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-  [SuFNEN] nvarchar(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [SuLNEN] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  [SuFNEN] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Gender] nvarchar(7) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Address] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
   [Phone] nvarchar(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -364,12 +364,26 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[vi
 	DROP VIEW [dbo].[viewCustomerReports]
 GO
 
-CREATE VIEW [dbo].[viewCustomerReports] AS SELECT i.InvoiceCode Code,c.CusID,c.CusCode ,p.PName ProName,p.PCode ProCode,id.Quantity Quantity,id.Saleprice Price,id.Amount Amount,CONCAT(c.CusLNEN,' ',c.CusFNEN) CustomerName,c.Phone Phone,c.Address Address,i.Date Date
+CREATE VIEW [dbo].[viewCustomerReports] AS SELECT i.InvoiceCode Code,c.CusID,c.CusCode ,p.PName ProName,p.PCode ProCode,id.Quantity Quantity,id.Saleprice Price,id.Amount Amount,CONCAT(c.CusLNEN,' ',c.CusFNEN) CustomerName,c.Phone Phone,c.Address Address,format(i.Date,'dd-MMM-yyyy hh:mm:ss tt') Date
 FROM InvoiceDetail id
 INNER JOIN Product p
 ON id.PID = p.PID
 INNER JOIN Invoice i
 ON id.InvoiceNo = i.InvoiceNo
+INNER JOIN Customers c
+ON i.CusID = c.CusID;
+GO
+
+
+-- ----------------------------
+-- View structure for viewCustomerReports2
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewCustomerReports2]') AND type IN ('V'))
+	DROP VIEW [dbo].[viewCustomerReports2]
+GO
+
+CREATE VIEW [dbo].[viewCustomerReports2] AS SELECT i.InvoiceCode Code,c.CusCode ,i.TotalPrice Amount,i.Profits,CONCAT(c.CusLNEN,' ',c.CusFNEN) CustomerName,c.Phone Phone,c.Address Address,format(i.Date,'dd-MMM-yyyy hh:mm:ss tt') Date
+FROM Invoice i
 INNER JOIN Customers c
 ON i.CusID = c.CusID;
 GO
@@ -400,6 +414,48 @@ CREATE VIEW [dbo].[viewEmployeeDetails] AS SELECT e.EmpCode Code,CONCAT(e.EmpLNE
 FROM Employee e
 INNER JOIN Position p
 ON e.PosID = p.PosID
+GO
+
+
+-- ----------------------------
+-- View structure for viewEmployeeReportInvoice
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewEmployeeReportInvoice]') AND type IN ('V'))
+	DROP VIEW [dbo].[viewEmployeeReportInvoice]
+GO
+
+CREATE VIEW [dbo].[viewEmployeeReportInvoice] AS SELECT i.InvoiceCode Code,e.EmpCode,p.PName ProName,p.PCode ProCode,id.Quantity Quantity,id.Saleprice Price,id.Amount Amount,CONCAT(e.EmpLNEN,' ',e.EmpFNEN) EmployeeName,CONCAT(c.CusLNEN,' ',c.CusFNEN) CustomerName,e.Phone Phone,e.Address Address,e.Email,format(i.Date,'dd-MMM-yyyy hh:mm:ss tt') Date
+FROM InvoiceDetail id
+INNER JOIN Product p
+ON id.PID = p.PID
+INNER JOIN Invoice i
+ON id.InvoiceNo = i.InvoiceNo
+INNER JOIN Customers c
+ON i.CusID = c.CusID
+INNER JOIN Employee e
+ON i.EmpID = e.EmpID
+INNER JOIN Position ps
+ON ps.PosID = e.PosID
+GO
+
+
+-- ----------------------------
+-- View structure for viewEmployeeReportPurchase
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewEmployeeReportPurchase]') AND type IN ('V'))
+	DROP VIEW [dbo].[viewEmployeeReportPurchase]
+GO
+
+CREATE VIEW [dbo].[viewEmployeeReportPurchase] AS SELECT p.PurCode Code,e.EmpCode,format(p.Date,'dd-MMM-yyyy hh:mm:ss tt') Date,pp.PCode ProCode,pp.PName ProName,pd.Quantity Quantity,pd.UnitPrice,pd.Amount Amount, p.Payment Paid,p.Balance Balance,CONCAT(s.SuLNEN,' ',s.SuFNEN) SupplierName,CONCAT(e.EmpLNEN,' ',e.EmpFNEN) EmployeeName,e.Phone Phone,e.Address Address,e.Email,p.Total
+FROM PurchaseDetail pd
+INNER JOIN Purchase p
+ON pd.PurID = p.PurID
+INNER JOIN Product pp
+ON pp.PID = pd.PID
+INNER JOIN Supplier s
+ON p.SuID = s.SuID
+INNER JOIN Employee e
+ON p.EmpID = e.EmpID
 GO
 
 
@@ -745,6 +801,26 @@ GO
 
 CREATE VIEW [dbo].[viewSupplier] AS SELECT SuCode AS Code,CONCAT(SuLNKH,' ',SuFNKH) SupplierNameKH,CONCAT(SuLNEN,' ',SuFNEN) SupplierName,Gender,Address,Phone,Phone2,Email,Fax,Fax2,Balance
 FROM Supplier
+GO
+
+
+-- ----------------------------
+-- View structure for viewSupplierReports
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewSupplierReports]') AND type IN ('V'))
+	DROP VIEW [dbo].[viewSupplierReports]
+GO
+
+CREATE VIEW [dbo].[viewSupplierReports] AS SELECT p.PurCode Code,s.SuCode,format(p.Date,'dd-MMM-yyyy hh:mm:ss tt') Date,pp.PName ProName,pd.Quantity ProQty,pd.UnitPrice,pd.Amount Amount, p.Payment Paid,p.Balance Balance,CONCAT(s.SuLNEN,' ',s.SuFNEN) SupplierName,CONCAT(e.EmpLNEN,' ',e.EmpFNEN) EmployeeName,p.Total,s.Address,s.Phone,s.Email
+FROM PurchaseDetail pd
+INNER JOIN Purchase p
+ON pd.PurID = p.PurID
+INNER JOIN Product pp
+ON pp.PID = pd.PID
+INNER JOIN Supplier s
+ON p.SuID = s.SuID
+INNER JOIN Employee e
+ON p.EmpID = e.EmpID
 GO
 
 
