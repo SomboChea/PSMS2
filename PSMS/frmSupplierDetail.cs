@@ -28,10 +28,15 @@ namespace PSMS
 
         private void frmSupplierDetail_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'pSMS2DataSet2.viewSupplier' table. You can move, or remove it, as needed.
+            this.viewSupplierTableAdapter.Fill(this.pSMS2DataSet2.viewSupplier);
             comboBox1.SelectedIndex = 0;
             // TODO: This line of code loads data into the 'pSMS2DataSet2.Supplier' table. You can move, or remove it, as needed.
-            this.supplierTableAdapter.Fill(this.pSMS2DataSet2.Supplier);
+            //this.supplierTableAdapter.Fill(this.pSMS2DataSet2.Supplier);
             //suFun.FillDataGridView(ref dgData);
+            
+
+
         }
         private frmSu GetSu()
         {
@@ -133,6 +138,7 @@ namespace PSMS
 
         private void frmSupplierDetail_FormClosing(object sender, FormClosingEventArgs e)
         {
+            /*
             DialogResult diag = MetroMessageBox.Show(this, "Do you Want to Save Change ? ", "MetroMessage", MessageBoxButtons.YesNo);
             if (diag == DialogResult.Yes)
             {
@@ -146,6 +152,7 @@ namespace PSMS
                     e.Cancel = true;
                 }
             }
+            */
         }
 
         private void txtfilter_ButtonClick(object sender, EventArgs e)
@@ -155,8 +162,8 @@ namespace PSMS
             {
                 string sql = "Select * from viewSupplier ";
                 sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like N'%" + txtfilter.Text.Trim() + "%' COLLATE Latin1_General_100_BIN2";
-                supplierTableAdapter.Adapter.SelectCommand.CommandText = sql;
-                supplierTableAdapter.Fill(this.pSMS2DataSet2.Supplier);
+                viewSupplierTableAdapter.Adapter.SelectCommand.CommandText = sql;
+                viewSupplierTableAdapter.Fill(this.pSMS2DataSet2.viewSupplier);
             }
             catch(Exception) { }
         
@@ -177,8 +184,8 @@ namespace PSMS
             {
                 string sql = "Select * from viewSupplier ";
                 sql += txtfilter.Text.Trim() == "" ? "" : "Where " + comboBox1.Text + " like '%" + txtfilter.Text.Trim() + "%'";
-                supplierTableAdapter.Adapter.SelectCommand.CommandText = sql;
-                supplierTableAdapter.Fill(this.pSMS2DataSet2.Supplier);
+                viewSupplierTableAdapter.Adapter.SelectCommand.CommandText = sql;
+                viewSupplierTableAdapter.Fill(this.pSMS2DataSet2.viewSupplier);
             }
             catch(Exception) { }
         

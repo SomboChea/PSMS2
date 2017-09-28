@@ -90,6 +90,8 @@
   <ItemGroup>
     <Compile Include="Class\Connection.cs" />
     <Compile Include="Class\customerListReports.cs" />
+    <Compile Include="Class\employeeListReportPurchase.cs" />
+    <Compile Include="Class\employeeListReportsInvoice.cs" />
     <Compile Include="Class\frmPos.cs" />
     <Compile Include="Class\FullMode.cs" />
     <Compile Include="Class\GeneralReport.cs" />
