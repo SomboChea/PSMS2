@@ -250,7 +250,7 @@ namespace PSMS
 
         private void addCurrentEmployeeListReportInvoice(string EmpCode)
         {
-            DataSet ds = Helper.getDataSet("SELECT * FROM viewEmployeeReportInvoice WHERE EmpCode = '" + EmpCode + "';");
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewEmployeeReportInvoice2 WHERE EmpCode = '" + EmpCode + "';");
             DataTable dt = ds.Tables[0];
 
             dataEmployeeAllReportsInvoice = new List<employeeListReportsInvoice>();
@@ -265,12 +265,12 @@ namespace PSMS
                 dataList.Address = dt.Rows[i]["Address"].ToString();
                 dataList.Tel = dt.Rows[i]["Phone"].ToString();
                 dataList.Email = dt.Rows[i]["Email"].ToString();
-                dataList.ProQty = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
-                dataList.ProCode = dt.Rows[i]["ProCode"].ToString();
-                dataList.ProName = dt.Rows[i]["ProName"].ToString();
+                //dataList.ProQty = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
+                //dataList.ProCode = dt.Rows[i]["ProCode"].ToString();
+                //dataList.ProName = dt.Rows[i]["ProName"].ToString();
                 dataList.Date = dt.Rows[i]["Date"].ToString();
-                dataList.Price = Convert.ToDouble(dt.Rows[i]["Price"].ToString());
-                dataList.CustomerName = dt.Rows[i]["CustomerName"].ToString();
+                dataList.Profits = Convert.ToDouble(dt.Rows[i]["Profits"].ToString());
+                dataList.Amount = Convert.ToDouble(dt.Rows[i]["Amount"].ToString());
 
                 dataEmployeeAllReportsInvoice.Add(dataList);
             }
@@ -278,7 +278,7 @@ namespace PSMS
 
         private void addCurrentEmployeeListReportPurchase(string EmpCode)
         {
-            DataSet ds = Helper.getDataSet("SELECT * FROM viewEmployeeReportPurchase WHERE EmpCode = '" + EmpCode + "';");
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewEmployeeReportPurchase2 WHERE EmpCode = '" + EmpCode + "';");
             DataTable dt = ds.Tables[0];
 
             dataEmployeeAllReportsPurchase = new List<employeeListReportsPurchase>();
@@ -293,12 +293,11 @@ namespace PSMS
                 dataList.Address = dt.Rows[i]["Address"].ToString();
                 dataList.Tel = dt.Rows[i]["Phone"].ToString();
                 dataList.Email = dt.Rows[i]["Email"].ToString();
-                dataList.ProQty = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
-
-                dataList.ProCode = dt.Rows[i]["ProCode"].ToString();
-                dataList.ProName = dt.Rows[i]["ProName"].ToString();
+                //dataList.ProQty = Convert.ToInt32(dt.Rows[i]["Quantity"].ToString());
+                //dataList.ProCode = dt.Rows[i]["ProCode"].ToString();
+                //dataList.ProName = dt.Rows[i]["ProName"].ToString();
                 dataList.Date = dt.Rows[i]["Date"].ToString();
-                dataList.Price = Convert.ToDouble(dt.Rows[i]["UnitPrice"].ToString());
+                dataList.Total = Convert.ToDouble(dt.Rows[i]["Total"].ToString());
                 dataList.CustomerName = dt.Rows[i]["SupplierName"].ToString();
                 dataList.Balance = Convert.ToDouble(dt.Rows[i]["Balance"].ToString());
                 dataList.Paid = Convert.ToDouble(dt.Rows[i]["Paid"].ToString());
@@ -310,7 +309,7 @@ namespace PSMS
 
         private void addCurrentSupplierListReport(string SuCode)
         {
-            DataSet ds = Helper.getDataSet("SELECT * FROM viewSupplierReports WHERE SuCode = '" + SuCode + "';");
+            DataSet ds = Helper.getDataSet("SELECT * FROM viewSupplierReports2 WHERE SuCode = '" + SuCode + "';");
             DataTable dt = ds.Tables[0];
 
             dataSupplierAllReports = new List<supplierListReports>();

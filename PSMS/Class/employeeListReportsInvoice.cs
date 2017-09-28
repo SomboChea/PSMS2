@@ -20,6 +20,7 @@ namespace PSMS.Class
         public int ProQty { get; set; }
         public double Price { get; set; }
         public string CustomerName { get; set; }
-        public double Amount { get { return ProQty * Price; } }
+        public double Profits { get; set; }
+        public double Amount { get; set; }
     }
 }

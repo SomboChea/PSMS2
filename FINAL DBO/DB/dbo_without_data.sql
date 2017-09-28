@@ -12,7 +12,7 @@
  Target Server Version : 13004206
  File Encoding         : 65001
 
- Date: 28/09/2017 17:22:21
+ Date: 28/09/2017 18:20:04
 */
 
 
@@ -440,6 +440,20 @@ GO
 
 
 -- ----------------------------
+-- View structure for viewEmployeeReportInvoice2
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewEmployeeReportInvoice2]') AND type IN ('V'))
+	DROP VIEW [dbo].[viewEmployeeReportInvoice2]
+GO
+
+CREATE VIEW [dbo].[viewEmployeeReportInvoice2] AS SELECT i.InvoiceCode Code,e.EmpCode,e.Email,i.TotalPrice Amount,i.Profits,CONCAT(e.EmpLNEN,' ',e.EmpFNEN) EmployeeName,e.Phone,e.Address,format(i.Date,'dd-MMM-yyyy hh:mm:ss tt') Date
+FROM Invoice i
+INNER JOIN Employee e
+ON i.EmpID = e.EmpID;
+GO
+
+
+-- ----------------------------
 -- View structure for viewEmployeeReportPurchase
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewEmployeeReportPurchase]') AND type IN ('V'))
@@ -456,6 +470,30 @@ INNER JOIN Supplier s
 ON p.SuID = s.SuID
 INNER JOIN Employee e
 ON p.EmpID = e.EmpID
+GO
+
+
+-- ----------------------------
+-- View structure for viewEmployeeReportPurchase2
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewEmployeeReportPurchase2]') AND type IN ('V'))
+	DROP VIEW [dbo].[viewEmployeeReportPurchase2]
+GO
+
+CREATE VIEW [dbo].[viewEmployeeReportPurchase2] AS SELECT
+dbo.Purchase.PurCode Code,
+dbo.Employee.EmpCode,
+dbo.Purchase.[Date],
+dbo.Purchase.Total,
+dbo.Purchase.Payment AS Paid,
+dbo.Purchase.Balance,
+Concat(dbo.Supplier.SuLNEN,' ',dbo.Supplier.SuFNEN) As SupplierName,
+Concat(dbo.Employee.EmpLNEN,' ',dbo.Employee.EmpFNEN) AS EmployeeName,dbo.Employee.Phone,dbo.Employee.Address,dbo.Employee.Email
+
+FROM
+dbo.Purchase
+INNER JOIN dbo.Employee ON dbo.Purchase.EmpID = dbo.Employee.EmpID
+INNER JOIN dbo.Supplier ON dbo.Purchase.SuID = dbo.Supplier.SuID
 GO
 
 
@@ -821,6 +859,30 @@ INNER JOIN Supplier s
 ON p.SuID = s.SuID
 INNER JOIN Employee e
 ON p.EmpID = e.EmpID
+GO
+
+
+-- ----------------------------
+-- View structure for viewSupplierReports2
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[viewSupplierReports2]') AND type IN ('V'))
+	DROP VIEW [dbo].[viewSupplierReports2]
+GO
+
+CREATE VIEW [dbo].[viewSupplierReports2] AS SELECT
+dbo.Purchase.PurCode Code,
+dbo.Supplier.SuCode,
+dbo.Purchase.[Date],
+dbo.Purchase.Total,
+dbo.Purchase.Payment AS Paid,
+dbo.Purchase.Balance,
+Concat(dbo.Supplier.SuLNEN,' ',dbo.Supplier.SuFNEN) As SupplierName,
+Concat(dbo.Employee.EmpLNEN,' ',dbo.Employee.EmpFNEN) AS EmployeeName,dbo.Supplier.Phone,dbo.Supplier.Address,dbo.Supplier.Email
+
+FROM
+dbo.Purchase
+INNER JOIN dbo.Employee ON dbo.Purchase.EmpID = dbo.Employee.EmpID
+INNER JOIN dbo.Supplier ON dbo.Purchase.SuID = dbo.Supplier.SuID
 GO
 
 
